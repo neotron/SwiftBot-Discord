@@ -37,11 +37,9 @@
 		6D999EC765F43D711E1A66B9 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999D2D151DC41A4AFBEAC3 /* Logger.swift */; };
 		6D999F298F0DCC2EC5C526A5 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9996359282085CD1B1357C /* UserModel.swift */; };
 		6D999F86E0452B64A7EA47C8 /* WebsocketHeartbeatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999813A7E8EF215264C09A /* WebsocketHeartbeatModel.swift */; };
-		724A77B11C6ED57E00CB0F1D /* Pods.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = D5FBDBE352A5E9230959E180 /* Pods.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		724A77C81C6ED63000CB0F1D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 724A77C71C6ED63000CB0F1D /* main.m */; };
 		724A77CF1C6ED71000CB0F1D /* SwiftBot in Copy Executable */ = {isa = PBXBuildFile; fileRef = 724A77C51C6ED63000CB0F1D /* SwiftBot */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		724A77D01C6ED7ED00CB0F1D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5FBDBE352A5E9230959E180 /* Pods.framework */; };
-		724A77D11C6ED84E00CB0F1D /* Starscream.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77A21C6ED3E100CB0F1D /* Starscream.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		724A77F41C6ED9AE00CB0F1D /* SwiftBotCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 724A77F31C6ED9AE00CB0F1D /* SwiftBotCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		724A77F91C6ED9BA00CB0F1D /* DiscordAPI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77D71C6ED97200CB0F1D /* DiscordAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		724A77FA1C6ED9BA00CB0F1D /* SwiftBotCore.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77F11C6ED9AE00CB0F1D /* SwiftBotCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -57,6 +55,10 @@
 		724A78071C6EDC2000CB0F1D /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724A78001C6EDA9400CB0F1D /* ObjectMapper.framework */; };
 		724A78081C6EDC2000CB0F1D /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77A21C6ED3E100CB0F1D /* Starscream.framework */; };
 		724A780C1C6F1F1400CB0F1D /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 724A780B1C6F1F1400CB0F1D /* libz.tbd */; };
+		724A781F1C706CE000CB0F1D /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 724A781A1C706CE000CB0F1D /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		724A78201C706CE000CB0F1D /* AlamofireObjectMapper.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 724A781B1C706CE000CB0F1D /* AlamofireObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		724A78211C706CE000CB0F1D /* ObjectMapper.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 724A781C1C706CE000CB0F1D /* ObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		724A78231C706CE000CB0F1D /* Starscream.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 724A781E1C706CE000CB0F1D /* Starscream.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = 724A77C41C6ED63000CB0F1D;
 			remoteInfo = SwiftBot;
+		};
+		724A78111C706B3F00CB0F1D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 72B35E161C6ECD4200027CF2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 724A77D61C6ED97200CB0F1D;
+			remoteInfo = DiscordAPI;
+		};
+		724A78131C706B3F00CB0F1D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 72B35E161C6ECD4200027CF2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 724A77F01C6ED9AE00CB0F1D;
+			remoteInfo = SwiftBotCore;
+		};
+		724A78151C706B6500CB0F1D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 72B35E161C6ECD4200027CF2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 724A77D61C6ED97200CB0F1D;
+			remoteInfo = DiscordAPI;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -78,8 +101,10 @@
 			files = (
 				724A77F91C6ED9BA00CB0F1D /* DiscordAPI.framework in Copy Frameworks */,
 				724A77FA1C6ED9BA00CB0F1D /* SwiftBotCore.framework in Copy Frameworks */,
-				724A77D11C6ED84E00CB0F1D /* Starscream.framework in Copy Frameworks */,
-				724A77B11C6ED57E00CB0F1D /* Pods.framework in Copy Frameworks */,
+				724A781F1C706CE000CB0F1D /* Alamofire.framework in Copy Frameworks */,
+				724A78201C706CE000CB0F1D /* AlamofireObjectMapper.framework in Copy Frameworks */,
+				724A78211C706CE000CB0F1D /* ObjectMapper.framework in Copy Frameworks */,
+				724A78231C706CE000CB0F1D /* Starscream.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -158,6 +183,11 @@
 		724A780B1C6F1F1400CB0F1D /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		724A780D1C6F222300CB0F1D /* BBSZLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BBSZLib.framework; path = Pods/../build/Debug/BBSZLib.framework; sourceTree = "<group>"; };
 		724A780F1C6F230700CB0F1D /* DeflateSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeflateSwift.framework; path = ../build/XCode/DerivedData/Build/Products/Debug/DeflateSwift.framework; sourceTree = "<group>"; };
+		724A781A1C706CE000CB0F1D /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Alamofire.framework; path = /workspace/build/XCode/DerivedData/Build/Products/Debug/Alamofire.framework; sourceTree = "<absolute>"; };
+		724A781B1C706CE000CB0F1D /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = AlamofireObjectMapper.framework; path = /workspace/build/XCode/DerivedData/Build/Products/Debug/AlamofireObjectMapper.framework; sourceTree = "<absolute>"; };
+		724A781C1C706CE000CB0F1D /* ObjectMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = ObjectMapper.framework; path = /workspace/build/XCode/DerivedData/Build/Products/Debug/ObjectMapper.framework; sourceTree = "<absolute>"; };
+		724A781D1C706CE000CB0F1D /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods.framework; sourceTree = SOURCE_ROOT; };
+		724A781E1C706CE000CB0F1D /* Starscream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Starscream.framework; path = /workspace/build/XCode/DerivedData/Build/Products/Debug/Starscream.framework; sourceTree = "<absolute>"; };
 		D5FBDBE352A5E9230959E180 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F93F6C33F3BEF78F91E158ED /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -406,6 +436,11 @@
 		72B35E151C6ECD4200027CF2 = {
 			isa = PBXGroup;
 			children = (
+				724A781A1C706CE000CB0F1D /* Alamofire.framework */,
+				724A781B1C706CE000CB0F1D /* AlamofireObjectMapper.framework */,
+				724A781C1C706CE000CB0F1D /* ObjectMapper.framework */,
+				724A781D1C706CE000CB0F1D /* Pods.framework */,
+				724A781E1C706CE000CB0F1D /* Starscream.framework */,
 				724A77AB1C6ED55B00CB0F1D /* SwiftBotBundle */,
 				724A77C61C6ED63000CB0F1D /* SwiftBot */,
 				724A77D81C6ED97200CB0F1D /* DiscordAPI */,
@@ -493,6 +528,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				724A78121C706B3F00CB0F1D /* PBXTargetDependency */,
+				724A78141C706B3F00CB0F1D /* PBXTargetDependency */,
 			);
 			name = SwiftBot;
 			productName = SwiftBot;
@@ -529,6 +566,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				724A78161C706B6500CB0F1D /* PBXTargetDependency */,
 			);
 			name = SwiftBotCore;
 			productName = SwiftBotCore;
@@ -703,6 +741,21 @@
 			target = 724A77C41C6ED63000CB0F1D /* SwiftBot */;
 			targetProxy = 724A77CC1C6ED6E800CB0F1D /* PBXContainerItemProxy */;
 		};
+		724A78121C706B3F00CB0F1D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 724A77D61C6ED97200CB0F1D /* DiscordAPI */;
+			targetProxy = 724A78111C706B3F00CB0F1D /* PBXContainerItemProxy */;
+		};
+		724A78141C706B3F00CB0F1D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 724A77F01C6ED9AE00CB0F1D /* SwiftBotCore */;
+			targetProxy = 724A78131C706B3F00CB0F1D /* PBXContainerItemProxy */;
+		};
+		724A78161C706B6500CB0F1D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 724A77D61C6ED97200CB0F1D /* DiscordAPI */;
+			targetProxy = 724A78151C706B6500CB0F1D /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -711,13 +764,13 @@
 			baseConfigurationReference = F93F6C33F3BEF78F91E158ED /* Pods.debug.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = SwiftBotBundle/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.neotron.SwiftBotBundle;
 				PRODUCT_NAME = SwiftBot;
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
@@ -727,13 +780,13 @@
 			baseConfigurationReference = 6000AA5B98BDF562E05E0A48 /* Pods.release.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = SwiftBotBundle/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.neotron.SwiftBotBundle;
 				PRODUCT_NAME = SwiftBot;
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
@@ -744,6 +797,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/$(PRODUCT_NAME).bundle/Contents/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -753,6 +807,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
