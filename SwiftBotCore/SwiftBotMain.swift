@@ -47,6 +47,7 @@ public class SwiftBotMain : NSObject, DiscordDelegate {
     private func registerMessageHandlers() {
         self.messageDispatcher.registerMessageHandler(PingMessageHandler())
         self.messageDispatcher.registerMessageHandler(RandomAnimalsMessageHandler())
+        self.messageDispatcher.registerMessageHandler(ScienceMessageHandler())
     }
 
 

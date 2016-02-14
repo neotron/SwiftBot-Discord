@@ -42,6 +42,7 @@
       <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/WebSockets/WebsocketAPIManager.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/Discord.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/MessageHandlers/RandomAnimalsMessageHandler.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/MessageHandlers/ScienceMessageHandler.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/MessageHandlers/PingMessageHandler.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/Config.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/SwiftBotMain.swift" isTestSource="false" />
