@@ -1,0 +1,986 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6041E52A6C9353A2361E6798 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5FBDBE352A5E9230959E180 /* Pods.framework */; };
+		6D99915DACF12BBF53AEBABA /* ChannelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D99911179065165BBD88A63 /* ChannelModel.swift */; };
+		6D9991B519E4ABB0A5BCCCAF /* DiscordAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D999D8AD96391746921114A /* DiscordAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6D9991CED5C7FB3741405903 /* Registry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9999B3F35104A0B78148BE /* Registry.swift */; };
+		6D99927020E36F0DA1AF16F0 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D99956D1FD7B7AE169D4817 /* LoginRequest.swift */; };
+		6D9992FC35CAADEC17453AE4 /* Discord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999E440754D89B92EDC8A6 /* Discord.swift */; };
+		6D9994818C0D8E5D8246AE7A /* GatewayUrlResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9997F14BC28D602A27BC9B /* GatewayUrlResponseModel.swift */; };
+		6D99948D99C4C64663CEA6D0 /* AttachmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D99961C2254A229E044174D /* AttachmentModel.swift */; };
+		6D99955569500652A2C5C48B /* WebsocketHelloMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999FCBE842D9A88EFA40C5 /* WebsocketHelloMessageModel.swift */; };
+		6D9996CAACE6755D84BCE28A /* URLEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D99914B9A4F9F2397C28447 /* URLEndpoints.swift */; };
+		6D999785444996E8D9F94E41 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999F34840FAF487424C024 /* Config.swift */; };
+		6D9998430A7453619CDB3DAE /* NSData+GZIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9998E44D0D39FDE1300A2A /* NSData+GZIP.swift */; };
+		6D999854C01E7F19C6C28EDE /* SwiftBotMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999021041B23A847B115E6 /* SwiftBotMain.swift */; };
+		6D99985B6C873F056EEBD82B /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999DB3164C1D87EFEE1CE4 /* MessageModel.swift */; };
+		6D99990D819B87E9A8C2B9F4 /* RandomAnimalsMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D99960506F77545A5A407E1 /* RandomAnimalsMessageHandler.swift */; };
+		6D999961D5112A2A0DA89DA6 /* LoginResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999F4CA01620CF2F480E9F /* LoginResponseModel.swift */; };
+		6D999974CC66BCDA29516771 /* GatewayUrlRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9995D489B0FFBEED644BF9 /* GatewayUrlRequest.swift */; };
+		6D99997566272638C677E6D5 /* LogoutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999F17315965A965314B5E /* LogoutRequest.swift */; };
+		6D9999F6C67A599DBBA83E12 /* EmbedsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9997A0A7A61B3971877C0D /* EmbedsModel.swift */; };
+		6D999A0EE363850856DDE569 /* WebsocketReadyMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9997EEEA591718925F4E2C /* WebsocketReadyMessageModel.swift */; };
+		6D999AE857A7A9583A8D06D5 /* SendMessageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D99964872894F71F130ED15 /* SendMessageRequest.swift */; };
+		6D999BC92E8A7B8BEFA3950E /* PingMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999ADC03AE6A181FEB636A /* PingMessageHandler.swift */; };
+		6D999C72C9BAFD10CF1C6447 /* WebsocketAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9996F7564D6FA6AF38E63D /* WebsocketAPIManager.swift */; };
+		6D999C7C9CFE7D5A7868FDAF /* WebsocketMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999366FEF6398379167ACE /* WebsocketMessageModel.swift */; };
+		6D999E0826CE9EE4A5E7B365 /* MappableBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999CDF69492A172C93B585 /* MappableBase.swift */; };
+		6D999E5306F66E5B71AB77DE /* MessageDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999F8C1962CC6D8711D65C /* MessageDispatcher.swift */; };
+		6D999EC765F43D711E1A66B9 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999D2D151DC41A4AFBEAC3 /* Logger.swift */; };
+		6D999F298F0DCC2EC5C526A5 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9996359282085CD1B1357C /* UserModel.swift */; };
+		6D999F86E0452B64A7EA47C8 /* WebsocketHeartbeatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999813A7E8EF215264C09A /* WebsocketHeartbeatModel.swift */; };
+		724A77B11C6ED57E00CB0F1D /* Pods.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = D5FBDBE352A5E9230959E180 /* Pods.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		724A77C81C6ED63000CB0F1D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 724A77C71C6ED63000CB0F1D /* main.m */; };
+		724A77CF1C6ED71000CB0F1D /* SwiftBot in Copy Executable */ = {isa = PBXBuildFile; fileRef = 724A77C51C6ED63000CB0F1D /* SwiftBot */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		724A77D01C6ED7ED00CB0F1D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5FBDBE352A5E9230959E180 /* Pods.framework */; };
+		724A77D11C6ED84E00CB0F1D /* Starscream.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77A21C6ED3E100CB0F1D /* Starscream.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		724A77F41C6ED9AE00CB0F1D /* SwiftBotCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 724A77F31C6ED9AE00CB0F1D /* SwiftBotCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		724A77F91C6ED9BA00CB0F1D /* DiscordAPI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77D71C6ED97200CB0F1D /* DiscordAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		724A77FA1C6ED9BA00CB0F1D /* SwiftBotCore.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77F11C6ED9AE00CB0F1D /* SwiftBotCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		724A77FB1C6ED9C500CB0F1D /* SwiftBotCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77F11C6ED9AE00CB0F1D /* SwiftBotCore.framework */; };
+		724A77FC1C6EDA9400CB0F1D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5FBDBE352A5E9230959E180 /* Pods.framework */; };
+		724A77FD1C6EDA9400CB0F1D /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77A21C6ED3E100CB0F1D /* Starscream.framework */; };
+		724A78011C6EDA9400CB0F1D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77FE1C6EDA9400CB0F1D /* Alamofire.framework */; };
+		724A78021C6EDA9400CB0F1D /* AlamofireObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77FF1C6EDA9400CB0F1D /* AlamofireObjectMapper.framework */; };
+		724A78031C6EDA9400CB0F1D /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724A78001C6EDA9400CB0F1D /* ObjectMapper.framework */; };
+		724A78041C6EDC2000CB0F1D /* DiscordAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77D71C6ED97200CB0F1D /* DiscordAPI.framework */; };
+		724A78051C6EDC2000CB0F1D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77FE1C6EDA9400CB0F1D /* Alamofire.framework */; };
+		724A78061C6EDC2000CB0F1D /* AlamofireObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77FF1C6EDA9400CB0F1D /* AlamofireObjectMapper.framework */; };
+		724A78071C6EDC2000CB0F1D /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724A78001C6EDA9400CB0F1D /* ObjectMapper.framework */; };
+		724A78081C6EDC2000CB0F1D /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77A21C6ED3E100CB0F1D /* Starscream.framework */; };
+		724A780C1C6F1F1400CB0F1D /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 724A780B1C6F1F1400CB0F1D /* libz.tbd */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		724A77CC1C6ED6E800CB0F1D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 72B35E161C6ECD4200027CF2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 724A77C41C6ED63000CB0F1D;
+			remoteInfo = SwiftBot;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		724A77B01C6ED56D00CB0F1D /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				724A77F91C6ED9BA00CB0F1D /* DiscordAPI.framework in Copy Frameworks */,
+				724A77FA1C6ED9BA00CB0F1D /* SwiftBotCore.framework in Copy Frameworks */,
+				724A77D11C6ED84E00CB0F1D /* Starscream.framework in Copy Frameworks */,
+				724A77B11C6ED57E00CB0F1D /* Pods.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		724A77C31C6ED63000CB0F1D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		724A77CE1C6ED70200CB0F1D /* Copy Executable */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				724A77CF1C6ED71000CB0F1D /* SwiftBot in Copy Executable */,
+			);
+			name = "Copy Executable";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		6000AA5B98BDF562E05E0A48 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		6D999021041B23A847B115E6 /* SwiftBotMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftBotMain.swift; sourceTree = "<group>"; };
+		6D99911179065165BBD88A63 /* ChannelModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelModel.swift; sourceTree = "<group>"; };
+		6D999115D5F67B0A19012ACB /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		6D99914B9A4F9F2397C28447 /* URLEndpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLEndpoints.swift; sourceTree = "<group>"; };
+		6D999366FEF6398379167ACE /* WebsocketMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebsocketMessageModel.swift; sourceTree = "<group>"; };
+		6D99950734647C3C6E5A81F0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		6D99956D1FD7B7AE169D4817 /* LoginRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		6D9995D489B0FFBEED644BF9 /* GatewayUrlRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GatewayUrlRequest.swift; sourceTree = "<group>"; };
+		6D99960506F77545A5A407E1 /* RandomAnimalsMessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomAnimalsMessageHandler.swift; sourceTree = "<group>"; };
+		6D99961C2254A229E044174D /* AttachmentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentModel.swift; sourceTree = "<group>"; };
+		6D9996359282085CD1B1357C /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		6D99964872894F71F130ED15 /* SendMessageRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendMessageRequest.swift; sourceTree = "<group>"; };
+		6D9996F7564D6FA6AF38E63D /* WebsocketAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebsocketAPIManager.swift; sourceTree = "<group>"; };
+		6D9997A0A7A61B3971877C0D /* EmbedsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmbedsModel.swift; sourceTree = "<group>"; };
+		6D9997EEEA591718925F4E2C /* WebsocketReadyMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebsocketReadyMessageModel.swift; sourceTree = "<group>"; };
+		6D9997F14BC28D602A27BC9B /* GatewayUrlResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GatewayUrlResponseModel.swift; sourceTree = "<group>"; };
+		6D999813A7E8EF215264C09A /* WebsocketHeartbeatModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebsocketHeartbeatModel.swift; sourceTree = "<group>"; };
+		6D9998E44D0D39FDE1300A2A /* NSData+GZIP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSData+GZIP.swift"; sourceTree = "<group>"; };
+		6D999981E4209E0BC1738829 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		6D9999B3F35104A0B78148BE /* Registry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Registry.swift; sourceTree = "<group>"; };
+		6D999ADC03AE6A181FEB636A /* PingMessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PingMessageHandler.swift; sourceTree = "<group>"; };
+		6D999B4B7B00C1406EAA57E8 /* include.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include.h; sourceTree = "<group>"; };
+		6D999CDF69492A172C93B585 /* MappableBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MappableBase.swift; sourceTree = "<group>"; };
+		6D999D2D151DC41A4AFBEAC3 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		6D999D8AD96391746921114A /* DiscordAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscordAPI.h; sourceTree = "<group>"; };
+		6D999DB3164C1D87EFEE1CE4 /* MessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
+		6D999E440754D89B92EDC8A6 /* Discord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Discord.swift; sourceTree = "<group>"; };
+		6D999EE47A752A4ECF163C52 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		6D999F17315965A965314B5E /* LogoutRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutRequest.swift; sourceTree = "<group>"; };
+		6D999F34840FAF487424C024 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		6D999F4CA01620CF2F480E9F /* LoginResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResponseModel.swift; sourceTree = "<group>"; };
+		6D999F8C1962CC6D8711D65C /* MessageDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageDispatcher.swift; sourceTree = "<group>"; };
+		6D999FCBE842D9A88EFA40C5 /* WebsocketHelloMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebsocketHelloMessageModel.swift; sourceTree = "<group>"; };
+		724A77A21C6ED3E100CB0F1D /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = ../build/XCode/DerivedData/Build/Products/Debug/Starscream.framework; sourceTree = "<group>"; };
+		724A77AA1C6ED55B00CB0F1D /* SwiftBot.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftBot.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		724A77AC1C6ED55B00CB0F1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		724A77C51C6ED63000CB0F1D /* SwiftBot */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftBot; sourceTree = BUILT_PRODUCTS_DIR; };
+		724A77C71C6ED63000CB0F1D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		724A77D71C6ED97200CB0F1D /* DiscordAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DiscordAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		724A77F11C6ED9AE00CB0F1D /* SwiftBotCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftBotCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		724A77F31C6ED9AE00CB0F1D /* SwiftBotCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftBotCore.h; sourceTree = "<group>"; };
+		724A77F51C6ED9AE00CB0F1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		724A77FE1C6EDA9400CB0F1D /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = ../build/XCode/DerivedData/Build/Products/Debug/Alamofire.framework; sourceTree = "<group>"; };
+		724A77FF1C6EDA9400CB0F1D /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireObjectMapper.framework; path = ../build/XCode/DerivedData/Build/Products/Debug/AlamofireObjectMapper.framework; sourceTree = "<group>"; };
+		724A78001C6EDA9400CB0F1D /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = ../build/XCode/DerivedData/Build/Products/Debug/ObjectMapper.framework; sourceTree = "<group>"; };
+		724A78091C6F1F0D00CB0F1D /* GZIP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GZIP.framework; path = Pods/../build/Debug/GZIP.framework; sourceTree = "<group>"; };
+		724A780B1C6F1F1400CB0F1D /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		724A780D1C6F222300CB0F1D /* BBSZLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BBSZLib.framework; path = Pods/../build/Debug/BBSZLib.framework; sourceTree = "<group>"; };
+		724A780F1C6F230700CB0F1D /* DeflateSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeflateSwift.framework; path = ../build/XCode/DerivedData/Build/Products/Debug/DeflateSwift.framework; sourceTree = "<group>"; };
+		D5FBDBE352A5E9230959E180 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F93F6C33F3BEF78F91E158ED /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		724A77A71C6ED55B00CB0F1D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6041E52A6C9353A2361E6798 /* Pods.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		724A77C21C6ED63000CB0F1D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				724A78041C6EDC2000CB0F1D /* DiscordAPI.framework in Frameworks */,
+				724A78051C6EDC2000CB0F1D /* Alamofire.framework in Frameworks */,
+				724A78061C6EDC2000CB0F1D /* AlamofireObjectMapper.framework in Frameworks */,
+				724A78071C6EDC2000CB0F1D /* ObjectMapper.framework in Frameworks */,
+				724A78081C6EDC2000CB0F1D /* Starscream.framework in Frameworks */,
+				724A77FB1C6ED9C500CB0F1D /* SwiftBotCore.framework in Frameworks */,
+				724A77D01C6ED7ED00CB0F1D /* Pods.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		724A77D31C6ED97200CB0F1D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				724A780C1C6F1F1400CB0F1D /* libz.tbd in Frameworks */,
+				724A78011C6EDA9400CB0F1D /* Alamofire.framework in Frameworks */,
+				724A78021C6EDA9400CB0F1D /* AlamofireObjectMapper.framework in Frameworks */,
+				724A78031C6EDA9400CB0F1D /* ObjectMapper.framework in Frameworks */,
+				724A77FC1C6EDA9400CB0F1D /* Pods.framework in Frameworks */,
+				724A77FD1C6EDA9400CB0F1D /* Starscream.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		724A77ED1C6ED9AE00CB0F1D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		60737DB67018A2737B140ABE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				724A780F1C6F230700CB0F1D /* DeflateSwift.framework */,
+				724A780D1C6F222300CB0F1D /* BBSZLib.framework */,
+				724A780B1C6F1F1400CB0F1D /* libz.tbd */,
+				724A78091C6F1F0D00CB0F1D /* GZIP.framework */,
+				724A77FE1C6EDA9400CB0F1D /* Alamofire.framework */,
+				724A77FF1C6EDA9400CB0F1D /* AlamofireObjectMapper.framework */,
+				724A78001C6EDA9400CB0F1D /* ObjectMapper.framework */,
+				724A77A21C6ED3E100CB0F1D /* Starscream.framework */,
+				D5FBDBE352A5E9230959E180 /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6D9990D431155687F34CBA42 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				6D99956D1FD7B7AE169D4817 /* LoginRequest.swift */,
+				6D999F17315965A965314B5E /* LogoutRequest.swift */,
+				6D999F4CA01620CF2F480E9F /* LoginResponseModel.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		6D9991D64AD120E93696A692 /* Permissions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Permissions;
+			path = ../Permissions;
+			sourceTree = "<group>";
+		};
+		6D999237498FA0ADAADC1E8F /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				6D99914B9A4F9F2397C28447 /* URLEndpoints.swift */,
+				6D999CDF69492A172C93B585 /* MappableBase.swift */,
+				6D9999B3F35104A0B78148BE /* Registry.swift */,
+				6D999D2D151DC41A4AFBEAC3 /* Logger.swift */,
+				6D9998E44D0D39FDE1300A2A /* NSData+GZIP.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		6D9993442C0B5E10C216E5A7 /* MessageHandlers */ = {
+			isa = PBXGroup;
+			children = (
+				6D999ADC03AE6A181FEB636A /* PingMessageHandler.swift */,
+				6D99960506F77545A5A407E1 /* RandomAnimalsMessageHandler.swift */,
+			);
+			path = MessageHandlers;
+			sourceTree = "<group>";
+		};
+		6D9993997EE595B0A48EAB93 /* Channels */ = {
+			isa = PBXGroup;
+			children = (
+				6D9993B9001A41179471B854 /* General */,
+				6D9996BEF6EFC2A477707465 /* Messages */,
+				6D9991D64AD120E93696A692 /* Permissions */,
+			);
+			path = Channels;
+			sourceTree = "<group>";
+		};
+		6D9993B9001A41179471B854 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				6D99911179065165BBD88A63 /* ChannelModel.swift */,
+			);
+			name = General;
+			path = ../General;
+			sourceTree = "<group>";
+		};
+		6D9993F234698F7EBABB94A2 /* WebSockets */ = {
+			isa = PBXGroup;
+			children = (
+				6D9996F7564D6FA6AF38E63D /* WebsocketAPIManager.swift */,
+				6D9998E6094A76AB33651CC3 /* API */,
+			);
+			path = WebSockets;
+			sourceTree = "<group>";
+		};
+		6D99953A9A18A6E95A74554B /* zlib */ = {
+			isa = PBXGroup;
+			children = (
+				6D999B4B7B00C1406EAA57E8 /* include.h */,
+				6D999EE47A752A4ECF163C52 /* module.modulemap */,
+			);
+			path = zlib;
+			sourceTree = "<group>";
+		};
+		6D9996BEF6EFC2A477707465 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				6D999DB3164C1D87EFEE1CE4 /* MessageModel.swift */,
+				6D99961C2254A229E044174D /* AttachmentModel.swift */,
+				6D9997A0A7A61B3971877C0D /* EmbedsModel.swift */,
+				6D99964872894F71F130ED15 /* SendMessageRequest.swift */,
+			);
+			name = Messages;
+			path = ../Messages;
+			sourceTree = "<group>";
+		};
+		6D99987C68D40EECC69611E3 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				6D999D8AD96391746921114A /* DiscordAPI.h */,
+				6D99950734647C3C6E5A81F0 /* Info.plist */,
+				6D99953A9A18A6E95A74554B /* zlib */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		6D9998E6094A76AB33651CC3 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				6D9997F14BC28D602A27BC9B /* GatewayUrlResponseModel.swift */,
+				6D9995D489B0FFBEED644BF9 /* GatewayUrlRequest.swift */,
+				6D999FCBE842D9A88EFA40C5 /* WebsocketHelloMessageModel.swift */,
+				6D999366FEF6398379167ACE /* WebsocketMessageModel.swift */,
+				6D9997EEEA591718925F4E2C /* WebsocketReadyMessageModel.swift */,
+				6D999813A7E8EF215264C09A /* WebsocketHeartbeatModel.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		6D999AB4661816D61A70ECE3 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				6D9993997EE595B0A48EAB93 /* Channels */,
+				6D9990D431155687F34CBA42 /* Auth */,
+				6D999CC8F3BF7FFA7C7909C8 /* Users */,
+				6D999237498FA0ADAADC1E8F /* Utility */,
+				6D9993F234698F7EBABB94A2 /* WebSockets */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		6D999CC040E0F4743D5B5D24 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				6D999AB4661816D61A70ECE3 /* API */,
+				6D999E440754D89B92EDC8A6 /* Discord.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		6D999CC8F3BF7FFA7C7909C8 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				6D9996359282085CD1B1357C /* UserModel.swift */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
+		724A77AB1C6ED55B00CB0F1D /* SwiftBotBundle */ = {
+			isa = PBXGroup;
+			children = (
+				724A77AC1C6ED55B00CB0F1D /* Info.plist */,
+			);
+			path = SwiftBotBundle;
+			sourceTree = "<group>";
+		};
+		724A77C61C6ED63000CB0F1D /* SwiftBot */ = {
+			isa = PBXGroup;
+			children = (
+				724A77C71C6ED63000CB0F1D /* main.m */,
+			);
+			path = SwiftBot;
+			sourceTree = "<group>";
+		};
+		724A77D81C6ED97200CB0F1D /* DiscordAPI */ = {
+			isa = PBXGroup;
+			children = (
+				6D99987C68D40EECC69611E3 /* Other */,
+				6D999CC040E0F4743D5B5D24 /* Source */,
+			);
+			path = DiscordAPI;
+			sourceTree = "<group>";
+		};
+		724A77F21C6ED9AE00CB0F1D /* SwiftBotCore */ = {
+			isa = PBXGroup;
+			children = (
+				724A77F31C6ED9AE00CB0F1D /* SwiftBotCore.h */,
+				724A77F51C6ED9AE00CB0F1D /* Info.plist */,
+				6D999021041B23A847B115E6 /* SwiftBotMain.swift */,
+				6D999F8C1962CC6D8711D65C /* MessageDispatcher.swift */,
+				6D999F34840FAF487424C024 /* Config.swift */,
+				6D9993442C0B5E10C216E5A7 /* MessageHandlers */,
+			);
+			path = SwiftBotCore;
+			sourceTree = "<group>";
+		};
+		72B35E151C6ECD4200027CF2 = {
+			isa = PBXGroup;
+			children = (
+				724A77AB1C6ED55B00CB0F1D /* SwiftBotBundle */,
+				724A77C61C6ED63000CB0F1D /* SwiftBot */,
+				724A77D81C6ED97200CB0F1D /* DiscordAPI */,
+				724A77F21C6ED9AE00CB0F1D /* SwiftBotCore */,
+				72B35E1F1C6ECD4200027CF2 /* Products */,
+				6D999115D5F67B0A19012ACB /* Podfile */,
+				A537D698FE351E03CD6C72C3 /* Pods */,
+				60737DB67018A2737B140ABE /* Frameworks */,
+				6D999981E4209E0BC1738829 /* README.md */,
+			);
+			sourceTree = "<group>";
+		};
+		72B35E1F1C6ECD4200027CF2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				724A77AA1C6ED55B00CB0F1D /* SwiftBot.bundle */,
+				724A77C51C6ED63000CB0F1D /* SwiftBot */,
+				724A77D71C6ED97200CB0F1D /* DiscordAPI.framework */,
+				724A77F11C6ED9AE00CB0F1D /* SwiftBotCore.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A537D698FE351E03CD6C72C3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F93F6C33F3BEF78F91E158ED /* Pods.debug.xcconfig */,
+				6000AA5B98BDF562E05E0A48 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		724A77D41C6ED97200CB0F1D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				724A77F41C6ED9AE00CB0F1D /* SwiftBotCore.h in Headers */,
+				6D9991B519E4ABB0A5BCCCAF /* DiscordAPI.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		724A77EE1C6ED9AE00CB0F1D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		724A77A91C6ED55B00CB0F1D /* SwiftBotBundle */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 724A77AD1C6ED55B00CB0F1D /* Build configuration list for PBXNativeTarget "SwiftBotBundle" */;
+			buildPhases = (
+				06AF5627FCC295D3550F1B36 /* Check Pods Manifest.lock */,
+				724A77A61C6ED55B00CB0F1D /* Sources */,
+				724A77A71C6ED55B00CB0F1D /* Frameworks */,
+				724A77A81C6ED55B00CB0F1D /* Resources */,
+				724A77B01C6ED56D00CB0F1D /* Copy Frameworks */,
+				724A77CE1C6ED70200CB0F1D /* Copy Executable */,
+				46A523A284390341CD8CFA9A /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				724A77CD1C6ED6E800CB0F1D /* PBXTargetDependency */,
+			);
+			name = SwiftBotBundle;
+			productName = SwiftBotBundle;
+			productReference = 724A77AA1C6ED55B00CB0F1D /* SwiftBot.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		724A77C41C6ED63000CB0F1D /* SwiftBot */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 724A77C91C6ED63000CB0F1D /* Build configuration list for PBXNativeTarget "SwiftBot" */;
+			buildPhases = (
+				724A77C11C6ED63000CB0F1D /* Sources */,
+				724A77C21C6ED63000CB0F1D /* Frameworks */,
+				724A77C31C6ED63000CB0F1D /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftBot;
+			productName = SwiftBot;
+			productReference = 724A77C51C6ED63000CB0F1D /* SwiftBot */;
+			productType = "com.apple.product-type.tool";
+		};
+		724A77D61C6ED97200CB0F1D /* DiscordAPI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 724A77DC1C6ED97200CB0F1D /* Build configuration list for PBXNativeTarget "DiscordAPI" */;
+			buildPhases = (
+				724A77D21C6ED97200CB0F1D /* Sources */,
+				724A77D31C6ED97200CB0F1D /* Frameworks */,
+				724A77D41C6ED97200CB0F1D /* Headers */,
+				724A77D51C6ED97200CB0F1D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DiscordAPI;
+			productName = DiscordAPI;
+			productReference = 724A77D71C6ED97200CB0F1D /* DiscordAPI.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		724A77F01C6ED9AE00CB0F1D /* SwiftBotCore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 724A77F61C6ED9AE00CB0F1D /* Build configuration list for PBXNativeTarget "SwiftBotCore" */;
+			buildPhases = (
+				724A77EC1C6ED9AE00CB0F1D /* Sources */,
+				724A77ED1C6ED9AE00CB0F1D /* Frameworks */,
+				724A77EE1C6ED9AE00CB0F1D /* Headers */,
+				724A77EF1C6ED9AE00CB0F1D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftBotCore;
+			productName = SwiftBotCore;
+			productReference = 724A77F11C6ED9AE00CB0F1D /* SwiftBotCore.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		72B35E161C6ECD4200027CF2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = NeoTron;
+				TargetAttributes = {
+					724A77A91C6ED55B00CB0F1D = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					724A77C41C6ED63000CB0F1D = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					724A77D61C6ED97200CB0F1D = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					724A77F01C6ED9AE00CB0F1D = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 72B35E191C6ECD4200027CF2 /* Build configuration list for PBXProject "SwiftBot" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 72B35E151C6ECD4200027CF2;
+			productRefGroup = 72B35E1F1C6ECD4200027CF2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				724A77A91C6ED55B00CB0F1D /* SwiftBotBundle */,
+				724A77C41C6ED63000CB0F1D /* SwiftBot */,
+				724A77D61C6ED97200CB0F1D /* DiscordAPI */,
+				724A77F01C6ED9AE00CB0F1D /* SwiftBotCore */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		724A77A81C6ED55B00CB0F1D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		724A77D51C6ED97200CB0F1D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		724A77EF1C6ED9AE00CB0F1D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		06AF5627FCC295D3550F1B36 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		46A523A284390341CD8CFA9A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		724A77A61C6ED55B00CB0F1D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		724A77C11C6ED63000CB0F1D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				724A77C81C6ED63000CB0F1D /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		724A77D21C6ED97200CB0F1D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D99927020E36F0DA1AF16F0 /* LoginRequest.swift in Sources */,
+				6D99997566272638C677E6D5 /* LogoutRequest.swift in Sources */,
+				6D999961D5112A2A0DA89DA6 /* LoginResponseModel.swift in Sources */,
+				6D99985B6C873F056EEBD82B /* MessageModel.swift in Sources */,
+				6D99948D99C4C64663CEA6D0 /* AttachmentModel.swift in Sources */,
+				6D999F298F0DCC2EC5C526A5 /* UserModel.swift in Sources */,
+				6D9999F6C67A599DBBA83E12 /* EmbedsModel.swift in Sources */,
+				6D9996CAACE6755D84BCE28A /* URLEndpoints.swift in Sources */,
+				6D999E0826CE9EE4A5E7B365 /* MappableBase.swift in Sources */,
+				6D9991CED5C7FB3741405903 /* Registry.swift in Sources */,
+				6D99915DACF12BBF53AEBABA /* ChannelModel.swift in Sources */,
+				6D999EC765F43D711E1A66B9 /* Logger.swift in Sources */,
+				6D9998430A7453619CDB3DAE /* NSData+GZIP.swift in Sources */,
+				6D999C72C9BAFD10CF1C6447 /* WebsocketAPIManager.swift in Sources */,
+				6D9994818C0D8E5D8246AE7A /* GatewayUrlResponseModel.swift in Sources */,
+				6D999974CC66BCDA29516771 /* GatewayUrlRequest.swift in Sources */,
+				6D99955569500652A2C5C48B /* WebsocketHelloMessageModel.swift in Sources */,
+				6D999C7C9CFE7D5A7868FDAF /* WebsocketMessageModel.swift in Sources */,
+				6D999A0EE363850856DDE569 /* WebsocketReadyMessageModel.swift in Sources */,
+				6D999F86E0452B64A7EA47C8 /* WebsocketHeartbeatModel.swift in Sources */,
+				6D999AE857A7A9583A8D06D5 /* SendMessageRequest.swift in Sources */,
+				6D9992FC35CAADEC17453AE4 /* Discord.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		724A77EC1C6ED9AE00CB0F1D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D999854C01E7F19C6C28EDE /* SwiftBotMain.swift in Sources */,
+				6D999E5306F66E5B71AB77DE /* MessageDispatcher.swift in Sources */,
+				6D999785444996E8D9F94E41 /* Config.swift in Sources */,
+				6D999BC92E8A7B8BEFA3950E /* PingMessageHandler.swift in Sources */,
+				6D99990D819B87E9A8C2B9F4 /* RandomAnimalsMessageHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		724A77CD1C6ED6E800CB0F1D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 724A77C41C6ED63000CB0F1D /* SwiftBot */;
+			targetProxy = 724A77CC1C6ED6E800CB0F1D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		724A77AE1C6ED55B00CB0F1D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F93F6C33F3BEF78F91E158ED /* Pods.debug.xcconfig */;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = SwiftBotBundle/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.neotron.SwiftBotBundle;
+				PRODUCT_NAME = SwiftBot;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		724A77AF1C6ED55B00CB0F1D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6000AA5B98BDF562E05E0A48 /* Pods.release.xcconfig */;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = SwiftBotBundle/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.neotron.SwiftBotBundle;
+				PRODUCT_NAME = SwiftBot;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		724A77CA1C6ED63000CB0F1D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/$(PRODUCT_NAME).bundle/Contents/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		724A77CB1C6ED63000CB0F1D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		724A77DD1C6ED97200CB0F1D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug",
+				);
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = DiscordAPI/Other/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.neotron.DiscordAPI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_INCLUDE_PATHS = DiscordAPI/Other/zlib/;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		724A77DE1C6ED97200CB0F1D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug",
+				);
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = DiscordAPI/Other/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.neotron.DiscordAPI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_INCLUDE_PATHS = DiscordAPI/Other/zlib/;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		724A77F71C6ED9AE00CB0F1D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = SwiftBotCore/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.neotron.SwiftBotCore;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		724A77F81C6ED9AE00CB0F1D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = SwiftBotCore/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.neotron.SwiftBotCore;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		72B35E231C6ECD4200027CF2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		72B35E241C6ECD4200027CF2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		724A77AD1C6ED55B00CB0F1D /* Build configuration list for PBXNativeTarget "SwiftBotBundle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				724A77AE1C6ED55B00CB0F1D /* Debug */,
+				724A77AF1C6ED55B00CB0F1D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		724A77C91C6ED63000CB0F1D /* Build configuration list for PBXNativeTarget "SwiftBot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				724A77CA1C6ED63000CB0F1D /* Debug */,
+				724A77CB1C6ED63000CB0F1D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		724A77DC1C6ED97200CB0F1D /* Build configuration list for PBXNativeTarget "DiscordAPI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				724A77DD1C6ED97200CB0F1D /* Debug */,
+				724A77DE1C6ED97200CB0F1D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		724A77F61C6ED9AE00CB0F1D /* Build configuration list for PBXNativeTarget "SwiftBotCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				724A77F71C6ED9AE00CB0F1D /* Debug */,
+				724A77F81C6ED9AE00CB0F1D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		72B35E191C6ECD4200027CF2 /* Build configuration list for PBXProject "SwiftBot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				72B35E231C6ECD4200027CF2 /* Debug */,
+				72B35E241C6ECD4200027CF2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 72B35E161C6ECD4200027CF2 /* Project object */;
+}

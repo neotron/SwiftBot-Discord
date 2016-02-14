@@ -61,3 +61,7 @@ Carthage/Build
 
 fastlane/report.xml
 fastlane/screenshots
+config.json
+Podfile.lock
+Pods
+.idea/workspace.xml

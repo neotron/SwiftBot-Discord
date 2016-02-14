@@ -1,0 +1,7 @@
+{ 
+    "auth": {
+	"email": "BOT LOGIN EMAIL", 
+	"password": "BOT LOGIN PASSWORD"
+    }, 
+    "command_prefix": "~", 
+}
