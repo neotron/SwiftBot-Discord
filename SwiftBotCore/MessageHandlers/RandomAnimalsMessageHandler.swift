@@ -19,11 +19,11 @@ private class MeowModel: MappableBase {
 
 class RandomAnimalsMessageHandler: MessageHandler {
 
-    override var prefixes: [String]? {
-        return ["random"]
+    override var prefixes: [MessageCommand]? {
+        return [("random", nil)]
     }
-    override var commands: [String]? {
-        return ["random"]
+    override var commands: [MessageCommand]? {
+        return [("random", "Show image of random animal. Supports cat, dog and kitten. Space between *random* and *animal* is optiona.")]
     }
     override func handlePrefix(prefix: String, command: String, args: [String], message: Message) -> Bool {
         switch(command) {

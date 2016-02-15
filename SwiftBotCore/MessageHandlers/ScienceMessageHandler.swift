@@ -20,8 +20,12 @@ class ScienceMessageHandler : MessageHandler {
             ("AW",4.23E+11,3.50E+12,6.59E+12,9.67E+12)
     ]
 
-    override var commands: [String]? {
-        return ["g", "route"]
+    override var commands: [MessageCommand]? {
+        return [
+                ("g", "Calculate gravity for a planet. Arguments: <Earth masses> <radius in km>"),
+                ("route", "Calculate optimal core routing distance. Arguments: <jump range> <kly to Sgr A*> [optional: max route length in ly]"),
+                ("kly/hr", "Calculate max kly travelled per hour. Arguments: <jump range> [optional: time per jump in seconds (default 45s)]")
+        ]
     }
 
     override func handleCommand(command: String, args: [String], message: Message) -> Bool {
@@ -30,10 +34,36 @@ class ScienceMessageHandler : MessageHandler {
             handleGravity(args, message: message)
         case "route":
             handleRoute(args, message: message)
+        case "kly/hr":
+            handleKlyPerHour(args, message: message)
         default:
             return false
         }
         return true
+    }
+
+    private func handleKlyPerHour(args: [String], message: Message) {
+        if args.count < 1 {
+            message.replyToChannel("Missing arguments. Expected: <jump range> [time per jump in seconds]")
+            return
+        }
+
+        guard let jumpRange = Double(args[0]) else {
+            message.replyToChannel("Error: Jump range be a numbers.")
+            return
+        }
+
+        var jumpTime = 45.0
+
+        if args.count > 1 {
+            if let optJumpTime = Double(args[1]) {
+                jumpTime = optJumpTime
+            }
+        }
+        let jumpsPerHour = 3600.0 / jumpTime
+        let avgJump = jumpRange * 0.97
+        let rangePerHour = jumpsPerHour * avgJump // Random
+        message.replyToChannel("Spending an average of *\(jumpTime)s* per system, with an average hop of *\(avgJump)* ly, 97% of *\(jumpRange)*, you can travel ** \(Int(rangePerHour)) ly / hour**.")
     }
 
     private func handleGravity(args: [String], message: Message) {
@@ -91,20 +121,28 @@ class ScienceMessageHandler : MessageHandler {
             return
         }
 
-        guard let jumpRange = Double(args[0]), distance = Double(args[1]) else {
+        guard let jumpRange = Double(args[0]), var distance = Double(args[1]) else {
             message.replyToChannel("Error: jump range and distance parameters should be numbers.")
             return
         }
 
         if args.count > 2 {
             if let optMaxDistance = Double(args[2]) {
-                maxDistance = optMaxDistance
+                maxDistance = min(optMaxDistance, maxDistance) // Only reduce it since 1000 ly is maximum routable
             }
+        }
+
+        if distance >= 100 {
+            distance /= 1000.0 // Assume accidental entry in ly instead of kly.
         }
 
         let N = floor(maxDistance / jumpRange)
         let M = N * jumpRange
         let estRange = M - ((N / 4) + (distance * 2))
+        if estRange <= 0 {
+            message.replyToChannel("Error: Calculation resulted in a negative distance. Please check your input.");
+            return
+        }
         let marginOfError = estRange*0.0055
         message.replyToChannel(String(format: "Estimated plot range should be around **%.0f ly** - check range *%.0f to %.0f ly*", estRange, floor(estRange-marginOfError), ceil(estRange+marginOfError)))
     }

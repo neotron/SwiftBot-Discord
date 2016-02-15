@@ -6,10 +6,11 @@
 
 import Foundation
 import DiscordAPI
+typealias MessageCommand = (c: String, h: String?)
 
 class MessageHandler {
-    var prefixes : [String]? { return nil }
-    var commands : [String]? { return nil }
+    var prefixes : [MessageCommand]? { return nil }
+    var commands : [MessageCommand]? { return nil }
 
     func handlePrefix(prefix: String, command: String, args: [String], message: Message) -> Bool {
         return false
@@ -21,32 +22,38 @@ class MessageHandler {
 }
 
 class MessageDispatchManager {
-    private var prefixHandlers = [String:MessageHandler]() // allows prefix handling, i.e "randomcat" and "randomdog" could both go to a "random" prefix handler
-    private var commandHandlers = [String:MessageHandler]() // requires either just the command, i.e "route" or command with arguments "route 32 2.3"
+    private var prefixHandlers  = [String:[MessageHandler]]() // allows prefix handling, i.e "randomcat" and "randomdog" could both go to a "random" prefix handler
+    private var commandHandlers = [String:[MessageHandler]]() // requires either just the command, i.e "route" or command with arguments "route 32 2.3"
+    private var help = [String:[String]]()
     weak var discord: Discord?
 
     func registerMessageHandler(handler: MessageHandler) {
         if let prefixes = handler.prefixes {
             for var prefix in prefixes {
-                prefix = prefix.lowercaseString
-                if let existingHandler = prefixHandlers[prefix] {
-                    LOG_INFO("Warning: Duplicate prefix \(prefix): Replacing handler \(existingHandler) with \(handler)")
-                }
-                prefixHandlers[prefix] = handler
+                addHandlerForCommand(prefix, inDict: &prefixHandlers, handler: handler)
             }
-            LOG_INFO("Registered \(handler) for prefixes \(prefixes)")
         }
 
         if let commands = handler.commands {
             for var command in commands {
-                command = command.lowercaseString
-                if let existingHandler = commandHandlers[command] {
-                    LOG_INFO("Warning: Duplicate command \(command): Replacing handler \(existingHandler) with \(handler)")
-                }
-                commandHandlers[command] = handler
+                addHandlerForCommand(command, inDict: &commandHandlers, handler: handler)
             }
-            LOG_INFO("Registered \(handler) for commands \(commands)")
         }
+    }
+
+    private func addHandlerForCommand(command: MessageCommand, inout inDict dict:[String:[MessageHandler]], handler: MessageHandler) {
+        let commandStr = command.c.lowercaseString
+        if let helpString = command.h {
+            if help[commandStr] == nil {
+                help[commandStr] = [String]()
+            }
+            help[commandStr]?.append("\t**\(Config.commandPrefix)\(commandStr)**: \(helpString)")
+        }
+        if dict[commandStr] == nil {
+            dict[commandStr] = [MessageHandler]()
+        }
+        dict[commandStr]?.append(handler)
+        LOG_INFO("Registered \(handler) for \(commandStr)")
     }
 
     func processMessage(message: MessageModel, event: MessageEventType) {
@@ -70,21 +77,40 @@ class MessageDispatchManager {
         let messageWrapper = Message(message: message, event: event, discord: discord)
 
         let command = args.removeAtIndex(0).lowercaseString
-        if let handler = commandHandlers[command] {
-            LOG_DEBUG("Found command handler for \(command)")
-            if handler.handleCommand(command, args: args, message: messageWrapper) {
-                LOG_DEBUG("   => handled.")
-                return;
-            }
+
+        if command == "help" {
+            printHelp(messageWrapper)
+            return
         }
-        for (prefix, handler) in prefixHandlers {
-            if command.hasPrefix(prefix) {
-                LOG_DEBUG("Found prefix handler for \(prefix)")
-                if handler.handlePrefix(prefix, command: command, args: args, message: messageWrapper) {
+
+        if let handlers = commandHandlers[command] {
+            LOG_DEBUG("Found command handler for \(command)")
+            for handler in handlers {
+                if handler.handleCommand(command, args: args, message: messageWrapper) {
                     LOG_DEBUG("   => handled.")
                     return;
                 }
             }
         }
+        for (prefix, handlers) in prefixHandlers {
+            if command.hasPrefix(prefix) {
+                LOG_DEBUG("Found prefix handler for \(prefix)")
+                for handler in handlers {
+                    if handler.handlePrefix(prefix, command: command, args: args, message: messageWrapper) {
+                        LOG_DEBUG("   => handled.")
+                        return;
+                    }
+                }
+            }
+        }
+    }
+
+    func printHelp(message: Message) {
+        var output = ["Bot Commands:"]
+
+        for command in help.keys.sort() {
+            output.append(help[command]!.joinWithSeparator("\n"))
+        }
+        message.replyToChannel(output.joinWithSeparator("\n"));
     }
 }

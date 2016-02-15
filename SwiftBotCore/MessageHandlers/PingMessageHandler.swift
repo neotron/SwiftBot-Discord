@@ -9,9 +9,12 @@ import DiscordAPI
 class PingMessageHandler : MessageHandler {
     private let PING = "ping"
     private let PONG = "pong"
+    private let PINGME = "pingme"
 
-    override var commands: [String]? {
-        return [PING, PONG]
+    override var commands: [MessageCommand]? {
+        return [(PING, "Sends a pong message back to you."),
+                (PONG, "Pings you back delightfully."),
+                (PINGME, "Pongs you in a personal message.")]
     }
 
     override func handleCommand(command: String, args: [String], message: Message) -> Bool {
@@ -20,6 +23,8 @@ class PingMessageHandler : MessageHandler {
             message.replyToChannel("Ping!")
         case PING:
             message.replyToChannel("Pong!")
+        case PINGME:
+            message.replyToSender("Pong!")
         default:
             return false
         }

@@ -7,9 +7,13 @@ import Foundation
 import DiscordAPI
 
 class IdentifierMessageHandler : MessageHandler {
-    override var commands: [String]? {
-        return ["id"]
+    override var commands: [MessageCommand]? {
+        return [
+                ("id", "Return Discord ID for the user, or all @mentioned users")
+        ]
     }
+
+
 
     override func handleCommand(command: String, args: [String], message: Message) -> Bool {
         var identities = [String]()
