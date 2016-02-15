@@ -20,7 +20,7 @@ public class LoginRequest {
 
     public func execute(callback: ((LoginResponseModel?, NSError?)->Void)) {
 
-        Alamofire.request(.POST, EndpointURL(.Login), parameters: self.request, encoding: .JSON).responseObject {
+        Alamofire.request(.POST, Endpoints.Simple(.Login), parameters: self.request, encoding: .JSON).responseObject {
             (response: Response<LoginResponseModel, NSError>) in
             Registry.instance.token = response.result.value?.token // save for future calls
             var error = response.result.error

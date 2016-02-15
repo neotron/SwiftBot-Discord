@@ -87,6 +87,9 @@ public class WebsocketAPIManager: NSObject, WebSocketDelegate {
             } else {
                 LOG_ERROR("Ready response received, heartbeat interval missing!.")
             }
+            if let botuser = ready.user {
+                Registry.instance.user = botuser // save user since we need user id later.
+            }
         } else {
             LOG_ERROR("Ready response received but could not be parsed: \(dict)")
         }

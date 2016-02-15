@@ -29,19 +29,15 @@ class Message {
             LOG_ERROR("Couldn't send reply message - missing channel id in message.");
             return
         }
-        sendReplyMessage(reply, toChannel: channel, tts: tts, mentions: mentions)
+        self.discord?.sendMessage(reply, channel: channel, tts: tts, mentions: mentions)
     }
 
-    func replyToSender(reply: String, tts: Bool = false, mentions: [String]? = nil)
+    func replyToSender(reply: String)
     {
-        guard let channel = message.author?.id else {
+        guard let recipientId = message.author?.id else {
             LOG_ERROR("Couldn't send reply message - missing author id in message.");
             return
         }
-        sendReplyMessage(reply, toChannel: channel, tts: tts, mentions: mentions)
-    }
-
-    private func sendReplyMessage(reply: String, toChannel channel: String, tts: Bool, mentions: [String]?) {
-        self.discord?.sendMessage(reply, channel: channel, tts: tts, mentions: mentions)
+        self.discord?.sendPrivateMessage(reply, recipientId: recipientId)
     }
 }

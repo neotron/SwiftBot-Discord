@@ -35,7 +35,7 @@ class SendMessageRequest {
             LOG_ERROR("No authorization token found.")
             return
         }
-        Alamofire.request(.POST, ChannelURL(channelId), headers: ["Authorization": token], parameters:createMessage(), encoding: .JSON).responseObject {
+        Alamofire.request(.POST, Endpoints.Channel(channelId), headers: ["Authorization": token], parameters:createMessage(), encoding: .JSON).responseObject {
             (response: Response<MessageModel, NSError>) in
             print("message is \(response.result.value)")
         }

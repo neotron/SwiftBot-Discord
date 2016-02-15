@@ -13,7 +13,7 @@ public class LogoutRequest {
             LOG_ERROR("Already logged out")
             return
         }
-        Alamofire.request(.POST, EndpointURL(.Logout), parameters: ["token": token], encoding: .JSON).responseData({
+        Alamofire.request(.POST, Endpoints.Simple(.Logout), parameters: ["token": token], encoding: .JSON).responseData({
             (response: Response < NSData, NSError>)in
             Registry.instance.token = nil // reset token
             if let error = response.result.error {

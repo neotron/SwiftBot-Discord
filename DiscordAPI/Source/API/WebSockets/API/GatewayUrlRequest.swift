@@ -14,7 +14,7 @@ class GatewayUrlRequest {
             callback?(false)
             return
         }
-        Alamofire.request(.GET, EndpointURL(.Gateway), headers: [
+        Alamofire.request(.GET, Endpoints.Simple(.Gateway), headers: [
                 "Content-Type": "application/json",
                 "User-Agent": Registry.userAgent,
                 "Authorization": token

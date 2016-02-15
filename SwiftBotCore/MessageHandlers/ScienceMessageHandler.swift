@@ -62,8 +62,8 @@ class ScienceMessageHandler : MessageHandler {
         }
         let jumpsPerHour = 3600.0 / jumpTime
         let avgJump = jumpRange * 0.97
-        let rangePerHour = jumpsPerHour * avgJump // Random
-        message.replyToChannel("Spending an average of *\(jumpTime)s* per system, with an average hop of *\(avgJump)* ly, 97% of *\(jumpRange)*, you can travel ** \(Int(rangePerHour)) ly / hour**.")
+        let rangePerHour = round(jumpsPerHour * avgJump) // Random
+        message.replyToChannel("Spending an average of *\(jumpTime)s* per system, with an average hop of *\(avgJump)* ly, 97% of *\(jumpRange)*, you can travel ** \(rangePerHour) ly / hour**.")
     }
 
     private func handleGravity(args: [String], message: Message) {

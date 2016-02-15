@@ -11,4 +11,5 @@ class Registry {
     var token: String?
     var websocketEndpoint: String?
     var debugEnabled = true
+    var user: UserModel?
 }

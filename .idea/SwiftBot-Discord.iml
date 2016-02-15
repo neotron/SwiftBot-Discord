@@ -19,6 +19,7 @@
       <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Other/zlib/include.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Other/Info.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Other/DiscordAPI.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Users/PrivateChannelRequest.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Users/UserModel.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/WebSockets/API/WebsocketHelloMessageModel.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/WebSockets/API/WebsocketHeartbeatModel.swift" isTestSource="false" />
@@ -47,9 +48,9 @@
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/MessageHandlers/IdentifierMessageHandler.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/Config.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/SwiftBotMain.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/Message.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/Info.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/SwiftBotCore.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/Message.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/MessageDispatcher.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Podfile" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Alamofire/Source/Validation.swift" isTestSource="false" />

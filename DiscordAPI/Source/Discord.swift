@@ -38,6 +38,17 @@ public class Discord: WebsocketAPIManagerDelegate {
         messageSender.sendOnChannel(channel)
     }
 
+    public func sendPrivateMessage(message: String, recipientId: String) {
+        let privateChannelRequest = PrivateChannelRequest(recipientId: recipientId)
+        privateChannelRequest.execute({ (channelId: String?) in
+            guard let channelId = channelId else {
+                LOG_ERROR("Cannot send private message - failed to get channel")
+                return
+            }
+            self.sendMessage(message, channel: channelId)
+        })
+    }
+
     public func websocketEndpointError() {
         delegate?.discordWebsocketEndpointError(NSError(domain: "Discord", code: -1, userInfo: nil))
     }

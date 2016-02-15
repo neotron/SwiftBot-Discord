@@ -111,6 +111,6 @@ class MessageDispatchManager {
         for command in help.keys.sort() {
             output.append(help[command]!.joinWithSeparator("\n"))
         }
-        message.replyToChannel(output.joinWithSeparator("\n"));
+        message.replyToSender(output.joinWithSeparator("\n"));
     }
 }

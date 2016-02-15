@@ -10,13 +10,20 @@ enum URLEndpoint: String {
     case Login  = "auth/login",
          Logout = "auth/logout",
          Gateway = "gateway",
-         Channel = "channels"
+         Channel = "channels",
+         User = "users"
 }
 
-func EndpointURL(endpoint: URLEndpoint) -> String {
-    return "https://discordapp.com/api/\(endpoint.rawValue)"
-}
+class Endpoints {
+    class func Simple(endpoint: URLEndpoint) -> String {
+        return "https://discordapp.com/api/\(endpoint.rawValue)"
+    }
 
-func ChannelURL(channel: String) -> String {
-    return "\(EndpointURL(.Channel))/\(channel)/messages"
+    class func Channel(channel: String) -> String {
+        return "\(Simple(.Channel))/\(channel)/messages"
+    }
+
+    class func User(userId: String, endpoint: URLEndpoint) -> String {
+        return "\(Simple(.User))/\(userId)/\(endpoint.rawValue)"
+    }
 }
