@@ -8,7 +8,7 @@ import Foundation
 import DiscordAPI
 typealias MessageCommand = (c: String, h: String?)
 
-class MessageHandler {
+class MessageHandler: NSObject {
     var prefixes : [MessageCommand]? { return nil }
     var commands : [MessageCommand]? { return nil }
 
@@ -21,11 +21,31 @@ class MessageHandler {
     }
 }
 
-class MessageDispatchManager {
+class MessageDispatchManager : MessageHandler {
     private var prefixHandlers  = [String:[MessageHandler]]() // allows prefix handling, i.e "randomcat" and "randomdog" could both go to a "random" prefix handler
     private var commandHandlers = [String:[MessageHandler]]() // requires either just the command, i.e "route" or command with arguments "route 32 2.3"
-    private var help = [String:[String]]()
+    private var commandHelp = [String:[String]]()
     weak var discord: Discord?
+
+    override init() {
+        super.init()
+        registerMessageHandler(self) // this registers the help command
+    }
+
+    override var commands: [MessageCommand]? {
+        return [("help", nil)]
+    }
+
+    override func handleCommand(command: String, args: [String], message: Message) -> Bool {
+        var output = ["**SwiftBot Commands**:"]
+
+        for command in commandHelp.keys.sort() {
+            output.append(commandHelp[command]!.joinWithSeparator("\n"))
+        }
+        message.replyToSender(output.joinWithSeparator("\n"));
+        return true
+    }
+
 
     func registerMessageHandler(handler: MessageHandler) {
         if let prefixes = handler.prefixes {
@@ -44,10 +64,10 @@ class MessageDispatchManager {
     private func addHandlerForCommand(command: MessageCommand, inout inDict dict:[String:[MessageHandler]], handler: MessageHandler) {
         let commandStr = command.c.lowercaseString
         if let helpString = command.h {
-            if help[commandStr] == nil {
-                help[commandStr] = [String]()
+            if commandHelp[commandStr] == nil {
+                commandHelp[commandStr] = [String]()
             }
-            help[commandStr]?.append("\t**\(Config.commandPrefix)\(commandStr)**: \(helpString)")
+            commandHelp[commandStr]?.append("\t**\(Config.commandPrefix)\(commandStr)**: \(helpString)")
         }
         if dict[commandStr] == nil {
             dict[commandStr] = [MessageHandler]()
@@ -78,11 +98,6 @@ class MessageDispatchManager {
 
         let command = args.removeAtIndex(0).lowercaseString
 
-        if command == "help" {
-            printHelp(messageWrapper)
-            return
-        }
-
         if let handlers = commandHandlers[command] {
             LOG_DEBUG("Found command handler for \(command)")
             for handler in handlers {
@@ -92,6 +107,7 @@ class MessageDispatchManager {
                 }
             }
         }
+
         for (prefix, handlers) in prefixHandlers {
             if command.hasPrefix(prefix) {
                 LOG_DEBUG("Found prefix handler for \(prefix)")
@@ -103,14 +119,5 @@ class MessageDispatchManager {
                 }
             }
         }
-    }
-
-    func printHelp(message: Message) {
-        var output = ["Bot Commands:"]
-
-        for command in help.keys.sort() {
-            output.append(help[command]!.joinWithSeparator("\n"))
-        }
-        message.replyToSender(output.joinWithSeparator("\n"));
     }
 }
