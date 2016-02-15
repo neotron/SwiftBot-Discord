@@ -20,37 +20,30 @@ class ScienceMessageHandler : MessageHandler {
             ("AW",4.23E+11,3.50E+12,6.59E+12,9.67E+12)
     ]
 
-
-    var prefixes: [String]? {
-        return nil
-    }
-    var commands: [String]? {
+    override var commands: [String]? {
         return ["g", "route"]
     }
-    func handlePrefix(prefix: String, command: String, args: [String], message: MessageModel, event: MessageEventType, completeCallback: (responseMessage:String?, privateMessage:Bool?) -> (Void)) -> Bool {
-        return false
-    }
 
-    func handleCommand(command: String, args: [String], message: MessageModel, event: MessageEventType, completeCallback: (responseMessage:String?, privateMessage:Bool?) -> (Void)) -> Bool {
+    override func handleCommand(command: String, args: [String], message: Message) -> Bool {
         switch(command) {
         case "g":
-            handleGravity(args, callback: completeCallback)
+            handleGravity(args, message: message)
         case "route":
-            handleRoute(args, callback: completeCallback)
+            handleRoute(args, message: message)
         default:
             return false
         }
         return true
     }
 
-    private func handleGravity(args: [String], callback: (responseMessage:String?, privateMessage:Bool?) -> (Void)) {
+    private func handleGravity(args: [String], message: Message) {
         if args.count < 2 {
-            callback(responseMessage: "Missing arguments. Expected: <EarthMasses> <Radius in KM>", privateMessage: false)
+            message.replyToChannel("Missing arguments. Expected: <EarthMasses> <Radius in KM>")
             return
         }
 
         guard let planetMass = Double(args[0]), planetRadius = Double(args[1]) else {
-            callback(responseMessage: "Error: earth masses and planet radius parameters should be numbers.", privateMessage: false)
+            message.replyToChannel("Error: earth masses and planet radius parameters should be numbers.")
             return
         }
 
@@ -87,19 +80,19 @@ class ScienceMessageHandler : MessageHandler {
         }
         let planetDensityStr = String(format: "%.2e", planetDensity)
 
-        callback(responseMessage: "The gravity for a planet with \(planetMass) Earth Masses and a radius of \(planetRadius) km is **\(planetM2Str)** m/s^2 or **\(planetGStr)** g. It has a density of **\(planetDensityStr)** kg/km^3\(densityString)", privateMessage: false)
+        message.replyToChannel("The gravity for a planet with \(planetMass) Earth Masses and a radius of \(planetRadius) km is **\(planetM2Str)** m/s^2 or **\(planetGStr)** g. It has a density of **\(planetDensityStr)** kg/km^3\(densityString)")
     }
 
-    private func handleRoute(args: [String], callback: (responseMessage:String?, privateMessage:Bool?) -> (Void)) {
+    private func handleRoute(args: [String], message: Message) {
         let failure = false
         var maxDistance = 1000.0
         if args.count < 2 {
-            callback(responseMessage: "Missing arguments. Expected: <JumpRange> <SgrA* distance in kly> [optional max plot in ly]", privateMessage: false)
+            message.replyToChannel("Missing arguments. Expected: <JumpRange> <SgrA* distance in kly> [optional max plot in ly]")
             return
         }
 
         guard let jumpRange = Double(args[0]), distance = Double(args[1]) else {
-            callback(responseMessage: "Error: jump range and distance parameters should be numbers.", privateMessage: false)
+            message.replyToChannel("Error: jump range and distance parameters should be numbers.")
             return
         }
 
@@ -111,7 +104,9 @@ class ScienceMessageHandler : MessageHandler {
 
         let N = floor(maxDistance / jumpRange)
         let M = N * jumpRange
-        callback(responseMessage: String(format: "Estimated plot range should be around %.2f ly", (M - ((N / 4) + (distance * 2)))), privateMessage: false)
+        let estRange = M - ((N / 4) + (distance * 2))
+        let marginOfError = estRange*0.0055
+        message.replyToChannel(String(format: "Estimated plot range should be around **%.0f ly** - check range *%.0f to %.0f ly*", estRange, floor(estRange-marginOfError), ceil(estRange+marginOfError)))
     }
 
 }

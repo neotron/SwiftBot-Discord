@@ -7,15 +7,14 @@ import Foundation
 import DiscordAPI
 
 public class SwiftBotMain : NSObject, DiscordDelegate {
-    private let config : Config
     private let discord = Discord()
     private var doneCallback: ((Void)->Void)?
     private let messageDispatcher: MessageDispatchManager
 
 
     public init(withConfigFile configFile: String) {
-        self.config = Config(withFile: configFile);
-        self.messageDispatcher = MessageDispatchManager(withConfig: self.config)
+        Config.instance.loadConfig(fromFile: configFile);
+        self.messageDispatcher = MessageDispatchManager()
         super.init()
 
         self.discord.delegate = self
@@ -25,7 +24,7 @@ public class SwiftBotMain : NSObject, DiscordDelegate {
 
     public func runWithDoneCallback(callback: ((Void)->Void)?) {
         self.doneCallback = callback
-        self.discord.login(config.email, password: config.password)
+        self.discord.login(Config.email, password: Config.password)
     }
 
     public func discordLoginDidComplete(error: NSError?) {
@@ -48,6 +47,7 @@ public class SwiftBotMain : NSObject, DiscordDelegate {
         self.messageDispatcher.registerMessageHandler(PingMessageHandler())
         self.messageDispatcher.registerMessageHandler(RandomAnimalsMessageHandler())
         self.messageDispatcher.registerMessageHandler(ScienceMessageHandler())
+        self.messageDispatcher.registerMessageHandler(IdentifierMessageHandler())
     }
 
 

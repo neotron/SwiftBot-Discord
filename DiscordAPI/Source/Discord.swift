@@ -32,7 +32,7 @@ public class Discord: WebsocketAPIManagerDelegate {
         });
     }
 
-    public func sendMessage(message: String, channel: String, mentions: [String]? = nil, tts: Bool = false) {
+    public func sendMessage(message: String, channel: String, tts: Bool = false, mentions: [String]? = nil) {
         let messageSender = SendMessageRequest(content: message, mentions: mentions)
         messageSender.tts = tts
         messageSender.sendOnChannel(channel)

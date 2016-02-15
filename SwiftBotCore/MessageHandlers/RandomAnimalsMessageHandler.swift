@@ -12,51 +12,55 @@ import ObjectMapper
 private class MeowModel: MappableBase {
     var url: String?
     override func mapping(map: Map) {
-        url <- map["figitle"]
+        url <- map["file"]
     }
 
 }
 
 class RandomAnimalsMessageHandler: MessageHandler {
 
-    var prefixes: [String]? {
+    override var prefixes: [String]? {
         return ["random"]
     }
-    var commands: [String]? {
+    override var commands: [String]? {
         return ["random"]
     }
-    func handlePrefix(prefix: String, command: String, args: [String], message: MessageModel, event: MessageEventType, completeCallback: (responseMessage:String?, privateMessage:Bool?) -> (Void)) -> Bool {
+    override func handlePrefix(prefix: String, command: String, args: [String], message: Message) -> Bool {
         switch(command) {
         case "randomcat":
-            handleRandomCat(completeCallback)
+            handleRandomCat(message)
         case "randomdog":
-            completeCallback(responseMessage: "http://www.randomdoggiegenerator.com/randomdoggie.php/\(NSDate().timeIntervalSince1970).jpg", privateMessage: false)
+            message.replyToChannel("http://www.randomdoggiegenerator.com/randomdoggie.php/\(NSDate().timeIntervalSince1970).jpg")
         case "randomkitten":
-            completeCallback(responseMessage: "http://www.randomkittengenerator.com/cats/rotator.php/\(NSDate().timeIntervalSince1970).jpg", privateMessage: false)
+            message.replyToChannel("http://www.randomkittengenerator.com/cats/rotator.php/\(NSDate().timeIntervalSince1970).jpg")
         default:
             return false
         }
         return true
     }
 
-    func handleCommand(command: String, args: [String], message: MessageModel, event: MessageEventType, completeCallback: (responseMessage:String?, privateMessage:Bool?) -> (Void)) -> Bool {
-        if args.count > 0 {
+    override func handleCommand(command: String, args: [String], message: Message) -> Bool {
+        switch(args.count) {
+        case 0:
+            message.replyToChannel("I know of the following random images: cat, dog and kitten.")
+            return true
+        case 1:
+            return handlePrefix(command, command: "\(command)\(args[0].lowercaseString)", args: args, message: message)
+        default:
             return false // Only handle empty random
         }
-        completeCallback(responseMessage: "I know of the following random images: cat, dog and kitten.", privateMessage: false)
-        return true
     }
 
 
-    private func handleRandomCat(completeCallback: (responseMessage:String?, privateMessage:Bool?) -> (Void)) {
+    private func handleRandomCat(message: Message) {
 
         Alamofire.request(.GET, "http://random.cat/meow").responseObject {
             (response: Response<MeowModel, NSError>) in
 
             if let meow = response.result.value, url = meow.url {
-                completeCallback(responseMessage: url, privateMessage: false)
+                message.replyToChannel(url)
             } else {
-                completeCallback(responseMessage: "Unfortunately, I failed to find any random cats for you today. :-(", privateMessage: false)
+                message.replyToChannel("Unfortunately, I failed to find any random cats for you today. :-(")
                 LOG_ERROR("Failed to get meow: \(response.result.error)")
             }
         }

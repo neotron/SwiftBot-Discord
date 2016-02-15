@@ -8,12 +8,24 @@ import ObjectMapper
 import DiscordAPI
 
 class Config : MappableBase {
-    var email = "NOT CONFIGURED"
-    var password = "NOT CONFIGUREd"
-    var commandPrefix = "~"
+    static let instance = Config()
 
-    init(withFile configFile: String) {
+    // Instance accessible read-only settings.
+    static var email: String         { return instance._email }
+    static var password: String      { return instance._password }
+    static var commandPrefix: String { return instance._commandPrefix }
+
+
+    // Internal private storage
+    private var _email = "NOT CONFIGURED"
+    private var _password = "NOT CONFIGUREd"
+    private var _commandPrefix = "~"
+
+    override init() {
         super.init()
+    }
+
+    func loadConfig(fromFile configFile: String) {
         if let configData = NSData(contentsOfFile: configFile), configString = String(data: configData, encoding: NSUTF8StringEncoding) {
             Mapper().map(configString, toObject: self)
         } else {
@@ -26,8 +38,9 @@ class Config : MappableBase {
     }
 
     override func mapping(map: Map) {
-        email    <- map["auth.email"]
-        password <- map["auth.password"]
+        _email    <- map["auth.email"]
+        _password <- map["auth.password"]
+        _commandPrefix <- map["command_prefix"]
     }
 
 }
