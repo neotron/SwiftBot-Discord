@@ -55,7 +55,7 @@ class RandomAnimalsMessageHandler: MessageHandler, NSURLSessionTaskDelegate {
     override func handleCommand(command: String, args: [String], message: Message) -> Bool {
         switch(args.count) {
         case 0:
-            message.replyToChannel("I know of the following random images: cat, dog and kitten.")
+            message.replyToChannel("I know of the following random images: cat, dog corgi and kitten.")
             return true
         case 1:
             return handlePrefix(command, command: "\(command)\(args[0].lowercaseString)", args: args, message: message)
