@@ -15,6 +15,7 @@ class Message {
     var author   : UserModel? { return message.author }
     var mentions : [UserModel]? { return message.mentions }
     var content  : String       { return message.content! } // Content here is verified
+    var rawArgs  : [String]? // Arguments, without space removal
 
     init(message: MessageModel, event: MessageEventType, discord: Discord?) {
         self.discord = discord

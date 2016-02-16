@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6041E52A6C9353A2361E6798 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5FBDBE352A5E9230959E180 /* Pods.framework */; };
+		6D99905F3E2C8DF5CCA529B8 /* CustomCommandMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999C5D5F483E5FD8BBBEAC /* CustomCommandMessageHandler.swift */; };
 		6D9990765663CA1B1AFABB9E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999FFC0E946BF809856F8E /* Message.swift */; };
 		6D99915DACF12BBF53AEBABA /* ChannelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D99911179065165BBD88A63 /* ChannelModel.swift */; };
 		6D9991B519E4ABB0A5BCCCAF /* DiscordAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D999D8AD96391746921114A /* DiscordAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -166,6 +167,7 @@
 		6D9999B3F35104A0B78148BE /* Registry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Registry.swift; sourceTree = "<group>"; };
 		6D999ADC03AE6A181FEB636A /* PingMessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PingMessageHandler.swift; sourceTree = "<group>"; };
 		6D999B4B7B00C1406EAA57E8 /* include.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include.h; sourceTree = "<group>"; };
+		6D999C5D5F483E5FD8BBBEAC /* CustomCommandMessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCommandMessageHandler.swift; sourceTree = "<group>"; };
 		6D999CDF69492A172C93B585 /* MappableBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MappableBase.swift; sourceTree = "<group>"; };
 		6D999D2D151DC41A4AFBEAC3 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		6D999D7162BA5DEDA3BC8584 /* SwiftBotMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftBotMain.swift; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 				6D99960506F77545A5A407E1 /* RandomAnimalsMessageHandler.swift */,
 				6D9993B20CBCD996DCA63B18 /* ScienceMessageHandler.swift */,
 				6D999FDE14860A78957C5D27 /* IdentifierMessageHandler.swift */,
+				6D999C5D5F483E5FD8BBBEAC /* CustomCommandMessageHandler.swift */,
 			);
 			path = MessageHandlers;
 			sourceTree = "<group>";
@@ -778,6 +781,7 @@
 				6D999D6B4B876537EDA2BE5E /* CoreDataManager.swift in Sources */,
 				6D9998B57BE38EFA2CE35938 /* SwiftBotModel.xcdatamodeld in Sources */,
 				6D999E43A2BA9A381A036AAE /* CoreDataObjectTypes.swift in Sources */,
+				6D99905F3E2C8DF5CCA529B8 /* CustomCommandMessageHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

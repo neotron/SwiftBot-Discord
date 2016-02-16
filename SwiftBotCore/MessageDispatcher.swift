@@ -11,6 +11,8 @@ typealias MessageCommand = (c: String, h: String?)
 class MessageHandler: NSObject {
     var prefixes : [MessageCommand]? { return nil }
     var commands : [MessageCommand]? { return nil }
+    var commandGroup : String? { return "" }
+    var canMatchAnything: Bool { return false }
 
     func handlePrefix(prefix: String, command: String, args: [String], message: Message) -> Bool {
         return false
@@ -19,12 +21,17 @@ class MessageHandler: NSObject {
     func handleCommand(command: String, args: [String], message: Message) -> Bool {
         return false
     }
+
+    func handleAnything(command: String, args: [String], message: Message) -> Bool {
+        return false
+    }
 }
 
 class MessageDispatchManager : MessageHandler {
     private var prefixHandlers  = [String:[MessageHandler]]() // allows prefix handling, i.e "randomcat" and "randomdog" could both go to a "random" prefix handler
     private var commandHandlers = [String:[MessageHandler]]() // requires either just the command, i.e "route" or command with arguments "route 32 2.3"
-    private var commandHelp = [String:[String]]()
+    private var anythingHandlers = [MessageHandler]() // These are called, in order, if nothing else matches. The matching logic can be whatever, such as substring matches.
+    private var commandHelp = [String:[String:[String]]]()
     weak var discord: Discord?
 
     override init() {
@@ -39,10 +46,19 @@ class MessageDispatchManager : MessageHandler {
     override func handleCommand(command: String, args: [String], message: Message) -> Bool {
         var output = ["**SwiftBot Commands**:"]
 
-        for command in commandHelp.keys.sort() {
-            output.append(commandHelp[command]!.joinWithSeparator("\n"))
+        for group in commandHelp.keys.sort() {
+            if group != "" {
+                output.append("\n**\(group)**")
+            }
+            for command in commandHelp[group]!.keys.sort() {
+                output.append(commandHelp[group]![command]!.joinWithSeparator("\n"))
+            }
         }
-        message.replyToSender(output.joinWithSeparator("\n"));
+        if args.count > 0 && args[0] == "here" {
+            message.replyToChannel(output.joinWithSeparator("\n"));
+        } else {
+            message.replyToSender(output.joinWithSeparator("\n"));
+        }
         return true
     }
 
@@ -59,15 +75,21 @@ class MessageDispatchManager : MessageHandler {
                 addHandlerForCommand(command, inDict: &commandHandlers, handler: handler)
             }
         }
+
+        if handler.canMatchAnything {
+            anythingHandlers.append(handler)
+        }
     }
 
     private func addHandlerForCommand(command: MessageCommand, inout inDict dict:[String:[MessageHandler]], handler: MessageHandler) {
         let commandStr = command.c.lowercaseString
-        if let helpString = command.h {
-            if commandHelp[commandStr] == nil {
-                commandHelp[commandStr] = [String]()
+        if let helpString = command.h, group = handler.commandGroup {
+            if commandHelp[group] == nil {
+                commandHelp[group] = [commandStr:[]]
+            } else if commandHelp[group]![commandStr] == nil {
+                commandHelp[group]![commandStr] = [String]()
             }
-            commandHelp[commandStr]?.append("\t**\(Config.commandPrefix)\(commandStr)**: \(helpString)")
+            commandHelp[group]?[commandStr]?.append("\t**\(Config.commandPrefix)\(commandStr)**: \(helpString)")
         }
         if dict[commandStr] == nil {
             dict[commandStr] = [MessageHandler]()
@@ -89,13 +111,10 @@ class MessageDispatchManager : MessageHandler {
         if let prefixRange = content.rangeOfString(Config.commandPrefix, options: []) {
             contentWithoutPrefix = content.substringFromIndex(prefixRange.endIndex)
         }
-        var args = contentWithoutPrefix.componentsSeparatedByString(" ").filter{ $0 != "" }
-        if(args.count == 0) {
-            return; // No actual command, just spaces
-        }
-
+        var args = contentWithoutPrefix.componentsSeparatedByString(" ")
         let messageWrapper = Message(message: message, event: event, discord: discord)
-
+        messageWrapper.rawArgs = args
+        args = args.filter { $0 != "" }
         let command = args.removeAtIndex(0).lowercaseString
 
         if let handlers = commandHandlers[command] {
@@ -118,6 +137,15 @@ class MessageDispatchManager : MessageHandler {
                     }
                 }
             }
+        }
+
+        for handler in anythingHandlers {
+            LOG_DEBUG("Trying anything handler \(handler)...")
+            if handler.handleAnything(command, args: args, message: messageWrapper) {
+                LOG_DEBUG("    => handled")
+                return
+            }
+
         }
     }
 }

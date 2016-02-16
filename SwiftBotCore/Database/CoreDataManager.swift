@@ -28,7 +28,7 @@ extension CoreDataManager {
 
     // Return the command with the specified name, or nil if there isn't one
     func loadCommand(command: String) -> CommandAlias? {
-        let predicate = NSPredicate(format: "command = %@", argumentArray: [command])
+        let predicate = NSPredicate(format: "command = %@", argumentArray: [command.lowercaseString])
         if let matches = self.fetchObjectsOfType(.CommandAlias, withPredicate: predicate) {
             var match: AnyObject?
             switch matches.count {
@@ -47,6 +47,17 @@ extension CoreDataManager {
         }
         return nil
     }
+
+    func createCommand(command: String, value: String) -> CommandAlias? {
+        guard let commandObject = self.createObjectOfType(.CommandAlias) as? CommandAlias else {
+            LOG_ERROR("Failed to create new command object.")
+            return nil
+        }
+        commandObject.command = command.lowercaseString
+        commandObject.value = value
+        return commandObject
+    }
+
 }
 
 // MARK: Base functionality
@@ -103,6 +114,17 @@ extension CoreDataManager {
             return nil
         }
     }
+
+    func deleteObject(object: NSManagedObject) -> Bool {
+        guard let ctx = self.managedObjectContext else {
+            LOG_ERROR("Delete failed: No managed object context.")
+            return false
+        }
+        let lock = AutoUnlock(ctx)
+        ctx.deleteObject(object)
+        return true
+    }
+
 }
 
 
