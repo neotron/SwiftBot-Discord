@@ -51,6 +51,7 @@
 		723DAF2B1C71BCEA000CCCCE /* CommandGroup+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DAF271C71BCEA000CCCCE /* CommandGroup+CoreDataProperties.swift */; };
 		723DAF2C1C71BCEA000CCCCE /* CommandGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DAF281C71BCEA000CCCCE /* CommandGroup.swift */; };
 		723DAF3C1C72D4DE000CCCCE /* petopt.c in Sources */ = {isa = PBXBuildFile; fileRef = 723DAF3B1C72D4DE000CCCCE /* petopt.c */; };
+		723DAF3E1C72EE09000CCCCE /* Yaml.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 723DAF3D1C72EE09000CCCCE /* Yaml.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		724A77C81C6ED63000CB0F1D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 724A77C71C6ED63000CB0F1D /* main.m */; };
 		724A77CF1C6ED71000CB0F1D /* SwiftBot in Copy Executable */ = {isa = PBXBuildFile; fileRef = 724A77C51C6ED63000CB0F1D /* SwiftBot */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		724A77D01C6ED7ED00CB0F1D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5FBDBE352A5E9230959E180 /* Pods.framework */; };
@@ -119,6 +120,7 @@
 				724A78201C706CE000CB0F1D /* AlamofireObjectMapper.framework in Copy Frameworks */,
 				724A78211C706CE000CB0F1D /* ObjectMapper.framework in Copy Frameworks */,
 				724A78231C706CE000CB0F1D /* Starscream.framework in Copy Frameworks */,
+				723DAF3E1C72EE09000CCCCE /* Yaml.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -196,6 +198,7 @@
 		723DAF281C71BCEA000CCCCE /* CommandGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandGroup.swift; sourceTree = "<group>"; };
 		723DAF3A1C72D4DE000CCCCE /* petopt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = petopt.h; sourceTree = "<group>"; };
 		723DAF3B1C72D4DE000CCCCE /* petopt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = petopt.c; sourceTree = "<group>"; };
+		723DAF3D1C72EE09000CCCCE /* Yaml.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Yaml.framework; path = /workspace/build/XCode/DerivedData/Build/Products/Debug/Yaml.framework; sourceTree = "<absolute>"; };
 		724A77A21C6ED3E100CB0F1D /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = ../build/XCode/DerivedData/Build/Products/Debug/Starscream.framework; sourceTree = "<group>"; };
 		724A77AA1C6ED55B00CB0F1D /* SwiftBot.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftBot.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		724A77AC1C6ED55B00CB0F1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -493,6 +496,7 @@
 		72B35E151C6ECD4200027CF2 = {
 			isa = PBXGroup;
 			children = (
+				723DAF3D1C72EE09000CCCCE /* Yaml.framework */,
 				724A77AB1C6ED55B00CB0F1D /* SwiftBotBundle */,
 				724A77C61C6ED63000CB0F1D /* SwiftBot */,
 				724A77D81C6ED97200CB0F1D /* DiscordAPI */,

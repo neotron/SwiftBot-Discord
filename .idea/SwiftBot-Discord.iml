@@ -19,45 +19,32 @@
       <sourceFolder url="file://$MODULE_DIR$/SwiftBot/petopt.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotBundle/Info.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/README.md" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/MessageHandlers/IdentifierMessageHandler.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/MessageHandlers/PingMessageHandler.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/MessageHandlers/RandomAnimalsMessageHandler.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/MessageHandlers/CustomCommandMessageHandler.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/MessageHandlers/ScienceMessageHandler.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/MessageHandlers/PingMessageHandler.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/MessageHandlers/IdentifierMessageHandler.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/Config.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/SwiftBotMain.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/CustomCommandImporter.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/Database/SwiftBotModel.xcdatamodeld/SwiftBotModel.xcdatamodel" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/Database/CommandGroup.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/Database/CommandAlias+CoreDataProperties.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/Database/CommandAlias.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/Database/CoreDataManager.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/Database/CommandGroup+CoreDataProperties.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/Database/Commandable.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/Database/CoreDataObjectTypes.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/Database/CommandAlias+CoreDataProperties.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/Database/Commandable.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/SwiftBotCore.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/Info.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/Message.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/MessageDispatcher.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Other/zlib/module.modulemap" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Other/zlib/include.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Other/DiscordAPI.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Other/Info.plist" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Other/DiscordAPI.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Users/PrivateChannelRequest.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Users/UserModel.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Utility/Registry.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Utility/NSData+GZIP.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Utility/MappableBase.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Utility/Logger.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Utility/URLEndpoints.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/General/ChannelModel.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Auth/LoginRequest.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Auth/LoginResponseModel.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Auth/LogoutRequest.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Messages/SendMessageRequest.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Messages/EmbedsModel.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Messages/MessageModel.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Messages/AttachmentModel.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/WebSockets/API/WebsocketHelloMessageModel.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/WebSockets/API/WebsocketHeartbeatModel.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/WebSockets/API/WebsocketMessageModel.swift" isTestSource="false" />
@@ -65,6 +52,19 @@
       <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/WebSockets/API/GatewayUrlResponseModel.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/WebSockets/API/WebsocketReadyMessageModel.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/WebSockets/WebsocketAPIManager.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/General/ChannelModel.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Auth/LoginResponseModel.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Auth/LoginRequest.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Auth/LogoutRequest.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Messages/EmbedsModel.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Messages/AttachmentModel.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Messages/MessageModel.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Messages/SendMessageRequest.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Utility/Registry.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Utility/NSData+GZIP.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Utility/MappableBase.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Utility/Logger.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Utility/URLEndpoints.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/Discord.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Podfile" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Alamofire/Source/Timeline.swift" isTestSource="false" />
