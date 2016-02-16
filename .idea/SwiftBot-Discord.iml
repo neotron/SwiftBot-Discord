@@ -56,6 +56,7 @@
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/Database/CommandAlias.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/Database/CoreDataManager.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/Database/CommandAlias+CoreDataProperties.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/Database/Commandable.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/Database/CoreDataObjectTypes.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/Info.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/SwiftBotCore.h" isTestSource="false" />

@@ -9,7 +9,7 @@
     <entity name="CommandGroup" representedClassName=".CommandGroup" syncable="YES">
         <attribute name="command" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="help" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="commands" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="CommandAlias" inverseName="group" inverseEntity="CommandAlias" syncable="YES"/>
+        <relationship name="commands" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CommandAlias" inverseName="group" inverseEntity="CommandAlias" syncable="YES"/>
     </entity>
     <elements>
         <element name="CommandAlias" positionX="-3017" positionY="-2112" width="128" height="103"/>

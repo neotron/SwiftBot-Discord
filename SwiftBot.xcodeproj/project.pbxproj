@@ -36,6 +36,7 @@
 		6D999BC92E8A7B8BEFA3950E /* PingMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999ADC03AE6A181FEB636A /* PingMessageHandler.swift */; };
 		6D999C72C9BAFD10CF1C6447 /* WebsocketAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9996F7564D6FA6AF38E63D /* WebsocketAPIManager.swift */; };
 		6D999C7C9CFE7D5A7868FDAF /* WebsocketMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999366FEF6398379167ACE /* WebsocketMessageModel.swift */; };
+		6D999D680169FF550EE6E53A /* Commandable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9997569FF5B0DE59FF826F /* Commandable.swift */; };
 		6D999D6B4B876537EDA2BE5E /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999F3B254BE1F033FC51E1 /* CoreDataManager.swift */; };
 		6D999E0826CE9EE4A5E7B365 /* MappableBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999CDF69492A172C93B585 /* MappableBase.swift */; };
 		6D999E188A8791194E025AC9 /* PrivateChannelRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999D9FA7F4F73DEC46C1F5 /* PrivateChannelRequest.swift */; };
@@ -158,6 +159,7 @@
 		6D9996359282085CD1B1357C /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		6D99964872894F71F130ED15 /* SendMessageRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendMessageRequest.swift; sourceTree = "<group>"; };
 		6D9996F7564D6FA6AF38E63D /* WebsocketAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebsocketAPIManager.swift; sourceTree = "<group>"; };
+		6D9997569FF5B0DE59FF826F /* Commandable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commandable.swift; sourceTree = "<group>"; };
 		6D9997A0A7A61B3971877C0D /* EmbedsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmbedsModel.swift; sourceTree = "<group>"; };
 		6D9997EEEA591718925F4E2C /* WebsocketReadyMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebsocketReadyMessageModel.swift; sourceTree = "<group>"; };
 		6D9997F14BC28D602A27BC9B /* GatewayUrlResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GatewayUrlResponseModel.swift; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 				723DAF281C71BCEA000CCCCE /* CommandGroup.swift */,
 				6D999F3B254BE1F033FC51E1 /* CoreDataManager.swift */,
 				6D9992E6ACB30F538A5AB11A /* CoreDataObjectTypes.swift */,
+				6D9997569FF5B0DE59FF826F /* Commandable.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -782,6 +785,7 @@
 				6D9998B57BE38EFA2CE35938 /* SwiftBotModel.xcdatamodeld in Sources */,
 				6D999E43A2BA9A381A036AAE /* CoreDataObjectTypes.swift in Sources */,
 				6D99905F3E2C8DF5CCA529B8 /* CustomCommandMessageHandler.swift in Sources */,
+				6D999D680169FF550EE6E53A /* Commandable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

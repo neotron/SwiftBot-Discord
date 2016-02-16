@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-class CommandAlias: NSManagedObject {
+class CommandAlias: Commandable {
 
 // Insert code here to add functionality to your managed object subclass
 

@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-class CommandGroup: NSManagedObject {
+class CommandGroup: Commandable {
 // Insert code here to add functionality to your managed object subclass
 
 }

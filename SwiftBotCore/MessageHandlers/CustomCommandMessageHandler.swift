@@ -42,10 +42,12 @@ class CustomCommandMessageHandler : MessageHandler {
         case .SetHelpText:
             addHelp(args, message: message)
         case .AddToCategory:
-            break
+            addToCategory(args, message: message)
         case .RemoveFromCategory:
-            break
+            removeFromCategory(args, message: message)
         case .DeleteCategory:
+            break;
+        case .ListCommands:
             break;
         }
         return true
@@ -53,16 +55,32 @@ class CustomCommandMessageHandler : MessageHandler {
 
     override func handleAnything(command: String, args: [String], message: Message) -> Bool {
         let cdm = CoreDataManager.instance
-        if let commandObject = cdm.loadCommand(command), value = commandObject.value {
+        if let commandObject = cdm.loadCommandAlias(command) {
             if args.count == 1 && (args[0] == "help" || args[0] == "-h") {
                 if let help = commandObject.help {
-                    message.replyToChannel("**\(Config.commandPrefix)\(commandObject.command!)**: \(help)")
+                    message.replyToChannel("**\(Config.commandPrefix)\(commandObject.command)**: \(help)")
                 } else {
-                    message.replyToChannel("**\(Config.commandPrefix)\(commandObject.command!)**: No help available.")
+                    message.replyToChannel("**\(Config.commandPrefix)\(commandObject.command)**: No help available.")
                 }
             } else {
-                message.replyToChannel(value)
+                message.replyToChannel(commandObject.value)
             }
+            return true
+        }
+        if let group = cdm.loadCommandGroup(command) {
+            var output = ["**Category \(group.command)**: "]
+            if let help = group.help {
+                output[0] += help
+            }
+            let sortedCommands = group.commands.sort { $0.command > $1.command }
+            for command in sortedCommands {
+                var cmdline = "\t**\(Config.commandPrefix)\(command.command)**"
+                if let help = command.help {
+                    cmdline += ": \(help)"
+                }
+                output.append(cmdline)
+            }
+            message.replyToChannel(output.joinWithSeparator("\n"))
             return true
         }
         return false
@@ -91,18 +109,18 @@ extension CustomCommandMessageHandler {
             return
         }
         let cdm = CoreDataManager.instance
-        if let existingCommand = cdm.loadCommand(args[0]) {
-            message.replyToChannel("Command *\(existingCommand.command!)* already exist. Use *\(Config.commandPrefix)\(Command.EditCommand.rawValue)* instead.")
+        if let existingCommand = cdm.loadCommandAlias(args[0]) {
+            message.replyToChannel("Command *\(existingCommand.command)* already exist. Use *\(Config.commandPrefix)\(Command.EditCommand.rawValue)* instead.")
             return
         }
 
-        guard let commandText = getCommandText(args[0], message: message), command = cdm.createCommand(args[0], value: commandText) else {
+        guard let commandText = getCommandText(args[0], message: message), command = cdm.createCommandAlias(args[0], value: commandText) else {
             LOG_ERROR("Command was not created.")
             message.replyToChannel("Internal error. Unable to create command alias.")
             return
         }
         cdm.setNeedsSave()
-        message.replyToChannel("Command alias for *\(command.command!)* created successfully.")
+        message.replyToChannel("Command alias for *\(command.command)* created successfully.")
     }
 
     func editCommand(args: [String], message: Message) {
@@ -111,7 +129,7 @@ extension CustomCommandMessageHandler {
             return
         }
         let cdm = CoreDataManager.instance
-        guard let existingCommand = cdm.loadCommand(args[0]) else {
+        guard let existingCommand = cdm.loadCommandAlias(args[0]) else {
             message.replyToChannel("Command *\(args[0])* doesn't exist. Use *\(Config.commandPrefix)\(Command.AddCommand.rawValue)* instead.")
             return
         }
@@ -123,7 +141,7 @@ extension CustomCommandMessageHandler {
 
         existingCommand.value = commandText
         cdm.setNeedsSave()
-        message.replyToChannel("Command *\(existingCommand.command!)* updated with new text.")
+        message.replyToChannel("Command *\(existingCommand.command)* updated with new text.")
     }
 
     func removeCommand(args: [String], message: Message) {
@@ -132,7 +150,7 @@ extension CustomCommandMessageHandler {
             return
         }
         let cdm = CoreDataManager.instance
-        guard let existingCommand = cdm.loadCommand(args[0]) else {
+        guard let existingCommand = cdm.loadCommandAlias(args[0]) else {
             message.replyToChannel("Command *\(args[0])* doesn't exist.")
             return
         }
@@ -151,15 +169,80 @@ extension CustomCommandMessageHandler {
         }
 
         let cdm = CoreDataManager.instance
-        guard let existingCommand = cdm.loadCommand(args[0]) else {
-            message.replyToChannel("Command *\(args[0])* doesn't exist.")
+        var entryToUpdate: Commandable? = cdm.loadCommandAlias(args[0])
+        if entryToUpdate == nil {
+            entryToUpdate = cdm.loadCommandGroup(args[0])
+        }
+
+        if let entryToUpdate = entryToUpdate {
+            entryToUpdate.help = getCommandText(args[0], message: message)
+            message.replyToChannel("Command or category *\(entryToUpdate.command)* updated with help text.")
+            cdm.setNeedsSave()
             return
         }
 
-        existingCommand.help = getCommandText(args[0], message: message)
+        message.replyToChannel("Command or category *\(args[0])* doesn't exist.")
+    }
+}
 
+// MARK: Command grouping for fun and profit
+extension CustomCommandMessageHandler {
+    func loadOrCreateCommandGroup(group: String, shouldCreate: Bool = true) -> CommandGroup? {
+        let cdm = CoreDataManager.instance
+        if let group = cdm.loadCommandGroup(group) {
+            return group
+        }
+        if !shouldCreate {
+            return nil
+        }
+        return cdm.createCommandGroup(group)
+    }
+
+    func addToCategory(args: [String], message: Message) {
+        if args.count < 2 {
+            message.replyToChannel("Invalid syntax. Expected: <category> <command>")
+            return
+        }
+        let cdm = CoreDataManager.instance
+        guard let command = cdm.loadCommandAlias(args[1]) else {
+            message.replyToChannel("Command *\(args[1])* doesn't exist.")
+            return
+        }
+        guard let group = loadOrCreateCommandGroup(args[0]) else {
+            message.replyToChannel("Internal Error: Unable to load or create category *\(args[0])*.")
+            return
+        }
+        if group.commands.contains(command) {
+            message.replyToChannel("Command *\(command.command)* already in category *\(group.command)*.")
+            return
+        }
+        group.commands.insert(command)
         cdm.setNeedsSave()
-        message.replyToChannel("Command *\(existingCommand.command!)* updated with help text.")
+        message.replyToChannel("Command *\(command.command)* added to category *\(group.command)*.")
+    }
+
+    func removeFromCategory(args: [String], message: Message) {
+        if args.count < 2 {
+            message.replyToChannel("Invalid syntax. Expected: <category> <command>")
+            return
+        }
+        let cdm = CoreDataManager.instance
+        guard let command = cdm.loadCommandAlias(args[1]) else {
+            message.replyToChannel("Command *\(args[1])* doesn't exist.")
+            return
+        }
+        guard let group = loadOrCreateCommandGroup(args[0], shouldCreate: false) else {
+            message.replyToChannel("Category *\(args[0])* doesn't exist.")
+            return
+        }
+        if group.commands.contains(command) {
+            message.replyToChannel("Command *\(command.command)* removed from category *\(group.command)*.")
+            group.commands.remove(command)
+            cdm.setNeedsSave()
+            return
+        }
+
+        message.replyToChannel("Command *\(command.command)* is not part of category *\(group.command)*.")
     }
 }
 
@@ -173,6 +256,8 @@ extension CustomCommandMessageHandler {
              SetHelpText = "sethelp",
              AddToCategory = "addtocat",
              RemoveFromCategory = "rmfromcat",
-             DeleteCategory = "delcat"
+             DeleteCategory = "delcat",
+             ListCommands = "listcmds",
     }
 }
+Created

@@ -25,9 +25,8 @@ class CoreDataManager : NSObject {
 
 // MARK: Custom commands helper functions
 extension CoreDataManager {
-
     // Return the command with the specified name, or nil if there isn't one
-    func loadCommand(command: String) -> CommandAlias? {
+    func loadCommandAlias(command: String) -> CommandAlias? {
         let predicate = NSPredicate(format: "command = %@", argumentArray: [command.lowercaseString])
         if let matches = self.fetchObjectsOfType(.CommandAlias, withPredicate: predicate) {
             var match: AnyObject?
@@ -48,7 +47,7 @@ extension CoreDataManager {
         return nil
     }
 
-    func createCommand(command: String, value: String) -> CommandAlias? {
+    func createCommandAlias(command: String, value: String) -> CommandAlias? {
         guard let commandObject = self.createObjectOfType(.CommandAlias) as? CommandAlias else {
             LOG_ERROR("Failed to create new command object.")
             return nil
@@ -56,6 +55,37 @@ extension CoreDataManager {
         commandObject.command = command.lowercaseString
         commandObject.value = value
         return commandObject
+    }
+
+    // Return the category with the specified name, or nil if there isn't one
+    func loadCommandGroup(command: String) -> CommandGroup? {
+        let predicate = NSPredicate(format: "command = %@", argumentArray: [command.lowercaseString])
+        if let matches = self.fetchObjectsOfType(.CommandGroup, withPredicate: predicate) {
+            var match: AnyObject?
+            switch matches.count {
+            case 0:
+                return nil
+            case 1:
+                match = matches[0]
+            default:
+                LOG_DEBUG("Found multiple matches for command \(command)! Returning first match")
+                match = matches[1]
+            }
+            if let command = match as? CommandGroup {
+                return command
+            }
+            LOG_ERROR("Query for command group returned non-command group object \(match)")
+        }
+        return nil
+    }
+
+    func createCommandGroup(command: String) -> CommandGroup? {
+        guard let group = self.createObjectOfType(.CommandGroup) as? CommandGroup else {
+            LOG_ERROR("Failed to create new command group object.")
+            return nil
+        }
+        group.command = command.lowercaseString
+        return group
     }
 
 }
