@@ -122,7 +122,7 @@ extension CoreDataManager {
         return nil
     }
 
-    func fetchObjectsOfType(type: CoreDataObjectTypes, withPredicate predicate: NSPredicate,
+    func fetchObjectsOfType(type: CoreDataObjectTypes, withPredicate predicate: NSPredicate?,
                             sortedBy sortOrder: [NSSortDescriptor]? = nil,
                             fetchOffset: Int = 0, fetchLimit: Int = 0) -> [AnyObject]? {
         guard let ctx = self.managedObjectContext else {
@@ -138,7 +138,7 @@ extension CoreDataManager {
         request.fetchOffset = fetchOffset
         do {
             let result = try ctx.executeFetchRequest(request)
-            return result
+            return result.count == 0 ? nil : result
         } catch {
             LOG_ERROR("Error during fetch: \(error)")
             return nil

@@ -24,6 +24,7 @@ class CustomCommandMessageHandler : MessageHandler {
                 (Command.AddToCategory.rawValue,      "Add an existing command to a category. Category will be created if it doesn't exist. Arguments: *<category> <command>*"),
                 (Command.RemoveFromCategory.rawValue, "Remove a command from a category. Arguments: *<category> <command>*"),
                 (Command.DeleteCategory.rawValue,     "Delete an existing category. Commands in the category will not be removed. Arguments: *<category>*"),
+                (Command.ListCommands.rawValue,     "List existing custom commands and categories."),
         ];
     }
 
@@ -48,7 +49,7 @@ class CustomCommandMessageHandler : MessageHandler {
         case .DeleteCategory:
             break;
         case .ListCommands:
-            break;
+            listCommands(args, message: message)
         }
         return true
     }
@@ -113,6 +114,11 @@ extension CustomCommandMessageHandler {
             message.replyToChannel("Command *\(existingCommand.command)* already exist. Use *\(Config.commandPrefix)\(Command.EditCommand.rawValue)* instead.")
             return
         }
+        if let commandNameConflict = cdm.loadCommandGroup(args[0]) {
+            message.replyToChannel("Error: Cannot add command *\(args[0])* since there's already a category with that name.")
+            return
+        }
+
 
         guard let commandText = getCommandText(args[0], message: message), command = cdm.createCommandAlias(args[0], value: commandText) else {
             LOG_ERROR("Command was not created.")
@@ -183,6 +189,29 @@ extension CustomCommandMessageHandler {
 
         message.replyToChannel("Command or category *\(args[0])* doesn't exist.")
     }
+
+    func listCommands(args: [String], message: Message) {
+        let cdm = CoreDataManager.instance
+        var output = ["**Custom commands and Categories: **"]
+        let sortOrder = [NSSortDescriptor(key: "command", ascending: true)]
+        if let commands = cdm.fetchObjectsOfType(.CommandAlias, withPredicate: nil, sortedBy: sortOrder) {
+            output.append("*Commands*: \(commands.map{$0.command}.joinWithSeparator(", "))")
+        } else {
+            output.append("*Commands*: None found")
+        }
+        if let groups = cdm.fetchObjectsOfType(.CommandGroup, withPredicate: nil, sortedBy: sortOrder) {
+            output.append("*Categories*: \(groups.map{"\($0.command) (\($0.commands.count) commands)"}.joinWithSeparator(", "))")
+        } else {
+            output.append("*Categories*: None found")
+        }
+        let outputString = output.joinWithSeparator("\n")
+        if args.count > 0 && args[0] == "here" {
+            message.replyToChannel(outputString)
+        } else {
+            message.replyToSender(outputString)
+        }
+
+    }
 }
 
 // MARK: Command grouping for fun and profit
@@ -208,6 +237,11 @@ extension CustomCommandMessageHandler {
             message.replyToChannel("Command *\(args[1])* doesn't exist.")
             return
         }
+        if let commandNameConflict = cdm.loadCommandAlias(args[0]) {
+            message.replyToChannel("Error: Cannot add category *\(args[0])* since there's already a command with that name.")
+            return
+        }
+
         guard let group = loadOrCreateCommandGroup(args[0]) else {
             message.replyToChannel("Internal Error: Unable to load or create category *\(args[0])*.")
             return
@@ -257,7 +291,6 @@ extension CustomCommandMessageHandler {
              AddToCategory = "addtocat",
              RemoveFromCategory = "rmfromcat",
              DeleteCategory = "delcat",
-             ListCommands = "listcmds",
+             ListCommands = "listcmds"
     }
 }
-Created
