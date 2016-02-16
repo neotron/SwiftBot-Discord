@@ -20,6 +20,7 @@ public class SwiftBotMain : NSObject, DiscordDelegate {
         self.discord.delegate = self
         self.messageDispatcher.discord = discord
         registerMessageHandlers()
+        print("Database coordinator = \(CoreDataManager.instance.persistentStoreCoordinator)")
     }
 
     public func runWithDoneCallback(callback: ((Void)->Void)?) {

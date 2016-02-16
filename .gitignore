@@ -65,3 +65,5 @@ config.json
 Podfile.lock
 Pods
 .idea/workspace.xml
+config-dev.json
+*~

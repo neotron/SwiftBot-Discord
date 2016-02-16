@@ -4,4 +4,5 @@
 	"password": "BOT LOGIN PASSWORD"
     }, 
     "command_prefix": "~", 
+    "database_directory": "/path/to/persistent/storage/ - used for SQLite database" 
 }

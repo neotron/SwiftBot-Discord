@@ -11,15 +11,16 @@ class Config : MappableBase {
     static let instance = Config()
 
     // Instance accessible read-only settings.
-    static var email: String         { return instance._email }
-    static var password: String      { return instance._password }
-    static var commandPrefix: String { return instance._commandPrefix }
-
+    static var email: String             { return instance._email }
+    static var password: String          { return instance._password }
+    static var commandPrefix: String     { return instance._commandPrefix }
+    static var databaseDirectory: String? { return instance._databaseDirectory }
 
     // Internal private storage
     private var _email = "NOT CONFIGURED"
     private var _password = "NOT CONFIGUREd"
     private var _commandPrefix = "~"
+    private var _databaseDirectory: String?
 
     override init() {
         super.init()
@@ -41,6 +42,7 @@ class Config : MappableBase {
         _email    <- map["auth.email"]
         _password <- map["auth.password"]
         _commandPrefix <- map["command_prefix"]
+        _databaseDirectory <- map["database_directory"]
     }
 
 }

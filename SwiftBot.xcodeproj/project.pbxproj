@@ -23,6 +23,7 @@
 		6D999785444996E8D9F94E41 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999F34840FAF487424C024 /* Config.swift */; };
 		6D9998430A7453619CDB3DAE /* NSData+GZIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9998E44D0D39FDE1300A2A /* NSData+GZIP.swift */; };
 		6D99985B6C873F056EEBD82B /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999DB3164C1D87EFEE1CE4 /* MessageModel.swift */; };
+		6D9998B57BE38EFA2CE35938 /* SwiftBotModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 723DAF221C71BBA1000CCCCE /* SwiftBotModel.xcdatamodeld */; };
 		6D99990D819B87E9A8C2B9F4 /* RandomAnimalsMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D99960506F77545A5A407E1 /* RandomAnimalsMessageHandler.swift */; };
 		6D99991C638324F3B500303E /* IdentifierMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999FDE14860A78957C5D27 /* IdentifierMessageHandler.swift */; };
 		6D999961D5112A2A0DA89DA6 /* LoginResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999F4CA01620CF2F480E9F /* LoginResponseModel.swift */; };
@@ -34,12 +35,18 @@
 		6D999BC92E8A7B8BEFA3950E /* PingMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999ADC03AE6A181FEB636A /* PingMessageHandler.swift */; };
 		6D999C72C9BAFD10CF1C6447 /* WebsocketAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9996F7564D6FA6AF38E63D /* WebsocketAPIManager.swift */; };
 		6D999C7C9CFE7D5A7868FDAF /* WebsocketMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999366FEF6398379167ACE /* WebsocketMessageModel.swift */; };
+		6D999D6B4B876537EDA2BE5E /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999F3B254BE1F033FC51E1 /* CoreDataManager.swift */; };
 		6D999E0826CE9EE4A5E7B365 /* MappableBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999CDF69492A172C93B585 /* MappableBase.swift */; };
 		6D999E188A8791194E025AC9 /* PrivateChannelRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999D9FA7F4F73DEC46C1F5 /* PrivateChannelRequest.swift */; };
+		6D999E43A2BA9A381A036AAE /* CoreDataObjectTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9992E6ACB30F538A5AB11A /* CoreDataObjectTypes.swift */; };
 		6D999E5306F66E5B71AB77DE /* MessageDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999F8C1962CC6D8711D65C /* MessageDispatcher.swift */; };
 		6D999EC765F43D711E1A66B9 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999D2D151DC41A4AFBEAC3 /* Logger.swift */; };
 		6D999F298F0DCC2EC5C526A5 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9996359282085CD1B1357C /* UserModel.swift */; };
 		6D999F86E0452B64A7EA47C8 /* WebsocketHeartbeatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999813A7E8EF215264C09A /* WebsocketHeartbeatModel.swift */; };
+		723DAF291C71BCEA000CCCCE /* CommandAlias+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DAF251C71BCEA000CCCCE /* CommandAlias+CoreDataProperties.swift */; };
+		723DAF2A1C71BCEA000CCCCE /* CommandAlias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DAF261C71BCEA000CCCCE /* CommandAlias.swift */; };
+		723DAF2B1C71BCEA000CCCCE /* CommandGroup+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DAF271C71BCEA000CCCCE /* CommandGroup+CoreDataProperties.swift */; };
+		723DAF2C1C71BCEA000CCCCE /* CommandGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DAF281C71BCEA000CCCCE /* CommandGroup.swift */; };
 		724A77C81C6ED63000CB0F1D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 724A77C71C6ED63000CB0F1D /* main.m */; };
 		724A77CF1C6ED71000CB0F1D /* SwiftBot in Copy Executable */ = {isa = PBXBuildFile; fileRef = 724A77C51C6ED63000CB0F1D /* SwiftBot */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		724A77D01C6ED7ED00CB0F1D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5FBDBE352A5E9230959E180 /* Pods.framework */; };
@@ -139,6 +146,7 @@
 		6D99911179065165BBD88A63 /* ChannelModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelModel.swift; sourceTree = "<group>"; };
 		6D999115D5F67B0A19012ACB /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		6D99914B9A4F9F2397C28447 /* URLEndpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLEndpoints.swift; sourceTree = "<group>"; };
+		6D9992E6ACB30F538A5AB11A /* CoreDataObjectTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataObjectTypes.swift; sourceTree = "<group>"; };
 		6D999366FEF6398379167ACE /* WebsocketMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebsocketMessageModel.swift; sourceTree = "<group>"; };
 		6D9993B20CBCD996DCA63B18 /* ScienceMessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScienceMessageHandler.swift; sourceTree = "<group>"; };
 		6D99950734647C3C6E5A81F0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
@@ -168,11 +176,17 @@
 		6D999EE47A752A4ECF163C52 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		6D999F17315965A965314B5E /* LogoutRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutRequest.swift; sourceTree = "<group>"; };
 		6D999F34840FAF487424C024 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		6D999F3B254BE1F033FC51E1 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		6D999F4CA01620CF2F480E9F /* LoginResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResponseModel.swift; sourceTree = "<group>"; };
 		6D999F8C1962CC6D8711D65C /* MessageDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageDispatcher.swift; sourceTree = "<group>"; };
 		6D999FCBE842D9A88EFA40C5 /* WebsocketHelloMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebsocketHelloMessageModel.swift; sourceTree = "<group>"; };
 		6D999FDE14860A78957C5D27 /* IdentifierMessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifierMessageHandler.swift; sourceTree = "<group>"; };
 		6D999FFC0E946BF809856F8E /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		723DAF231C71BBA1000CCCCE /* SwiftBotModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SwiftBotModel.xcdatamodel; sourceTree = "<group>"; };
+		723DAF251C71BCEA000CCCCE /* CommandAlias+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CommandAlias+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		723DAF261C71BCEA000CCCCE /* CommandAlias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandAlias.swift; sourceTree = "<group>"; };
+		723DAF271C71BCEA000CCCCE /* CommandGroup+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CommandGroup+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		723DAF281C71BCEA000CCCCE /* CommandGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandGroup.swift; sourceTree = "<group>"; };
 		724A77A21C6ED3E100CB0F1D /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = ../build/XCode/DerivedData/Build/Products/Debug/Starscream.framework; sourceTree = "<group>"; };
 		724A77AA1C6ED55B00CB0F1D /* SwiftBot.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftBot.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		724A77AC1C6ED55B00CB0F1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -247,6 +261,11 @@
 		60737DB67018A2737B140ABE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				724A781A1C706CE000CB0F1D /* Alamofire.framework */,
+				724A781B1C706CE000CB0F1D /* AlamofireObjectMapper.framework */,
+				724A781C1C706CE000CB0F1D /* ObjectMapper.framework */,
+				724A781D1C706CE000CB0F1D /* Pods.framework */,
+				724A781E1C706CE000CB0F1D /* Starscream.framework */,
 				724A780F1C6F230700CB0F1D /* DeflateSwift.framework */,
 				724A780D1C6F222300CB0F1D /* BBSZLib.framework */,
 				724A780B1C6F1F1400CB0F1D /* libz.tbd */,
@@ -268,6 +287,20 @@
 				6D999F4CA01620CF2F480E9F /* LoginResponseModel.swift */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		6D9990EEB924ED924909BA5B /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				723DAF221C71BBA1000CCCCE /* SwiftBotModel.xcdatamodeld */,
+				723DAF251C71BCEA000CCCCE /* CommandAlias+CoreDataProperties.swift */,
+				723DAF261C71BCEA000CCCCE /* CommandAlias.swift */,
+				723DAF271C71BCEA000CCCCE /* CommandGroup+CoreDataProperties.swift */,
+				723DAF281C71BCEA000CCCCE /* CommandGroup.swift */,
+				6D999F3B254BE1F033FC51E1 /* CoreDataManager.swift */,
+				6D9992E6ACB30F538A5AB11A /* CoreDataObjectTypes.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 		6D9991D64AD120E93696A692 /* Permissions */ = {
@@ -431,11 +464,12 @@
 		724A77F21C6ED9AE00CB0F1D /* SwiftBotCore */ = {
 			isa = PBXGroup;
 			children = (
+				6D9990EEB924ED924909BA5B /* Database */,
+				6D9993442C0B5E10C216E5A7 /* MessageHandlers */,
 				724A77F31C6ED9AE00CB0F1D /* SwiftBotCore.h */,
 				724A77F51C6ED9AE00CB0F1D /* Info.plist */,
 				6D999F8C1962CC6D8711D65C /* MessageDispatcher.swift */,
 				6D999F34840FAF487424C024 /* Config.swift */,
-				6D9993442C0B5E10C216E5A7 /* MessageHandlers */,
 				6D999FFC0E946BF809856F8E /* Message.swift */,
 				6D999D7162BA5DEDA3BC8584 /* SwiftBotMain.swift */,
 			);
@@ -445,11 +479,6 @@
 		72B35E151C6ECD4200027CF2 = {
 			isa = PBXGroup;
 			children = (
-				724A781A1C706CE000CB0F1D /* Alamofire.framework */,
-				724A781B1C706CE000CB0F1D /* AlamofireObjectMapper.framework */,
-				724A781C1C706CE000CB0F1D /* ObjectMapper.framework */,
-				724A781D1C706CE000CB0F1D /* Pods.framework */,
-				724A781E1C706CE000CB0F1D /* Starscream.framework */,
 				724A77AB1C6ED55B00CB0F1D /* SwiftBotBundle */,
 				724A77C61C6ED63000CB0F1D /* SwiftBot */,
 				724A77D81C6ED97200CB0F1D /* DiscordAPI */,
@@ -735,13 +764,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D999E5306F66E5B71AB77DE /* MessageDispatcher.swift in Sources */,
+				723DAF2B1C71BCEA000CCCCE /* CommandGroup+CoreDataProperties.swift in Sources */,
 				6D999785444996E8D9F94E41 /* Config.swift in Sources */,
+				723DAF2A1C71BCEA000CCCCE /* CommandAlias.swift in Sources */,
 				6D999BC92E8A7B8BEFA3950E /* PingMessageHandler.swift in Sources */,
+				723DAF2C1C71BCEA000CCCCE /* CommandGroup.swift in Sources */,
 				6D99990D819B87E9A8C2B9F4 /* RandomAnimalsMessageHandler.swift in Sources */,
 				6D999714D68D9C89FB2492AB /* ScienceMessageHandler.swift in Sources */,
 				6D99991C638324F3B500303E /* IdentifierMessageHandler.swift in Sources */,
+				723DAF291C71BCEA000CCCCE /* CommandAlias+CoreDataProperties.swift in Sources */,
 				6D9990765663CA1B1AFABB9E /* Message.swift in Sources */,
 				6D9992F0076C92E144D1AD59 /* SwiftBotMain.swift in Sources */,
+				6D999D6B4B876537EDA2BE5E /* CoreDataManager.swift in Sources */,
+				6D9998B57BE38EFA2CE35938 /* SwiftBotModel.xcdatamodeld in Sources */,
+				6D999E43A2BA9A381A036AAE /* CoreDataObjectTypes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1052,6 +1088,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		723DAF221C71BBA1000CCCCE /* SwiftBotModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				723DAF231C71BBA1000CCCCE /* SwiftBotModel.xcdatamodel */,
+			);
+			currentVersion = 723DAF231C71BBA1000CCCCE /* SwiftBotModel.xcdatamodel */;
+			path = SwiftBotModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 72B35E161C6ECD4200027CF2 /* Project object */;
 }
