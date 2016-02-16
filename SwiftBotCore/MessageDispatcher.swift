@@ -36,7 +36,7 @@ class MessageDispatchManager : MessageHandler {
 
     override init() {
         super.init()
-        registerMessageHandler(self) // this registers the help command
+        self.registerMessageHandlers()
     }
 
     override var commands: [MessageCommand]? {
@@ -60,6 +60,15 @@ class MessageDispatchManager : MessageHandler {
             message.replyToSender(output.joinWithSeparator("\n"));
         }
         return true
+    }
+
+    private func registerMessageHandlers() {
+        registerMessageHandler(self) // this registers the help command
+        registerMessageHandler(PingMessageHandler())
+        registerMessageHandler(RandomAnimalsMessageHandler())
+        registerMessageHandler(ScienceMessageHandler())
+        registerMessageHandler(IdentifierMessageHandler())
+        registerMessageHandler(CustomCommandMessageHandler())
     }
 
 

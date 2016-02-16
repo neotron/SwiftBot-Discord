@@ -33,6 +33,7 @@
 		6D9999F6C67A599DBBA83E12 /* EmbedsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9997A0A7A61B3971877C0D /* EmbedsModel.swift */; };
 		6D999A0EE363850856DDE569 /* WebsocketReadyMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9997EEEA591718925F4E2C /* WebsocketReadyMessageModel.swift */; };
 		6D999AE857A7A9583A8D06D5 /* SendMessageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D99964872894F71F130ED15 /* SendMessageRequest.swift */; };
+		6D999B3CEB05B5A388E91C18 /* CustomCommandImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999EC013C9865904BB2FF5 /* CustomCommandImporter.swift */; };
 		6D999BC92E8A7B8BEFA3950E /* PingMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999ADC03AE6A181FEB636A /* PingMessageHandler.swift */; };
 		6D999C72C9BAFD10CF1C6447 /* WebsocketAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9996F7564D6FA6AF38E63D /* WebsocketAPIManager.swift */; };
 		6D999C7C9CFE7D5A7868FDAF /* WebsocketMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999366FEF6398379167ACE /* WebsocketMessageModel.swift */; };
@@ -49,6 +50,7 @@
 		723DAF2A1C71BCEA000CCCCE /* CommandAlias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DAF261C71BCEA000CCCCE /* CommandAlias.swift */; };
 		723DAF2B1C71BCEA000CCCCE /* CommandGroup+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DAF271C71BCEA000CCCCE /* CommandGroup+CoreDataProperties.swift */; };
 		723DAF2C1C71BCEA000CCCCE /* CommandGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DAF281C71BCEA000CCCCE /* CommandGroup.swift */; };
+		723DAF3C1C72D4DE000CCCCE /* petopt.c in Sources */ = {isa = PBXBuildFile; fileRef = 723DAF3B1C72D4DE000CCCCE /* petopt.c */; };
 		724A77C81C6ED63000CB0F1D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 724A77C71C6ED63000CB0F1D /* main.m */; };
 		724A77CF1C6ED71000CB0F1D /* SwiftBot in Copy Executable */ = {isa = PBXBuildFile; fileRef = 724A77C51C6ED63000CB0F1D /* SwiftBot */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		724A77D01C6ED7ED00CB0F1D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5FBDBE352A5E9230959E180 /* Pods.framework */; };
@@ -177,6 +179,7 @@
 		6D999D9FA7F4F73DEC46C1F5 /* PrivateChannelRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateChannelRequest.swift; sourceTree = "<group>"; };
 		6D999DB3164C1D87EFEE1CE4 /* MessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		6D999E440754D89B92EDC8A6 /* Discord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Discord.swift; sourceTree = "<group>"; };
+		6D999EC013C9865904BB2FF5 /* CustomCommandImporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCommandImporter.swift; sourceTree = "<group>"; };
 		6D999EE47A752A4ECF163C52 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		6D999F17315965A965314B5E /* LogoutRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutRequest.swift; sourceTree = "<group>"; };
 		6D999F34840FAF487424C024 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -191,6 +194,8 @@
 		723DAF261C71BCEA000CCCCE /* CommandAlias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandAlias.swift; sourceTree = "<group>"; };
 		723DAF271C71BCEA000CCCCE /* CommandGroup+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CommandGroup+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		723DAF281C71BCEA000CCCCE /* CommandGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandGroup.swift; sourceTree = "<group>"; };
+		723DAF3A1C72D4DE000CCCCE /* petopt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = petopt.h; sourceTree = "<group>"; };
+		723DAF3B1C72D4DE000CCCCE /* petopt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = petopt.c; sourceTree = "<group>"; };
 		724A77A21C6ED3E100CB0F1D /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = ../build/XCode/DerivedData/Build/Products/Debug/Starscream.framework; sourceTree = "<group>"; };
 		724A77AA1C6ED55B00CB0F1D /* SwiftBot.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftBot.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		724A77AC1C6ED55B00CB0F1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -453,6 +458,8 @@
 		724A77C61C6ED63000CB0F1D /* SwiftBot */ = {
 			isa = PBXGroup;
 			children = (
+				723DAF3A1C72D4DE000CCCCE /* petopt.h */,
+				723DAF3B1C72D4DE000CCCCE /* petopt.c */,
 				724A77C71C6ED63000CB0F1D /* main.m */,
 			);
 			path = SwiftBot;
@@ -478,6 +485,7 @@
 				6D999F34840FAF487424C024 /* Config.swift */,
 				6D999FFC0E946BF809856F8E /* Message.swift */,
 				6D999D7162BA5DEDA3BC8584 /* SwiftBotMain.swift */,
+				6D999EC013C9865904BB2FF5 /* CustomCommandImporter.swift */,
 			);
 			path = SwiftBotCore;
 			sourceTree = "<group>";
@@ -732,6 +740,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				724A77C81C6ED63000CB0F1D /* main.m in Sources */,
+				723DAF3C1C72D4DE000CCCCE /* petopt.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -786,6 +795,7 @@
 				6D999E43A2BA9A381A036AAE /* CoreDataObjectTypes.swift in Sources */,
 				6D99905F3E2C8DF5CCA529B8 /* CustomCommandMessageHandler.swift in Sources */,
 				6D999D680169FF550EE6E53A /* Commandable.swift in Sources */,
+				6D999B3CEB05B5A388E91C18 /* CustomCommandImporter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

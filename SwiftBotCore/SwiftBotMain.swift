@@ -19,8 +19,10 @@ public class SwiftBotMain : NSObject, DiscordDelegate {
 
         self.discord.delegate = self
         self.messageDispatcher.discord = discord
-        registerMessageHandlers()
-        print("Database coordinator = \(CoreDataManager.instance.persistentStoreCoordinator)")
+        if !CoreDataManager.instance.isSetupAndWorking() {
+            LOG_ERROR("NOTE: The database couldn't be initialized (check configuration). Custom commands will not work.")
+        }
+
     }
 
     public func runWithDoneCallback(callback: ((Void)->Void)?) {
@@ -43,14 +45,5 @@ public class SwiftBotMain : NSObject, DiscordDelegate {
     public func discordMessageReceived(message: MessageModel, event: MessageEventType) {
         self.messageDispatcher.processMessage(message, event: event)
     }
-
-    private func registerMessageHandlers() {
-        self.messageDispatcher.registerMessageHandler(PingMessageHandler())
-        self.messageDispatcher.registerMessageHandler(RandomAnimalsMessageHandler())
-        self.messageDispatcher.registerMessageHandler(ScienceMessageHandler())
-        self.messageDispatcher.registerMessageHandler(IdentifierMessageHandler())
-        self.messageDispatcher.registerMessageHandler(CustomCommandMessageHandler())
-    }
-
 
 }

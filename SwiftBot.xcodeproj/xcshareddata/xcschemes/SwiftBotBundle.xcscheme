@@ -65,6 +65,10 @@
       </AdditionalOptions>
       <CommandLineArguments>
          <CommandLineArgument
+            argument = "-c"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
             argument = "/workspace/SwiftBot-Discord/config-dev.json"
             isEnabled = "YES">
          </CommandLineArgument>

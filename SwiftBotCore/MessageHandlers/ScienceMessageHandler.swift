@@ -79,7 +79,7 @@ class ScienceMessageHandler : MessageHandler {
 
         let G = 6.67*pow(10,-11)
         let earthMass = 5.98*pow(10, 24)
-        let earthRadius = 6378000.0
+        let earthRadius = 6367444.7
         let baseG = G * earthMass / pow(earthRadius, 2.0)
         let planetG = (G*planetMass*earthMass/pow(planetRadius*1000, 2.0))
         let planetDensity = planetMass*earthMass/(4.0/3.0*M_PI*pow(planetRadius, 3))

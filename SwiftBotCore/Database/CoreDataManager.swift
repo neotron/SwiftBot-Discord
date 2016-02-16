@@ -12,7 +12,7 @@ import DiscordAPI
 class CoreDataManager : NSObject {
     static let instance = CoreDataManager()
 
-    lazy var persistentStoreCoordinator = CoreDataManager.instance.createPersistentStoreCoordinator()
+    lazy private var persistentStoreCoordinator = CoreDataManager.instance.createPersistentStoreCoordinator()
     lazy private var managedObjectModel = CoreDataManager.instance.createManagedObjectModel()
     lazy private var managedObjectContext = CoreDataManager.instance.createManagedObjectContext()
 
@@ -20,6 +20,9 @@ class CoreDataManager : NSObject {
         super.init()
     }
 
+    func isSetupAndWorking() -> Bool {
+        return self.persistentStoreCoordinator != nil
+    }
 
 }
 

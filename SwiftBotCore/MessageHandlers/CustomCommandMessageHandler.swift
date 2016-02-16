@@ -119,7 +119,6 @@ extension CustomCommandMessageHandler {
             return
         }
 
-
         guard let commandText = getCommandText(args[0], message: message), command = cdm.createCommandAlias(args[0], value: commandText) else {
             LOG_ERROR("Command was not created.")
             message.replyToChannel("Internal error. Unable to create command alias.")
@@ -192,18 +191,19 @@ extension CustomCommandMessageHandler {
 
     func listCommands(args: [String], message: Message) {
         let cdm = CoreDataManager.instance
-        var output = ["**Custom commands and Categories: **"]
         let sortOrder = [NSSortDescriptor(key: "command", ascending: true)]
-        if let commands = cdm.fetchObjectsOfType(.CommandAlias, withPredicate: nil, sortedBy: sortOrder) {
-            output.append("*Commands*: \(commands.map{$0.command}.joinWithSeparator(", "))")
-        } else {
-            output.append("*Commands*: None found")
-        }
+        var output = [""]
         if let groups = cdm.fetchObjectsOfType(.CommandGroup, withPredicate: nil, sortedBy: sortOrder) {
-            output.append("*Categories*: \(groups.map{"\($0.command) (\($0.commands.count) commands)"}.joinWithSeparator(", "))")
+            output.append("**Categories**:\n\t\(groups.map{"**\($0.command)**: \($0.commands.map{$0.command}.joinWithSeparator(", "))"}.joinWithSeparator("\n\t"))")
         } else {
-            output.append("*Categories*: None found")
+            output.append("**Categories**:\n\tNone found")
         }
+        if let commands = cdm.fetchObjectsOfType(.CommandAlias, withPredicate: nil, sortedBy: sortOrder) as? [CommandAlias] {
+            output.append("\n**Commands**:\n\t\(commands.filter {$0.group == nil}.map{$0.command}.joinWithSeparator(", "))")
+        } else {
+            output.append("\n**Commands**: None found")
+        }
+
         let outputString = output.joinWithSeparator("\n")
         if args.count > 0 && args[0] == "here" {
             message.replyToChannel(outputString)

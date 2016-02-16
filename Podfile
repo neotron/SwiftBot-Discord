@@ -5,3 +5,4 @@ use_frameworks!
 pod 'Starscream', '~> 1.1.1'
 pod 'AlamofireObjectMapper', '~> 2.1'
 pod 'Locksmith'
+pod 'Yaml'
