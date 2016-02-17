@@ -1,0 +1,13 @@
+{ 
+  "auth": {
+    "email": "BOT LOGIN EMAIL",
+    "password": "BOT LOGIN PASSWORD"
+  },
+  "command_prefix": "~",
+  "database_directory": "/path/to/persistent/storage/ - used for SQLite database",
+  "owner_ids": [
+    "array of owner ids",
+    "Owners are super admins",
+    "get the id's using the 'id' command"
+  ]
+}
