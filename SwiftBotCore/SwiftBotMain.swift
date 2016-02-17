@@ -19,10 +19,13 @@ public class SwiftBotMain : NSObject, DiscordDelegate {
 
         self.discord.delegate = self
         self.messageDispatcher.discord = discord
-        if !CoreDataManager.instance.isSetupAndWorking() {
-            LOG_ERROR("NOTE: The database couldn't be initialized (check configuration). Custom commands will not work.")
-        }
+        let cdm = CoreDataManager.instance
 
+        if !cdm.isSetupAndWorking() {
+            LOG_ERROR("NOTE: The database couldn't be initialized (check configuration). Custom commands will not work.")
+        } else {
+            cdm.updateOwnerRolesFromConfig()
+        }
     }
 
     public func runWithDoneCallback(callback: ((Void)->Void)?) {

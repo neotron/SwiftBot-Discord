@@ -23,7 +23,107 @@ class CoreDataManager : NSObject {
     func isSetupAndWorking() -> Bool {
         return self.persistentStoreCoordinator != nil
     }
+}
 
+
+// MARK: UserRole support
+extension CoreDataManager {
+
+
+    func fetchRolesForId(id: String) -> Set<Role> {
+        var roles = Set<Role>()
+        if let ctx = self.managedObjectContext {
+            ctx.performBlockAndWait {
+                let predicate = NSPredicate(format: "id = %@", id)
+                if let userRoles = self.fetchObjectsOfType(.UserRole, withPredicate: predicate) as? [UserRole] {
+                    for userRole in userRoles {
+                        roles.insert(userRole.role)
+                    }
+                }
+            }
+        }
+        return roles
+    }
+
+    func addRoleForUserId(id: String, role: Role) -> Bool {
+        let roles = self.fetchRolesForId(id)
+        if roles.contains(role) || roles.contains(.Owner) {
+            return false
+        }
+        if let ctx = self.managedObjectContext {
+            ctx.performBlock {
+                self.createUserRole(id, role: role)
+                self.saveCtx(ctx)
+            }
+            return true
+        }
+        return false;
+    }
+
+    func removeRoleForUser(id: String, role: Role) -> Bool {
+        let roles = self.fetchRolesForId(id)
+        if !roles.contains(role) || roles.contains(.Owner) {
+            return false
+        }
+        if let ctx = self.managedObjectContext {
+            ctx.performBlock {
+                if let userRole = self.fetchUserRoleForId(id, role: role) {
+                    ctx.deleteObject(userRole)
+                    self.saveCtx(ctx)
+                }
+            }
+            return true
+        }
+        return false;
+
+    }
+
+
+    func updateOwnerRolesFromConfig() {
+        if let ctx = self.managedObjectContext {
+            ctx.performBlock {
+                LOG_INFO("Configured owner ids: \(Config.ownerIds)")
+                var adminIds = Config.ownerIds
+                let predicate = NSPredicate(format: "role = %d", Role.Owner.rawValue)
+                if let admins = self.fetchObjectsOfType(.UserRole, withPredicate: predicate) as? [UserRole] {
+                    // Existing admins
+                    for admin in admins {
+                        if !adminIds.contains(admin.id) {
+                            LOG_DEBUG("Deleting old owner: \(admin.id)")
+                            self.deleteObject(admin)
+                        }
+                        adminIds.remove(admin.id)
+                    }
+                }
+                for id in adminIds {
+                    self.createUserRole(id, role: Role.Owner)
+                }
+            }
+            self.saveCtx(ctx)
+        }
+    }
+
+    private func createUserRole(id: String, role: Role) {
+        if let admin = self.createObjectOfType(.UserRole) as? UserRole {
+            admin.id = id
+            admin.role = role
+            LOG_DEBUG("Added new user role mapping: \(id) -> \(role)")
+        }
+
+    }
+
+    private func fetchUserRoleForId(id: String, role: Role) -> UserRole? {
+        var userRole : UserRole?
+        if let ctx = self.managedObjectContext {
+            ctx.performBlockAndWait {
+                let predicate = NSPredicate(format: "id = %@ AND role = %d" , id, role.rawValue)
+                if let userRoles = self.fetchObjectsOfType(.UserRole, withPredicate: predicate) as? [UserRole] {
+                    userRole = userRoles.first
+                }
+            }
+        }
+        return userRole
+    }
 }
 
 // MARK: Custom commands helper functions

@@ -11,9 +11,9 @@
         <attribute name="help" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="commands" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CommandAlias" inverseName="group" inverseEntity="CommandAlias" syncable="YES"/>
     </entity>
-    <entity name="UserRole" representedClassName=".User" syncable="YES">
-        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="role" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    <entity name="UserRole" representedClassName=".UserRole" syncable="YES">
+        <attribute name="id" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="role" attributeType="Integer 16" defaultValueString="0" indexed="YES" syncable="YES"/>
     </entity>
     <elements>
         <element name="CommandAlias" positionX="-3017" positionY="-2112" width="128" height="103"/>

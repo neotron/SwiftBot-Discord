@@ -8,25 +8,6 @@ import Foundation
 import DiscordAPI
 typealias MessageCommand = (c: String, h: String?)
 
-class MessageHandler: NSObject {
-    var prefixes : [MessageCommand]? { return nil }
-    var commands : [MessageCommand]? { return nil }
-    var commandGroup : String? { return "" }
-    var canMatchAnything: Bool { return false }
-
-    func handlePrefix(prefix: String, command: String, args: [String], message: Message) -> Bool {
-        return false
-    }
-
-    func handleCommand(command: String, args: [String], message: Message) -> Bool {
-        return false
-    }
-
-    func handleAnything(command: String, args: [String], message: Message) -> Bool {
-        return false
-    }
-}
-
 class MessageDispatchManager : MessageHandler {
     private var prefixHandlers  = [String:[MessageHandler]]() // allows prefix handling, i.e "randomcat" and "randomdog" could both go to a "random" prefix handler
     private var commandHandlers = [String:[MessageHandler]]() // requires either just the command, i.e "route" or command with arguments "route 32 2.3"
@@ -69,6 +50,7 @@ class MessageDispatchManager : MessageHandler {
         registerMessageHandler(ScienceMessageHandler())
         registerMessageHandler(IdentifierMessageHandler())
         registerMessageHandler(CustomCommandMessageHandler())
+        registerMessageHandler(UserRoleMessageHandler())
     }
 
 

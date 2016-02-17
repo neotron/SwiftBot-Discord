@@ -10,7 +10,8 @@ import Foundation
 import CoreData
 
 @objc enum Role: Int16 {
-    case Admin = 1
+    case Owner = 1,
+         Admin = 2
 }
 
 class UserRole: NSManagedObject {
