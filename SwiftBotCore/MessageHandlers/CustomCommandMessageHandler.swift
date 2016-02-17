@@ -126,7 +126,7 @@ extension CustomCommandMessageHandler {
             message.replyToChannel("Internal error. Unable to create command alias.")
             return
         }
-        cdm.setNeedsSave()
+        cdm.save()
         message.replyToChannel("Command alias for *\(command.command)* created successfully.")
     }
 
@@ -147,7 +147,7 @@ extension CustomCommandMessageHandler {
         }
 
         existingCommand.value = commandText
-        cdm.setNeedsSave()
+        cdm.save()
         message.replyToChannel("Command *\(existingCommand.command)* updated with new text.")
     }
 
@@ -163,7 +163,7 @@ extension CustomCommandMessageHandler {
         }
         if cdm.deleteObject(existingCommand) {
             message.replyToChannel("Command *\(args[0])* removed.")
-            cdm.setNeedsSave()
+            cdm.save()
         } else {
             message.replyToChannel("Command *\(args[0])* was not removed due to internal error.")
         }
@@ -184,7 +184,7 @@ extension CustomCommandMessageHandler {
         if let entryToUpdate = entryToUpdate {
             entryToUpdate.help = getCommandText(args[0], message: message)
             message.replyToChannel("Command or category *\(entryToUpdate.command)* updated with help text.")
-            cdm.setNeedsSave()
+            cdm.save()
             return
         }
 
@@ -253,7 +253,7 @@ extension CustomCommandMessageHandler {
             return
         }
         group.commands.insert(command)
-        cdm.setNeedsSave()
+        cdm.save()
         message.replyToChannel("Command *\(command.command)* added to category *\(group.command)*.")
     }
 
@@ -274,7 +274,7 @@ extension CustomCommandMessageHandler {
         if group.commands.contains(command) {
             message.replyToChannel("Command *\(command.command)* removed from category *\(group.command)*.")
             group.commands.remove(command)
-            cdm.setNeedsSave()
+            cdm.save()
             return
         }
 
@@ -293,44 +293,59 @@ class CustomCommandImportMessageHandler: AuthenticatedMessageHandler {
         return CustomCommandMessageHandler.CustomCommandGroup
     }
     override func handleAuthenticatedCommand(command: String, args: [String], message: Message) -> Bool {
-        if args.count < 1 {
-            message.replyToChannel("Import URL is missing.")
-            return true
-        }
-        guard let url = NSURL(string: args[0]) else {
-            message.replyToChannel("Invalid URL provided.")
-            return true
-        }
-        let task = NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: {
-            (data: NSData?, response: NSURLResponse?, error: NSError?) in
-            if let error = error {
-                message.replyToChannel("Failed to import due to error: \(error.localizedFailureReason).")
-                return
-            }
-            if let data = data {
-                let importer = CustomCommandImporter()
-                do {
-                    let result = try importer.importFromData(data)
-                    message.replyToChannel("Imported \(result.cmdImported) commands, updated \(result.cmdUpdated) commands and added \(result.catImported) categories")
-                } catch CustomComandImportError.UTF8DecodingFailure {
-                    message.replyToChannel("Failed to import due failure to decode data as UTF-8.")
-                } catch CustomComandImportError.YamlError(let errorMsg) {
-                    if let msg = errorMsg {
-                        message.replyToChannel("Failed to import due failure to Yaml error: \(msg)")
-                    } else {
-                        message.replyToChannel("Failed to import due failure to unknown Yaml error.")
-                    }
-                } catch {
-                    message.replyToChannel("Failed to import due failure to unknown error.")
-                }
-            } else {
-                message.replyToChannel("No data returned from network call.")
-            }
-        })
-        task.resume()
+        importCommands(args, message: message)
         return true
     }
 
+    private func importCommands(args: [String], message: Message) {
+        if args.count < 1 {
+            message.replyToChannel("Import URL is missing.")
+            return
+        }
+        guard let url = NSURL(string: args[0]) else {
+            message.replyToChannel("Invalid URL provided.")
+            return
+        }
+
+        if url.fileURL {
+            // File URL requires owners permissions
+            if let senderId = message.author?.id {
+                if !Config.ownerIds.contains(senderId) {
+                    message.replyToChannel("File URL access is restricted to bot owners.")
+                    return
+                }
+            }
+        }
+
+        let task = NSURLSession.sharedSession().downloadTaskWithURL(url, completionHandler: {
+            (location: NSURL?, response: NSURLResponse?, error: NSError?) in
+            if let error = error {
+                message.replyToSender("Failed to import due to error: \(error).")
+                return
+            }
+            if let location = location {
+                do {
+                    let importer = CustomCommandImporter()
+                    let data = try NSData(contentsOfURL: location, options: NSDataReadingOptions.DataReadingMappedAlways)
+                    let result = try importer.importFromData(data)
+                    message.replyToChannel("Imported \(result.cmdImported) commands, updated \(result.cmdUpdated) commands and added \(result.catImported) categories")
+                } catch CustomComandImportError.UTF8DecodingFailure {
+                    message.replyToSender("Failed to import due failure to decode data as UTF-8.")
+                } catch CustomComandImportError.YamlError(let errorMsg) {
+                    if let msg = errorMsg {
+                        message.replyToSender("Failed to import due failure to Yaml error: \(msg)")
+                    } else {
+                        message.replyToSender("Failed to import due failure to unknown Yaml error.")
+                    }
+                } catch {
+                    message.replyToSender("Failed to open download data for reading: \(error)")
+                }
+            } else {
+                message.replyToSender("No data returned from network call.")
+            }
+        })
+        task.resume()
+    }
 }
 
 

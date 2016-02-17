@@ -195,23 +195,15 @@ extension CoreDataManager {
 
 // MARK: Base functionality
 extension CoreDataManager {
-    func save() {
+    func save(synchronous: Bool = false) {
         guard let ctx = self.managedObjectContext else {
             LOG_ERROR("Can't save database, no object context available.")
             return
         }
-        ctx.performBlockAndWait {
-            self.saveCtx(ctx)
-        }
-    }
-
-    func setNeedsSave() {
-        guard let ctx = self.managedObjectContext else {
-            LOG_ERROR("Can't save database, no object context available.")
-            return
-        }
-        ctx.performBlock {
-            self.saveCtx(ctx)
+        if synchronous {
+            ctx.performBlockAndWait { self.saveCtx(ctx) }
+        } else {
+            ctx.performBlock { self.saveCtx(ctx) }
         }
     }
 

@@ -30,14 +30,14 @@ enum CustomComandImportError: ErrorType {
     public func importFromFile(file: String) {
         do {
             let filedata = try NSData(contentsOfFile: file, options: NSDataReadingOptions.DataReadingMappedAlways)
-            try importFromData(filedata)
+            try importFromData(filedata, synchronous: true)
         } catch {
             LOG_ERROR("Failed to load import file \(file): \(error)")
             exit(1)
         }
     }
 
-    public func importFromData(data: NSData) throws -> (cmdImported: Int, catImported: Int, cmdUpdated: Int){
+    public func importFromData(data: NSData, synchronous: Bool = false) throws -> (cmdImported: Int, catImported: Int, cmdUpdated: Int){
         guard let filestring = String(data: data, encoding: NSUTF8StringEncoding) else {
             throw CustomComandImportError.UTF8DecodingFailure
         }
@@ -72,7 +72,7 @@ enum CustomComandImportError: ErrorType {
                     catObj?.commands.insert(cmdObject!)
                 }
             }
-            cdm.save()
+            cdm.save(synchronous)
         } else {
             throw CustomComandImportError.YamlError(error: importCmd.error)
         }
