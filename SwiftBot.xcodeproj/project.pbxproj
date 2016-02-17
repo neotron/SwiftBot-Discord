@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6041E52A6C9353A2361E6798 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5FBDBE352A5E9230959E180 /* Pods.framework */; };
 		6D99905F3E2C8DF5CCA529B8 /* CustomCommandMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999C5D5F483E5FD8BBBEAC /* CustomCommandMessageHandler.swift */; };
 		6D9990765663CA1B1AFABB9E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999FFC0E946BF809856F8E /* Message.swift */; };
 		6D9990DDA756F72E2A24D4BF /* MessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999B589530284A2E9ADC50 /* MessageHandler.swift */; };
@@ -53,30 +52,26 @@
 		723DAF2B1C71BCEA000CCCCE /* CommandGroup+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DAF271C71BCEA000CCCCE /* CommandGroup+CoreDataProperties.swift */; };
 		723DAF2C1C71BCEA000CCCCE /* CommandGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DAF281C71BCEA000CCCCE /* CommandGroup.swift */; };
 		723DAF3C1C72D4DE000CCCCE /* petopt.c in Sources */ = {isa = PBXBuildFile; fileRef = 723DAF3B1C72D4DE000CCCCE /* petopt.c */; };
-		723DAF3E1C72EE09000CCCCE /* Yaml.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 723DAF3D1C72EE09000CCCCE /* Yaml.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		723DAF7F1C74215E000CCCCE /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DAF7D1C74215E000CCCCE /* User+CoreDataProperties.swift */; };
 		723DAF801C74215E000CCCCE /* UserRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DAF7E1C74215E000CCCCE /* UserRole.swift */; };
+		723DAF821C744A1F000CCCCE /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 723DAF811C744A1F000CCCCE /* libz.tbd */; };
+		723DAF861C744AF8000CCCCE /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 723DAF831C744AF8000CCCCE /* Alamofire.framework */; };
+		723DAF871C744AF8000CCCCE /* AlamofireObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 723DAF841C744AF8000CCCCE /* AlamofireObjectMapper.framework */; };
+		723DAF881C744AF8000CCCCE /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 723DAF851C744AF8000CCCCE /* ObjectMapper.framework */; };
+		723DAF901C744C7D000CCCCE /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 723DAF891C744C7D000CCCCE /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		723DAF911C744C7D000CCCCE /* AlamofireObjectMapper.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 723DAF8A1C744C7D000CCCCE /* AlamofireObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		723DAF921C744C7D000CCCCE /* Locksmith.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 723DAF8B1C744C7D000CCCCE /* Locksmith.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		723DAF931C744C7D000CCCCE /* ObjectMapper.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 723DAF8C1C744C7D000CCCCE /* ObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		723DAF941C744C7D000CCCCE /* Pods.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 723DAF8D1C744C7D000CCCCE /* Pods.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		723DAF951C744C7D000CCCCE /* Starscream.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 723DAF8E1C744C7D000CCCCE /* Starscream.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		723DAF961C744C7D000CCCCE /* Yaml.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 723DAF8F1C744C7D000CCCCE /* Yaml.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		724A77C81C6ED63000CB0F1D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 724A77C71C6ED63000CB0F1D /* main.m */; };
 		724A77CF1C6ED71000CB0F1D /* SwiftBot in Copy Executable */ = {isa = PBXBuildFile; fileRef = 724A77C51C6ED63000CB0F1D /* SwiftBot */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		724A77D01C6ED7ED00CB0F1D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5FBDBE352A5E9230959E180 /* Pods.framework */; };
 		724A77F91C6ED9BA00CB0F1D /* DiscordAPI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77D71C6ED97200CB0F1D /* DiscordAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		724A77FA1C6ED9BA00CB0F1D /* SwiftBotCore.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77F11C6ED9AE00CB0F1D /* SwiftBotCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		724A77FB1C6ED9C500CB0F1D /* SwiftBotCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77F11C6ED9AE00CB0F1D /* SwiftBotCore.framework */; };
-		724A77FC1C6EDA9400CB0F1D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5FBDBE352A5E9230959E180 /* Pods.framework */; };
-		724A77FD1C6EDA9400CB0F1D /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77A21C6ED3E100CB0F1D /* Starscream.framework */; };
-		724A78011C6EDA9400CB0F1D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77FE1C6EDA9400CB0F1D /* Alamofire.framework */; };
-		724A78021C6EDA9400CB0F1D /* AlamofireObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77FF1C6EDA9400CB0F1D /* AlamofireObjectMapper.framework */; };
-		724A78031C6EDA9400CB0F1D /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724A78001C6EDA9400CB0F1D /* ObjectMapper.framework */; };
 		724A78041C6EDC2000CB0F1D /* DiscordAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77D71C6ED97200CB0F1D /* DiscordAPI.framework */; };
-		724A78051C6EDC2000CB0F1D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77FE1C6EDA9400CB0F1D /* Alamofire.framework */; };
-		724A78061C6EDC2000CB0F1D /* AlamofireObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77FF1C6EDA9400CB0F1D /* AlamofireObjectMapper.framework */; };
-		724A78071C6EDC2000CB0F1D /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724A78001C6EDA9400CB0F1D /* ObjectMapper.framework */; };
-		724A78081C6EDC2000CB0F1D /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77A21C6ED3E100CB0F1D /* Starscream.framework */; };
-		724A780C1C6F1F1400CB0F1D /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 724A780B1C6F1F1400CB0F1D /* libz.tbd */; };
-		724A781F1C706CE000CB0F1D /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 724A781A1C706CE000CB0F1D /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		724A78201C706CE000CB0F1D /* AlamofireObjectMapper.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 724A781B1C706CE000CB0F1D /* AlamofireObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		724A78211C706CE000CB0F1D /* ObjectMapper.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 724A781C1C706CE000CB0F1D /* ObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		724A78231C706CE000CB0F1D /* Starscream.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 724A781E1C706CE000CB0F1D /* Starscream.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AC0027D084082C151DD345C4 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E56A0AE014DC44ECFD3F9754 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,11 +114,13 @@
 			files = (
 				724A77F91C6ED9BA00CB0F1D /* DiscordAPI.framework in Copy Frameworks */,
 				724A77FA1C6ED9BA00CB0F1D /* SwiftBotCore.framework in Copy Frameworks */,
-				724A781F1C706CE000CB0F1D /* Alamofire.framework in Copy Frameworks */,
-				724A78201C706CE000CB0F1D /* AlamofireObjectMapper.framework in Copy Frameworks */,
-				724A78211C706CE000CB0F1D /* ObjectMapper.framework in Copy Frameworks */,
-				724A78231C706CE000CB0F1D /* Starscream.framework in Copy Frameworks */,
-				723DAF3E1C72EE09000CCCCE /* Yaml.framework in Copy Frameworks */,
+				723DAF901C744C7D000CCCCE /* Alamofire.framework in Copy Frameworks */,
+				723DAF911C744C7D000CCCCE /* AlamofireObjectMapper.framework in Copy Frameworks */,
+				723DAF921C744C7D000CCCCE /* Locksmith.framework in Copy Frameworks */,
+				723DAF931C744C7D000CCCCE /* ObjectMapper.framework in Copy Frameworks */,
+				723DAF941C744C7D000CCCCE /* Pods.framework in Copy Frameworks */,
+				723DAF951C744C7D000CCCCE /* Starscream.framework in Copy Frameworks */,
+				723DAF961C744C7D000CCCCE /* Yaml.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -203,11 +200,20 @@
 		723DAF281C71BCEA000CCCCE /* CommandGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandGroup.swift; sourceTree = "<group>"; };
 		723DAF3A1C72D4DE000CCCCE /* petopt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = petopt.h; sourceTree = "<group>"; };
 		723DAF3B1C72D4DE000CCCCE /* petopt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = petopt.c; sourceTree = "<group>"; };
-		723DAF3D1C72EE09000CCCCE /* Yaml.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Yaml.framework; path = /workspace/build/XCode/DerivedData/Build/Products/Debug/Yaml.framework; sourceTree = "<absolute>"; };
 		723DAF7C1C741F5D000CCCCE /* SwiftBotModel 2 UserRoles .xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SwiftBotModel 2 UserRoles .xcdatamodel"; sourceTree = "<group>"; };
 		723DAF7D1C74215E000CCCCE /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		723DAF7E1C74215E000CCCCE /* UserRole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRole.swift; sourceTree = "<group>"; };
-		724A77A21C6ED3E100CB0F1D /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = ../build/XCode/DerivedData/Build/Products/Debug/Starscream.framework; sourceTree = "<group>"; };
+		723DAF811C744A1F000CCCCE /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		723DAF831C744AF8000CCCCE /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		723DAF841C744AF8000CCCCE /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlamofireObjectMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		723DAF851C744AF8000CCCCE /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ObjectMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		723DAF891C744C7D000CCCCE /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Alamofire.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		723DAF8A1C744C7D000CCCCE /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = AlamofireObjectMapper.framework; path = AlamofireObjectMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		723DAF8B1C744C7D000CCCCE /* Locksmith.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Locksmith.framework; path = Locksmith.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		723DAF8C1C744C7D000CCCCE /* ObjectMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = ObjectMapper.framework; path = ObjectMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		723DAF8D1C744C7D000CCCCE /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Pods.framework; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		723DAF8E1C744C7D000CCCCE /* Starscream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Starscream.framework; path = Starscream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		723DAF8F1C744C7D000CCCCE /* Yaml.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Yaml.framework; path = Yaml.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		724A77AA1C6ED55B00CB0F1D /* SwiftBot.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftBot.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		724A77AC1C6ED55B00CB0F1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		724A77C51C6ED63000CB0F1D /* SwiftBot */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftBot; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -216,19 +222,7 @@
 		724A77F11C6ED9AE00CB0F1D /* SwiftBotCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftBotCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		724A77F31C6ED9AE00CB0F1D /* SwiftBotCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftBotCore.h; sourceTree = "<group>"; };
 		724A77F51C6ED9AE00CB0F1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		724A77FE1C6EDA9400CB0F1D /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = ../build/XCode/DerivedData/Build/Products/Debug/Alamofire.framework; sourceTree = "<group>"; };
-		724A77FF1C6EDA9400CB0F1D /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireObjectMapper.framework; path = ../build/XCode/DerivedData/Build/Products/Debug/AlamofireObjectMapper.framework; sourceTree = "<group>"; };
-		724A78001C6EDA9400CB0F1D /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = ../build/XCode/DerivedData/Build/Products/Debug/ObjectMapper.framework; sourceTree = "<group>"; };
-		724A78091C6F1F0D00CB0F1D /* GZIP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GZIP.framework; path = Pods/../build/Debug/GZIP.framework; sourceTree = "<group>"; };
-		724A780B1C6F1F1400CB0F1D /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		724A780D1C6F222300CB0F1D /* BBSZLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BBSZLib.framework; path = Pods/../build/Debug/BBSZLib.framework; sourceTree = "<group>"; };
-		724A780F1C6F230700CB0F1D /* DeflateSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeflateSwift.framework; path = ../build/XCode/DerivedData/Build/Products/Debug/DeflateSwift.framework; sourceTree = "<group>"; };
-		724A781A1C706CE000CB0F1D /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Alamofire.framework; path = /workspace/build/XCode/DerivedData/Build/Products/Debug/Alamofire.framework; sourceTree = "<absolute>"; };
-		724A781B1C706CE000CB0F1D /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = AlamofireObjectMapper.framework; path = /workspace/build/XCode/DerivedData/Build/Products/Debug/AlamofireObjectMapper.framework; sourceTree = "<absolute>"; };
-		724A781C1C706CE000CB0F1D /* ObjectMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = ObjectMapper.framework; path = /workspace/build/XCode/DerivedData/Build/Products/Debug/ObjectMapper.framework; sourceTree = "<absolute>"; };
-		724A781D1C706CE000CB0F1D /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods.framework; sourceTree = SOURCE_ROOT; };
-		724A781E1C706CE000CB0F1D /* Starscream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Starscream.framework; path = /workspace/build/XCode/DerivedData/Build/Products/Debug/Starscream.framework; sourceTree = "<absolute>"; };
-		D5FBDBE352A5E9230959E180 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56A0AE014DC44ECFD3F9754 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F93F6C33F3BEF78F91E158ED /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -237,7 +231,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6041E52A6C9353A2361E6798 /* Pods.framework in Frameworks */,
+				AC0027D084082C151DD345C4 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,12 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				724A78041C6EDC2000CB0F1D /* DiscordAPI.framework in Frameworks */,
-				724A78051C6EDC2000CB0F1D /* Alamofire.framework in Frameworks */,
-				724A78061C6EDC2000CB0F1D /* AlamofireObjectMapper.framework in Frameworks */,
-				724A78071C6EDC2000CB0F1D /* ObjectMapper.framework in Frameworks */,
-				724A78081C6EDC2000CB0F1D /* Starscream.framework in Frameworks */,
 				724A77FB1C6ED9C500CB0F1D /* SwiftBotCore.framework in Frameworks */,
-				724A77D01C6ED7ED00CB0F1D /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,12 +248,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				724A780C1C6F1F1400CB0F1D /* libz.tbd in Frameworks */,
-				724A78011C6EDA9400CB0F1D /* Alamofire.framework in Frameworks */,
-				724A78021C6EDA9400CB0F1D /* AlamofireObjectMapper.framework in Frameworks */,
-				724A78031C6EDA9400CB0F1D /* ObjectMapper.framework in Frameworks */,
-				724A77FC1C6EDA9400CB0F1D /* Pods.framework in Frameworks */,
-				724A77FD1C6EDA9400CB0F1D /* Starscream.framework in Frameworks */,
+				723DAF861C744AF8000CCCCE /* Alamofire.framework in Frameworks */,
+				723DAF871C744AF8000CCCCE /* AlamofireObjectMapper.framework in Frameworks */,
+				723DAF881C744AF8000CCCCE /* ObjectMapper.framework in Frameworks */,
+				723DAF821C744A1F000CCCCE /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,21 +268,11 @@
 		60737DB67018A2737B140ABE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				723DAF3D1C72EE09000CCCCE /* Yaml.framework */,
-				724A781A1C706CE000CB0F1D /* Alamofire.framework */,
-				724A781B1C706CE000CB0F1D /* AlamofireObjectMapper.framework */,
-				724A781C1C706CE000CB0F1D /* ObjectMapper.framework */,
-				724A781D1C706CE000CB0F1D /* Pods.framework */,
-				724A781E1C706CE000CB0F1D /* Starscream.framework */,
-				724A780F1C6F230700CB0F1D /* DeflateSwift.framework */,
-				724A780D1C6F222300CB0F1D /* BBSZLib.framework */,
-				724A780B1C6F1F1400CB0F1D /* libz.tbd */,
-				724A78091C6F1F0D00CB0F1D /* GZIP.framework */,
-				724A77FE1C6EDA9400CB0F1D /* Alamofire.framework */,
-				724A77FF1C6EDA9400CB0F1D /* AlamofireObjectMapper.framework */,
-				724A78001C6EDA9400CB0F1D /* ObjectMapper.framework */,
-				724A77A21C6ED3E100CB0F1D /* Starscream.framework */,
-				D5FBDBE352A5E9230959E180 /* Pods.framework */,
+				723DAF831C744AF8000CCCCE /* Alamofire.framework */,
+				723DAF841C744AF8000CCCCE /* AlamofireObjectMapper.framework */,
+				723DAF851C744AF8000CCCCE /* ObjectMapper.framework */,
+				723DAF811C744A1F000CCCCE /* libz.tbd */,
+				E56A0AE014DC44ECFD3F9754 /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -509,6 +486,13 @@
 		72B35E151C6ECD4200027CF2 = {
 			isa = PBXGroup;
 			children = (
+				723DAF891C744C7D000CCCCE /* Alamofire.framework */,
+				723DAF8A1C744C7D000CCCCE /* AlamofireObjectMapper.framework */,
+				723DAF8B1C744C7D000CCCCE /* Locksmith.framework */,
+				723DAF8C1C744C7D000CCCCE /* ObjectMapper.framework */,
+				723DAF8D1C744C7D000CCCCE /* Pods.framework */,
+				723DAF8E1C744C7D000CCCCE /* Starscream.framework */,
+				723DAF8F1C744C7D000CCCCE /* Yaml.framework */,
 				724A77AB1C6ED55B00CB0F1D /* SwiftBotBundle */,
 				724A77C61C6ED63000CB0F1D /* SwiftBot */,
 				724A77D81C6ED97200CB0F1D /* DiscordAPI */,

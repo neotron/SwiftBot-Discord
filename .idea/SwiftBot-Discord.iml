@@ -21,15 +21,17 @@
       <sourceFolder url="file://$MODULE_DIR$/README.md" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Other/zlib/module.modulemap" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Other/zlib/include.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Other/Info.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Other/DiscordAPI.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Other/Info.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Users/PrivateChannelRequest.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Users/UserModel.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Utility/Registry.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Utility/MappableBase.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Utility/URLEndpoints.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Utility/Logger.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Utility/NSData+GZIP.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/WebSockets/API/WebsocketHelloMessageModel.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/WebSockets/API/WebsocketHeartbeatModel.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/WebSockets/API/WebsocketMessageModel.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/WebSockets/API/GatewayUrlRequest.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/WebSockets/API/GatewayUrlResponseModel.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/WebSockets/API/WebsocketReadyMessageModel.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/WebSockets/WebsocketAPIManager.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/General/ChannelModel.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Auth/LoginRequest.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Auth/LoginResponseModel.swift" isTestSource="false" />
@@ -38,13 +40,11 @@
       <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Messages/EmbedsModel.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Messages/MessageModel.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Messages/SendMessageRequest.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/WebSockets/API/WebsocketHelloMessageModel.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/WebSockets/API/WebsocketHeartbeatModel.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/WebSockets/API/WebsocketMessageModel.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/WebSockets/API/GatewayUrlRequest.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/WebSockets/API/GatewayUrlResponseModel.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/WebSockets/API/WebsocketReadyMessageModel.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/WebSockets/WebsocketAPIManager.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Utility/Registry.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Utility/MappableBase.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Utility/NSData+GZIP.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Utility/Logger.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/API/Utility/URLEndpoints.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DiscordAPI/Source/Discord.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/MessageHandlers/CustomCommandMessageHandler.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/MessageHandlers/UserRoleMessageHandler.swift" isTestSource="false" />
@@ -61,52 +61,49 @@
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/Database/UserRole.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/Database/CommandGroup.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/Database/User+CoreDataProperties.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/Database/Commandable.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/Database/CommandAlias.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/Database/CoreDataManager.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/Database/CommandGroup+CoreDataProperties.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/Database/Commandable.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/Database/CoreDataObjectTypes.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/Database/CommandAlias+CoreDataProperties.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/Info.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/SwiftBotCore.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/Message.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/MessageDispatcher.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Podfile" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Alamofire/Source/Timeline.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Alamofire/Source/Response.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Alamofire/Source/Error.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Alamofire/Source/Stream.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Alamofire/Source/MultipartFormData.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Alamofire/Source/ServerTrustPolicy.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Alamofire/Source/ParameterEncoding.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Alamofire/Source/Alamofire.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Alamofire/Source/Result.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Alamofire/Source/Manager.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Alamofire/Source/Download.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Alamofire/Source/NetworkReachabilityManager.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Alamofire/Source/ParameterEncoding.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Alamofire/Source/ResponseSerialization.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Alamofire/Source/Request.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Alamofire/Source/Notifications.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Alamofire/Source/Validation.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Alamofire/Source/Upload.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Alamofire/Source/Alamofire.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Alamofire/Source/Validation.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Locksmith/Source/LocksmithAccessibleOption.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Locksmith/Source/LocksmithInternetProtocol.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Locksmith/Source/Dictionary_Initializers.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Locksmith/Source/LocksmithError.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Locksmith/Source/Locksmith.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Locksmith/Source/LocksmithInternetAuthenticationType.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Locksmith/Source/LocksmithInternetProtocol.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Locksmith/Source/Locksmith.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Locksmith/Source/LocksmithSecurityClass.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Locksmith/Source/Locksmith.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/AlamofireObjectMapper/AlamofireObjectMapper/AlamofireObjectMapper.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods/Pods-acknowledgements.markdown" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods/Pods-resources.sh" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods/Pods-frameworks.sh" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods/Pods.modulemap" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods/Pods.release.xcconfig" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods/Info.plist" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods/Pods-umbrella.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods/Pods-dummy.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods/Pods.debug.xcconfig" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods/Pods-acknowledgements.plist" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Alamofire/Alamofire.modulemap" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Alamofire/Alamofire-umbrella.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Alamofire/Info.plist" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Alamofire/Alamofire-prefix.pch" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Alamofire/Alamofire.xcconfig" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Alamofire/Alamofire-dummy.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Locksmith/Locksmith-dummy.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Locksmith/Locksmith.modulemap" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Locksmith/Locksmith.xcconfig" isTestSource="false" />
@@ -125,18 +122,22 @@
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Yaml/Yaml.modulemap" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Yaml/Info.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Yaml/Yaml-umbrella.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Alamofire/Alamofire.modulemap" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Alamofire/Alamofire-umbrella.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Alamofire/Info.plist" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Alamofire/Alamofire-prefix.pch" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Alamofire/Alamofire.xcconfig" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Alamofire/Alamofire-dummy.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Starscream/Starscream.xcconfig" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Starscream/Starscream-dummy.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Starscream/Starscream-prefix.pch" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Starscream/Starscream.xcconfig" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Starscream/Info.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Starscream/Starscream.modulemap" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Starscream/Starscream-prefix.pch" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Starscream/Starscream-umbrella.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods/Pods-acknowledgements.plist" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods/Pods.modulemap" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods/Pods-frameworks.sh" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods/Pods-resources.sh" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods/Pods.release.xcconfig" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods/Info.plist" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods/Pods-umbrella.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods/Pods-dummy.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods/Pods-acknowledgements.markdown" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods/Pods.debug.xcconfig" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/ObjectMapper/ObjectMapper-prefix.pch" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/ObjectMapper/ObjectMapper.xcconfig" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/ObjectMapper/ObjectMapper-dummy.m" isTestSource="false" />
@@ -151,12 +152,12 @@
       <sourceFolder url="file://$MODULE_DIR$/Pods/Yaml/Yaml/Result.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Starscream/Source/WebSocket.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Starscream/Source/SSLSecurity.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/ObjectMapper/ObjectMapper/Core/ToJSON.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/ObjectMapper/ObjectMapper/Core/Map.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/ObjectMapper/ObjectMapper/Core/Mappable.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/ObjectMapper/ObjectMapper/Core/FromJSON.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/ObjectMapper/ObjectMapper/Core/ToJSON.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/ObjectMapper/ObjectMapper/Core/Mapper.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/ObjectMapper/ObjectMapper/Core/Operators.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/ObjectMapper/ObjectMapper/Core/Map.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/ObjectMapper/ObjectMapper/Transforms/TransformType.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/ObjectMapper/ObjectMapper/Transforms/TransformOf.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/ObjectMapper/ObjectMapper/Transforms/DateTransform.swift" isTestSource="false" />
@@ -165,7 +166,6 @@
       <sourceFolder url="file://$MODULE_DIR$/Pods/ObjectMapper/ObjectMapper/Transforms/DateFormatterTransform.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/ObjectMapper/ObjectMapper/Transforms/EnumTransform.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/ObjectMapper/ObjectMapper/Transforms/ISO8601DateTransform.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Podfile" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
