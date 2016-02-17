@@ -48,7 +48,7 @@ public class WebsocketAPIManager: NSObject, WebSocketDelegate {
         socket!.connect()
     }
 
-    func handleMessage(_ text: String) {
+    func handleMessage(text: String) {
         if let message = Mapper<WebsocketMessageModel>().map(text), type = message.type, data = message.data {
             switch (type) {
             case "READY":

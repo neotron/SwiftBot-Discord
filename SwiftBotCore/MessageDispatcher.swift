@@ -74,13 +74,13 @@ class MessageDispatchManager : MessageHandler {
 
     func registerMessageHandler(handler: MessageHandler) {
         if let prefixes = handler.prefixes {
-            for var prefix in prefixes {
+            for prefix in prefixes {
                 addHandlerForCommand(prefix, inDict: &prefixHandlers, handler: handler)
             }
         }
 
         if let commands = handler.commands {
-            for var command in commands {
+            for command in commands {
                 addHandlerForCommand(command, inDict: &commandHandlers, handler: handler)
             }
         }
@@ -108,7 +108,7 @@ class MessageDispatchManager : MessageHandler {
     }
 
     func processMessage(message: MessageModel, event: MessageEventType) {
-        guard let content = message.content, authorName = message.author?.username, authorId = message.author?.id, channelId = message.channelId else {
+        guard let content = message.content, _ = message.author?.username, _ = message.author?.id, _ = message.channelId else {
             LOG_DEBUG("Not handling message - missing content, author username or channel id");
             return
         }

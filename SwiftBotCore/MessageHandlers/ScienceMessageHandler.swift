@@ -114,7 +114,6 @@ class ScienceMessageHandler : MessageHandler {
     }
 
     private func handleRoute(args: [String], message: Message) {
-        let failure = false
         var maxDistance = 1000.0
         if args.count < 2 {
             message.replyToChannel("Missing arguments. Expected: <JumpRange> <SgrA* distance in kly> [optional max plot in ly]")

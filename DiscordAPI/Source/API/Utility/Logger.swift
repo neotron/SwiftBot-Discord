@@ -5,7 +5,7 @@
 
 import Foundation
 
-private func _shouldLogLevel(_ level: LoggingLevel) -> Bool {
+private func _shouldLogLevel(level: LoggingLevel) -> Bool {
     if !Registry.instance.debugEnabled && level == .Debug {
         return false
     }

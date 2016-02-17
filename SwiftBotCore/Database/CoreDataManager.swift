@@ -96,12 +96,26 @@ extension CoreDataManager {
 // MARK: Base functionality
 extension CoreDataManager {
     func save() {
-        NSObject.cancelPreviousPerformRequestsWithTarget(self)
         guard let ctx = self.managedObjectContext else {
             LOG_ERROR("Can't save database, no object context available.")
             return
         }
-        let lock = AutoUnlock(ctx)
+        ctx.performBlockAndWait {
+            self.saveCtx(ctx)
+        }
+    }
+
+    func setNeedsSave() {
+        guard let ctx = self.managedObjectContext else {
+            LOG_ERROR("Can't save database, no object context available.")
+            return
+        }
+        ctx.performBlock {
+            self.saveCtx(ctx)
+        }
+    }
+
+    private func saveCtx(ctx: NSManagedObjectContext) {
         if ctx.hasChanges {
             do {
                 try ctx.save()
@@ -112,17 +126,14 @@ extension CoreDataManager {
         }
     }
 
-    func setNeedsSave() {
-        NSObject.cancelPreviousPerformRequestsWithTarget(self)
-        self.performSelector("save", withObject: nil, afterDelay: 5.0);
-    }
-
     func createObjectOfType(type: CoreDataObjectTypes) -> NSManagedObject? {
+        var newEntity : NSManagedObject?
         if let ctx = self.managedObjectContext {
-            let lock = AutoUnlock(ctx)
-            return NSEntityDescription.insertNewObjectForEntityForName(type.rawValue, inManagedObjectContext: ctx)
+            ctx.performBlockAndWait {
+                newEntity = NSEntityDescription.insertNewObjectForEntityForName(type.rawValue, inManagedObjectContext: ctx)
+            }
         }
-        return nil
+        return newEntity
     }
 
     func fetchObjectsOfType(type: CoreDataObjectTypes, withPredicate predicate: NSPredicate?,
@@ -132,20 +143,24 @@ extension CoreDataManager {
             LOG_ERROR("Fetch failed: No managed object context.")
             return nil
         }
-        let lock = AutoUnlock(ctx)
-        var request = NSFetchRequest()
-        request.entity = NSEntityDescription.entityForName(type.rawValue, inManagedObjectContext: ctx)
-        request.predicate = predicate
-        request.sortDescriptors = sortOrder
-        request.fetchLimit = fetchLimit
-        request.fetchOffset = fetchOffset
-        do {
-            let result = try ctx.executeFetchRequest(request)
-            return result.count == 0 ? nil : result
-        } catch {
-            LOG_ERROR("Error during fetch: \(error)")
-            return nil
+        var result: [AnyObject]?
+        ctx.performBlockAndWait {
+            let request = NSFetchRequest()
+            request.entity = NSEntityDescription.entityForName(type.rawValue, inManagedObjectContext: ctx)
+            request.predicate = predicate
+            request.sortDescriptors = sortOrder
+            request.fetchLimit = fetchLimit
+            request.fetchOffset = fetchOffset
+            do {
+                result = try ctx.executeFetchRequest(request)
+            } catch {
+                LOG_ERROR("Error during fetch: \(error)")
+            }
         }
+        if let result = result {
+            return result.count == 0 ? nil : result
+        }
+        return nil
     }
 
     func deleteObject(object: NSManagedObject) -> Bool {
@@ -153,8 +168,10 @@ extension CoreDataManager {
             LOG_ERROR("Delete failed: No managed object context.")
             return false
         }
-        let lock = AutoUnlock(ctx)
-        ctx.deleteObject(object)
+        ctx.performBlock {
+            ctx.deleteObject(object)
+        };
+
         return true
     }
 
@@ -184,7 +201,7 @@ extension CoreDataManager {
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: objectModel)
 
         do {
-            let store = try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeUrl, options: [
+            let _ = try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeUrl, options: [
                     NSMigratePersistentStoresAutomaticallyOption: true,
                     NSInferMappingModelAutomaticallyOption: true
             ])
@@ -211,23 +228,8 @@ extension CoreDataManager {
             LOG_ERROR("Can't create managed object context - no coordinator available.")
             return nil
         }
-        let managedObjectContext = NSManagedObjectContext()
+        let managedObjectContext = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = coordinator
         return managedObjectContext
-    }
-}
-
-// MARK: AutoUnlock
-// Small utility class that locks a lockable on creation, and unlocks when it's freed.
-private class AutoUnlock {
-    private var lockable: NSLocking
-    init(_ lockable: NSLocking){
-        self.lockable = lockable
-        lockable.lock()
-        LOG_DEBUG("Locked \(lockable)")
-    }
-    deinit  {
-        lockable.unlock()
-        LOG_DEBUG("Unlocked \(lockable)")
     }
 }

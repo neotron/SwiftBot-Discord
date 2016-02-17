@@ -13,7 +13,7 @@ public class LoginResponseModel: MappableBase {
 
     public var error: NSError? {
         if(token == nil) {
-            var errorString = "LoginFailure"
+            let errorString = "LoginFailure"
             var userInfo = [String:String]()
             userInfo[NSLocalizedDescriptionKey] = "Login failed due to authentication failure."
             userInfo[NSLocalizedRecoverySuggestionErrorKey] = "Verify your user name and password."

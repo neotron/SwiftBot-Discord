@@ -52,10 +52,11 @@
 		723DAF2C1C71BCEA000CCCCE /* CommandGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DAF281C71BCEA000CCCCE /* CommandGroup.swift */; };
 		723DAF3C1C72D4DE000CCCCE /* petopt.c in Sources */ = {isa = PBXBuildFile; fileRef = 723DAF3B1C72D4DE000CCCCE /* petopt.c */; };
 		723DAF3E1C72EE09000CCCCE /* Yaml.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 723DAF3D1C72EE09000CCCCE /* Yaml.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		723DAF7F1C74215E000CCCCE /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DAF7D1C74215E000CCCCE /* User+CoreDataProperties.swift */; };
+		723DAF801C74215E000CCCCE /* UserRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DAF7E1C74215E000CCCCE /* UserRole.swift */; };
 		724A77C81C6ED63000CB0F1D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 724A77C71C6ED63000CB0F1D /* main.m */; };
 		724A77CF1C6ED71000CB0F1D /* SwiftBot in Copy Executable */ = {isa = PBXBuildFile; fileRef = 724A77C51C6ED63000CB0F1D /* SwiftBot */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		724A77D01C6ED7ED00CB0F1D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5FBDBE352A5E9230959E180 /* Pods.framework */; };
-		724A77F41C6ED9AE00CB0F1D /* SwiftBotCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 724A77F31C6ED9AE00CB0F1D /* SwiftBotCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		724A77F91C6ED9BA00CB0F1D /* DiscordAPI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77D71C6ED97200CB0F1D /* DiscordAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		724A77FA1C6ED9BA00CB0F1D /* SwiftBotCore.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77F11C6ED9AE00CB0F1D /* SwiftBotCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		724A77FB1C6ED9C500CB0F1D /* SwiftBotCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77F11C6ED9AE00CB0F1D /* SwiftBotCore.framework */; };
@@ -199,6 +200,9 @@
 		723DAF3A1C72D4DE000CCCCE /* petopt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = petopt.h; sourceTree = "<group>"; };
 		723DAF3B1C72D4DE000CCCCE /* petopt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = petopt.c; sourceTree = "<group>"; };
 		723DAF3D1C72EE09000CCCCE /* Yaml.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Yaml.framework; path = /workspace/build/XCode/DerivedData/Build/Products/Debug/Yaml.framework; sourceTree = "<absolute>"; };
+		723DAF7C1C741F5D000CCCCE /* SwiftBotModel 2 UserRoles .xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SwiftBotModel 2 UserRoles .xcdatamodel"; sourceTree = "<group>"; };
+		723DAF7D1C74215E000CCCCE /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		723DAF7E1C74215E000CCCCE /* UserRole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRole.swift; sourceTree = "<group>"; };
 		724A77A21C6ED3E100CB0F1D /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = ../build/XCode/DerivedData/Build/Products/Debug/Starscream.framework; sourceTree = "<group>"; };
 		724A77AA1C6ED55B00CB0F1D /* SwiftBot.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftBot.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		724A77AC1C6ED55B00CB0F1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -273,6 +277,7 @@
 		60737DB67018A2737B140ABE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				723DAF3D1C72EE09000CCCCE /* Yaml.framework */,
 				724A781A1C706CE000CB0F1D /* Alamofire.framework */,
 				724A781B1C706CE000CB0F1D /* AlamofireObjectMapper.framework */,
 				724A781C1C706CE000CB0F1D /* ObjectMapper.framework */,
@@ -312,6 +317,8 @@
 				6D999F3B254BE1F033FC51E1 /* CoreDataManager.swift */,
 				6D9992E6ACB30F538A5AB11A /* CoreDataObjectTypes.swift */,
 				6D9997569FF5B0DE59FF826F /* Commandable.swift */,
+				723DAF7D1C74215E000CCCCE /* User+CoreDataProperties.swift */,
+				723DAF7E1C74215E000CCCCE /* UserRole.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -496,7 +503,6 @@
 		72B35E151C6ECD4200027CF2 = {
 			isa = PBXGroup;
 			children = (
-				723DAF3D1C72EE09000CCCCE /* Yaml.framework */,
 				724A77AB1C6ED55B00CB0F1D /* SwiftBotBundle */,
 				724A77C61C6ED63000CB0F1D /* SwiftBot */,
 				724A77D81C6ED97200CB0F1D /* DiscordAPI */,
@@ -536,7 +542,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				724A77F41C6ED9AE00CB0F1D /* SwiftBotCore.h in Headers */,
 				6D9991B519E4ABB0A5BCCCAF /* DiscordAPI.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -790,8 +795,10 @@
 				723DAF2C1C71BCEA000CCCCE /* CommandGroup.swift in Sources */,
 				6D99990D819B87E9A8C2B9F4 /* RandomAnimalsMessageHandler.swift in Sources */,
 				6D999714D68D9C89FB2492AB /* ScienceMessageHandler.swift in Sources */,
+				723DAF801C74215E000CCCCE /* UserRole.swift in Sources */,
 				6D99991C638324F3B500303E /* IdentifierMessageHandler.swift in Sources */,
 				723DAF291C71BCEA000CCCCE /* CommandAlias+CoreDataProperties.swift in Sources */,
+				723DAF7F1C74215E000CCCCE /* User+CoreDataProperties.swift in Sources */,
 				6D9990765663CA1B1AFABB9E /* Message.swift in Sources */,
 				6D9992F0076C92E144D1AD59 /* SwiftBotMain.swift in Sources */,
 				6D999D6B4B876537EDA2BE5E /* CoreDataManager.swift in Sources */,
@@ -898,7 +905,7 @@
 				INFOPLIST_FILE = DiscordAPI/Other/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.neotron.DiscordAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -925,7 +932,7 @@
 				INFOPLIST_FILE = DiscordAPI/Other/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.neotron.DiscordAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -948,7 +955,7 @@
 				INFOPLIST_FILE = SwiftBotCore/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.neotron.SwiftBotCore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -970,7 +977,7 @@
 				INFOPLIST_FILE = SwiftBotCore/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.neotron.SwiftBotCore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1115,9 +1122,10 @@
 		723DAF221C71BBA1000CCCCE /* SwiftBotModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				723DAF7C1C741F5D000CCCCE /* SwiftBotModel 2 UserRoles .xcdatamodel */,
 				723DAF231C71BBA1000CCCCE /* SwiftBotModel.xcdatamodel */,
 			);
-			currentVersion = 723DAF231C71BBA1000CCCCE /* SwiftBotModel.xcdatamodel */;
+			currentVersion = 723DAF7C1C741F5D000CCCCE /* SwiftBotModel 2 UserRoles .xcdatamodel */;
 			path = SwiftBotModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

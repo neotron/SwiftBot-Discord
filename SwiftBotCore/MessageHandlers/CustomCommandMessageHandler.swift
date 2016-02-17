@@ -114,7 +114,7 @@ extension CustomCommandMessageHandler {
             message.replyToChannel("Command *\(existingCommand.command)* already exist. Use *\(Config.commandPrefix)\(Command.EditCommand.rawValue)* instead.")
             return
         }
-        if let commandNameConflict = cdm.loadCommandGroup(args[0]) {
+        if let _ = cdm.loadCommandGroup(args[0]) {
             message.replyToChannel("Error: Cannot add command *\(args[0])* since there's already a category with that name.")
             return
         }
@@ -237,7 +237,7 @@ extension CustomCommandMessageHandler {
             message.replyToChannel("Command *\(args[1])* doesn't exist.")
             return
         }
-        if let commandNameConflict = cdm.loadCommandAlias(args[0]) {
+        if let _ = cdm.loadCommandAlias(args[0]) {
             message.replyToChannel("Error: Cannot add category *\(args[0])* since there's already a command with that name.")
             return
         }

@@ -94,9 +94,9 @@ class RandomAnimalsMessageHandler: MessageHandler, NSURLSessionTaskDelegate {
     @available(OSX 10.9, *) func URLSession(session: NSURLSession, task: NSURLSessionTask,
                                             willPerformHTTPRedirection response: NSHTTPURLResponse,
                                             newRequest request: NSURLRequest, completionHandler: (NSURLRequest?) -> Void) {
-        if let httpResp = response as? NSHTTPURLResponse, message = self.pendingCorgieChannels[task.taskIdentifier] {
-            if(httpResp.statusCode == 302) {
-                if let doge = httpResp.allHeaderFields["Location"] as? String {
+        if let message = self.pendingCorgieChannels[task.taskIdentifier] {
+            if(response.statusCode == 302) {
+                if let doge = response.allHeaderFields["Location"] as? String {
                     message.replyToChannel(doge)
                     return
                 }

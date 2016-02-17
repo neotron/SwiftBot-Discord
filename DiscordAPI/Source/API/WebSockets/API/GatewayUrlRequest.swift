@@ -8,7 +8,7 @@ import Alamofire
 import AlamofireObjectMapper
 
 class GatewayUrlRequest {
-    public func execute(callback: ((Bool)->Void)?) {
+    internal func execute(callback: ((Bool)->Void)?) {
         guard let token = Registry.instance.token else {
             LOG_ERROR("Cannot retrieve endpoint, login first.")
             callback?(false)
