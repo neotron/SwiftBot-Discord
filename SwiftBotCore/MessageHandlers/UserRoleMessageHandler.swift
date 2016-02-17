@@ -6,7 +6,7 @@
 import Foundation
 import DiscordAPI
 
-class UserRoleAuthenticatedMessageHandler: AuthenticatedMessageHandler {
+class UserRoleMessageHandler: AuthenticatedMessageHandler {
     override var commands: [MessageCommand]? {
         return [
                 ("setadm", "Add administrator role to users. Syntax: \(Config.commandPrefix)setadm @User1 [@User2, ...]"),
@@ -61,7 +61,7 @@ class UserRoleAuthenticatedMessageHandler: AuthenticatedMessageHandler {
                 ++numAdded
             }
         }
-        message.replyToChannel("Added admin role from \(numAdded) users.")
+        message.replyToChannel("Added admin role to \(numAdded) users.")
     }
 
     private func removeAdminRights(message: Message) {

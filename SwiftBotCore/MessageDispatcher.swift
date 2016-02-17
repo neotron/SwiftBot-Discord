@@ -50,6 +50,7 @@ class MessageDispatchManager : MessageHandler {
         registerMessageHandler(ScienceMessageHandler())
         registerMessageHandler(IdentifierMessageHandler())
         registerMessageHandler(CustomCommandMessageHandler())
+        registerMessageHandler(CustomCommandImportMessageHandler())
         registerMessageHandler(UserRoleMessageHandler())
     }
 

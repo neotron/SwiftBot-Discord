@@ -8,8 +8,10 @@ import Foundation
 import DiscordAPI
 
 class CustomCommandMessageHandler : MessageHandler {
+    internal static let CustomCommandGroup = "Custom Command Management"
+
     override var commandGroup: String? {
-        return "Custom Command Management"
+        return CustomCommandMessageHandler.CustomCommandGroup
     }
     override var canMatchAnything: Bool {
         return true
@@ -278,6 +280,57 @@ extension CustomCommandMessageHandler {
 
         message.replyToChannel("Command *\(command.command)* is not part of category *\(group.command)*.")
     }
+}
+
+
+class CustomCommandImportMessageHandler: AuthenticatedMessageHandler {
+    override var commands: [MessageCommand]? {
+        return [
+                ("importcmds", "Import commands from a specified URL. Requires administrator role.")
+        ]
+    }
+    override var commandGroup: String? {
+        return CustomCommandMessageHandler.CustomCommandGroup
+    }
+    override func handleAuthenticatedCommand(command: String, args: [String], message: Message) -> Bool {
+        if args.count < 1 {
+            message.replyToChannel("Import URL is missing.")
+            return true
+        }
+        guard let url = NSURL(string: args[0]) else {
+            message.replyToChannel("Invalid URL provided.")
+            return true
+        }
+        let task = NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: {
+            (data: NSData?, response: NSURLResponse?, error: NSError?) in
+            if let error = error {
+                message.replyToChannel("Failed to import due to error: \(error.localizedFailureReason).")
+                return
+            }
+            if let data = data {
+                let importer = CustomCommandImporter()
+                do {
+                    let result = try importer.importFromData(data)
+                    message.replyToChannel("Imported \(result.cmdImported) commands, updated \(result.cmdUpdated) commands and added \(result.catImported) categories")
+                } catch CustomComandImportError.UTF8DecodingFailure {
+                    message.replyToChannel("Failed to import due failure to decode data as UTF-8.")
+                } catch CustomComandImportError.YamlError(let errorMsg) {
+                    if let msg = errorMsg {
+                        message.replyToChannel("Failed to import due failure to Yaml error: \(msg)")
+                    } else {
+                        message.replyToChannel("Failed to import due failure to unknown Yaml error.")
+                    }
+                } catch {
+                    message.replyToChannel("Failed to import due failure to unknown error.")
+                }
+            } else {
+                message.replyToChannel("No data returned from network call.")
+            }
+        })
+        task.resume()
+        return true
+    }
+
 }
 
 
