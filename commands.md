@@ -1,6 +1,10 @@
-#SwiftBot Commands
+# SwiftBot Commands
 
-###Built-in Functions
+### Bot Management
++ **!help**: displays brief help message in your PMs (optionally displays in-channel)
+    * usage: `!help [here]`
+
+### Programmed Functions
 + **!g**: Calculate gravity for a planet. 
     * usage: `!g <Earth masses> <radius (km)>`
     * formula: `g = G * (mass / radius²)`
