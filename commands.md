@@ -4,7 +4,7 @@
 + !g: Calculate gravity for a planet. 
     * usage: `!g <Earth masses> <radius (km)>`
     * formula: `g = G * (mass / radius²)`
-        `G = 6.67e-11`
+        - `G = 6.67e-11`
 + !id: Return Discord ID for the user, or all @mentioned users
     * usage: `!id [@user1 @user2 ...]`
 + !kly/hr: Calculate max distance travelled per hour. 
@@ -20,5 +20,5 @@
 + !route: Calculate optimal core routing distance. 
     * usage: `!route <jump range> <distance to Sgr A* (KLY)> [max route length (LY)]`
     * formula: `route = M - ((N / 4) + (DistanceToSgrA * 2))`
-        `N = floor(1000 / JumpRange)`
-        `M = JumpRange * N`
+        - `N = floor(1000 / JumpRange)`
+        - `M = JumpRange * N`
