@@ -45,34 +45,56 @@ enum CustomComandImportError: ErrorType {
         var catImported = 0
         var cmdUpdated = 0
         let importCmd = Yaml.load(filestring)
-        if let commands = importCmd.value?.dictionary {
-            let cdm = CoreDataManager.instance
-            for (command, dict) in commands {
-                guard let commandStr = command.string, commandText = dict["cmd"].string else {
-                    continue
-                }
-                let commandHelp = dict["txt"].string
-                let category = dict["cat"].string
-                LOG_DEBUG("Importing \(commandStr): \(commandText), cat=\(category), help=\(commandHelp)")
-                var cmdObject = cdm.loadCommandAlias(commandStr)
-                if cmdObject == nil {
-                    cmdObject = cdm.createCommandAlias(commandStr, value: commandText)
-                    cmdImported++
-                } else {
-                    cmdObject?.value = commandText
-                    cmdUpdated++
-                }
-                cmdObject?.help = commandHelp
-                if let category = category {
-                    var catObj = cdm.loadCommandGroup(category)
-                    if catObj == nil {
-                        catObj = cdm.createCommandGroup(category)
-                        catImported++
+        if let topLevel = importCmd.value?.dictionary {
+            var categoryHelp = [String:String]()
+            if let categories = topLevel["categories"]?.dictionary {
+                for (cat, catHelp) in categories {
+                    if let catTxt = cat.string, catHelpTxt = catHelp.string {
+                        categoryHelp[catTxt] = catHelpTxt
                     }
-                    catObj?.commands.insert(cmdObject!)
                 }
             }
-            cdm.save(synchronous)
+            LOG_DEBUG("Category help: \(categoryHelp)");
+            if let commands = topLevel["commands"]?.dictionary {
+                let cdm = CoreDataManager.instance
+                for (command, dict) in commands {
+                    guard let commandStr = command.string, commandDict = dict.dictionary, content = commandDict["content"]?.dictionary, var commandText = content["text"]?.string else {
+                        throw CustomComandImportError.YamlError(error: "Command \(command) missing a name or required content.")
+                        continue
+                    }
+                    var cmdObject = cdm.loadCommandAlias(commandStr)
+                    if cmdObject == nil {
+                        cmdObject = cdm.createCommandAlias(commandStr, value: commandText)
+                        cmdImported++
+                    } else {
+                        cmdObject?.value = commandText
+                        cmdUpdated++
+                    }
+
+                    LOG_DEBUG("Importing \(commandStr): \(commandText)")
+
+                    cmdObject?.help = content["short_help"]?.string
+                    cmdObject?.longHelp = content["extended_help"]?.string
+
+                    if let optionsDict = commandDict["options"]?.dictionary {
+                        if let category = optionsDict["category"]?.string {
+                            var catObj = cdm.loadCommandGroup(category)
+                            if catObj == nil {
+                                catObj = cdm.createCommandGroup(category)
+                                catImported++
+                            }
+                            catObj?.commands.insert(cmdObject!)
+                            if let catHelp = categoryHelp[category] {
+                                catObj?.help = catHelp
+                            }
+                        }
+                        if let pm = optionsDict["detailed_pm"]?.bool {
+                            cmdObject?.pmEnabled = pm
+                        }
+                    }
+                }
+                cdm.save(synchronous)
+            }
         } else {
             throw CustomComandImportError.YamlError(error: importCmd.error)
         }
