@@ -1,0 +1,74 @@
+commands:
+  eddiscovery:
+    content:
+      extended_help: >+
+        **EDDiscovery**
+        
+        _developed by Finwen_
+        
+         `
+         EDDiscovery is a program that reads your NetLogs and keeps track of what 
+         systems you've visited. It can calculate the coordinates of previously 
+         undiscovered systems and plot your trail on a 3D map. It can also sync 
+         your data with EDSM.
+         `
+  
+         _**Note:**_ The screenshot conversion feature of EDDiscovery is currently
+         buggy. You're better off using ScreenShotChanger for now. Use the `!sschanger`
+         command to find out more.
+      short_help: Keep track of your path, plot it on maps, and sync your progress with EDSM.
+      text: http://forums.frontier.co.uk/showthread.php?t=138155
+    options:
+      detailed_pm: true
+      category: apps
+  
+  caplog:
+    content:
+      extended_help: >+
+        **Captain's Log**
+        
+        _developed by Genar-Hofoen_
+  
+         `
+         Captain's Log is a program that allows you to keep track of exactly what you've
+         scanned on your journey. It keeps track of systems using the NetLogs and runs
+         in a non-intrusive overlay window. It also gives you a very rough estimate of
+         what your exploration data is worth so far.
+         `
+      short_help: Keep track of what you've scanned in a system.
+      text: https://forums.frontier.co.uk/showthread.php?t=155545
+    options:
+      detailed_pm: true
+      category: apps
+  
+  sschanger:
+    content:
+      extended_help: >+
+        **ScreenShotChanger**
+        
+        _developed by Voz_
+  
+         `
+         ScreenShotChanger is an application that converts and renames any screenshots you take
+         on the fly. It scans your NetLogs to keep track of your current system and features a
+         customizable naming scheme using variables. It can convert to and from a lot of different
+         formats as well.
+         `
+  
+         _**Note:**_ The recommended conversion setting is to convert from `.bmp` to `.png`. An example
+         formatting string is located with an explanation on the sticky post in the `#submit-photos` 
+         channel if you're interested.
+      short_help: Automatically convert your screenshots to different formats.
+      text: https://forums.frontier.co.uk/showthread.php?t=170156
+    options:
+      detailed_pm: true
+      category: apps
+  
+  explocr:
+    content:
+      extended_help: null
+      short_help: Save the data gathered with the DSS.
+      text: https://forums.frontier.co.uk/showthread.php?t=175468
+    options:
+      detailed_pm: true
+      category: apps

@@ -1,0 +1,27 @@
+commands:
+  visual:
+    content:
+      extended_help: null
+      short_help: Visual guide to exploration & scan values.
+      text: http://i.imgur.com/RqWAnez.jpg
+    options:
+      detailed_pm: false
+      category: infographics
+  
+  nebmap:
+    content:
+      extended_help: null
+      short_help: A simple map of nebulae in & around the Local region.
+      text: http://i.imgur.com/hUna3LU.jpg
+    options:
+      detailed_pm: false
+      category: infographics
+  
+  planeb:
+    content:
+      extended_help: null
+      short_help: Planetary nebulae on the Distant Worlds route (courtesy of CMDR Qohen Leth).
+      text: http://i.imgur.com/3xNyGQg.jpg
+    options:
+      detailed_pm: false
+      category: infographics
