@@ -1,10 +1,16 @@
 source 'https://github.com/CocoaPods/Specs.git'
 platform :osx, '10.10'
-use_frameworks!
 
-pod 'ObjectMapper'
-pod 'Starscream'
-pod 'AlamofireObjectMapper'
-pod 'Locksmith'
-pod 'Yaml'
 
+target :DiscordAPI do
+  use_frameworks!
+  pod 'ObjectMapper'
+  pod 'Starscream'
+  pod 'AlamofireObjectMapper'
+end
+
+target :SwiftBotCore do
+  use_frameworks!
+  pod 'Locksmith'
+  pod 'Yaml'
+end

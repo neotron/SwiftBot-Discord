@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		48075669962828FDB0387A06 /* Pods_DiscordAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4E416147C422B787B64C291 /* Pods_DiscordAPI.framework */; };
 		6D99905F3E2C8DF5CCA529B8 /* CustomCommandMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999C5D5F483E5FD8BBBEAC /* CustomCommandMessageHandler.swift */; };
 		6D9990765663CA1B1AFABB9E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999FFC0E946BF809856F8E /* Message.swift */; };
 		6D9990DDA756F72E2A24D4BF /* MessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999B589530284A2E9ADC50 /* MessageHandler.swift */; };
@@ -55,23 +56,13 @@
 		723DAF7F1C74215E000CCCCE /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DAF7D1C74215E000CCCCE /* User+CoreDataProperties.swift */; };
 		723DAF801C74215E000CCCCE /* UserRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DAF7E1C74215E000CCCCE /* UserRole.swift */; };
 		723DAF821C744A1F000CCCCE /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 723DAF811C744A1F000CCCCE /* libz.tbd */; };
-		723DAF861C744AF8000CCCCE /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 723DAF831C744AF8000CCCCE /* Alamofire.framework */; };
-		723DAF871C744AF8000CCCCE /* AlamofireObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 723DAF841C744AF8000CCCCE /* AlamofireObjectMapper.framework */; };
-		723DAF881C744AF8000CCCCE /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 723DAF851C744AF8000CCCCE /* ObjectMapper.framework */; };
-		723DAF901C744C7D000CCCCE /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 723DAF891C744C7D000CCCCE /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		723DAF911C744C7D000CCCCE /* AlamofireObjectMapper.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 723DAF8A1C744C7D000CCCCE /* AlamofireObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		723DAF921C744C7D000CCCCE /* Locksmith.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 723DAF8B1C744C7D000CCCCE /* Locksmith.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		723DAF931C744C7D000CCCCE /* ObjectMapper.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 723DAF8C1C744C7D000CCCCE /* ObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		723DAF941C744C7D000CCCCE /* Pods.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 723DAF8D1C744C7D000CCCCE /* Pods.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		723DAF951C744C7D000CCCCE /* Starscream.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 723DAF8E1C744C7D000CCCCE /* Starscream.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		723DAF961C744C7D000CCCCE /* Yaml.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 723DAF8F1C744C7D000CCCCE /* Yaml.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		724A77C81C6ED63000CB0F1D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 724A77C71C6ED63000CB0F1D /* main.m */; };
 		724A77CF1C6ED71000CB0F1D /* SwiftBot in Copy Executable */ = {isa = PBXBuildFile; fileRef = 724A77C51C6ED63000CB0F1D /* SwiftBot */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		724A77F91C6ED9BA00CB0F1D /* DiscordAPI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77D71C6ED97200CB0F1D /* DiscordAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		724A77FA1C6ED9BA00CB0F1D /* SwiftBotCore.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77F11C6ED9AE00CB0F1D /* SwiftBotCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		724A77FB1C6ED9C500CB0F1D /* SwiftBotCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77F11C6ED9AE00CB0F1D /* SwiftBotCore.framework */; };
 		724A78041C6EDC2000CB0F1D /* DiscordAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77D71C6ED97200CB0F1D /* DiscordAPI.framework */; };
-		AC0027D084082C151DD345C4 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E56A0AE014DC44ECFD3F9754 /* Pods.framework */; };
+		F31E73DD335FA7DCF9E0098C /* Pods_SwiftBotCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD2E555F3ECD24B55BAE169A /* Pods_SwiftBotCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,20 +72,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 724A77C41C6ED63000CB0F1D;
 			remoteInfo = SwiftBot;
-		};
-		724A78111C706B3F00CB0F1D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 72B35E161C6ECD4200027CF2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 724A77D61C6ED97200CB0F1D;
-			remoteInfo = DiscordAPI;
-		};
-		724A78131C706B3F00CB0F1D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 72B35E161C6ECD4200027CF2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 724A77F01C6ED9AE00CB0F1D;
-			remoteInfo = SwiftBotCore;
 		};
 		724A78151C706B6500CB0F1D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -114,13 +91,6 @@
 			files = (
 				724A77F91C6ED9BA00CB0F1D /* DiscordAPI.framework in Copy Frameworks */,
 				724A77FA1C6ED9BA00CB0F1D /* SwiftBotCore.framework in Copy Frameworks */,
-				723DAF901C744C7D000CCCCE /* Alamofire.framework in Copy Frameworks */,
-				723DAF911C744C7D000CCCCE /* AlamofireObjectMapper.framework in Copy Frameworks */,
-				723DAF921C744C7D000CCCCE /* Locksmith.framework in Copy Frameworks */,
-				723DAF931C744C7D000CCCCE /* ObjectMapper.framework in Copy Frameworks */,
-				723DAF941C744C7D000CCCCE /* Pods.framework in Copy Frameworks */,
-				723DAF951C744C7D000CCCCE /* Starscream.framework in Copy Frameworks */,
-				723DAF961C744C7D000CCCCE /* Yaml.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -148,7 +118,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		6000AA5B98BDF562E05E0A48 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		1DFB8FBCD4DEB46F4CE31F7D /* Pods-SwiftBotCore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftBotCore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftBotCore/Pods-SwiftBotCore.debug.xcconfig"; sourceTree = "<group>"; };
+		5A3120B4220ABE4499CF2F5E /* Pods-DiscordAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscordAPI.release.xcconfig"; path = "Pods/Target Support Files/Pods-DiscordAPI/Pods-DiscordAPI.release.xcconfig"; sourceTree = "<group>"; };
 		6D99911179065165BBD88A63 /* ChannelModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelModel.swift; sourceTree = "<group>"; };
 		6D999115D5F67B0A19012ACB /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		6D99914B9A4F9F2397C28447 /* URLEndpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLEndpoints.swift; sourceTree = "<group>"; };
@@ -204,16 +175,6 @@
 		723DAF7D1C74215E000CCCCE /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		723DAF7E1C74215E000CCCCE /* UserRole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRole.swift; sourceTree = "<group>"; };
 		723DAF811C744A1F000CCCCE /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		723DAF831C744AF8000CCCCE /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		723DAF841C744AF8000CCCCE /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlamofireObjectMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		723DAF851C744AF8000CCCCE /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ObjectMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		723DAF891C744C7D000CCCCE /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Alamofire.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		723DAF8A1C744C7D000CCCCE /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = AlamofireObjectMapper.framework; path = AlamofireObjectMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		723DAF8B1C744C7D000CCCCE /* Locksmith.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Locksmith.framework; path = Locksmith.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		723DAF8C1C744C7D000CCCCE /* ObjectMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = ObjectMapper.framework; path = ObjectMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		723DAF8D1C744C7D000CCCCE /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Pods.framework; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		723DAF8E1C744C7D000CCCCE /* Starscream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Starscream.framework; path = Starscream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		723DAF8F1C744C7D000CCCCE /* Yaml.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Yaml.framework; path = Yaml.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		724A77AA1C6ED55B00CB0F1D /* SwiftBot.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftBot.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		724A77AC1C6ED55B00CB0F1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		724A77C51C6ED63000CB0F1D /* SwiftBot */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftBot; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -222,8 +183,10 @@
 		724A77F11C6ED9AE00CB0F1D /* SwiftBotCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftBotCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		724A77F31C6ED9AE00CB0F1D /* SwiftBotCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftBotCore.h; sourceTree = "<group>"; };
 		724A77F51C6ED9AE00CB0F1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E56A0AE014DC44ECFD3F9754 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F93F6C33F3BEF78F91E158ED /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		850412938E3FC845453A5CEE /* Pods-DiscordAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscordAPI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DiscordAPI/Pods-DiscordAPI.debug.xcconfig"; sourceTree = "<group>"; };
+		CD2E555F3ECD24B55BAE169A /* Pods_SwiftBotCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftBotCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4E416147C422B787B64C291 /* Pods_DiscordAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DiscordAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2BB9B49F4A116D6A5EB560A /* Pods-SwiftBotCore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftBotCore.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftBotCore/Pods-SwiftBotCore.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,7 +194,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC0027D084082C151DD345C4 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,10 +210,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				723DAF861C744AF8000CCCCE /* Alamofire.framework in Frameworks */,
-				723DAF871C744AF8000CCCCE /* AlamofireObjectMapper.framework in Frameworks */,
-				723DAF881C744AF8000CCCCE /* ObjectMapper.framework in Frameworks */,
 				723DAF821C744A1F000CCCCE /* libz.tbd in Frameworks */,
+				48075669962828FDB0387A06 /* Pods_DiscordAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +219,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F31E73DD335FA7DCF9E0098C /* Pods_SwiftBotCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,11 +229,9 @@
 		60737DB67018A2737B140ABE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				723DAF831C744AF8000CCCCE /* Alamofire.framework */,
-				723DAF841C744AF8000CCCCE /* AlamofireObjectMapper.framework */,
-				723DAF851C744AF8000CCCCE /* ObjectMapper.framework */,
 				723DAF811C744A1F000CCCCE /* libz.tbd */,
-				E56A0AE014DC44ECFD3F9754 /* Pods.framework */,
+				E4E416147C422B787B64C291 /* Pods_DiscordAPI.framework */,
+				CD2E555F3ECD24B55BAE169A /* Pods_SwiftBotCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -486,22 +445,15 @@
 		72B35E151C6ECD4200027CF2 = {
 			isa = PBXGroup;
 			children = (
-				723DAF891C744C7D000CCCCE /* Alamofire.framework */,
-				723DAF8A1C744C7D000CCCCE /* AlamofireObjectMapper.framework */,
-				723DAF8B1C744C7D000CCCCE /* Locksmith.framework */,
-				723DAF8C1C744C7D000CCCCE /* ObjectMapper.framework */,
-				723DAF8D1C744C7D000CCCCE /* Pods.framework */,
-				723DAF8E1C744C7D000CCCCE /* Starscream.framework */,
-				723DAF8F1C744C7D000CCCCE /* Yaml.framework */,
 				724A77AB1C6ED55B00CB0F1D /* SwiftBotBundle */,
 				724A77C61C6ED63000CB0F1D /* SwiftBot */,
 				724A77D81C6ED97200CB0F1D /* DiscordAPI */,
 				724A77F21C6ED9AE00CB0F1D /* SwiftBotCore */,
 				72B35E1F1C6ECD4200027CF2 /* Products */,
 				6D999115D5F67B0A19012ACB /* Podfile */,
-				A537D698FE351E03CD6C72C3 /* Pods */,
 				60737DB67018A2737B140ABE /* Frameworks */,
 				6D999981E4209E0BC1738829 /* README.md */,
+				BEB1610B873F466B988A11CE /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -516,11 +468,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A537D698FE351E03CD6C72C3 /* Pods */ = {
+		BEB1610B873F466B988A11CE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F93F6C33F3BEF78F91E158ED /* Pods.debug.xcconfig */,
-				6000AA5B98BDF562E05E0A48 /* Pods.release.xcconfig */,
+				850412938E3FC845453A5CEE /* Pods-DiscordAPI.debug.xcconfig */,
+				5A3120B4220ABE4499CF2F5E /* Pods-DiscordAPI.release.xcconfig */,
+				1DFB8FBCD4DEB46F4CE31F7D /* Pods-SwiftBotCore.debug.xcconfig */,
+				F2BB9B49F4A116D6A5EB560A /* Pods-SwiftBotCore.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -550,13 +504,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 724A77AD1C6ED55B00CB0F1D /* Build configuration list for PBXNativeTarget "SwiftBotBundle" */;
 			buildPhases = (
-				06AF5627FCC295D3550F1B36 /* Check Pods Manifest.lock */,
 				724A77A61C6ED55B00CB0F1D /* Sources */,
 				724A77A71C6ED55B00CB0F1D /* Frameworks */,
 				724A77A81C6ED55B00CB0F1D /* Resources */,
 				724A77B01C6ED56D00CB0F1D /* Copy Frameworks */,
 				724A77CE1C6ED70200CB0F1D /* Copy Executable */,
-				46A523A284390341CD8CFA9A /* Copy Pods Resources */,
+				72B7B1F41C76DCDE00968FE8 /* Copy Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -579,8 +532,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				724A78121C706B3F00CB0F1D /* PBXTargetDependency */,
-				724A78141C706B3F00CB0F1D /* PBXTargetDependency */,
 			);
 			name = SwiftBot;
 			productName = SwiftBot;
@@ -591,10 +542,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 724A77DC1C6ED97200CB0F1D /* Build configuration list for PBXNativeTarget "DiscordAPI" */;
 			buildPhases = (
+				B3D344BBAC8F859BBA44958E /* Check Pods Manifest.lock */,
 				724A77D21C6ED97200CB0F1D /* Sources */,
 				724A77D31C6ED97200CB0F1D /* Frameworks */,
 				724A77D41C6ED97200CB0F1D /* Headers */,
 				724A77D51C6ED97200CB0F1D /* Resources */,
+				AF6BFC16AB9027727E113EFC /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -609,10 +562,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 724A77F61C6ED9AE00CB0F1D /* Build configuration list for PBXNativeTarget "SwiftBotCore" */;
 			buildPhases = (
+				FB77FDA684549523975A1A10 /* Check Pods Manifest.lock */,
 				724A77EC1C6ED9AE00CB0F1D /* Sources */,
 				724A77ED1C6ED9AE00CB0F1D /* Frameworks */,
 				724A77EE1C6ED9AE00CB0F1D /* Headers */,
 				724A77EF1C6ED9AE00CB0F1D /* Resources */,
+				9452790970FBF8058E8747A1 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -694,7 +649,52 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		06AF5627FCC295D3550F1B36 /* Check Pods Manifest.lock */ = {
+		72B7B1F41C76DCDE00968FE8 /* Copy Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DiscordAPI/Pods-DiscordAPI-frameworks.sh\"\n\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftBotCore/Pods-SwiftBotCore-frameworks.sh\"";
+			showEnvVarsInLog = 0;
+		};
+		9452790970FBF8058E8747A1 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftBotCore/Pods-SwiftBotCore-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AF6BFC16AB9027727E113EFC /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DiscordAPI/Pods-DiscordAPI-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B3D344BBAC8F859BBA44958E /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -709,19 +709,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		46A523A284390341CD8CFA9A /* Copy Pods Resources */ = {
+		FB77FDA684549523975A1A10 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -810,16 +810,6 @@
 			target = 724A77C41C6ED63000CB0F1D /* SwiftBot */;
 			targetProxy = 724A77CC1C6ED6E800CB0F1D /* PBXContainerItemProxy */;
 		};
-		724A78121C706B3F00CB0F1D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 724A77D61C6ED97200CB0F1D /* DiscordAPI */;
-			targetProxy = 724A78111C706B3F00CB0F1D /* PBXContainerItemProxy */;
-		};
-		724A78141C706B3F00CB0F1D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 724A77F01C6ED9AE00CB0F1D /* SwiftBotCore */;
-			targetProxy = 724A78131C706B3F00CB0F1D /* PBXContainerItemProxy */;
-		};
 		724A78161C706B6500CB0F1D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 724A77D61C6ED97200CB0F1D /* DiscordAPI */;
@@ -830,7 +820,7 @@
 /* Begin XCBuildConfiguration section */
 		724A77AE1C6ED55B00CB0F1D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F93F6C33F3BEF78F91E158ED /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 850412938E3FC845453A5CEE /* Pods-DiscordAPI.debug.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
@@ -846,7 +836,7 @@
 		};
 		724A77AF1C6ED55B00CB0F1D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6000AA5B98BDF562E05E0A48 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 5A3120B4220ABE4499CF2F5E /* Pods-DiscordAPI.release.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
@@ -882,6 +872,7 @@
 		};
 		724A77DD1C6ED97200CB0F1D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 850412938E3FC845453A5CEE /* Pods-DiscordAPI.debug.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -889,6 +880,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug",
@@ -909,6 +901,7 @@
 		};
 		724A77DE1C6ED97200CB0F1D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5A3120B4220ABE4499CF2F5E /* Pods-DiscordAPI.release.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -916,6 +909,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug",
@@ -936,6 +930,7 @@
 		};
 		724A77F71C6ED9AE00CB0F1D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1DFB8FBCD4DEB46F4CE31F7D /* Pods-SwiftBotCore.debug.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -943,6 +938,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = SwiftBotCore/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -958,6 +954,7 @@
 		};
 		724A77F81C6ED9AE00CB0F1D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F2BB9B49F4A116D6A5EB560A /* Pods-SwiftBotCore.release.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -965,6 +962,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = SwiftBotCore/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
