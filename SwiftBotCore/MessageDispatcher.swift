@@ -52,6 +52,7 @@ class MessageDispatchManager : MessageHandler {
         registerMessageHandler(CustomCommandMessageHandler())
         registerMessageHandler(CustomCommandImportMessageHandler())
         registerMessageHandler(UserRoleMessageHandler())
+        registerMessageHandler(DistantWorldsWaypoints())
     }
 
 

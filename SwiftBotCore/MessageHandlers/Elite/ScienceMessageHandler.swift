@@ -9,6 +9,10 @@ import Foundation
 import DiscordAPI
 
 class ScienceMessageHandler : MessageHandler {
+    override var commandGroup: String? {
+        return "Elite: Dangerous"
+    }
+
     private let densitySigmaArray : [(String,Double,Double,Double,Double)] = [
             ("IW",1.06E+12,1.84E+12,2.62E+12,3.40E+12),
             ("RIW",2.25E+12,2.82E+12,3.38E+12,3.95E+12),

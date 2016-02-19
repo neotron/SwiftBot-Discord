@@ -50,8 +50,10 @@
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/MessageHandlers/CustomCommandMessageHandler.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/MessageHandlers/UserRoleMessageHandler.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/MessageHandlers/RandomAnimalsMessageHandler.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/MessageHandlers/ScienceMessageHandler.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/MessageHandlers/PingMessageHandler.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/MessageHandlers/Elite/DistantWorldWaypoints.json" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/MessageHandlers/Elite/DistantWorldsWaypoints.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/MessageHandlers/Elite/ScienceMessageHandler.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/MessageHandlers/IdentifierMessageHandler.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/Config.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SwiftBotCore/SwiftBotMain.swift" isTestSource="false" />
