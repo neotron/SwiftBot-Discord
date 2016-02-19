@@ -1,123 +1,184 @@
+###############################
+## Example Command Structure ##
+###############################
+#
+# command_name:
+#   content:
+#     verbose: |
+#       this is a long/detailed description of the content. It is either sent via private message 
+#       or ignored completely, depending on the option set later in the command definition.
+#     summary: this is a 1-sentence summary of the content.
+#     url: this is the link to wherever the content is hosted (forums, google drive, github, etc.)
+#   options:
+#     detailed_pm: true or false - determines if the `verbose` key is used or ignored.
+#     category: this sets the command's category for the DWEBot
+#
+###############################
+
 # apps
 eddiscovery:
-  cmd: >+
-    **EDDiscovery**
-    
-    _developed by Finwen_
-    
-     `
-     EDDiscovery is a program that reads your NetLogs and keeps track of what 
-     systems you've visited. It can calculate the coordinates of previously 
-     undiscovered systems and plot your trail on a 3D map. It can also sync 
-     your data with EDSM.
-     `
+  content:
+    verbose: >+
+      **EDDiscovery**
+      
+      _developed by Finwen_
+      
+       `
+       EDDiscovery is a program that reads your NetLogs and keeps track of what 
+       systems you've visited. It can calculate the coordinates of previously 
+       undiscovered systems and plot your trail on a 3D map. It can also sync 
+       your data with EDSM.
+       `
 
-     _**Note:**_ The screenshot conversion feature of EDDiscovery is currently
-     buggy. You're better off using ScreenShotChanger for now. Use the `!sschanger`
-     command to find out more.
-
-     Forum link: <http://forums.frontier.co.uk/showthread.php?t=138155>
-
-  txt: Keep track of your path, plot it on maps, and sync your progress with EDSM.
-  cat: apps
+       _**Note:**_ The screenshot conversion feature of EDDiscovery is currently
+       buggy. You're better off using ScreenShotChanger for now. Use the `!sschanger`
+       command to find out more.
+    summary: Keep track of your path, plot it on maps, and sync your progress with EDSM.
+    url: http://forums.frontier.co.uk/showthread.php?t=138155
+  options:
+    detailed_pm: true
+    category: apps
 
 caplog:
-  cmd: >+
-    **Captain's Log**
-    
-    _developed by Genar-Hofoen_
+  content:
+    verbose: >+
+      **Captain's Log**
+      
+      _developed by Genar-Hofoen_
 
-     `
-     Captain's Log is a program that allows you to keep track of exactly what you've
-     scanned on your journey. It keeps track of systems using the NetLogs and runs
-     in a non-intrusive overlay window. It also gives you a very rough estimate of
-     what your exploration data is worth so far.
-     `
-
-     Forum link: <https://forums.frontier.co.uk/showthread.php?t=155545>
-
-  txt: Keep track of what you've scanned in a system.
-  cat: apps
+       `
+       Captain's Log is a program that allows you to keep track of exactly what you've
+       scanned on your journey. It keeps track of systems using the NetLogs and runs
+       in a non-intrusive overlay window. It also gives you a very rough estimate of
+       what your exploration data is worth so far.
+       `
+    summary: Keep track of what you've scanned in a system.
+    url: https://forums.frontier.co.uk/showthread.php?t=155545
+  options:
+    detailed_pm: true
+    category: apps
 
 sschanger:
-  cmd: >+
-    **ScreenShotChanger**
-    
-    _developed by Voz_
+  content:
+    verbose: >+
+      **ScreenShotChanger**
+      
+      _developed by Voz_
 
-     `
-     ScreenShotChanger is an application that converts and renames any screenshots you take
-     on the fly. It scans your NetLogs to keep track of your current system and features a
-     customizable naming scheme using variables. It can convert to and from a lot of different
-     formats as well.
-     `
+       `
+       ScreenShotChanger is an application that converts and renames any screenshots you take
+       on the fly. It scans your NetLogs to keep track of your current system and features a
+       customizable naming scheme using variables. It can convert to and from a lot of different
+       formats as well.
+       `
 
-     _**Note:**_ The recommended conversion setting is to convert from `.bmp` to `.png`. An example
-     formatting string is located with an explanation on the sticky post in the `#submit-photos` 
-     channel if you're interested.
-
-     Forum link: <https://forums.frontier.co.uk/showthread.php?t=170156>
-
-  txt: Automatically convert your screenshots to different formats.
-  cat: apps
+       _**Note:**_ The recommended conversion setting is to convert from `.bmp` to `.png`. An example
+       formatting string is located with an explanation on the sticky post in the `#submit-photos` 
+       channel if you're interested.
+    summary: Automatically convert your screenshots to different formats.
+    url: https://forums.frontier.co.uk/showthread.php?t=170156
+  options:
+    detailed_pm: true
+    category: apps
 
 explocr:
-  cmd: https://forums.frontier.co.uk/showthread.php?t=175468
-  txt: Save the data gathered with the DSS.
-  cat: apps
-
+  content:
+    verbose: `placeholder`
+    summary: Save the data gathered with the DSS.
+    url: https://forums.frontier.co.uk/showthread.php?t=175468
+  options:
+    detailed_pm: true
+    category: apps
 
 # tools
 bindings:
-  cmd: http://www.mcdee.net/elite
-  txt: Generate reference sheets for your personal bindings.
-  cat: tools
+  content:
+    verbose: null
+    summary: Generate reference sheets for your personal bindings.
+    url: http://www.mcdee.net/elite
+  options:
+    detailed_pm: false
+    category: tools
 
 edsm:
-  cmd: http://www.edsm.net
-  txt: Save your travel logs online and view your progress on the map.
-  cat: tools
-
+  content:
+    verbose: null
+    summary: Save your travel logs online and view your progress on the map.
+    url: http://www.edsm.net
+  options:
+    detailed_pm: false
+    category: tools
 
 # infographics
 visual:
-  cmd: http://i.imgur.com/RqWAnez.jpg
-  txt: Visual guide to exploration & scan values
-  cat: infographics
+  content:
+    verbose: null
+    summary: Visual guide to exploration & scan values.
+    url: http://i.imgur.com/RqWAnez.jpg
+  options:
+    detailed_pm: false
+    category: infographics
 
 nebmap:
-  cmd: http://i.imgur.com/hUna3LU.jpg
-  txt: Nebulae around Sol
-  cat: infographics
+  content:
+    verbose: null
+    summary: A simple map of nebulae in & around the Local region.
+    url: http://i.imgur.com/hUna3LU.jpg
+  options:
+    detailed_pm: false
+    category: infographics
 
 planeb:
-  cmd: http://i.imgur.com/3xNyGQg.jpg
-  txt: Planetary nebulae on the Distant Worlds route (courtesy of CMDR Qohen Leth)
-  cat: infographics
-
+  content:
+    verbose: null
+    summary: [WIP] Planetary nebulae on the Distant Worlds route (courtesy of CMDR Qohen Leth).
+    url: http://i.imgur.com/3xNyGQg.jpg
+  options:
+    detailed_pm: false
+    category: infographics
 
 # guides
 univcart:
-  cmd: https://forums.frontier.co.uk/showthread.php?t=196297
-  txt: The meaning behind the system names generated by Universal Cartographics
-  cat: guides
+  content:
+    verbose: null
+    summary: The meaning behind the system names generated by Universal Cartographics
+    url: https://forums.frontier.co.uk/showthread.php?t=196297
+  options:
+    detailed_pm: false
+    category: guides
 
 galmapping:
-  cmd: https://forums.frontier.co.uk/showthread.php?t=116450
-  txt: The maps created by the Galactic Mapping Community Project
-  cat: guides
+  content:
+    verbose: null
+    summary: The maps created by the Galactic Mapping Community Project
+    url: https://forums.frontier.co.uk/showthread.php?t=116450
+  options:
+    detailed_pm: false
+    category: guides
 
 audioguide:
-  cmd: https://forums.frontier.co.uk/showthread.php?t=144782
-  txt: A guide to the planetary sounds in the system map
-  cat: guides
+  content:
+    verbose: null
+    summary: A guide to the planetary sounds in the system map
+    url: https://forums.frontier.co.uk/showthread.php?t=144782
+  options:
+    detailed_pm: false
+    category: guides
 
 hologuide:
-  cmd: https://docs.google.com/spreadsheets/d/17fKT0APR88qtIzmdA1JTDA9gxInjJP8qtJRdXQr-BRA/edit#gid=1568606424
-  txt: A guide to the icons on your dashboard hologram
-  cat: guides
+  content:
+    verbose: null
+    summary: A guide to the icons on your dashboard hologram
+    url: https://docs.google.com/spreadsheets/d/17fKT0APR88qtIzmdA1JTDA9gxInjJP8qtJRdXQr-BRA/edit#gid=1568606424
+  options:
+    detailed_pm: false
+    category: guides
 
 coords:
-  cmd: https://forums.frontier.co.uk/showthread.php?t=222432
-  txt: A guide to landing at specific planetary coordinates
-  cat: guides
+  content:
+    verbose: null
+    summary: A guide to landing at specific planetary coordinates
+    url: https://forums.frontier.co.uk/showthread.php?t=222432
+  options:
+    detailed_pm: false
+    category: guides
