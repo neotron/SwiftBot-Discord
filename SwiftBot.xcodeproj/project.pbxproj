@@ -26,7 +26,6 @@
 		6D999785444996E8D9F94E41 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999F34840FAF487424C024 /* Config.swift */; };
 		6D9998430A7453619CDB3DAE /* NSData+GZIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9998E44D0D39FDE1300A2A /* NSData+GZIP.swift */; };
 		6D99985B6C873F056EEBD82B /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999DB3164C1D87EFEE1CE4 /* MessageModel.swift */; };
-		6D9998B57BE38EFA2CE35938 /* SwiftBotModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 723DAF221C71BBA1000CCCCE /* SwiftBotModel.xcdatamodeld */; };
 		6D99990D819B87E9A8C2B9F4 /* RandomAnimalsMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D99960506F77545A5A407E1 /* RandomAnimalsMessageHandler.swift */; };
 		6D99991C638324F3B500303E /* IdentifierMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999FDE14860A78957C5D27 /* IdentifierMessageHandler.swift */; };
 		6D999961D5112A2A0DA89DA6 /* LoginResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999F4CA01620CF2F480E9F /* LoginResponseModel.swift */; };
@@ -62,6 +61,7 @@
 		724A77FA1C6ED9BA00CB0F1D /* SwiftBotCore.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77F11C6ED9AE00CB0F1D /* SwiftBotCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		724A77FB1C6ED9C500CB0F1D /* SwiftBotCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77F11C6ED9AE00CB0F1D /* SwiftBotCore.framework */; };
 		724A78041C6EDC2000CB0F1D /* DiscordAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77D71C6ED97200CB0F1D /* DiscordAPI.framework */; };
+		72FC2AA71C76DF2100A3D04E /* SwiftBotModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 72FC2AA31C76DF2100A3D04E /* SwiftBotModel.xcdatamodeld */; };
 		F31E73DD335FA7DCF9E0098C /* Pods_SwiftBotCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD2E555F3ECD24B55BAE169A /* Pods_SwiftBotCore.framework */; };
 /* End PBXBuildFile section */
 
@@ -164,14 +164,12 @@
 		6D999FCBE842D9A88EFA40C5 /* WebsocketHelloMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebsocketHelloMessageModel.swift; sourceTree = "<group>"; };
 		6D999FDE14860A78957C5D27 /* IdentifierMessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifierMessageHandler.swift; sourceTree = "<group>"; };
 		6D999FFC0E946BF809856F8E /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		723DAF231C71BBA1000CCCCE /* SwiftBotModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SwiftBotModel.xcdatamodel; sourceTree = "<group>"; };
 		723DAF251C71BCEA000CCCCE /* CommandAlias+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CommandAlias+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		723DAF261C71BCEA000CCCCE /* CommandAlias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandAlias.swift; sourceTree = "<group>"; };
 		723DAF271C71BCEA000CCCCE /* CommandGroup+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CommandGroup+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		723DAF281C71BCEA000CCCCE /* CommandGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandGroup.swift; sourceTree = "<group>"; };
 		723DAF3A1C72D4DE000CCCCE /* petopt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = petopt.h; sourceTree = "<group>"; };
 		723DAF3B1C72D4DE000CCCCE /* petopt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = petopt.c; sourceTree = "<group>"; };
-		723DAF7C1C741F5D000CCCCE /* SwiftBotModel 2 UserRoles .xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SwiftBotModel 2 UserRoles .xcdatamodel"; sourceTree = "<group>"; };
 		723DAF7D1C74215E000CCCCE /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		723DAF7E1C74215E000CCCCE /* UserRole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRole.swift; sourceTree = "<group>"; };
 		723DAF811C744A1F000CCCCE /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -183,6 +181,9 @@
 		724A77F11C6ED9AE00CB0F1D /* SwiftBotCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftBotCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		724A77F31C6ED9AE00CB0F1D /* SwiftBotCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftBotCore.h; sourceTree = "<group>"; };
 		724A77F51C6ED9AE00CB0F1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		72FC2AA41C76DF2100A3D04E /* SwiftBotModel 2 UserRoles .xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SwiftBotModel 2 UserRoles .xcdatamodel"; sourceTree = "<group>"; };
+		72FC2AA51C76DF2100A3D04E /* SwiftBotModel 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SwiftBotModel 3.xcdatamodel"; sourceTree = "<group>"; };
+		72FC2AA61C76DF2100A3D04E /* SwiftBotModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SwiftBotModel.xcdatamodel; sourceTree = "<group>"; };
 		850412938E3FC845453A5CEE /* Pods-DiscordAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscordAPI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DiscordAPI/Pods-DiscordAPI.debug.xcconfig"; sourceTree = "<group>"; };
 		CD2E555F3ECD24B55BAE169A /* Pods_SwiftBotCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftBotCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4E416147C422B787B64C291 /* Pods_DiscordAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DiscordAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -249,14 +250,14 @@
 		6D9990EEB924ED924909BA5B /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				723DAF221C71BBA1000CCCCE /* SwiftBotModel.xcdatamodeld */,
-				723DAF251C71BCEA000CCCCE /* CommandAlias+CoreDataProperties.swift */,
+				72FC2AA31C76DF2100A3D04E /* SwiftBotModel.xcdatamodeld */,
+				6D9997569FF5B0DE59FF826F /* Commandable.swift */,
 				723DAF261C71BCEA000CCCCE /* CommandAlias.swift */,
-				723DAF271C71BCEA000CCCCE /* CommandGroup+CoreDataProperties.swift */,
+				723DAF251C71BCEA000CCCCE /* CommandAlias+CoreDataProperties.swift */,
 				723DAF281C71BCEA000CCCCE /* CommandGroup.swift */,
+				723DAF271C71BCEA000CCCCE /* CommandGroup+CoreDataProperties.swift */,
 				6D999F3B254BE1F033FC51E1 /* CoreDataManager.swift */,
 				6D9992E6ACB30F538A5AB11A /* CoreDataObjectTypes.swift */,
-				6D9997569FF5B0DE59FF826F /* Commandable.swift */,
 				723DAF7D1C74215E000CCCCE /* User+CoreDataProperties.swift */,
 				723DAF7E1C74215E000CCCCE /* UserRole.swift */,
 			);
@@ -792,7 +793,7 @@
 				6D9990765663CA1B1AFABB9E /* Message.swift in Sources */,
 				6D9992F0076C92E144D1AD59 /* SwiftBotMain.swift in Sources */,
 				6D999D6B4B876537EDA2BE5E /* CoreDataManager.swift in Sources */,
-				6D9998B57BE38EFA2CE35938 /* SwiftBotModel.xcdatamodeld in Sources */,
+				72FC2AA71C76DF2100A3D04E /* SwiftBotModel.xcdatamodeld in Sources */,
 				6D999E43A2BA9A381A036AAE /* CoreDataObjectTypes.swift in Sources */,
 				6D99905F3E2C8DF5CCA529B8 /* CustomCommandMessageHandler.swift in Sources */,
 				6D999D680169FF550EE6E53A /* Commandable.swift in Sources */,
@@ -1109,13 +1110,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		723DAF221C71BBA1000CCCCE /* SwiftBotModel.xcdatamodeld */ = {
+		72FC2AA31C76DF2100A3D04E /* SwiftBotModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				723DAF7C1C741F5D000CCCCE /* SwiftBotModel 2 UserRoles .xcdatamodel */,
-				723DAF231C71BBA1000CCCCE /* SwiftBotModel.xcdatamodel */,
+				72FC2AA41C76DF2100A3D04E /* SwiftBotModel 2 UserRoles .xcdatamodel */,
+				72FC2AA51C76DF2100A3D04E /* SwiftBotModel 3.xcdatamodel */,
+				72FC2AA61C76DF2100A3D04E /* SwiftBotModel.xcdatamodel */,
 			);
-			currentVersion = 723DAF7C1C741F5D000CCCCE /* SwiftBotModel 2 UserRoles .xcdatamodel */;
+			currentVersion = 72FC2AA51C76DF2100A3D04E /* SwiftBotModel 3.xcdatamodel */;
 			path = SwiftBotModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

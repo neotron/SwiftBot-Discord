@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10147" systemVersion="15D21" minimumToolsVersion="Xcode 7.0">
+    <entity name="CommandAlias" representedClassName=".CommandAlias" syncable="YES">
+        <attribute name="command" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="help" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="longHelp" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pmEnabled" attributeType="Boolean" defaultValueString="NO" indexed="YES" syncable="YES"/>
+        <attribute name="value" attributeType="String" syncable="YES"/>
+        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CommandGroup" inverseName="commands" inverseEntity="CommandGroup" syncable="YES"/>
+    </entity>
+    <entity name="CommandGroup" representedClassName=".CommandGroup" syncable="YES">
+        <attribute name="command" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="help" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="commands" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CommandAlias" inverseName="group" inverseEntity="CommandAlias" syncable="YES"/>
+    </entity>
+    <entity name="UserRole" representedClassName=".UserRole" syncable="YES">
+        <attribute name="id" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="role" attributeType="Integer 16" defaultValueString="0" indexed="YES" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="CommandAlias" positionX="-3017" positionY="-2112" width="128" height="135"/>
+        <element name="CommandGroup" positionX="-3260" positionY="-2097" width="128" height="88"/>
+        <element name="UserRole" positionX="-3123" positionY="-2052" width="128" height="75"/>
+    </elements>
+</model>

@@ -61,7 +61,17 @@ class CustomCommandMessageHandler : MessageHandler {
         if let commandObject = cdm.loadCommandAlias(command) {
             if args.count == 1 && (args[0] == "help" || args[0] == "-h") {
                 if let help = commandObject.help {
-                    message.replyToChannel("**\(Config.commandPrefix)\(commandObject.command)**: \(help)")
+                    var helpMessage = "**\(Config.commandPrefix)\(commandObject.command)**: \(help)";
+                    if let longHelp = commandObject.longHelp {
+                        let longHelpMessage = "\(helpMessage)\n\n\(longHelp)"
+                        if commandObject.pmEnabled {
+                            message.replyToSender(longHelpMessage)
+                            helpMessage = "\(helpMessage) (see pm for details)"
+                        } else {
+                            helpMessage = longHelpMessage
+                        }
+                    }
+                    message.replyToChannel(helpMessage)
                 } else {
                     message.replyToChannel("**\(Config.commandPrefix)\(commandObject.command)**: No help available.")
                 }
