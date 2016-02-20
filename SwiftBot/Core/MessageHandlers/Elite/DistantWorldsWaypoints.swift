@@ -108,7 +108,7 @@ extension DistantWorldsWaypoints {
         }
         EVReflection.setBundleIdentifier(SwiftBotMain)
         let db = Waypoints(json: dataText as String)
-        print("Loaded database \(db)")
+        //LOG_DEBUG("Loaded database \(db)")
         self.database = db
     }
 
@@ -126,7 +126,7 @@ class Stage: EVObject {
 
 
     // This is needed to convert waypoints to/from a tuple.
-    override public func propertyConverters() -> [(String?, (Any?) -> (), () -> Any?)] {
+    override func propertyConverters() -> [(String?, (Any?) -> (), () -> Any?)] {
         return [("waypoints",
                 {
                     guard let arr = $0 as? [Int] else {

@@ -14,21 +14,11 @@ class ConfigAuth : EVObject {
 
 class Config: EVObject {
     // Instance accessible read-only settings.
-    static var email: String {
-        return instance.auth.email
-    }
-    static var password: String {
-        return instance.auth.password
-    }
-    static var commandPrefix: String {
-        return instance.commandPrefix
-    }
-    static var databaseDirectory: String? {
-        return instance.databaseDirectory
-    }
-    static var ownerIds: Set<String> {
-        return Set(instance.ownerIds)
-    }
+    static var email: String { return instance.auth.email }
+    static var password: String { return instance.auth.password }
+    static var commandPrefix: String { return instance.commandPrefix }
+    static var databaseDirectory: String? { return instance.databaseDirectory }
+    static var ownerIds: Set<String> { return Set(instance.ownerIds) }
 
     // Internal private storage
     var auth = ConfigAuth()

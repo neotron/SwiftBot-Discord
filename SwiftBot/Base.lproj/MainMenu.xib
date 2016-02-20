@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
+            <connections>
+                <outlet property="delegate" destination="Voe-Tx-rLC" id="GzC-gU-4Uq"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="SwiftBot" customModuleProvider="target"/>
+        <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+        <customObject id="KxR-7s-hht" userLabel="Menulet Delegate" customClass="Menulet" customModule="SwiftBot" customModuleProvider="target">
+            <connections>
+                <outlet property="menu" destination="dEo-o9-O1n" id="uq4-4y-kRe"/>
+            </connections>
+        </customObject>
+        <menu id="dEo-o9-O1n" userLabel="Menulet Menu">
+            <items>
+                <menuItem title="Start Server" id="kF5-QZ-a0O">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="2Au-24-qcv"/>
+                <menuItem title="Start Speedtest" tag="42" keyEquivalent="r" id="8a6-BS-bhR"/>
+                <menuItem title="Start Local Speedtest" id="kb9-pp-4Nd">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Start Local Speedtest" id="yAa-O7-nu7">
+                        <items>
+                            <menuItem title="&lt;No Servers Found&gt;" id="tZI-uP-C8u">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="View History" keyEquivalent="h" id="TIz-Bb-lzz"/>
+                <menuItem title="Check for Update..." id="Yle-zG-OPv">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="vqe-NA-DJE"/>
+                <menuItem title="Preferences..." id="1oy-r5-neZ">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="openPreferences:" target="KxR-7s-hht" id="tF0-Iu-ee7"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Quit" keyEquivalent="q" id="UXf-Px-NAk">
+                    <connections>
+                        <action selector="terminate:" target="-1" id="rt3-d6-iUh"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <connections>
+                <outlet property="delegate" destination="KxR-7s-hht" id="cej-fO-R9t"/>
+            </connections>
+        </menu>
+    </objects>
+</document>

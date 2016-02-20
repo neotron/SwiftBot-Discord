@@ -11,7 +11,6 @@ public class SwiftBotMain: NSObject, DiscordDelegate {
     private var doneCallback: ((Void) -> Void)?
     private let messageDispatcher: MessageDispatchManager
 
-
     public init(withConfigFile configFile: String) {
         Config.loadConfig(fromFile: configFile);
         self.messageDispatcher = MessageDispatchManager()
@@ -20,7 +19,6 @@ public class SwiftBotMain: NSObject, DiscordDelegate {
         self.discord.delegate = self
         self.messageDispatcher.discord = discord
         let cdm = CoreDataManager.instance
-
         if !cdm.isSetupAndWorking() {
             LOG_ERROR("NOTE: The database couldn't be initialized (check configuration). Custom commands will not work.")
         } else {
@@ -30,7 +28,8 @@ public class SwiftBotMain: NSObject, DiscordDelegate {
 
     public func runWithDoneCallback(callback: ((Void) -> Void)?) {
         self.doneCallback = callback
-        self.discord.login(Config.email, password: Config.password)
+        let account = DiscordAccount()
+        self.discord.login(account.email, password: account.password, token: account.token)
     }
 
     public func discordLoginDidComplete(error: NSError?) {

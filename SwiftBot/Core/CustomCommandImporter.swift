@@ -60,9 +60,8 @@ enum CustomComandImportError: ErrorType {
             if let commands = topLevel["commands"]?.dictionary {
                 let cdm = CoreDataManager.instance
                 for (command, dict) in commands {
-                    guard let commandStr = command.string, commandDict = dict.dictionary, content = commandDict["content"]?.dictionary, var commandText = content["text"]?.string else {
+                    guard let commandStr = command.string, commandDict = dict.dictionary, content = commandDict["content"]?.dictionary, commandText = content["text"]?.string else {
                         throw CustomComandImportError.YamlError(error: "Command \(command) missing a name or required content.")
-                        continue
                     }
                     var cmdObject = cdm.loadCommandAlias(commandStr)
                     if cmdObject == nil {

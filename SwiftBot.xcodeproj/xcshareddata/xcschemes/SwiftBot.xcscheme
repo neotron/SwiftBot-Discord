@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "724A77A91C6ED55B00CB0F1D"
-               BuildableName = "SwiftBot.bundle"
-               BlueprintName = "SwiftBotBundle"
+               BlueprintIdentifier = "72C1F45B1C78E82800B32B42"
+               BuildableName = "SwiftBot.app"
+               BlueprintName = "SwiftBot"
                ReferencedContainer = "container:SwiftBot.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,12 +28,22 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "72C1F4691C78E82800B32B42"
+               BuildableName = "SwiftBotTests.xctest"
+               BlueprintName = "SwiftBotTests"
+               ReferencedContainer = "container:SwiftBot.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "724A77C41C6ED63000CB0F1D"
-            BuildableName = "SwiftBot"
+            BlueprintIdentifier = "72C1F45B1C78E82800B32B42"
+            BuildableName = "SwiftBot.app"
             BlueprintName = "SwiftBot"
             ReferencedContainer = "container:SwiftBot.xcodeproj">
          </BuildableReference>
@@ -55,22 +65,12 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "724A77C41C6ED63000CB0F1D"
-            BuildableName = "SwiftBot"
+            BlueprintIdentifier = "72C1F45B1C78E82800B32B42"
+            BuildableName = "SwiftBot.app"
             BlueprintName = "SwiftBot"
             ReferencedContainer = "container:SwiftBot.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <CommandLineArguments>
-         <CommandLineArgument
-            argument = "-c"
-            isEnabled = "YES">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "/workspace/SwiftBot-Discord/config-dev.json"
-            isEnabled = "YES">
-         </CommandLineArgument>
-      </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -80,15 +80,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "724A77A91C6ED55B00CB0F1D"
-            BuildableName = "SwiftBot.bundle"
-            BlueprintName = "SwiftBotBundle"
+            BlueprintIdentifier = "72C1F45B1C78E82800B32B42"
+            BuildableName = "SwiftBot.app"
+            BlueprintName = "SwiftBot"
             ReferencedContainer = "container:SwiftBot.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

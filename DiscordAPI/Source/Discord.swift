@@ -14,7 +14,7 @@ public protocol DiscordDelegate : class {
 
 public class Discord: WebsocketAPIManagerDelegate {
     private var websocketManager: WebsocketAPIManager
-
+    private var auth: (user: String, password: String)?
     public weak var delegate: DiscordDelegate?
 
     public init() {
@@ -22,14 +22,28 @@ public class Discord: WebsocketAPIManagerDelegate {
         self.websocketManager.delegate = self
     }
 
-    public func login(user: String, password: String) {
-        let login = LoginRequest(user, password: password)
-        login.execute({ (login: LoginResponseModel?, error: NSError?) in
-            self.delegate?.discordLoginDidComplete(error)
-            if error == nil {
-                self.websocketManager.fetchEndpointAndConnect()
-            }
-        });
+    public func login(user: String, password: String, token: String? = nil) {
+        auth = (user, password)
+        if let token = token {
+            Registry.instance.token = token
+            self.websocketManager.fetchEndpointAndConnect()
+        } else {
+            loginAndRetrieveToken()
+        }
+    }
+
+    private func loginAndRetrieveToken()
+    {
+        if let user = auth?.user, pass = auth?.password {
+            let login = LoginRequest(user, password: pass)
+            login.execute({
+                (login: LoginResponseModel?, error: NSError?) in
+                self.delegate?.discordLoginDidComplete(error)
+                if error == nil {
+                    self.websocketManager.fetchEndpointAndConnect()
+                }
+            });
+        }
     }
 
     public func sendMessage(message: String, channel: String, tts: Bool = false, mentions: [String]? = nil) {
@@ -57,5 +71,12 @@ public class Discord: WebsocketAPIManagerDelegate {
         delegate?.discordMessageReceived(message, event: event)
     }
 
+    // Typically means login is out-of-date, try to log in again
+    public func websocketAuthenticationError() {
+        let logout = LogoutRequest();
+        logout.execute {
+            self.loginAndRetrieveToken()
+        }
+    }
 
 }

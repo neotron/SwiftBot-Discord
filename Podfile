@@ -1,9 +1,9 @@
 source 'https://github.com/CocoaPods/Specs.git'
 platform :osx, '10.10'
+use_frameworks!
 
 
 target :DiscordAPI do
-  use_frameworks!
   pod 'ObjectMapper'
   pod 'Starscream'
   pod 'AlamofireObjectMapper'
@@ -11,8 +11,10 @@ target :DiscordAPI do
   pod 'EVReflection'
 end
 
-target :SwiftBotCore do
-  use_frameworks!
+target :SwiftBot do
   pod 'Locksmith'
   pod 'Yaml'
+  pod 'Fabric'
+  pod 'Crashlytics'
+  pod 'MASPreferences'
 end
