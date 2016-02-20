@@ -5,7 +5,6 @@
 
 import Foundation
 import DiscordAPI
-import ObjectMapper
 import EVReflection
 
 class DistantWorldsWaypoints: MessageHandler {
@@ -107,7 +106,7 @@ extension DistantWorldsWaypoints {
             LOG_ERROR("Failed to load and decode waypoints database.")
             return
         }
-        EVReflection.setBundleIdentifier(DistantWorldsWaypoints)
+        EVReflection.setBundleIdentifier(SwiftBotMain)
         let db = Waypoints(json: dataText as String)
         print("Loaded database \(db)")
         self.database = db

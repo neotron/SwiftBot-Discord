@@ -6,15 +6,11 @@
 import Foundation
 import DiscordAPI
 import Alamofire
-import AlamofireObjectMapper
-import ObjectMapper
+import AlamofireJsonToObjects
+import EVReflection
 
-private class MeowModel: MappableBase {
-    var url: String?
-    override func mapping(map: Map) {
-        url <- map["file"]
-    }
-
+class MeowModel: EVObject {
+    var file: String?
 }
 
 class RandomAnimalsMessageHandler: MessageHandler, NSURLSessionTaskDelegate {
@@ -66,14 +62,14 @@ class RandomAnimalsMessageHandler: MessageHandler, NSURLSessionTaskDelegate {
 
 
     private func handleRandomCat(message: Message) {
+        EVReflection.setBundleIdentifier(SwiftBotMain)
         Alamofire.request(.GET, "http://random.cat/meow").responseObject {
-            (response: Response<MeowModel, NSError>) in
-
-            if let meow = response.result.value, url = meow.url {
+            (response: Result<MeowModel, NSError>) in
+            if let meow = response.value, url = meow.file {
                 message.replyToChannel(url)
             } else {
                 message.replyToChannel("Unfortunately, I failed to find any random cats for you today. :-(")
-                LOG_ERROR("Failed to get meow: \(response.result.error)")
+                LOG_ERROR("Failed to get meow: \(response.error)")
             }
         }
     }

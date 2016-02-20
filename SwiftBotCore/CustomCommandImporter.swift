@@ -16,7 +16,7 @@ enum CustomComandImportError: ErrorType {
 
 @objc public class CustomCommandImporter: NSObject {
     public init(configFile: String) {
-        Config.instance.loadConfig(fromFile: configFile)
+        Config.loadConfig(fromFile: configFile)
         super.init()
         if !CoreDataManager.instance.isSetupAndWorking() {
             LOG_ERROR("Unable to open database. Check your configuration!")

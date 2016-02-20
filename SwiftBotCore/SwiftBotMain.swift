@@ -13,7 +13,7 @@ public class SwiftBotMain: NSObject, DiscordDelegate {
 
 
     public init(withConfigFile configFile: String) {
-        Config.instance.loadConfig(fromFile: configFile);
+        Config.loadConfig(fromFile: configFile);
         self.messageDispatcher = MessageDispatchManager()
         super.init()
 
