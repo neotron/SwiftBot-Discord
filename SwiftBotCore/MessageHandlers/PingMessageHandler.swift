@@ -6,7 +6,7 @@
 import Foundation
 import DiscordAPI
 
-class PingMessageHandler : MessageHandler {
+class PingMessageHandler: MessageHandler {
     private let PING = "ping"
     private let PONG = "pong"
     private let PINGME = "pingme"
@@ -18,7 +18,7 @@ class PingMessageHandler : MessageHandler {
     }
 
     override func handleCommand(command: String, args: [String], message: Message) -> Bool {
-        switch(command) {
+        switch (command) {
         case PONG:
             message.replyToChannel("Ping!")
         case PING:

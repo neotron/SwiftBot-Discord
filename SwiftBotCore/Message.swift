@@ -12,20 +12,29 @@ class Message {
     weak var discord: Discord?
 
     // Convenience wrappers
-    var author   : UserModel? { return message.author }
-    var mentions : [UserModel]? { return message.mentions }
-    var content  : String       { return message.content! } // Content here is verified
-    var rawArgs  : [String]? // Arguments, without space removal
+    var author: UserModel? {
+        return message.author
+    }
+    var mentions: [UserModel]? {
+        return message.mentions
+    }
+    var content: String {
+        return message.content!
+    }
+    // Content here is verified
+    var rawArgs: [String]?
+    // Arguments, without space removal
+    var flags: CommandFlags
 
-    init(message: MessageModel, event: MessageEventType, discord: Discord?) {
+    init(message: MessageModel, event: MessageEventType, discord: Discord?, flags: CommandFlags) {
         self.discord = discord
         self.message = message
         self.event = event
+        self.flags = flags
     }
 
 
-    func replyToChannel(reply: String, tts: Bool = false, mentions: [String]? = nil)
-    {
+    func replyToChannel(reply: String, tts: Bool = false, mentions: [String]? = nil) {
         guard let channel = message.channelId else {
             LOG_ERROR("Couldn't send reply message - missing channel id in message.");
             return
@@ -33,8 +42,7 @@ class Message {
         self.discord?.sendMessage(reply, channel: channel, tts: tts, mentions: mentions)
     }
 
-    func replyToSender(reply: String)
-    {
+    func replyToSender(reply: String) {
         guard let recipientId = message.author?.id else {
             LOG_ERROR("Couldn't send reply message - missing author id in message.");
             return

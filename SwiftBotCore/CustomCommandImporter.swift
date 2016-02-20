@@ -6,12 +6,14 @@
 import Foundation
 import DiscordAPI
 import Yaml
+
 enum CustomComandImportError: ErrorType {
     case UTF8DecodingFailure,
-         YamlError(error: String?)
+         YamlError(error:String?)
 
 
 }
+
 @objc public class CustomCommandImporter: NSObject {
     public init(configFile: String) {
         Config.instance.loadConfig(fromFile: configFile)
@@ -37,7 +39,7 @@ enum CustomComandImportError: ErrorType {
         }
     }
 
-    public func importFromData(data: NSData, synchronous: Bool = false) throws -> (cmdImported: Int, catImported: Int, cmdUpdated: Int){
+    public func importFromData(data: NSData, synchronous: Bool = false) throws -> (cmdImported:Int, catImported:Int, cmdUpdated:Int) {
         guard let filestring = String(data: data, encoding: NSUTF8StringEncoding) else {
             throw CustomComandImportError.UTF8DecodingFailure
         }
@@ -46,7 +48,7 @@ enum CustomComandImportError: ErrorType {
         var cmdUpdated = 0
         let importCmd = Yaml.load(filestring)
         if let topLevel = importCmd.value?.dictionary {
-            var categoryHelp = [String:String]()
+            var categoryHelp = [String: String]()
             if let categories = topLevel["categories"]?.dictionary {
                 for (cat, catHelp) in categories {
                     if let catTxt = cat.string, catHelpTxt = catHelp.string {

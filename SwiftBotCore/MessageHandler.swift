@@ -7,7 +7,9 @@ import Foundation
 
 
 class AuthenticatedMessageHandler: MessageHandler {
-    var allowedRoles: [Role] { return [.Admin, .Owner] }
+    var allowedRoles: [Role] {
+        return [.Admin, .Owner]
+    }
 
     final override func handlePrefix(prefix: String, command: String, args: [String], message: Message) -> Bool {
         if !authenticated(message) {
@@ -43,7 +45,8 @@ class AuthenticatedMessageHandler: MessageHandler {
     }
 
     final private func authenticated(message: Message) -> Bool {
-        let isAuth = { (Void)->Bool in
+        let isAuth = {
+            (Void) -> Bool in
             let roles = CoreDataManager.instance.fetchRolesForId(message.author!.id!)
             for role in allowedRoles {
                 if roles.contains(role) {
@@ -52,7 +55,7 @@ class AuthenticatedMessageHandler: MessageHandler {
             }
             return false
         }()
-        if(!isAuth) {
+        if (!isAuth) {
             message.replyToChannel("@\(message.author!.username!): I can't let you do that.")
         }
         return isAuth
@@ -61,10 +64,18 @@ class AuthenticatedMessageHandler: MessageHandler {
 }
 
 class MessageHandler: NSObject {
-    var prefixes : [MessageCommand]? { return nil }
-    var commands : [MessageCommand]? { return nil }
-    var commandGroup : String? { return "" }
-    var canMatchAnything: Bool { return false }
+    var prefixes: [MessageCommand]? {
+        return nil
+    }
+    var commands: [MessageCommand]? {
+        return nil
+    }
+    var commandGroup: String? {
+        return ""
+    }
+    var canMatchAnything: Bool {
+        return false
+    }
 
     func handlePrefix(prefix: String, command: String, args: [String], message: Message) -> Bool {
         return false

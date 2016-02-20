@@ -57,8 +57,8 @@
       }
     },
     {
-	"name": "The Omega Nebula and The PW2010 Super Cluster",
-	"desc": "From the Lagoon its a short haul to the Trifid Nebula that sits between our previous waypoint and the Omega Nebula - two nebulae of similar appearance and both of which can be visited en-route to the Eagle Nebula. The Omega Nebula base camp is situated between the nebula itself and the neighboring PW2010 Super Cluster, making it the ideal location to begin expeditions out to these two prominent locations.",
+      "name": "The Omega Nebula and The PW2010 Super Cluster",
+      "desc": "From the Lagoon its a short haul to the Trifid Nebula that sits between our previous waypoint and the Omega Nebula - two nebulae of similar appearance and both of which can be visited en-route to the Eagle Nebula. The Omega Nebula base camp is situated between the nebula itself and the neighboring PW2010 Super Cluster, making it the ideal location to begin expeditions out to these two prominent locations.",
       "base_camp": {
         "name": "Camp Baatuta",
         "coords": [
@@ -211,7 +211,7 @@
     {
       "name": "Sagittarius A*",
       "desc": "Here we visit Sagittarius A* - the famous supermassive blackhole at the centre of the galaxy. The closest star systems are less than a light year away and it is at one of them where our core base camp is situated - an ideal staging post to prepare for the exploration of the Milky Way's heart. A trip to the roof of the galactic core awaits after this!",
-	"key_event": "Fleet rendezvous at the galactic core",
+      "key_event": "Fleet rendezvous at the galactic core",
       "base_camp": {
         "name": "Armstrong Landing",
         "coords": [
@@ -320,9 +320,9 @@
     },
     {
       "name": "The Magnus Nebula",
-	"desc": "Less than 1,000 LYs from the mysterious Bleia Borders, the Magnus Nebula is one of the largest so far discovered on the far galactic core. Embedded within are several thousand star systems including several neutron stars.",
-	"base_camp": {
-            "name": "The Sacagagwea Tundra",
+      "desc": "Less than 1,000 LYs from the mysterious Bleia Borders, the Magnus Nebula is one of the largest so far discovered on the far galactic core. Embedded within are several thousand star systems including several neutron stars.",
+      "base_camp": {
+        "name": "The Sacagagwea Tundra",
         "coords": [
           0,
           0
@@ -443,7 +443,7 @@
       "planet": "TBA",
       "distance": {
         "traveled": 81500,
-        "to": 65279
+        "next": 65279
       }
     }
   ],

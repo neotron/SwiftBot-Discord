@@ -6,8 +6,9 @@
 import Foundation
 import DiscordAPI
 import ObjectMapper
+import EVReflection
 
-class DistantWorldsWaypoints : MessageHandler {
+class DistantWorldsWaypoints: MessageHandler {
     private var database: Waypoints?
 
     override init() {
@@ -27,8 +28,7 @@ class DistantWorldsWaypoints : MessageHandler {
     }
     override func handlePrefix(prefix: String, command: String, args: [String], message: Message) -> Bool {
         let wp = command.stringByReplacingOccurrencesOfString(prefix, withString: "")
-        let verbose = args.contains("-v")
-        self.handleWaypointCommand(wp, verbose: verbose, message: message);
+        self.handleWaypointCommand(wp, message: message);
         return true
     }
 
@@ -38,9 +38,10 @@ class DistantWorldsWaypoints : MessageHandler {
 }
 
 // MARK: Handle wp command
+
 extension DistantWorldsWaypoints {
 
-    private func handleWaypointCommand(wpString: String, verbose: Bool, message: Message) {
+    private func handleWaypointCommand(wpString: String, message: Message) {
         guard let wpnum = Int(wpString) else {
             message.replyToChannel("Waypoint \(wpString) is not an integer.")
             return
@@ -54,7 +55,7 @@ extension DistantWorldsWaypoints {
             message.replyToChannel("Waypoint \(wpnum) is not a valid waypoint (use 1-\(wps.count)).");
             return
         }
-
+        let verbose = message.flags.contains(.Verbose)
         let wp = wps[wpnum]
         var output = [String]()
         output.append("**\(wp.name)**")
@@ -64,26 +65,26 @@ extension DistantWorldsWaypoints {
             output.append("")
         }
         if wp.system != "TBA" {
-            output.append("`Location`: **\(wp.system) \(wp.planet)** (*\(wp.baseCampName)*)")
+            output.append("`Location`: **\(wp.system) \(wp.planet)** (*\(wp.baseCamp.name)*)")
         } else {
-            output.append("`Location`: ** TBA ** (*\(wp.baseCampName)*)")
+            output.append("`Location`: ** TBA ** (*\(wp.baseCamp.name)*)")
         }
-        if wp.baseCampGravity > 0 && wp.baseCampCoords.count >= 2 {
-            var basecamp = "`Base Camp`: **\(wp.baseCampCoords[0]) / \(wp.baseCampCoords[1])** - \(wp.baseCampGravity) g  "
-            if(verbose) {
-                if let guide = wp.baseCampGuide {
+        if wp.baseCamp.gravity > 0 && wp.baseCamp.coords.count >= 2 {
+            var basecamp = "`Base Camp`: **\(wp.baseCamp.coords[0]) / \(wp.baseCamp.coords[1])** - \(wp.baseCamp.gravity) g  "
+            if verbose {
+                if let guide = wp.baseCamp.guide {
                     basecamp += guide
                 }
             }
             output.append(basecamp)
         }
         if verbose {
-            output.append("`Distance traveled:` \(wp.distanceTraveled / 1000.0) kly")
-            output.append("`Distance to next waypoint:` \(wp.distanceToNext / 1000.0) kly")
+            output.append("`Distance traveled:` \(wp.distance.traveled / 1000.0) kly")
+            output.append("`Distance to next waypoint:` \(wp.distance.next / 1000.0) kly")
         }
 
         let reply = output.joinWithSeparator("\n")
-        if(verbose) {
+        if verbose && !message.flags.contains(.Here) {
             message.replyToSender(reply)
         } else {
             message.replyToChannel(reply)
@@ -93,11 +94,12 @@ extension DistantWorldsWaypoints {
 
 
 // MARK: JSON datafile loader
-extension  DistantWorldsWaypoints {
+
+extension DistantWorldsWaypoints {
 
     private func loadDatabase() {
         let bundle = NSBundle(forClass: self.dynamicType)
-        guard let path = bundle.pathForResource("DistantWorldWaypoints", ofType: "json") else {
+        guard let path = bundle.pathForResource("DistantWorldsWaypoints", ofType: "json") else {
             LOG_ERROR("Failed to locate waypoints database.")
             return
         }
@@ -105,86 +107,64 @@ extension  DistantWorldsWaypoints {
             LOG_ERROR("Failed to load and decode waypoints database.")
             return
         }
-        guard let db = Mapper<Waypoints>().map(dataText) else {
-            LOG_ERROR("Failed to load database due to formatting issues.")
-            return
-        }
+        EVReflection.setBundleIdentifier(DistantWorldsWaypoints)
+        let db = Waypoints(json: dataText as String)
+        print("Loaded database \(db)")
         self.database = db
     }
 
-    private class Waypoints : MappableBase {
-        var stages: [Stage]?
-        var waypoints: [Waypoint]?
+}
 
-        override func mapping(map: Map) {
-            stages <- map["stages"]
-            waypoints <- map["waypoints"]
-        }
+class Waypoints: EVObject {
+    var stages = [Stage]()
+    var waypoints = [Waypoint]()
+}
+
+class Stage: EVObject {
+    var waypoints = (start: 0, end: 0)
+    var name = ""
+    var image = ""
+
+
+    // This is needed to convert waypoints to/from a tuple.
+    override public func propertyConverters() -> [(String?, (Any?) -> (), () -> Any?)] {
+        return [("waypoints",
+                {
+                    guard let arr = $0 as? [Int] else {
+                        return;
+                    }
+                    if arr.count != 2 {
+                        LOG_ERROR("Invalid waypoints object: \(arr)")
+                    } else {
+                        self.waypoints = (arr[0], arr[1])
+                    }
+                },
+                {
+                    return [self.waypoints.start, self.waypoints.end]
+                }
+                )]
     }
+}
 
-    private class Stage: MappableBase {
-        var waypoints: (start: Int, end: Int) {
-            guard let wp = _waypoints else {
-                return (0, 0)
-            }
-            if wp.count >= 2 {
-                return (wp[0], wp[1])
-            }
-            return (0, 0)
-        }
-        var name = ""
-        var image = ""
+class Distance: EVObject {
+    var next = 0.0
+    var traveled = 0.0
+}
 
-        private var _waypoints: [Int]?
+class BaseCamp: EVObject {
+    var name = ""
+    var coords = [0.0, 0.0]
+    var gravity = 0.0
+    var guide: String?
+}
 
-        override func mapping(map: Map) {
-            name <- map["name"]
-            image <- map["image"]
-            _waypoints <- map["waypoints"]
+class Waypoint: EVObject {
+    var name = ""
+    var desc = ""
+    var baseCamp = BaseCamp()
+    var system = ""
+    var planet = ""
+    var distance = Distance()
+    var keyEvent: String = ""
 
-        }
-
-    }
-
-    private class Waypoint: MappableBase {
-        var name: String { return _name! }
-        var desc: String { return _desc! }
-        var baseCampName: String { return _baseCampName! }
-        var baseCampCoords: [Double] { return _baseCampCoords! }
-        var baseCampGravity: Double { return _baseCampGravity! }
-        var baseCampGuide: String? { return _baseCampGuide }
-        var system: String { return _system! }
-        var planet: String { return _planet! }
-        var distanceTraveled: Double { return _distanceTraveled! }
-        var distanceToNext: Double { return _distanceToNext! }
-        var keyEvent: String? { return _keyEvent }
-
-
-        private var _name: String?
-        private var _desc: String?
-        private var _baseCampName: String?
-        private var _baseCampCoords: [Double]?
-        private var _baseCampGravity: Double?
-        private var _baseCampGuide: String?
-        private var _system: String?
-        private var _planet: String?
-        private var _distanceTraveled: Double?
-        private var _distanceToNext: Double?
-        private var _keyEvent: String?
-
-        override func mapping(map: Map) {
-            _name <- map["name"]
-            _desc <- map["desc"]
-            _baseCampName    <- map["base_camp.name"]
-            _baseCampCoords  <- map["base_camp.coords"]
-            _baseCampGravity <- map["base_camp.gravity"]
-            _baseCampGuide   <- map["base_camp.guide"]
-            _system <- map["system"]
-            _planet <- map["planet"]
-            _distanceTraveled <- map["distance.traveled"]
-            _distanceToNext   <- map["distance.next"]
-            _keyEvent         <- map["key_event"]
-        }
-
-    }
 }

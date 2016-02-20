@@ -7,7 +7,7 @@
 import Foundation
 import DiscordAPI
 
-class CustomCommandMessageHandler : MessageHandler {
+class CustomCommandMessageHandler: MessageHandler {
     internal static let CustomCommandGroup = "Custom Command Management"
 
     override var commandGroup: String? {
@@ -19,14 +19,14 @@ class CustomCommandMessageHandler : MessageHandler {
 
     override var commands: [MessageCommand]? {
         return [
-                (Command.AddCommand.rawValue,         "Add new command. Arguments: *<command> <text>*"),
-                (Command.RemoveCommand.rawValue,      "Remove existing command. Arguments: *<command>*"),
-                (Command.EditCommand.rawValue,        "Replace text for existing command. Arguments: *<command> <new text>*"),
-                (Command.SetHelpText.rawValue,            "Set (or remove) a help string for an existing command or category. Arguments: *<command or category> [help text]*"),
-                (Command.AddToCategory.rawValue,      "Add an existing command to a category. Category will be created if it doesn't exist. Arguments: *<category> <command>*"),
+                (Command.AddCommand.rawValue, "Add new command. Arguments: *<command> <text>*"),
+                (Command.RemoveCommand.rawValue, "Remove existing command. Arguments: *<command>*"),
+                (Command.EditCommand.rawValue, "Replace text for existing command. Arguments: *<command> <new text>*"),
+                (Command.SetHelpText.rawValue, "Set (or remove) a help string for an existing command or category. Arguments: *<command or category> [help text]*"),
+                (Command.AddToCategory.rawValue, "Add an existing command to a category. Category will be created if it doesn't exist. Arguments: *<category> <command>*"),
                 (Command.RemoveFromCategory.rawValue, "Remove a command from a category. Arguments: *<category> <command>*"),
-                (Command.DeleteCategory.rawValue,     "Delete an existing category. Commands in the category will not be removed. Arguments: *<category>*"),
-                (Command.ListCommands.rawValue,     "List existing custom commands and categories."),
+                (Command.DeleteCategory.rawValue, "Delete an existing category. Commands in the category will not be removed. Arguments: *<category>*"),
+                (Command.ListCommands.rawValue, "List existing custom commands and categories."),
         ];
     }
 
@@ -35,7 +35,7 @@ class CustomCommandMessageHandler : MessageHandler {
             LOG_ERROR("Got sent invalid command: \(command) - odd")
             return false
         }
-        switch(cmd) {
+        switch (cmd) {
         case .AddCommand:
             addCommand(args, message: message)
         case .RemoveCommand:
@@ -59,7 +59,7 @@ class CustomCommandMessageHandler : MessageHandler {
     override func handleAnything(command: String, args: [String], message: Message) -> Bool {
         let cdm = CoreDataManager.instance
         if let commandObject = cdm.loadCommandAlias(command) {
-            if args.count == 1 && (args[0] == "help" || args[0] == "-h") {
+            if message.flags.contains(.Help) {
                 if let help = commandObject.help {
                     var helpMessage = "**\(Config.commandPrefix)\(commandObject.command)**: \(help)";
                     if let longHelp = commandObject.longHelp {
@@ -85,7 +85,9 @@ class CustomCommandMessageHandler : MessageHandler {
             if let help = group.help {
                 output[0] += help
             }
-            let sortedCommands = group.commands.sort { $0.command > $1.command }
+            let sortedCommands = group.commands.sort {
+                $0.command > $1.command
+            }
             for command in sortedCommands {
                 var cmdline = "\t**\(Config.commandPrefix)\(command.command)**"
                 if let help = command.help {
@@ -103,6 +105,7 @@ class CustomCommandMessageHandler : MessageHandler {
 }
 
 // MARK: Add / Edit / Remove commands
+
 extension CustomCommandMessageHandler {
 
     func getCommandText(command: String, message: Message) -> String? {
@@ -206,12 +209,19 @@ extension CustomCommandMessageHandler {
         let sortOrder = [NSSortDescriptor(key: "command", ascending: true)]
         var output = [""]
         if let groups = cdm.fetchObjectsOfType(.CommandGroup, withPredicate: nil, sortedBy: sortOrder) {
-            output.append("**Categories**:\n\t\(groups.map{"**\($0.command)**: \($0.commands.map{$0.command}.joinWithSeparator(", "))"}.joinWithSeparator("\n\t"))")
-        } else {
+            output.append("**Categories**:\n\t\(groups.map {
+                " **\($0.command)**:\($0.commands.map {
+                    $0.command
+                }.joinWithSeparator(", "))"}.joinWithSeparator("\n\t"))")
+            } else {
             output.append("**Categories**:\n\tNone found")
         }
         if let commands = cdm.fetchObjectsOfType(.CommandAlias, withPredicate: nil, sortedBy: sortOrder) as? [CommandAlias] {
-            output.append("\n**Commands**:\n\t\(commands.filter {$0.group == nil}.map{$0.command}.joinWithSeparator(", "))")
+            output.append("\n**Commands**:\n\t\(commands.filter {
+                $0.group == nil
+            }.map {
+                $0.command
+            }.joinWithSeparator(", "))")
         } else {
             output.append("\n**Commands**: None found")
         }
@@ -227,6 +237,7 @@ extension CustomCommandMessageHandler {
 }
 
 // MARK: Command grouping for fun and profit
+
 extension CustomCommandMessageHandler {
     func loadOrCreateCommandGroup(group: String, shouldCreate: Bool = true) -> CommandGroup? {
         let cdm = CoreDataManager.instance
@@ -360,7 +371,9 @@ class CustomCommandImportMessageHandler: AuthenticatedMessageHandler {
 
 
 // MARK: Enum for commands
+
 extension CustomCommandMessageHandler {
+
     private enum Command: String {
         case AddCommand = "addcmd",
              RemoveCommand = "rmcmd",
@@ -371,4 +384,5 @@ extension CustomCommandMessageHandler {
              DeleteCategory = "delcat",
              ListCommands = "listcmds"
     }
+
 }

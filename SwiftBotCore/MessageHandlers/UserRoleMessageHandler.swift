@@ -18,7 +18,7 @@ class UserRoleMessageHandler: AuthenticatedMessageHandler {
     }
 
     override func handleAuthenticatedCommand(command: String, args: [String], message: Message) -> Bool {
-        switch(command) {
+        switch (command) {
         case "setadm":
             addAdminRights(message)
         case "rmadm":
@@ -29,10 +29,9 @@ class UserRoleMessageHandler: AuthenticatedMessageHandler {
         return true
     }
 
-
-    private func mentionedUserIds(message: Message) -> [String]?
-    {
-        guard let userIds = { (Void) -> [String]? in
+    private func mentionedUserIds(message: Message) -> [String]? {
+        guard let userIds = {
+            (Void) -> [String]? in
             guard let mentions = message.mentions  else {
                 return nil
             }

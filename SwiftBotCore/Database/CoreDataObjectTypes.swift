@@ -5,7 +5,7 @@
 
 import Foundation
 
-enum CoreDataObjectTypes : String {
+enum CoreDataObjectTypes: String {
     case CommandAlias = "CommandAlias",
          CommandGroup = "CommandGroup",
          UserRole = "UserRole"

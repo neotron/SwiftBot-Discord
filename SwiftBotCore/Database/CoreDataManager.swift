@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 import DiscordAPI
 
-class CoreDataManager : NSObject {
+class CoreDataManager: NSObject {
     static let instance = CoreDataManager()
 
     lazy private var persistentStoreCoordinator = CoreDataManager.instance.createPersistentStoreCoordinator()
@@ -27,6 +27,7 @@ class CoreDataManager : NSObject {
 
 
 // MARK: UserRole support
+
 extension CoreDataManager {
 
 
@@ -113,10 +114,10 @@ extension CoreDataManager {
     }
 
     private func fetchUserRoleForId(id: String, role: Role) -> UserRole? {
-        var userRole : UserRole?
+        var userRole: UserRole?
         if let ctx = self.managedObjectContext {
             ctx.performBlockAndWait {
-                let predicate = NSPredicate(format: "id = %@ AND role = %d" , id, role.rawValue)
+                let predicate = NSPredicate(format: "id = %@ AND role = %d", id, role.rawValue)
                 if let userRoles = self.fetchObjectsOfType(.UserRole, withPredicate: predicate) as? [UserRole] {
                     userRole = userRoles.first
                 }
@@ -127,6 +128,7 @@ extension CoreDataManager {
 }
 
 // MARK: Custom commands helper functions
+
 extension CoreDataManager {
     // Return the command with the specified name, or nil if there isn't one
     func loadCommandAlias(command: String) -> CommandAlias? {
@@ -194,6 +196,7 @@ extension CoreDataManager {
 }
 
 // MARK: Base functionality
+
 extension CoreDataManager {
     func save(synchronous: Bool = false) {
         guard let ctx = self.managedObjectContext else {
@@ -201,9 +204,13 @@ extension CoreDataManager {
             return
         }
         if synchronous {
-            ctx.performBlockAndWait { self.saveCtx(ctx) }
+            ctx.performBlockAndWait {
+                self.saveCtx(ctx)
+            }
         } else {
-            ctx.performBlock { self.saveCtx(ctx) }
+            ctx.performBlock {
+                self.saveCtx(ctx)
+            }
         }
     }
 
@@ -219,7 +226,7 @@ extension CoreDataManager {
     }
 
     func createObjectOfType(type: CoreDataObjectTypes) -> NSManagedObject? {
-        var newEntity : NSManagedObject?
+        var newEntity: NSManagedObject?
         if let ctx = self.managedObjectContext {
             ctx.performBlockAndWait {
                 newEntity = NSEntityDescription.insertNewObjectForEntityForName(type.rawValue, inManagedObjectContext: ctx)
@@ -271,6 +278,7 @@ extension CoreDataManager {
 
 
 // MARK: Private initialization methods
+
 extension CoreDataManager {
 
     private func createPersistentStoreCoordinator() -> NSPersistentStoreCoordinator? {
@@ -279,7 +287,7 @@ extension CoreDataManager {
             return nil
         }
         do {
-            try NSFileManager.defaultManager().createDirectoryAtPath(dbDir, withIntermediateDirectories: true, attributes:nil)
+            try NSFileManager.defaultManager().createDirectoryAtPath(dbDir, withIntermediateDirectories: true, attributes: nil)
         } catch {
             LOG_ERROR("Failed to create database path at \(dbDir) - check permissions.")
             return nil

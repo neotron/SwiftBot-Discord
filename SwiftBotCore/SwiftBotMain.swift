@@ -6,9 +6,9 @@
 import Foundation
 import DiscordAPI
 
-public class SwiftBotMain : NSObject, DiscordDelegate {
+public class SwiftBotMain: NSObject, DiscordDelegate {
     private let discord = Discord()
-    private var doneCallback: ((Void)->Void)?
+    private var doneCallback: ((Void) -> Void)?
     private let messageDispatcher: MessageDispatchManager
 
 
@@ -28,13 +28,13 @@ public class SwiftBotMain : NSObject, DiscordDelegate {
         }
     }
 
-    public func runWithDoneCallback(callback: ((Void)->Void)?) {
+    public func runWithDoneCallback(callback: ((Void) -> Void)?) {
         self.doneCallback = callback
         self.discord.login(Config.email, password: Config.password)
     }
 
     public func discordLoginDidComplete(error: NSError?) {
-        if(error != nil) {
+        if (error != nil) {
             LOG_ERROR("Exiting due to login failure")
             self.doneCallback?()
         }

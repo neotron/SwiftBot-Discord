@@ -6,7 +6,7 @@
 import Foundation
 import CoreData
 
-class Commandable : NSManagedObject {
+class Commandable: NSManagedObject {
     @NSManaged var command: String
     @NSManaged var help: String?
 }

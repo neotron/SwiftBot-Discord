@@ -6,13 +6,25 @@
 
 import Foundation
 import DiscordAPI
-typealias MessageCommand = (c: String, h: String?)
 
-class MessageDispatchManager : MessageHandler {
-    private var prefixHandlers  = [String:[MessageHandler]]() // allows prefix handling, i.e "randomcat" and "randomdog" could both go to a "random" prefix handler
-    private var commandHandlers = [String:[MessageHandler]]() // requires either just the command, i.e "route" or command with arguments "route 32 2.3"
-    private var anythingHandlers = [MessageHandler]() // These are called, in order, if nothing else matches. The matching logic can be whatever, such as substring matches.
-    private var commandHelp = [String:[String:[String]]]()
+typealias MessageCommand = (c:String, h:String?)
+
+struct CommandFlags: OptionSetType {
+    let rawValue: Int
+    static let None = CommandFlags(rawValue: 0)
+    static let Verbose = CommandFlags(rawValue: 1 << 0)
+    static let Help = CommandFlags(rawValue: 1 << 1)
+    static let Here = CommandFlags(rawValue: 1 << 2)
+}
+
+class MessageDispatchManager: MessageHandler {
+    private var prefixHandlers = [String: [MessageHandler]]()
+    // allows prefix handling, i.e "randomcat" and "randomdog" could both go to a "random" prefix handler
+    private var commandHandlers = [String: [MessageHandler]]()
+    // requires either just the command, i.e "route" or command with arguments "route 32 2.3"
+    private var anythingHandlers = [MessageHandler]()
+    // These are called, in order, if nothing else matches. The matching logic can be whatever, such as substring matches.
+    private var commandHelp = [String: [String: [String]]]()
     weak var discord: Discord?
 
     override init() {
@@ -35,7 +47,7 @@ class MessageDispatchManager : MessageHandler {
                 output.append(commandHelp[group]![command]!.joinWithSeparator("\n"))
             }
         }
-        if args.count > 0 && args[0] == "here" {
+        if message.flags.contains(.Here) {
             message.replyToChannel(output.joinWithSeparator("\n"));
         } else {
             message.replyToSender(output.joinWithSeparator("\n"));
@@ -74,11 +86,11 @@ class MessageDispatchManager : MessageHandler {
         }
     }
 
-    private func addHandlerForCommand(command: MessageCommand, inout inDict dict:[String:[MessageHandler]], handler: MessageHandler) {
+    private func addHandlerForCommand(command: MessageCommand, inout inDict dict: [String:[MessageHandler]], handler: MessageHandler) {
         let commandStr = command.c.lowercaseString
         if let helpString = command.h, group = handler.commandGroup {
             if commandHelp[group] == nil {
-                commandHelp[group] = [commandStr:[]]
+                commandHelp[group] = [commandStr: []]
             } else if commandHelp[group]![commandStr] == nil {
                 commandHelp[group]![commandStr] = [String]()
             }
@@ -89,6 +101,21 @@ class MessageDispatchManager : MessageHandler {
         }
         dict[commandStr]?.append(handler)
         LOG_INFO("Registered \(handler) for \(commandStr)")
+    }
+
+    func parseCommandFlags(args: [String]) -> CommandFlags {
+        var flags = CommandFlags.None
+        let argSet = Set(args)
+        if argSet.contains("-v") || argSet.contains("--verbose") || argSet.contains("verbose") {
+            flags.insert(.Verbose)
+        }
+        if argSet.contains("-h") || argSet.contains("help") {
+            flags.insert(.Help)
+        }
+        if argSet.contains("here") || argSet.contains("--here") {
+            flags.insert(.Here)
+        }
+        return flags
     }
 
     func processMessage(message: MessageModel, event: MessageEventType) {
@@ -105,9 +132,12 @@ class MessageDispatchManager : MessageHandler {
             contentWithoutPrefix = content.substringFromIndex(prefixRange.endIndex)
         }
         var args = contentWithoutPrefix.componentsSeparatedByString(" ")
-        let messageWrapper = Message(message: message, event: event, discord: discord)
+        let flags = parseCommandFlags(args)
+        let messageWrapper = Message(message: message, event: event, discord: discord, flags: flags)
         messageWrapper.rawArgs = args
-        args = args.filter { $0 != "" }
+        args = args.filter {
+            $0 != ""
+        }
         let command = args.removeAtIndex(0).lowercaseString
 
         if let handlers = commandHandlers[command] {

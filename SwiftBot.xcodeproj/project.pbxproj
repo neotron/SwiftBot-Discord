@@ -40,7 +40,7 @@
 		6D999C7C9CFE7D5A7868FDAF /* WebsocketMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999366FEF6398379167ACE /* WebsocketMessageModel.swift */; };
 		6D999D680169FF550EE6E53A /* Commandable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9997569FF5B0DE59FF826F /* Commandable.swift */; };
 		6D999D6B4B876537EDA2BE5E /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999F3B254BE1F033FC51E1 /* CoreDataManager.swift */; };
-		6D999DDF7B03891224983EDA /* DistantWorldWaypoints.json in Resources */ = {isa = PBXBuildFile; fileRef = 6D999A8EC088C957E553638F /* DistantWorldWaypoints.json */; };
+		6D999DDF7B03891224983EDA /* DistantWorldsWaypoints.json in Resources */ = {isa = PBXBuildFile; fileRef = 6D999A8EC088C957E553638F /* DistantWorldsWaypoints.json */; };
 		6D999E0826CE9EE4A5E7B365 /* MappableBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999CDF69492A172C93B585 /* MappableBase.swift */; };
 		6D999E188A8791194E025AC9 /* PrivateChannelRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999D9FA7F4F73DEC46C1F5 /* PrivateChannelRequest.swift */; };
 		6D999E43A2BA9A381A036AAE /* CoreDataObjectTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9992E6ACB30F538A5AB11A /* CoreDataObjectTypes.swift */; };
@@ -145,7 +145,7 @@
 		6D9998E44D0D39FDE1300A2A /* NSData+GZIP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSData+GZIP.swift"; sourceTree = "<group>"; };
 		6D999981E4209E0BC1738829 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		6D9999B3F35104A0B78148BE /* Registry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Registry.swift; sourceTree = "<group>"; };
-		6D999A8EC088C957E553638F /* DistantWorldWaypoints.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DistantWorldWaypoints.json; sourceTree = "<group>"; };
+		6D999A8EC088C957E553638F /* DistantWorldsWaypoints.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DistantWorldsWaypoints.json; sourceTree = "<group>"; };
 		6D999ADC03AE6A181FEB636A /* PingMessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PingMessageHandler.swift; sourceTree = "<group>"; };
 		6D999B4B7B00C1406EAA57E8 /* include.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include.h; sourceTree = "<group>"; };
 		6D999B589530284A2E9ADC50 /* MessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageHandler.swift; sourceTree = "<group>"; };
@@ -293,7 +293,7 @@
 			children = (
 				6D999CE1377735369EA27180 /* ScienceMessageHandler.swift */,
 				6D99980EE020CA974A21D274 /* DistantWorldsWaypoints.swift */,
-				6D999A8EC088C957E553638F /* DistantWorldWaypoints.json */,
+				6D999A8EC088C957E553638F /* DistantWorldsWaypoints.json */,
 			);
 			path = Elite;
 			sourceTree = "<group>";
@@ -658,7 +658,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D999DDF7B03891224983EDA /* DistantWorldWaypoints.json in Resources */,
+				6D999DDF7B03891224983EDA /* DistantWorldsWaypoints.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

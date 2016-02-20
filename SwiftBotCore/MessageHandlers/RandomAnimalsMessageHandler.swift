@@ -28,16 +28,16 @@ class RandomAnimalsMessageHandler: MessageHandler, NSURLSessionTaskDelegate {
 
     }
 
-
-
     override var prefixes: [MessageCommand]? {
         return [("random", nil)]
     }
+
     override var commands: [MessageCommand]? {
         return [("random", "Show image of random animal. Supports cat, dog, corgi and kitten. Space between *random* and *animal* is optiona.")]
     }
+
     override func handlePrefix(prefix: String, command: String, args: [String], message: Message) -> Bool {
-        switch(command) {
+        switch (command) {
         case "randomcat":
             handleRandomCat(message)
         case "randomdog":
@@ -53,7 +53,7 @@ class RandomAnimalsMessageHandler: MessageHandler, NSURLSessionTaskDelegate {
     }
 
     override func handleCommand(command: String, args: [String], message: Message) -> Bool {
-        switch(args.count) {
+        switch (args.count) {
         case 0:
             message.replyToChannel("I know of the following random images: cat, dog corgi and kitten.")
             return true
@@ -95,7 +95,7 @@ class RandomAnimalsMessageHandler: MessageHandler, NSURLSessionTaskDelegate {
                                             willPerformHTTPRedirection response: NSHTTPURLResponse,
                                             newRequest request: NSURLRequest, completionHandler: (NSURLRequest?) -> Void) {
         if let message = self.pendingCorgieChannels[task.taskIdentifier] {
-            if(response.statusCode == 302) {
+            if (response.statusCode == 302) {
                 if let doge = response.allHeaderFields["Location"] as? String {
                     message.replyToChannel(doge)
                     return

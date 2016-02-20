@@ -7,6 +7,7 @@ target :DiscordAPI do
   pod 'ObjectMapper'
   pod 'Starscream'
   pod 'AlamofireObjectMapper'
+  pod 'EVReflection'
 end
 
 target :SwiftBotCore do
