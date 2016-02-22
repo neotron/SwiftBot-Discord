@@ -86,8 +86,13 @@ import EVReflection
     }
 
     private func saveUserSettings() {
-        let settings = self.toDictionary(false)
-            LOG_DEBUG("Saving settings: \(settings)")
+        let settings : NSMutableDictionary = self.toDictionary(false).mutableCopy() as! NSMutableDictionary
+        for (key, value) in settings {
+            if let _ = value as? NSNull {
+                settings.removeObjectForKey(key)
+            }
+        }
+        LOG_DEBUG("Saving settings: \(settings)")
         NSUserDefaults.standardUserDefaults().setObject(settings, forKey: settingsKey(development))
     }
 

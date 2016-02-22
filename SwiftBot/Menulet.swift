@@ -28,7 +28,7 @@ class Menulet : NSObject, NSMenuDelegate {
    }
 
     func updateTitle() {
-        statusItem.title = Config.development ? "[Dev]   " : ""
+        statusItem.title = Config.development ? "[Dev] #  " : ""
     }
 
     @IBAction func openPreferences(sender: AnyObject) {
