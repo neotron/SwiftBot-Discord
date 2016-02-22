@@ -8,7 +8,7 @@ import Alamofire
 
 public class LogoutRequest {
 
-    func execute() {
+    func execute(callback:(Void)->Void) {
         guard let token = Registry.instance.token else {
             LOG_ERROR("Already logged out")
             return
@@ -21,6 +21,7 @@ public class LogoutRequest {
             } else {
                 LOG_INFO("Logout completed successfully.");
             }
+            callback()
         })
     }
 }

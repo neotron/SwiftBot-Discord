@@ -9,6 +9,7 @@ import Starscream
 import ObjectMapper
 
 public protocol WebsocketAPIManagerDelegate : class {
+    func websocketAuthenticationError()
     func websocketEndpointError()
     func websocketMessageReceived(message: MessageModel, event: MessageEventType)
 }
@@ -29,6 +30,7 @@ public class WebsocketAPIManager: NSObject, WebSocketDelegate {
                     self.connectWebSocket()
                 } else {
                     LOG_ERROR("Websocket gateway request failed, no endpoint available.")
+                    self.delegate?.websocketAuthenticationError()
                 }
             });
         } else {
@@ -152,6 +154,4 @@ public class WebsocketAPIManager: NSObject, WebSocketDelegate {
             return
         }
     }
-
-
 }
