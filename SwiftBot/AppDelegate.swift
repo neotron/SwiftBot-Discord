@@ -5,8 +5,8 @@
 //  Created by David Hedbor on 2/20/16.
 //  Copyright © 2016 NeoTron. All rights reserved.
 //
-
-import Cocoa
+import Foundation
+import AppKit
 import DiscordAPI
 import Fabric
 import Crashlytics
@@ -31,9 +31,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        Logger.instance = CrashlyticsLogger()
-
-        self.main = SwiftBotMain(withConfigFile: "/workspace/SwiftBot-Discord/config-dev.json")
+        Logger.instance = CrashlyticsLogger();
+        let args = NSProcessInfo.processInfo().arguments
+        Config.development = args.contains("--development")
+        self.main = SwiftBotMain()
         main?.runWithDoneCallback({
             LOG_INFO("Exiting gracefully.");
             exit(0);

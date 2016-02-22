@@ -6,14 +6,102 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="GeneralPreferences">
             <connections>
+                <outlet property="commandPrefix" destination="duq-XF-AwH" id="QyR-cO-w0w"/>
+                <outlet property="databaseDirectory" destination="lzH-yu-pr2" id="Rtn-h5-P5m"/>
+                <outlet property="ownerIds" destination="fy4-UO-fdh" id="Dq9-Kq-A1c"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+            <rect key="frame" x="0.0" y="0.0" width="645" height="198"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QzM-zg-n42">
+                    <rect key="frame" x="259" y="161" width="137" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="General Configuration" id="XbK-0u-u5D">
+                        <font key="font" metaFont="titleBar"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MBK-3T-Il1">
+                    <rect key="frame" x="18" y="124" width="138" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Command Prefix" id="ZYa-0e-NF6">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JGF-dC-ogs">
+                    <rect key="frame" x="18" y="80" width="154" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="150" id="HAf-SZ-rs3"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Database Directory" id="Mcm-dT-wc8">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4Z8-4l-Rli">
+                    <rect key="frame" x="18" y="41" width="100" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="96" id="D4V-gJ-iQb"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Owner IDs" id="P1Z-eK-Lnz">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0aC-vw-o5g">
+                    <rect key="frame" x="163" y="121" width="471" height="22"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Text used as prefix of commands" drawsBackground="YES" id="duq-XF-AwH">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lzH-yu-pr2">
+                    <rect key="frame" x="163" y="80" width="471" height="22"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Directory where database is stored" drawsBackground="YES" id="hDu-1i-AZJ">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fy4-UO-fdh">
+                    <rect key="frame" x="163" y="41" width="471" height="22"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Comma separated list of Discord id's of bot owners" drawsBackground="YES" id="eOq-Im-w6K">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="fy4-UO-fdh" firstAttribute="bottom" secondItem="4Z8-4l-Rli" secondAttribute="bottom" id="73O-NM-rIl"/>
+                <constraint firstItem="fy4-UO-fdh" firstAttribute="leading" secondItem="lzH-yu-pr2" secondAttribute="leading" id="91Z-j3-gPi"/>
+                <constraint firstItem="lzH-yu-pr2" firstAttribute="trailing" secondItem="0aC-vw-o5g" secondAttribute="trailing" id="CLs-pK-TbR"/>
+                <constraint firstItem="MBK-3T-Il1" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" symbolic="YES" id="FdO-ld-SQR"/>
+                <constraint firstItem="4Z8-4l-Rli" firstAttribute="leading" secondItem="JGF-dC-ogs" secondAttribute="leading" id="Gi6-1w-fEn"/>
+                <constraint firstItem="fy4-UO-fdh" firstAttribute="leading" secondItem="4Z8-4l-Rli" secondAttribute="trailing" constant="47" id="IH3-vv-Fo1"/>
+                <constraint firstItem="0aC-vw-o5g" firstAttribute="top" secondItem="QzM-zg-n42" secondAttribute="bottom" constant="18" id="KLd-kl-H9s"/>
+                <constraint firstItem="0aC-vw-o5g" firstAttribute="baseline" secondItem="MBK-3T-Il1" secondAttribute="baseline" id="UwN-cZ-ncl"/>
+                <constraint firstItem="QzM-zg-n42" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" symbolic="YES" id="V07-jv-4Wh"/>
+                <constraint firstItem="QzM-zg-n42" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="261" id="Y3L-7T-3Aq"/>
+                <constraint firstItem="lzH-yu-pr2" firstAttribute="leading" secondItem="0aC-vw-o5g" secondAttribute="leading" id="c7q-sR-KkC"/>
+                <constraint firstItem="JGF-dC-ogs" firstAttribute="leading" secondItem="MBK-3T-Il1" secondAttribute="leading" id="d6f-Hd-Zb5"/>
+                <constraint firstAttribute="trailing" secondItem="0aC-vw-o5g" secondAttribute="trailing" constant="11" id="d7Q-ah-lsT"/>
+                <constraint firstItem="0aC-vw-o5g" firstAttribute="leading" secondItem="MBK-3T-Il1" secondAttribute="trailing" constant="9" id="gs4-xf-MCs"/>
+                <constraint firstItem="fy4-UO-fdh" firstAttribute="top" secondItem="JGF-dC-ogs" secondAttribute="bottom" constant="17" id="kA8-Tf-Ueh"/>
+                <constraint firstItem="lzH-yu-pr2" firstAttribute="trailing" secondItem="fy4-UO-fdh" secondAttribute="trailing" id="s26-zP-vLC"/>
+                <constraint firstItem="JGF-dC-ogs" firstAttribute="bottom" secondItem="lzH-yu-pr2" secondAttribute="bottom" id="tG3-Pr-qVH"/>
+                <constraint firstItem="lzH-yu-pr2" firstAttribute="top" secondItem="0aC-vw-o5g" secondAttribute="bottom" constant="19" id="vv1-m3-6jl"/>
+            </constraints>
+            <point key="canvasLocation" x="388.5" y="283"/>
         </customView>
     </objects>
 </document>

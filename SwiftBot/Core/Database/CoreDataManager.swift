@@ -332,4 +332,9 @@ extension CoreDataManager {
         managedObjectContext.persistentStoreCoordinator = coordinator
         return managedObjectContext
     }
+
+    func reopenDatabase() {
+        self.persistentStoreCoordinator = self.createPersistentStoreCoordinator()
+        self.managedObjectContext = self.createManagedObjectContext()
+    }
 }

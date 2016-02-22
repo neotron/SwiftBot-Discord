@@ -74,6 +74,12 @@ public class WebsocketAPIManager: NSObject, WebSocketDelegate {
 
     func processMessage(dict: [String:AnyObject], event: MessageEventType) {
         if let message = Mapper<MessageModel>().map(dict) {
+            if let authorId = message.author?.id, myId = Registry.instance.user?.id {
+                if authorId == myId {
+                    LOG_DEBUG("Ignoring message from myself.")
+                    return
+                }
+            }
             LOG_DEBUG("Decoded \(event) message: \(message)")
             delegate?.websocketMessageReceived(message, event: event)
         } else {

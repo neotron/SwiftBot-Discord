@@ -219,7 +219,8 @@
           78.06
         ],
         "gravity": 0.08,
-        "guide": "http://i66.tinypic.com/xmud61.jpg"
+        "guide": "http://i66.tinypic.com/xmud61.jpg",
+        "radius": 1372,
       },
       "system": "STUEMEAE KM-W C1-342",
       "planet": "1 B",
@@ -234,13 +235,16 @@
       "base_camp": {
         "name": "Gagarin's Reach",
         "coords": [
-          0,
-          0
+          -66.88,
+          -96.0
         ],
-        "gravity": 0
+        "gravity": 0.06,
+        "radius": 507.0,
+        "guide": "http://i64.tinypic.com/ws5q82.jpg"
       },
-      "system": "TBA",
-      "planet": "TBA",
+      "system": "NYUENA JS-B D342",
+      "planet": "4 F A",
+      "prime": "Monday 22nd Feb. 3302 19:00 UTC for EU, 02:00 UTC for USA.",
       "distance": {
         "traveled": 32800,
         "next": 2900
@@ -252,13 +256,15 @@
       "base_camp": {
         "name": "The Needle",
         "coords": [
-          0,
-          0
+          24.58,
+          -178.30
         ],
-        "gravity": 0
+        "gravity": 0.3,
+        "guide": "http://i68.tinypic.com/2nth17m.jpg"
       },
-      "system": "TBA",
-      "planet": "TBA",
+      "system": "PHIPOEA DD-F C26-1311",
+      "planet": "3 E",
+      "prime": "Thursday 25th Feb. 3302 19:00 UTC for EU, 02:00 UTC for USA.",
       "distance": {
         "traveled": 35700,
         "next": 1300
