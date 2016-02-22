@@ -21,9 +21,15 @@ class Menulet : NSObject, NSMenuDelegate {
         statusItem.image = NSImage(named: "menulet")
         statusItem.image?.template = true
         statusItem.highlightMode = true
-        statusItem.title = "SwiftBot"
+        statusItem.length = NSVariableStatusItemLength
         statusItem.enabled = true
+        updateTitle()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateTitle", name: Config.CONFIG_CHANGE_KEY, object: nil)
    }
+
+    func updateTitle() {
+        statusItem.title = Config.development ? "[Dev]   " : ""
+    }
 
     @IBAction func openPreferences(sender: AnyObject) {
         preferencesController.openPreferences(sender)

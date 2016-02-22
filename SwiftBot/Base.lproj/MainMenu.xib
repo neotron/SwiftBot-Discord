@@ -21,26 +21,6 @@
         </customObject>
         <menu id="dEo-o9-O1n" userLabel="Menulet Menu">
             <items>
-                <menuItem title="Start Server" id="kF5-QZ-a0O">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-                <menuItem isSeparatorItem="YES" id="2Au-24-qcv"/>
-                <menuItem title="Start Speedtest" tag="42" keyEquivalent="r" id="8a6-BS-bhR"/>
-                <menuItem title="Start Local Speedtest" id="kb9-pp-4Nd">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Start Local Speedtest" id="yAa-O7-nu7">
-                        <items>
-                            <menuItem title="&lt;No Servers Found&gt;" id="tZI-uP-C8u">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                            </menuItem>
-                        </items>
-                    </menu>
-                </menuItem>
-                <menuItem title="View History" keyEquivalent="h" id="TIz-Bb-lzz"/>
-                <menuItem title="Check for Update..." id="Yle-zG-OPv">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-                <menuItem isSeparatorItem="YES" id="vqe-NA-DJE"/>
                 <menuItem title="Preferences..." id="1oy-r5-neZ">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>

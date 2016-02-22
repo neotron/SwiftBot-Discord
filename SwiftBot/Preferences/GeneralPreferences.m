@@ -62,7 +62,6 @@
     NSArray *owners = [[_ownerIds.stringValue stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]
             componentsSeparatedByString:@","];
     [Config setOwnerIds:[NSSet setWithArray:owners]];
-    [[Config instance] saveUserSettings];
 }
 
 @end

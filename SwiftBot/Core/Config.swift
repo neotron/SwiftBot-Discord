@@ -8,6 +8,8 @@ import DiscordAPI
 import EVReflection
 
 @objc class Config: EVObject {
+    static let CONFIG_CHANGE_KEY = "ApplicationModeChange"
+
     // Instance accessible read-only settings.
     static var commandPrefix: String {
         get {
@@ -15,6 +17,7 @@ import EVReflection
         }
         set {
             instance.commandPrefix = newValue
+            instance.saveUserSettings()
         }
     }
     static var databaseDirectory: String? {
@@ -23,6 +26,7 @@ import EVReflection
         } set {
             instance.databaseDirectory = newValue
             CoreDataManager.instance.reopenDatabase()
+            instance.saveUserSettings()
         }
     }
     static var ownerIds: Set<String> {
@@ -31,6 +35,19 @@ import EVReflection
         }
         set {
             instance.ownerIds = Array(newValue)
+            instance.saveUserSettings()
+
+        }
+    }
+    static var development: Bool {
+        get {
+            return instance.development
+        }
+        set {
+            if newValue != instance.development {
+                instance.development = newValue
+                instance.loadUserSettings()
+            }
         }
     }
 
@@ -39,24 +56,21 @@ import EVReflection
     var databaseDirectory: String?
     var ownerIds = [String]()
 
-    private var development = false
-
-
-    func setDevelopment(dev: Bool) {
-        if development != dev {
-            development = dev
-            loadUserSettings()
+    var development = false {
+        didSet {
+            let center = NSNotificationCenter.defaultCenter()
+            center.postNotification(NSNotification(name: Config.CONFIG_CHANGE_KEY, object: nil))
         }
     }
 
-    static let instance = Config()
+    private static let instance = Config()
 
     required init() {
         super.init()
         loadUserSettings()
     }
 
-    func loadUserSettings()  {
+    private func loadUserSettings()  {
         if let settings = NSUserDefaults.standardUserDefaults().objectForKey(settingsKey(development)) {
             LOG_DEBUG("Loaded settings: \(settings)")
             if let prefix = settings["commandPrefix"] as? String {
@@ -71,7 +85,7 @@ import EVReflection
         }
     }
 
-    func saveUserSettings() {
+    private func saveUserSettings() {
         let settings = self.toDictionary(false)
             LOG_DEBUG("Saving settings: \(settings)")
         NSUserDefaults.standardUserDefaults().setObject(settings, forKey: settingsKey(development))

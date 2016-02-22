@@ -33,7 +33,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         Logger.instance = CrashlyticsLogger();
         let args = NSProcessInfo.processInfo().arguments
-        Config.instance.setDevelopment(args.contains("--development"));
+        Config.development = args.contains("--development")
         self.main = SwiftBotMain()
         main?.runWithDoneCallback({
             LOG_INFO("Exiting gracefully.");
