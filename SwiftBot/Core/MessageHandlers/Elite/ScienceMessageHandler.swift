@@ -9,6 +9,7 @@ import Foundation
 import DiscordAPI
 
 class ScienceMessageHandler: MessageHandler {
+
     override var commandGroup: String? {
         return "Elite: Dangerous"
     }
@@ -26,6 +27,7 @@ class ScienceMessageHandler: MessageHandler {
 
     override var commands: [MessageCommand]? {
         return [
+                ("bearing", "Calculate bearing and optional distance between two planetary coordiantes. Args: <lat1> <lon1> <lat2> <lon2> [planet radius in km]"),
                 ("g", "Calculate gravity for a planet. Arguments: <Earth masses> <radius in km>"),
                 ("route", "Calculate optimal core routing distance. Arguments: <jump range> <kly to Sgr A*> [optional: max route length in ly]"),
                 ("kly/hr", "Calculate max kly travelled per hour. Arguments: <jump range> [optional: time per jump in seconds (default 45s)]")
@@ -40,11 +42,45 @@ class ScienceMessageHandler: MessageHandler {
             handleRoute(args, message: message)
         case "kly/hr":
             handleKlyPerHour(args, message: message)
+        case "bearing":
+            handleBearingAndDistance(args, message: message)
         default:
             return false
         }
         return true
     }
+
+    private func handleBearingAndDistance(args: [String], message: Message) {
+        var radius: Double?
+        var start: PlanetaryMath.LatLong?
+        var end: PlanetaryMath.LatLong?
+        do {
+            switch args.count {
+            case 5 ... 100:
+                radius = Double(args[4])
+                fallthrough
+
+            case 4:
+                guard let lat1 = Double(args[0]), lon1 = Double(args[1]), lat2 = Double(args[2]), lon2 = Double(args[3])  else {
+                    message.replyToChannel("Invalid, non-number coordinates. Check input.")
+                    return
+                }
+                start = (lat1, lon1)
+                end = (lat2, lon2)
+            default:
+                message.replyToChannel("Insufficient number og arguments. Expected 4-5 numbers.")
+                return
+            }
+        }
+        if let start = start, end = end {
+            let result = PlanetaryMath.calculateBearingAndDistance(start: start, end: end, radius: radius)
+            let distance = PlanetaryMath.distanceFor(result.distance)
+            message.replyToChannel(String(format: "To get from \(start) to \(end) head in bearing %.1f°\(distance).", result.bearing))
+        } else {
+            message.replyToChannel("Couldn't parse start/end coordinates.")
+        }
+    }
+
 
     private func handleKlyPerHour(args: [String], message: Message) {
         if args.count < 1 {
@@ -149,5 +185,53 @@ class ScienceMessageHandler: MessageHandler {
         let marginOfError = estRange * 0.0055
         message.replyToChannel(String(format: "Estimated plot range should be around **%.0f ly** - check range *%.0f to %.0f ly*", estRange, floor(estRange - marginOfError), ceil(estRange + marginOfError)))
     }
+}
 
+private extension Double {
+    var toRadians: Double {
+        return self * M_PI / 180.0
+    }
+    var toDegrees: Double {
+        return self * 180.0 / M_PI
+    }
+}
+
+
+class PlanetaryMath {
+    typealias LatLong = (lat:Double, lon:Double)
+
+    class func calculateBearingAndDistance(start start: LatLong, end: LatLong, radius: Double?) -> (bearing:Double, distance:Double?) {
+        let λ1 = start.lat.toRadians
+        let λ2 = end.lat.toRadians
+        let φ1 = start.lon.toRadians
+        let φ2 = end.lon.toRadians
+        let y = sin(λ2 - λ1) * cos(φ2)
+        let x = cos(φ1) * sin(φ2) - sin(φ1) * cos(φ2) * cos(λ2 - λ1)
+        let bearing = (atan2(y, x).toDegrees + 450) % 360
+        var distance: Double?
+        if let R = radius {
+            if R > 0 {
+                let Δφ = (end.lat - start.lat).toRadians
+                let Δλ = (end.lon - start.lon).toRadians
+
+                let a = sin(Δφ / 2) * sin(Δφ / 2) + cos(φ1) * cos(φ2) * sin(Δλ / 2) * sin(Δλ / 2);
+                let c = 2 * atan2(sqrt(a), sqrt(1 - a));
+
+                distance = R * c
+            }
+        }
+        return (bearing, distance)
+    }
+
+    class func distanceFor(km: Double?) -> String {
+        var distance = ""
+        if let km = km {
+            if km > 1 {
+                distance = String(format: " for %.2f km", km)
+            } else {
+                distance = String(format: " for %.1f m", km * 1000.0)
+            }
+        }
+        return distance
+    }
 }

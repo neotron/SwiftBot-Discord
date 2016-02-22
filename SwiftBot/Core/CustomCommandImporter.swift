@@ -15,28 +15,9 @@ enum CustomComandImportError: ErrorType {
 }
 
 @objc public class CustomCommandImporter: NSObject {
-    public init(configFile: String) {
-        Config.loadConfig(fromFile: configFile)
-        super.init()
-        if !CoreDataManager.instance.isSetupAndWorking() {
-            LOG_ERROR("Unable to open database. Check your configuration!")
-            exit(1)
-        }
-    }
-
     override public init() {
         // Init without doing anything, used when executed from message handler.
         super.init()
-    }
-
-    public func importFromFile(file: String) {
-        do {
-            let filedata = try NSData(contentsOfFile: file, options: NSDataReadingOptions.DataReadingMappedAlways)
-            try importFromData(filedata, synchronous: true)
-        } catch {
-            LOG_ERROR("Failed to load import file \(file): \(error)")
-            exit(1)
-        }
     }
 
     public func importFromData(data: NSData, synchronous: Bool = false) throws -> (cmdImported:Int, catImported:Int, cmdUpdated:Int) {

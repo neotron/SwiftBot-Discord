@@ -69,6 +69,8 @@
 		72F850711C790D060077B4AB /* GeneralPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F8506F1C790D060077B4AB /* GeneralPreferences.m */; };
 		72F850721C790D060077B4AB /* GeneralPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72F850701C790D060077B4AB /* GeneralPreferences.xib */; };
 		72F850751C790E680077B4AB /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F850741C790E680077B4AB /* Preferences.m */; };
+		72F850861C7939470077B4AB /* DiscordAPI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77D71C6ED97200CB0F1D /* DiscordAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		72F850871C7939470077B4AB /* Pods_DiscordAPI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = E4E416147C422B787B64C291 /* Pods_DiscordAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CF25CA6E7B08A39BE192ED52 /* Pods_SwiftBot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE5B29F117095BC90A629859 /* Pods_SwiftBot.framework */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +92,18 @@
 			dstSubfolderSpec = 16;
 			files = (
 			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		72F850851C7939280077B4AB /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				72F850861C7939470077B4AB /* DiscordAPI.framework in Copy Frameworks */,
+				72F850871C7939470077B4AB /* Pods_DiscordAPI.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -563,8 +577,9 @@
 				72C1F4591C78E82800B32B42 /* Frameworks */,
 				72C1F45A1C78E82800B32B42 /* Resources */,
 				3DC4A2777D7B5C1903426AC7 /* Embed Pods Frameworks */,
-				D42EBFB0F987C735543AC71A /* Copy Pods Resources */,
 				72F850781C79289E0077B4AB /* Copy Linked Framework Pods */,
+				D42EBFB0F987C735543AC71A /* Copy Pods Resources */,
+				72F850851C7939280077B4AB /* Copy Frameworks */,
 				72C1F4791C78E84500B32B42 /* Crashlytics */,
 			);
 			buildRules = (

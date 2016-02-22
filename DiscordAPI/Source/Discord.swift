@@ -32,6 +32,14 @@ public class Discord: WebsocketAPIManagerDelegate {
         }
     }
 
+    public func updateLoginWithToken(token: String) {
+        let logout = LogoutRequest();
+        logout.execute {
+            Registry.instance.token = token
+            self.websocketManager.fetchEndpointAndConnect()
+        }
+    }
+
     private func loginAndRetrieveToken()
     {
         if let user = auth?.user, pass = auth?.password {

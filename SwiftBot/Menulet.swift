@@ -17,15 +17,13 @@ class Menulet : NSObject, NSMenuDelegate {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-
-        statusItem.enabled = true
-        let image = NSImage(named: "menulet")
-        statusItem.image = image
-        statusItem.alternateImage = NSImage(named:"menulet-inverted")
         statusItem.menu = menu
+        statusItem.image = NSImage(named: "menulet")
+        statusItem.image?.template = true
         statusItem.highlightMode = true
         statusItem.title = "SwiftBot"
-    }
+        statusItem.enabled = true
+   }
 
     @IBAction func openPreferences(sender: AnyObject) {
         preferencesController.openPreferences(sender)

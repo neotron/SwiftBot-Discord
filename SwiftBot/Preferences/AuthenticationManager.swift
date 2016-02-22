@@ -33,7 +33,7 @@ import Locksmith
 
     let service = "Discord"
     var account: String {
-        return "loginInformation"
+        return "SwiftBotLogin"
     }
 
     var data: [String:AnyObject] {
@@ -77,6 +77,7 @@ import Locksmith
             LOG_ERROR("Failed to store new login information in secure storage: \(error)")
             return false
         }
+        NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "DiscordAuthenticationChanged", object: nil, userInfo: ["token": token]))
         return true
     }
 }

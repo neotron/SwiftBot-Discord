@@ -16,23 +16,69 @@ class DistantWorldsWaypoints: MessageHandler {
     }
 
     override var prefixes: [MessageCommand]? {
-        return [("wp", nil)]
+        return [("wp", nil),
+                ("stage", nil)]
     }
 
     override var commands: [MessageCommand]? {
-        return [("wp", "Retrieve Distant Worlds waypoints information. Usage: wp<number>, i.e wp9. Add -v flag for verbose output.")]
+        return [("wp", "Retrieve Distant Worlds waypoints information. Usage: wp<number>, i.e wp9. Add -v flag for verbose output."),
+                ("stage", "Return some information about the different stages in Distant Worlds Expedition.")]
     }
     override var commandGroup: String? {
         return "Elite: Dangerous"
     }
     override func handlePrefix(prefix: String, command: String, args: [String], message: Message) -> Bool {
-        let wp = command.stringByReplacingOccurrencesOfString(prefix, withString: "")
-        self.handleWaypointCommand(wp, message: message);
+        let num = command.stringByReplacingOccurrencesOfString(prefix, withString: "")
+        switch prefix {
+        case "wp":
+            self.handleWaypointCommand(num, args: args, message: message)
+        case "stage":
+            self.handleStageCommand(num, message: message)
+        default:
+            return false
+        }
         return true
     }
 
-    override func handleCommand(command: String, args: [String], message: Message) -> Bool {
-        return super.handleCommand(command, args: args, message: message)
+    override func handleCommand(command: String, var args: [String], message: Message) -> Bool {
+        switch command {
+        case "wp":
+            if args.count == 0 || message.flags.contains(.Help) {
+                message.replyToChannel(self.commands![0].h!)
+            }
+        case "stage":
+            if args.count == 0 || message.flags.contains(.Help) {
+                message.replyToChannel(self.commands![1].h!)
+            }
+        default:
+            return false
+        }
+        if args.count > 0 {
+            self.handlePrefix(command, command: "\(command)\(args.removeFirst())", args: args, message: message)
+        }
+
+        return true
+    }
+}
+
+// MARK: Handle stage command
+extension DistantWorldsWaypoints {
+    private func handleStageCommand(stageStr: String, message: Message) {
+        guard var stage = Int(stageStr) else {
+            message.replyToChannel("Waypoint \(stageStr) is not an integer.")
+            return
+        }
+        guard let stages = self.database?.stages else {
+            message.replyToChannel("Failed to load stage database, sorry.")
+            return
+        }
+        --stage;
+        if stage < 0 || stage >= stages.count {
+            message.replyToChannel("Waypoint \(stageStr) is not a valid waypoint (use 1-\(stages.count)).");
+        } else {
+            let st = stages[stage]
+            message.replyToChannel("**Stage \(stageStr): \(st.name)**, includes waypoints \(st.waypoints.start) to \(st.waypoints.end).\n\(st.image)")
+        }
     }
 }
 
@@ -40,7 +86,7 @@ class DistantWorldsWaypoints: MessageHandler {
 
 extension DistantWorldsWaypoints {
 
-    private func handleWaypointCommand(wpString: String, message: Message) {
+    private func handleWaypointCommand(wpString: String, args: [String], message: Message) {
         guard let wpnum = Int(wpString) else {
             message.replyToChannel("Waypoint \(wpString) is not an integer.")
             return
@@ -54,6 +100,7 @@ extension DistantWorldsWaypoints {
             message.replyToChannel("Waypoint \(wpnum) is not a valid waypoint (use 1-\(wps.count)).");
             return
         }
+
         let verbose = message.flags.contains(.Verbose)
         let wp = wps[wpnum]
         var output = [String]()
@@ -63,7 +110,8 @@ extension DistantWorldsWaypoints {
             output.append("`\(wp.desc)`")
             output.append("")
         }
-        if wp.system != "TBA" {
+        let hasBaseCamp = wp.system != "TBA"
+        if hasBaseCamp {
             output.append("`Location`: **\(wp.system) \(wp.planet)** (*\(wp.baseCamp.name)*)")
         } else {
             output.append("`Location`: ** TBA ** (*\(wp.baseCamp.name)*)")
@@ -81,7 +129,27 @@ extension DistantWorldsWaypoints {
             output.append("`Distance traveled:` \(wp.distance.traveled / 1000.0) kly")
             output.append("`Distance to next waypoint:` \(wp.distance.next / 1000.0) kly")
         }
-
+        if let prime = wp.prime {
+            output.append("`Prime Meetup:` \(prime)")
+        }
+        if hasBaseCamp {
+            var doubles = [Double]()
+            for arg in args {
+                if let dbl = Double(arg) {
+                    doubles.append(dbl)
+                    if (doubles.count == 2) {
+                        break;
+                    }
+                }
+            }
+            if doubles.count == 2 {
+                let end = PlanetaryMath.LatLong(wp.baseCamp.coords[0], wp.baseCamp.coords[1])
+                let start = PlanetaryMath.LatLong(doubles[0], doubles[1])
+                let result = PlanetaryMath.calculateBearingAndDistance(start: start, end:end, radius: wp.baseCamp.radius)
+                let distance = PlanetaryMath.distanceFor(result.distance)
+                output.append(String(format: "\n`To get to the base camp from \(start) head in bearing %.1f°\(distance).`", result.bearing))
+            }
+        }
         let reply = output.joinWithSeparator("\n")
         if verbose && !message.flags.contains(.Here) {
             message.replyToSender(reply)
@@ -108,7 +176,7 @@ extension DistantWorldsWaypoints {
         }
         EVReflection.setBundleIdentifier(SwiftBotMain)
         let db = Waypoints(json: dataText as String)
-        //LOG_DEBUG("Loaded database \(db)")
+        LOG_DEBUG("Loaded database \(db)")
         self.database = db
     }
 
@@ -154,6 +222,7 @@ class BaseCamp: EVObject {
     var name = ""
     var coords = [0.0, 0.0]
     var gravity = 0.0
+    var radius = 0.0
     var guide: String?
 }
 
@@ -164,6 +233,7 @@ class Waypoint: EVObject {
     var system = ""
     var planet = ""
     var distance = Distance()
-    var keyEvent: String = ""
+    var keyEvent: String?
+    var prime: String?
 
 }

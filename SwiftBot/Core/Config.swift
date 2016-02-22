@@ -7,37 +7,78 @@ import Foundation
 import DiscordAPI
 import EVReflection
 
-class ConfigAuth : EVObject {
-    var email = "NOT CONFIGURED"
-    var password = "NOT CONFIGURED"
-}
-
-class Config: EVObject {
+@objc class Config: EVObject {
     // Instance accessible read-only settings.
-    static var email: String { return instance.auth.email }
-    static var password: String { return instance.auth.password }
-    static var commandPrefix: String { return instance.commandPrefix }
-    static var databaseDirectory: String? { return instance.databaseDirectory }
-    static var ownerIds: Set<String> { return Set(instance.ownerIds) }
+    static var commandPrefix: String {
+        get {
+            return instance.commandPrefix
+        }
+        set {
+            instance.commandPrefix = newValue
+        }
+    }
+    static var databaseDirectory: String? {
+        get {
+            return instance.databaseDirectory
+        } set {
+            instance.databaseDirectory = newValue
+            CoreDataManager.instance.reopenDatabase()
+        }
+    }
+    static var ownerIds: Set<String> {
+        get {
+            return Set(instance.ownerIds)
+        }
+        set {
+            instance.ownerIds = Array(newValue)
+        }
+    }
 
     // Internal private storage
-    var auth = ConfigAuth()
     var commandPrefix = "~"
     var databaseDirectory: String?
     var ownerIds = [String]()
 
-    class func loadConfig(fromFile configFile: String) {
-        if let configData = NSData(contentsOfFile: configFile), configString = String(data: configData, encoding: NSUTF8StringEncoding) {
-            EVReflection.setBundleIdentifier(SwiftBotMain)
-            _instance = Config(json: configString)
-        } else {
-            LOG_ERROR("Failed to open config file \(configFile)")
+    private var development = false
+
+
+    func setDevelopment(dev: Bool) {
+        if development != dev {
+            development = dev
+            loadUserSettings()
         }
     }
 
-    private static var instance: Config {
-        guard let ins = _instance else { return Config() }
-        return ins
+    static let instance = Config()
+
+    required init() {
+        super.init()
+        loadUserSettings()
     }
-    private static var _instance: Config?
+
+    func loadUserSettings()  {
+        if let settings = NSUserDefaults.standardUserDefaults().objectForKey(settingsKey(development)) {
+            LOG_DEBUG("Loaded settings: \(settings)")
+            if let prefix = settings["commandPrefix"] as? String {
+                self.commandPrefix = prefix
+            }
+            if let dbdir = settings["databaseDirectory"] as? String {
+                self.databaseDirectory = dbdir
+            }
+            if let ids = settings["ownerIds"] as? [String] {
+                self.ownerIds = ids
+            }
+        }
+    }
+
+    func saveUserSettings() {
+        let settings = self.toDictionary(false)
+            LOG_DEBUG("Saving settings: \(settings)")
+        NSUserDefaults.standardUserDefaults().setObject(settings, forKey: settingsKey(development))
+    }
+
+    private func settingsKey(development: Bool = false) -> String {
+        return development ? "SwiftBotSettingsDevelopment" : "SwiftBotSettings"
+    }
+
 }
