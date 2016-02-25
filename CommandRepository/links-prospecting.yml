@@ -1,0 +1,63 @@
+commands:
+  prospectingthread:
+    content:
+      extended_help: null
+      short_help: Prospecting Central - A Guide and Discussion Thread
+      text: https://forums.frontier.co.uk/showthread.php?t=228645
+    options:
+      detailed_pm: false
+      category: prospecting
+
+  trello:
+    content:
+      extended_help: null
+      short_help: Where Prospectors go to Collaborate
+      text: https://trello.com/distantworlds
+    options:
+      detailed_pm: false
+      category: prospecting
+
+  monster:
+    content:
+      extended_help: null
+      short_help: The Prospecting "Database"
+      text: https://docs.google.com/spreadsheets/d/1LgMaX9n6Yp8DQKq-u-eF1HH2xQ-_aUgSfSJna6mTuLs/edit?usp=sharing
+    options:
+      detailed_pm: false
+      category: prospecting
+
+  neuralnet:
+    content:
+      extended_help: null
+      short_help: LordFedora's Neural Network - Using Data from The Monster
+      text: https://docs.google.com/spreadsheets/d/1SLEKCOZRgZI990VUDIBwsi0pi6AniugHf8QU0I6qGlo/edit?usp=sharing
+    options:
+      detailed_pm: false
+      category: prospecting
+
+  dwemats:
+    content:
+      extended_help: null
+      short_help: Locations for Jumponium at each Waypoint
+      text: https://docs.google.com/spreadsheets/d/187DlDf_WOhpXtem686ffvuNAcd8G6W5d7061UNAjslU/edit?usp=sharing
+    options:
+      detailed_pm: false
+      category: prospecting
+
+  analysis:
+    content:
+      extended_help: null
+      short_help: Analysis of Data Collected in The Monster
+      text: https://docs.google.com/spreadsheets/d/1RnaPpAS6KelV-2yP0YSJ6CGF08Q2KVlRL_h-Sev6VpU/edit?usp=sharing
+    options:
+      detailed_pm: false
+      category: prospecting
+
+  blame:
+    content:
+      extended_help: null
+      short_help: The Police Sheet - How we Find Missing Data
+      text: https://docs.google.com/spreadsheets/d/1GU_8TKv3YsmewIpkeOgxLRdUj4VjkPVtY8FbMDVLeGA/edit?usp=sharing
+    options:
+      detailed_pm: false
+      category: prospecting
