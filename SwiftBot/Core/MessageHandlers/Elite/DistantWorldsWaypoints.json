@@ -28,7 +28,7 @@
           85.02
         ],
         "gravity": 0.09,
-        "guide": "http://imgur.com/a/Sw4qO",
+        "guide": "http://imgur.com/a/Sw4qO"
       },
       "system": "Fine Ring Sector JH-V C2-4",
       "planet": "A 1",
@@ -47,7 +47,7 @@
           70.28
         ],
         "gravity": 0.16,
-        "guide": "http://i64.tinypic.com/29fp9vr.jpg",
+        "guide": "http://i64.tinypic.com/29fp9vr.jpg"
       },
       "system": "NGC 6530 WFI 16706",
       "planet": "A 1 A",
@@ -96,7 +96,9 @@
     {
       "name": "NGC 6357",
       "desc": "NGC 6357 is one of the most prominent sites when heading coreward. Embedded within the vast dust cloud is the Pismis Star Cluster. From NGC 6357 we leave the Local Orion Spur behind and head across the Norma Arm.",
-      "key_event": "Leaving home behind",
+      "events": [
+        "**Leaving home behind**"
+      ],
       "base_camp": {
         "name": "Drake's Ridge",
         "coords": [
@@ -123,7 +125,7 @@
           162.19
         ],
         "gravity": 0.07,
-        "guide": "http://i68.tinypic.com/2v0xx69.jpg",
+        "guide": "http://i68.tinypic.com/2v0xx69.jpg"
       },
       "system": "BLAA HYPAI UC-G C12-6",
       "planet": "2 A",
@@ -182,6 +184,9 @@
         "gravity": 0.12,
         "guide": "http://i63.tinypic.com/1zldahd.jpg"
       },
+      "events": [
+        "`FGE Meetup:` Sun 28 Feb, 19:00 UTC, Hosted by Corbin"
+      ],
       "system": "ATHAIP CR-C B55-4",
       "planet": "2 C",
       "distance": {
@@ -201,6 +206,9 @@
         "gravity": 0.03,
         "guide": "http://i64.tinypic.com/23ijvnr.jpg"
       },
+      "events": [
+        "`FGE Meetup:` Sat 5 Mar, 19:00 UTC, hosted by Corbin"
+      ],
       "system": "MYRIESLY EC-B C27-381",
       "planet": "AB 3 B",
       "distance": {
@@ -211,7 +219,10 @@
     {
       "name": "Sagittarius A*",
       "desc": "Here we visit Sagittarius A* - the famous supermassive blackhole at the centre of the galaxy. The closest star systems are less than a light year away and it is at one of them where our core base camp is situated - an ideal staging post to prepare for the exploration of the Milky Way's heart. A trip to the roof of the galactic core awaits after this!",
-      "key_event": "Fleet rendezvous at the galactic core",
+      "events": [
+        "**Fleet rendezvous at the galactic core**",
+        "`FGE Meetup:` Sat 5 Mar, 19:00 UTC, hosted by Corbin"
+      ],
       "base_camp": {
         "name": "Armstrong Landing",
         "coords": [
@@ -220,7 +231,7 @@
         ],
         "gravity": 0.08,
         "guide": "http://i66.tinypic.com/xmud61.jpg",
-        "radius": 1372,
+        "radius": 1372
       },
       "system": "STUEMEAE KM-W C1-342",
       "planet": "1 B",
@@ -231,7 +242,7 @@
     },
     {
       "name": "Altum Sagittarii",
-      "desc": "We're heading to the roof of the galaxy, some 2,000 LYs directly above Sag-A*. From our base camp vantage point we get a spectacular view of the expansive galactic core regions below us. An awe-inspiring site that only a few have witnessed first hand.",
+      "desc": "We're heading to the roof of the galaxy, some 2,000 LYs directly above Sgr A. From our base camp vantage point we get a spectacular view of the expansive galactic core regions below us. An awe-inspiring site that only a few have witnessed first hand.",
       "base_camp": {
         "name": "Gagarin's Reach",
         "coords": [
@@ -244,7 +255,10 @@
       },
       "system": "NYUENA JS-B D342",
       "planet": "4 F A",
-      "prime": "Monday 22nd Feb. 3302 19:00 UTC for EU, 02:00 UTC for USA.",
+      "events": [
+        "`DWE Meetup:` Monday 22nd Feb. 3302 19:00 UTC for EU, 02:00 UTC for USA.",
+        "`FGE Meetup:` Pending"
+      ],
       "distance": {
         "traveled": 32800,
         "next": 2900
@@ -260,11 +274,15 @@
           -178.30
         ],
         "gravity": 0.3,
-        "guide": "http://i68.tinypic.com/2nth17m.jpg"
+        "guide": "http://i68.tinypic.com/2nth17m.jpg",
+        "radius": 2404
       },
       "system": "PHIPOEA DD-F C26-1311",
       "planet": "3 E",
-      "prime": "Thursday 25th Feb. 3302 19:00 UTC for EU, 02:00 UTC for USA.",
+      "events": [
+        "`DWE Meetup:` Thursday 25th Feb. 3302 19:00 UTC for EU, 02:00 UTC for USA.",
+        "`FGE Meetup:` Pending"
+      ],
       "distance": {
         "traveled": 35700,
         "next": 1300
@@ -276,13 +294,15 @@
       "base_camp": {
         "name": "Chrea Cauldron",
         "coords": [
-          0,
-          0
+          -19.63,
+          39.73
         ],
-        "gravity": 0
+        "gravity": 0.25,
+        "radius": 1220,
+        "guide": "http://i67.tinypic.com/2cdjpr9.jpg"
       },
-      "system": "TBA",
-      "planet": "TBA",
+      "system": "DRYAO CHREA VU-P E5-7481",
+      "planet": "B 3 A",
       "distance": {
         "traveled": 37000,
         "next": 1000
@@ -399,7 +419,9 @@
     {
       "name": "The Roncevaux Crossing",
       "desc": "Before heading out across the Abyss, we gather at its southern edge and stock up on Jumponium fuel as this will be essential the closer to our final goal we travel. When crossing the Abyss, we skirt around the Chiea Pocket badlands and begin the final leg of the outbound journey - crossing the inhospitable Solitude Void and edge our way to the distant Ceeckia star systems.",
-      "key_event": "Preparing for The Abyss, and Beyond",
+      "events": [
+        "**Preparing for The Abyss, and Beyond**"
+      ],
       "base_camp": {
         "name": "Shackleton Plateau",
         "coords": [
@@ -436,7 +458,9 @@
     {
       "name": "Beagle Point",
       "desc": "Finally we arrive at Beagle Point. A star system on the edge of the Milky Way Galaxy offering all who reach it a real sense of remoteness as you look back at the very distant core regions, 35,000 light years away, and realize home is yet another 30,000 light years beyond that! There are not many places in the galaxy that can give an explorer that sense of scale. Outwards looking you see nothing but the vast inky blackness of the intergalactic void. Here at Beagle Point, at least one airless world and several airless moons await our exploration. A 1,200 LY excursion to explore The Moons of Podar can also be planned at this point. Podar is west and south of Beagle Point and sits on the northern edge of the Abyss. It is a ringed Earth-Like World that has 3 airless moons orbiting it - ripe for exploration.",
-      "key_event": "Journeys End",
+      "events": [
+        "**Journeys End**"
+      ],
       "base_camp": {
         "name": "Darwin's Legacy",
         "coords": [
@@ -493,6 +517,6 @@
         21,
         23
       ]
-    },
+    }
   ]
 }
