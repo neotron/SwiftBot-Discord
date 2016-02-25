@@ -1,2 +1,12 @@
 categories:
+<<<<<<< Updated upstream
   apps: "Various useful applications for Elite: Dangerous commanders."
+=======
+  apps: 
+    help: "Various useful applications for Elite: Dangerous commanders."
+  links:
+    help: "Useful links"
+    subcat:
+      - propsecting
+      - photos
+>>>>>>> Stashed changes
