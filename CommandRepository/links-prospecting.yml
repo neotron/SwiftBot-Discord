@@ -44,7 +44,7 @@ commands:
       detailed_pm: false
       category: prospecting
 
-  neuralnetMini:
+  neuralnetReduced:
     content:
       extended_help: null
       short_help: LordFedora's Neural Network - Using Level 1 Scan Data from The Monster
