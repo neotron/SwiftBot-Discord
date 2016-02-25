@@ -1,9 +1,18 @@
 commands:
-  prospectingthread:
+  prospectorGuide:
     content:
       extended_help: null
-      short_help: Prospecting Central - A Guide and Discussion Thread
+      short_help: Prospecting Central
       text: https://forums.frontier.co.uk/showthread.php?t=228645
+    options:
+      detailed_pm: false
+      category: prospecting
+
+  richDump:
+    content:
+      extended_help: null
+      short_help: Akira Masakari's PSA thread - Jumponium-rich Systems
+      text: https://forums.frontier.co.uk/showthread.php?t=212600
     options:
       detailed_pm: false
       category: prospecting
@@ -29,13 +38,22 @@ commands:
   neuralnet:
     content:
       extended_help: null
-      short_help: LordFedora's Neural Network - Using Data from The Monster
+      short_help: LordFedora's Neural Network - Using All Data from The Monster
       text: https://docs.google.com/spreadsheets/d/1SLEKCOZRgZI990VUDIBwsi0pi6AniugHf8QU0I6qGlo/edit?usp=sharing
     options:
       detailed_pm: false
       category: prospecting
 
-  dwemats:
+  neuralnet:
+    content:
+      extended_help: null
+      short_help: LordFedora's Neural Network - Using Level 1 Scan Data from The Monster
+      text: https://docs.google.com/spreadsheets/d/1j1QBbMRPglwLjxCFelFcr2chzNmE9FbO_qUpPCCM9_g/edit?usp=sharing
+    options:
+      detailed_pm: false
+      category: prospecting
+
+  mats:
     content:
       extended_help: null
       short_help: Locations for Jumponium at each Waypoint
@@ -53,11 +71,39 @@ commands:
       detailed_pm: false
       category: prospecting
 
-  blame:
+  missinginfo:
     content:
       extended_help: null
-      short_help: The Police Sheet - How we Find Missing Data
+      short_help: Incomplete data in from The Monster
       text: https://docs.google.com/spreadsheets/d/1GU_8TKv3YsmewIpkeOgxLRdUj4VjkPVtY8FbMDVLeGA/edit?usp=sharing
     options:
       detailed_pm: false
       category: prospecting
+
+  blame:
+    content:
+      extended_help: null
+      short_help: Reports on what a person is missing from their data in The Monster
+      text: https://docs.google.com/spreadsheets/d/1YzO5Z5ct4wY74iOW3_Bls9lwk7F6tySFrIUFiVeeLxg/edit?usp=sharing
+    options:
+      detailed_pm: false
+      category: prospecting
+
+  reportcard:
+    content:
+      extended_help: null
+      short_help: A sheet for testing hypotheses that is mostly used for generating report cards on request
+      text: https://docs.google.com/spreadsheets/d/1yqZfnBK6J4EOrJIcpjEJQMQ8_UMbz9_2Zj2srsYk6Ko/edit?usp=sharing
+    options:
+      detailed_pm: false
+      category: prospecting
+
+  lexicon:
+    content:
+      extended_help: null
+      short_help: Definitions of terms used frequently by prospectors
+      text: https://docs.google.com/document/d/1lj4XY8ZGohkusIcBA7XUGFK-_E05kpbT5ftjKbSsaMw/edit
+    options:
+      detailed_pm: false
+      category: prospecting
+
