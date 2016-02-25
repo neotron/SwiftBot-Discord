@@ -88,7 +88,9 @@ commands:
                                                     | Ammonia Life   |   720 |
         ```
       short_help: Calculate the exact value of each detailed scan you take.
-      text: https://forums.frontier.co.uk/showthread.php?t=232000
+      text: |
+        https://forums.frontier.co.uk/showthread.php?t=232000
+        *use -h for a summary of the post*
     options:
-      detailed_pm: false
+      detailed_pm: true
       category: guides
