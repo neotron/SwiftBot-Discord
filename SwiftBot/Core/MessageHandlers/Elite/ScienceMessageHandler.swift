@@ -174,13 +174,26 @@ class ScienceMessageHandler: MessageHandler {
         if distance >= 100 {
             distance /= 1000.0 // Assume accidental entry in ly instead of kly.
         }
-
-        let N = floor(maxDistance / jumpRange)
-        let M = N * jumpRange
-        let estRange = M - ((N / 4) + (distance * 2))
+        let calc = {()->Double in
+            let N = floor(maxDistance / jumpRange)
+            let M = N * jumpRange
+            return M - ((N / 4) + (distance * 2))
+        }
+        var estRange = calc()
         if estRange <= 0 {
             message.replyToChannel("Error: Calculation resulted in a negative distance. Please check your input.");
             return
+        }
+        if maxDistance < 1000.0 {
+            let maxRange = maxDistance
+            repeat {
+                maxDistance += jumpRange
+                let improvement = calc()
+                if improvement > maxRange {
+                    break // too far
+                }
+                estRange = improvement
+            } while true;
         }
         let marginOfError = estRange * 0.0055
         message.replyToChannel(String(format: "Estimated plot range should be around **%.0f ly** - check range *%.0f to %.0f ly*", estRange, floor(estRange - marginOfError), ceil(estRange + marginOfError)))

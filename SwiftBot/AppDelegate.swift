@@ -30,14 +30,32 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var window: NSWindow!
 
 
+    func launchWatchDog() {
+        guard let watcherPath = NSBundle.mainBundle().pathForResource("SwiftBotKeeperAliver", ofType: nil, inDirectory: "../MacOS"),
+        selfPath = NSBundle.mainBundle().pathForResource("SwiftBot", ofType: nil, inDirectory: "../MacOS") else {
+            LOG_ERROR("Can't find the watcher.")
+            return
+        }
+        let task = NSTask()
+        task.launchPath = watcherPath
+        task.arguments = [selfPath, "\(getpid())"]
+        task.launch()
+    }
+
     func applicationDidFinishLaunching(aNotification: NSNotification) {
+
         Logger.instance = CrashlyticsLogger();
         let args = NSProcessInfo.processInfo().arguments
         Config.development = args.contains("--development")
+#if false
+        if !Config.development {
+            launchWatchDog()
+        }
+#endif
         self.main = SwiftBotMain()
         main?.runWithDoneCallback({
-            LOG_INFO("Exiting gracefully.");
-            exit(0);
+            LOG_INFO("Exiting gracefully.")
+            NSApp.terminate(self.main!)
         })
 
     }

@@ -37,20 +37,22 @@ class MessageDispatchManager: MessageHandler {
     }
 
     override func handleCommand(command: String, args: [String], message: Message) -> Bool {
-        var output = ["**SwiftBot Commands**:"]
 
         for group in commandHelp.keys.sort() {
+            var output = [String]()
             if group != "" {
-                output.append("\n**\(group)**")
+                output.append("**\(group)**")
+            } else {
+                output.append("**SwiftBot Commands**:")
             }
             for command in commandHelp[group]!.keys.sort() {
                 output.append(commandHelp[group]![command]!.joinWithSeparator("\n"))
             }
-        }
-        if message.flags.contains(.Here) {
-            message.replyToChannel(output.joinWithSeparator("\n"));
-        } else {
-            message.replyToSender(output.joinWithSeparator("\n"));
+            if message.flags.contains(.Here) {
+                message.replyToChannel(output.joinWithSeparator("\n"));
+            } else {
+                message.replyToSender(output.joinWithSeparator("\n"));
+            }
         }
         return true
     }
@@ -65,6 +67,7 @@ class MessageDispatchManager: MessageHandler {
         registerMessageHandler(CustomCommandImportMessageHandler())
         registerMessageHandler(UserRoleMessageHandler())
         registerMessageHandler(DistantWorldsWaypoints())
+        registerMessageHandler(EDSMMessageHandler())
     }
 
 
@@ -137,6 +140,10 @@ class MessageDispatchManager: MessageHandler {
         messageWrapper.rawArgs = args
         args = args.filter {
             $0 != ""
+        }
+        if args.count == 0 {
+            LOG_DEBUG("No command, just a prefix!")
+            return
         }
         let command = args.removeAtIndex(0).lowercaseString
 

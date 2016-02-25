@@ -6,6 +6,7 @@
 
 import Foundation
 import DiscordAPI
+import Crashlytics
 
 class CustomCommandMessageHandler: MessageHandler {
     internal static let CustomCommandGroup = "Custom Command Management"
@@ -27,6 +28,7 @@ class CustomCommandMessageHandler: MessageHandler {
                 (Command.RemoveFromCategory.rawValue, "Remove a command from a category. Arguments: *<category> <command>*"),
                 (Command.DeleteCategory.rawValue, "Delete an existing category. Commands in the category will not be removed. Arguments: *<category>*"),
                 (Command.ListCommands.rawValue, "List existing custom commands and categories."),
+                (Command.Crash.rawValue, nil)
         ];
     }
 
@@ -52,6 +54,12 @@ class CustomCommandMessageHandler: MessageHandler {
             break;
         case .ListCommands:
             listCommands(args, message: message)
+        case .Crash:
+            if(Config.development) {
+                Crashlytics.sharedInstance().crash()
+            } else {
+                message.replyToChannel("No, I shall not crash.", tts: true)
+            }
         }
         return true
     }
@@ -375,7 +383,8 @@ extension CustomCommandMessageHandler {
              AddToCategory = "addtocat",
              RemoveFromCategory = "rmfromcat",
              DeleteCategory = "delcat",
-             ListCommands = "listcmds"
+             ListCommands = "listcmds",
+             Crash = "crash"
     }
 
 }

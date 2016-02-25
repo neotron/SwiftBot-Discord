@@ -29,7 +29,7 @@
 		6D999656DA4216CDA720C597 /* DistantWorldsWaypoints.json in Resources */ = {isa = PBXBuildFile; fileRef = 6D999B0A3D7D326AB610BA62 /* DistantWorldsWaypoints.json */; };
 		6D99969BBA36C38CCF99E7D4 /* UserRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999AF68B81662E69666330 /* UserRole.swift */; };
 		6D9996CAACE6755D84BCE28A /* URLEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D99914B9A4F9F2397C28447 /* URLEndpoints.swift */; };
-		6D9997888B5EAE7133604885 /* SwiftBotModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6D9998068BDA55CD3BA2E7C8 /* SwiftBotModel.xcdatamodeld */; };
+		6D99983C592B03388565CF68 /* EDSMMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999B3F4447D45F9076A582 /* EDSMMessageHandler.swift */; };
 		6D9998430A7453619CDB3DAE /* NSData+GZIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9998E44D0D39FDE1300A2A /* NSData+GZIP.swift */; };
 		6D99985B6C873F056EEBD82B /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999DB3164C1D87EFEE1CE4 /* MessageModel.swift */; };
 		6D9998F67FF8F9D8B42870E1 /* PingMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9990D348D50D16B983FB8D /* PingMessageHandler.swift */; };
@@ -61,6 +61,7 @@
 		6D999F48BF8B847FCBACA1C7 /* CommandAlias+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9991664D2B6F66527B8093 /* CommandAlias+CoreDataProperties.swift */; };
 		6D999F86E0452B64A7EA47C8 /* WebsocketHeartbeatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999813A7E8EF215264C09A /* WebsocketHeartbeatModel.swift */; };
 		723DAF821C744A1F000CCCCE /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 723DAF811C744A1F000CCCCE /* libz.tbd */; };
+		725FCFD01C7E8A5100D5B1AE /* SwiftBotModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 725FCFCB1C7E8A5100D5B1AE /* SwiftBotModel.xcdatamodeld */; };
 		72C1F45F1C78E82800B32B42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C1F45E1C78E82800B32B42 /* AppDelegate.swift */; };
 		72C1F4611C78E82800B32B42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72C1F4601C78E82800B32B42 /* Assets.xcassets */; };
 		72C1F4641C78E82800B32B42 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72C1F4621C78E82800B32B42 /* MainMenu.xib */; };
@@ -71,6 +72,8 @@
 		72F850751C790E680077B4AB /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F850741C790E680077B4AB /* Preferences.m */; };
 		72F850861C7939470077B4AB /* DiscordAPI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77D71C6ED97200CB0F1D /* DiscordAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		72F850871C7939470077B4AB /* Pods_DiscordAPI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = E4E416147C422B787B64C291 /* Pods_DiscordAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		72F850901C7AE4010077B4AB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F8508F1C7AE4010077B4AB /* main.m */; };
+		72F8509A1C7AE6F90077B4AB /* SwiftBotKeeperAliver in Copy Executables */ = {isa = PBXBuildFile; fileRef = 72F8508D1C7AE4000077B4AB /* SwiftBotKeeperAliver */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		CF25CA6E7B08A39BE192ED52 /* Pods_SwiftBot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE5B29F117095BC90A629859 /* Pods_SwiftBot.framework */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +84,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 72C1F45B1C78E82800B32B42;
 			remoteInfo = SwiftBot;
+		};
+		72F850941C7AE5160077B4AB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 72B35E161C6ECD4200027CF2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 72F8508C1C7AE4000077B4AB;
+			remoteInfo = SwifBottKeeperAliver;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -106,6 +116,26 @@
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		72F8508B1C7AE4000077B4AB /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		72F850961C7AE5190077B4AB /* Copy Executables */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				72F8509A1C7AE6F90077B4AB /* SwiftBotKeeperAliver in Copy Executables */,
+			);
+			name = "Copy Executables";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -124,7 +154,6 @@
 		6D9991F9AC975DE4B3CB02B2 /* UserRoleMessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRoleMessageHandler.swift; sourceTree = "<group>"; };
 		6D9992192E1AEC774A30E554 /* CommandAlias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandAlias.swift; sourceTree = "<group>"; };
 		6D99921B51234AA515E43E77 /* ScienceMessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScienceMessageHandler.swift; sourceTree = "<group>"; };
-		6D99926C2658E9665D85DAAD /* SwiftBotModel 2 UserRoles .xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SwiftBotModel 2 UserRoles .xcdatamodel"; sourceTree = "<group>"; };
 		6D9992A883819A9BD6F0553F /* AuthPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthPreferences.h; sourceTree = "<group>"; };
 		6D999366FEF6398379167ACE /* WebsocketMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebsocketMessageModel.swift; sourceTree = "<group>"; };
 		6D99937B9623142428ED9A20 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -148,11 +177,11 @@
 		6D9998E44D0D39FDE1300A2A /* NSData+GZIP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSData+GZIP.swift"; sourceTree = "<group>"; };
 		6D999981E4209E0BC1738829 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		6D9999B3F35104A0B78148BE /* Registry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Registry.swift; sourceTree = "<group>"; };
-		6D999A43EC856C18EFDB9F03 /* SwiftBotModel 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SwiftBotModel 3.xcdatamodel"; sourceTree = "<group>"; };
 		6D999A91E86EA2FEDBD6BBCF /* SwiftBotMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftBotMain.swift; sourceTree = "<group>"; };
 		6D999AF68B81662E69666330 /* UserRole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRole.swift; sourceTree = "<group>"; };
 		6D999B0A3D7D326AB610BA62 /* DistantWorldsWaypoints.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DistantWorldsWaypoints.json; sourceTree = "<group>"; };
 		6D999B1EAE128D7FA0A59455 /* DistantWorldsWaypoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistantWorldsWaypoints.swift; sourceTree = "<group>"; };
+		6D999B3F4447D45F9076A582 /* EDSMMessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EDSMMessageHandler.swift; sourceTree = "<group>"; };
 		6D999B4B7B00C1406EAA57E8 /* include.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include.h; sourceTree = "<group>"; };
 		6D999B68F597ED0E0E978EB0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		6D999B78678F97CF83217C92 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -171,11 +200,14 @@
 		6D999F4CA01620CF2F480E9F /* LoginResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResponseModel.swift; sourceTree = "<group>"; };
 		6D999F8815FE59DF1EA1E080 /* SwiftBotCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftBotCore.h; sourceTree = "<group>"; };
 		6D999FCBE842D9A88EFA40C5 /* WebsocketHelloMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebsocketHelloMessageModel.swift; sourceTree = "<group>"; };
-		6D999FE7114DFE10A6D21C0F /* SwiftBotModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SwiftBotModel.xcdatamodel; sourceTree = "<group>"; };
 		6D999FFEEB41A5191942AFA8 /* MessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageHandler.swift; sourceTree = "<group>"; };
 		723DAF811C744A1F000CCCCE /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		724A77C51C6ED63000CB0F1D /* SwiftBotCmdLine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftBotCmdLine; sourceTree = BUILT_PRODUCTS_DIR; };
 		724A77D71C6ED97200CB0F1D /* DiscordAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DiscordAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		725FCFCC1C7E8A5100D5B1AE /* SwiftBotModel 2 UserRoles .xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SwiftBotModel 2 UserRoles .xcdatamodel"; sourceTree = "<group>"; };
+		725FCFCD1C7E8A5100D5B1AE /* SwiftBotModel 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SwiftBotModel 3.xcdatamodel"; sourceTree = "<group>"; };
+		725FCFCE1C7E8A5100D5B1AE /* SwiftBotModel 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SwiftBotModel 4.xcdatamodel"; sourceTree = "<group>"; };
+		725FCFCF1C7E8A5100D5B1AE /* SwiftBotModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SwiftBotModel.xcdatamodel; sourceTree = "<group>"; };
 		72C1F45C1C78E82800B32B42 /* SwiftBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72C1F45E1C78E82800B32B42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		72C1F4601C78E82800B32B42 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -190,6 +222,8 @@
 		72F850701C790D060077B4AB /* GeneralPreferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralPreferences.xib; sourceTree = "<group>"; };
 		72F850731C790E680077B4AB /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preferences.h; sourceTree = "<group>"; };
 		72F850741C790E680077B4AB /* Preferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Preferences.m; sourceTree = "<group>"; };
+		72F8508D1C7AE4000077B4AB /* SwiftBotKeeperAliver */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftBotKeeperAliver; sourceTree = BUILT_PRODUCTS_DIR; };
+		72F8508F1C7AE4010077B4AB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		850412938E3FC845453A5CEE /* Pods-DiscordAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscordAPI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DiscordAPI/Pods-DiscordAPI.debug.xcconfig"; sourceTree = "<group>"; };
 		E4E416147C422B787B64C291 /* Pods_DiscordAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DiscordAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA33E25714B096E50A07D5D3 /* Pods-SwiftBot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftBot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftBot/Pods-SwiftBot.debug.xcconfig"; sourceTree = "<group>"; };
@@ -223,6 +257,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		72C1F4671C78E82800B32B42 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		72F8508A1C7AE4000077B4AB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -328,6 +369,7 @@
 				6D99921B51234AA515E43E77 /* ScienceMessageHandler.swift */,
 				6D999B1EAE128D7FA0A59455 /* DistantWorldsWaypoints.swift */,
 				6D999B0A3D7D326AB610BA62 /* DistantWorldsWaypoints.json */,
+				6D999B3F4447D45F9076A582 /* EDSMMessageHandler.swift */,
 			);
 			path = Elite;
 			sourceTree = "<group>";
@@ -387,7 +429,7 @@
 		6D999960F459E2A243164269 /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				6D9998068BDA55CD3BA2E7C8 /* SwiftBotModel.xcdatamodeld */,
+				725FCFCB1C7E8A5100D5B1AE /* SwiftBotModel.xcdatamodeld */,
 				6D99917D6A5D49B160B3A7F3 /* Commandable.swift */,
 				6D9992192E1AEC774A30E554 /* CommandAlias.swift */,
 				6D9991664D2B6F66527B8093 /* CommandAlias+CoreDataProperties.swift */,
@@ -463,9 +505,10 @@
 				724A77D81C6ED97200CB0F1D /* DiscordAPI */,
 				72C1F45D1C78E82800B32B42 /* SwiftBot */,
 				72C1F46D1C78E82800B32B42 /* SwiftBotTests */,
-				72B35E1F1C6ECD4200027CF2 /* Products */,
+				72F8508E1C7AE4010077B4AB /* SwifBottKeeperAliver */,
 				6D999115D5F67B0A19012ACB /* Podfile */,
 				6D999981E4209E0BC1738829 /* README.md */,
+				72B35E1F1C6ECD4200027CF2 /* Products */,
 				60737DB67018A2737B140ABE /* Frameworks */,
 				BEB1610B873F466B988A11CE /* Pods */,
 			);
@@ -478,6 +521,7 @@
 				724A77D71C6ED97200CB0F1D /* DiscordAPI.framework */,
 				72C1F45C1C78E82800B32B42 /* SwiftBot.app */,
 				72C1F46A1C78E82800B32B42 /* SwiftBotTests.xctest */,
+				72F8508D1C7AE4000077B4AB /* SwiftBotKeeperAliver */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -503,6 +547,14 @@
 				72C1F4701C78E82800B32B42 /* Info.plist */,
 			);
 			path = SwiftBotTests;
+			sourceTree = "<group>";
+		};
+		72F8508E1C7AE4010077B4AB /* SwifBottKeeperAliver */ = {
+			isa = PBXGroup;
+			children = (
+				72F8508F1C7AE4010077B4AB /* main.m */,
+			);
+			path = SwifBottKeeperAliver;
 			sourceTree = "<group>";
 		};
 		BEB1610B873F466B988A11CE /* Pods */ = {
@@ -581,10 +633,12 @@
 				D42EBFB0F987C735543AC71A /* Copy Pods Resources */,
 				72F850851C7939280077B4AB /* Copy Frameworks */,
 				72C1F4791C78E84500B32B42 /* Crashlytics */,
+				72F850961C7AE5190077B4AB /* Copy Executables */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				72F850951C7AE5160077B4AB /* PBXTargetDependency */,
 			);
 			name = SwiftBot;
 			productName = SwiftBot;
@@ -609,6 +663,23 @@
 			productReference = 72C1F46A1C78E82800B32B42 /* SwiftBotTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		72F8508C1C7AE4000077B4AB /* SwiftBotKeeperAliver */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 72F850931C7AE4010077B4AB /* Build configuration list for PBXNativeTarget "SwiftBotKeeperAliver" */;
+			buildPhases = (
+				72F850891C7AE4000077B4AB /* Sources */,
+				72F8508A1C7AE4000077B4AB /* Frameworks */,
+				72F8508B1C7AE4000077B4AB /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftBotKeeperAliver;
+			productName = SwifBottKeeperAliver;
+			productReference = 72F8508D1C7AE4000077B4AB /* SwiftBotKeeperAliver */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -632,6 +703,9 @@
 						CreatedOnToolsVersion = 7.2.1;
 						TestTargetID = 72C1F45B1C78E82800B32B42;
 					};
+					72F8508C1C7AE4000077B4AB = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
 				};
 			};
 			buildConfigurationList = 72B35E191C6ECD4200027CF2 /* Build configuration list for PBXProject "SwiftBot" */;
@@ -651,6 +725,7 @@
 				724A77D61C6ED97200CB0F1D /* DiscordAPI */,
 				72C1F45B1C78E82800B32B42 /* SwiftBot */,
 				72C1F4691C78E82800B32B42 /* SwiftBotTests */,
+				72F8508C1C7AE4000077B4AB /* SwiftBotKeeperAliver */,
 			);
 		};
 /* End PBXProject section */
@@ -856,8 +931,8 @@
 				6D999A82B1DCE06268826D85 /* AuthPreferences.m in Sources */,
 				6D999B6CF54F3AF9C35A3C78 /* AuthenticationManager.swift in Sources */,
 				6D99995DCBF32F84D26A32FB /* Message.swift in Sources */,
-				6D9997888B5EAE7133604885 /* SwiftBotModel.xcdatamodeld in Sources */,
 				6D9993BDEA206B45191EF145 /* Commandable.swift in Sources */,
+				725FCFD01C7E8A5100D5B1AE /* SwiftBotModel.xcdatamodeld in Sources */,
 				6D9995B1E743C68561BB0B8D /* CommandAlias.swift in Sources */,
 				6D999F48BF8B847FCBACA1C7 /* CommandAlias+CoreDataProperties.swift in Sources */,
 				6D999202F786D152B2DCB4EC /* CommandGroup.swift in Sources */,
@@ -878,6 +953,7 @@
 				6D999454B2E7E6CD961540BD /* MessageDispatcher.swift in Sources */,
 				6D999B92FEAD9D4B1054B6D2 /* CustomCommandImporter.swift in Sources */,
 				6D999A4583FEE7A70650E214 /* SwiftBotMain.swift in Sources */,
+				6D99983C592B03388565CF68 /* EDSMMessageHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -889,6 +965,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		72F850891C7AE4000077B4AB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72F850901C7AE4010077B4AB /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -896,6 +980,11 @@
 			isa = PBXTargetDependency;
 			target = 72C1F45B1C78E82800B32B42 /* SwiftBot */;
 			targetProxy = 72C1F46B1C78E82800B32B42 /* PBXContainerItemProxy */;
+		};
+		72F850951C7AE5160077B4AB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 72F8508C1C7AE4000077B4AB /* SwiftBotKeeperAliver */;
+			targetProxy = 72F850941C7AE5160077B4AB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1135,6 +1224,25 @@
 			};
 			name = Release;
 		};
+		72F850911C7AE4010077B4AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		72F850921C7AE4010077B4AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1183,17 +1291,27 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		72F850931C7AE4010077B4AB /* Build configuration list for PBXNativeTarget "SwiftBotKeeperAliver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				72F850911C7AE4010077B4AB /* Debug */,
+				72F850921C7AE4010077B4AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		6D9998068BDA55CD3BA2E7C8 /* SwiftBotModel.xcdatamodeld */ = {
+		725FCFCB1C7E8A5100D5B1AE /* SwiftBotModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				6D99926C2658E9665D85DAAD /* SwiftBotModel 2 UserRoles .xcdatamodel */,
-				6D999A43EC856C18EFDB9F03 /* SwiftBotModel 3.xcdatamodel */,
-				6D999FE7114DFE10A6D21C0F /* SwiftBotModel.xcdatamodel */,
+				725FCFCC1C7E8A5100D5B1AE /* SwiftBotModel 2 UserRoles .xcdatamodel */,
+				725FCFCD1C7E8A5100D5B1AE /* SwiftBotModel 3.xcdatamodel */,
+				725FCFCE1C7E8A5100D5B1AE /* SwiftBotModel 4.xcdatamodel */,
+				725FCFCF1C7E8A5100D5B1AE /* SwiftBotModel.xcdatamodel */,
 			);
-			currentVersion = 6D999A43EC856C18EFDB9F03 /* SwiftBotModel 3.xcdatamodel */;
+			currentVersion = 725FCFCE1C7E8A5100D5B1AE /* SwiftBotModel 4.xcdatamodel */;
 			path = SwiftBotModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

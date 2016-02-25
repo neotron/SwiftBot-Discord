@@ -57,7 +57,7 @@ class UserRoleMessageHandler: AuthenticatedMessageHandler {
         let cdm = CoreDataManager.instance
         for id in userIds {
             if cdm.addRoleForUserId(id, role: .Admin) {
-                ++numAdded
+                numAdded += 1
             }
         }
         message.replyToChannel("Added admin role to \(numAdded) users.")
@@ -71,7 +71,7 @@ class UserRoleMessageHandler: AuthenticatedMessageHandler {
         let cdm = CoreDataManager.instance
         for id in userIds {
             if cdm.removeRoleForUser(id, role: .Admin) {
-                ++numRemoved
+                numRemoved += 1
             }
         }
         message.replyToChannel("Removed admin role from \(numRemoved) users.")

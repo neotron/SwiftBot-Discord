@@ -21,6 +21,9 @@ class Message {
     var content: String {
         return message.content!
     }
+    var isPrivateMessage: Bool {
+        return message.author?.id == message.channelId
+    }
     // Content here is verified
     var rawArgs: [String]?
     // Arguments, without space removal

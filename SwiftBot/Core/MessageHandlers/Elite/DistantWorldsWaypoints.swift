@@ -72,9 +72,9 @@ extension DistantWorldsWaypoints {
             message.replyToChannel("Failed to load stage database, sorry.")
             return
         }
-        --stage;
+        stage -= 1
         if stage < 0 || stage >= stages.count {
-            message.replyToChannel("Waypoint \(stageStr) is not a valid waypoint (use 1-\(stages.count)).");
+            message.replyToChannel("Waypoint \(stageStr) is not a valid waypoint (use 1-\(stages.count)).")
         } else {
             let st = stages[stage]
             message.replyToChannel("**Stage \(stageStr): \(st.name)**, includes waypoints \(st.waypoints.start) to \(st.waypoints.end).\n\(st.image)")
@@ -97,40 +97,41 @@ extension DistantWorldsWaypoints {
         }
 
         if wpnum < 0 || wpnum >= wps.count {
-            message.replyToChannel("Waypoint \(wpnum) is not a valid waypoint (use 1-\(wps.count)).");
+            message.replyToChannel("Waypoint \(wpnum) is not a valid waypoint (use 1-\(wps.count-1)).");
             return
         }
 
         let verbose = message.flags.contains(.Verbose)
         let wp = wps[wpnum]
-        var output = [String]()
-        output.append("**\(wp.name)**")
-        if verbose {
-            output.append("")
-            output.append("`\(wp.desc)`")
-            output.append("")
-        }
+        var verboseOutput = [String]()
+        verboseOutput.append("`Waypoint \(wpnum)`: **\(wp.name)**")
+        verboseOutput.append("")
+        verboseOutput.append("*\(wp.desc)*")
+        verboseOutput.append("")
         let hasBaseCamp = wp.system != "TBA"
+        var terseOutput = [String]()
         if hasBaseCamp {
-            output.append("`Location`: **\(wp.system) \(wp.planet)** (*\(wp.baseCamp.name)*)")
-        } else {
-            output.append("`Location`: ** TBA ** (*\(wp.baseCamp.name)*)")
-        }
-        if wp.baseCamp.gravity > 0 && wp.baseCamp.coords.count >= 2 {
-            var basecamp = "`Base Camp`: **\(wp.baseCamp.coords[0]) / \(wp.baseCamp.coords[1])** - \(wp.baseCamp.gravity) g  "
-            if verbose {
+            terseOutput.append("`Waypoint \(wpnum)`: *\(wp.name)* - **\(wp.system) \(wp.planet.name)**")
+            verboseOutput.append("`Location`: **\(wp.system) \(wp.planet.name)**")
+            if wp.planet.gravity > 0 && wp.baseCamp.coords.count >= 2 {
+                var basecamp = "`Base Camp`: *\(wp.baseCamp.name)* - **\(wp.baseCamp.coords[0]) / \(wp.baseCamp.coords[1])** (\(wp.planet.gravity) g)  "
+                terseOutput.append(basecamp)
                 if let guide = wp.baseCamp.guide {
                     basecamp += guide
                 }
+                verboseOutput.append(basecamp)
+
             }
-            output.append(basecamp)
+        } else {
+            verboseOutput.append("`Location`: ** TBA ** (*\(wp.baseCamp.name)*)")
+            terseOutput.append("`Waypoint \(wpnum)`: *\(wp.name)* - **TBA** - *\(wp.baseCamp.name)*")
         }
-        if verbose {
-            output.append("`Distance traveled:` \(wp.distance.traveled / 1000.0) kly")
-            output.append("`Distance to next waypoint:` \(wp.distance.next / 1000.0) kly")
-        }
-        if let prime = wp.prime {
-            output.append("`Prime Meetup:` \(prime)")
+        verboseOutput.append("`Distance traveled:` \(wp.distance.traveled / 1000.0) kly")
+        verboseOutput.append("`Distance to next waypoint:` \(wp.distance.next / 1000.0) kly")
+
+        if let events = wp.events {
+            verboseOutput.append("\(events.joinWithSeparator("\n"))")
+            terseOutput.append(verboseOutput.last!)
         }
         if hasBaseCamp {
             var doubles = [Double]()
@@ -145,16 +146,22 @@ extension DistantWorldsWaypoints {
             if doubles.count == 2 {
                 let end = PlanetaryMath.LatLong(wp.baseCamp.coords[0], wp.baseCamp.coords[1])
                 let start = PlanetaryMath.LatLong(doubles[0], doubles[1])
-                let result = PlanetaryMath.calculateBearingAndDistance(start: start, end:end, radius: wp.baseCamp.radius)
+                let result = PlanetaryMath.calculateBearingAndDistance(start: start, end:end, radius: wp.planet.radius)
                 let distance = PlanetaryMath.distanceFor(result.distance)
-                output.append(String(format: "\n`To get to the base camp from \(start) head in bearing %.1f°\(distance).`", result.bearing))
+                verboseOutput.append(String(format: "\n`To get to the base camp from \(start) head in bearing %.1f°\(distance).`", result.bearing))
+                terseOutput = [terseOutput[0]]
+                terseOutput.append(String(format: "To get to the base camp at `\(end)` from `\(start)` head in bearing **%.1f°**\(distance).", result.bearing))
+
             }
         }
-        let reply = output.joinWithSeparator("\n")
-        if verbose && !message.flags.contains(.Here) {
-            message.replyToSender(reply)
-        } else {
+        let reply = verboseOutput.joinWithSeparator("\n")
+        if verbose {
             message.replyToChannel(reply)
+        } else {
+            message.replyToSender(reply)
+            if !message.isPrivateMessage {
+                message.replyToChannel(terseOutput.joinWithSeparator("\n"))
+            }
         }
     }
 }
@@ -176,7 +183,11 @@ extension DistantWorldsWaypoints {
         }
         EVReflection.setBundleIdentifier(SwiftBotMain)
         let db = Waypoints(json: dataText as String)
-        LOG_DEBUG("Loaded database \(db)")
+        LOG_DEBUG("Loaded database (\(db.waypoints.count) waypoints)")
+        LOG_DEBUG("\n****\n")
+        print(db.toJsonString());
+        LOG_DEBUG("\n****\n")
+
         self.database = db
     }
 
@@ -221,9 +232,13 @@ class Distance: EVObject {
 class BaseCamp: EVObject {
     var name = ""
     var coords = [0.0, 0.0]
+    var guide: String?
+}
+
+class Planet : EVObject {
+    var name = ""
     var gravity = 0.0
     var radius = 0.0
-    var guide: String?
 }
 
 class Waypoint: EVObject {
@@ -231,9 +246,8 @@ class Waypoint: EVObject {
     var desc = ""
     var baseCamp = BaseCamp()
     var system = ""
-    var planet = ""
+    var planet = Planet()
     var distance = Distance()
+    var events: [String]?
     var keyEvent: String?
-    var prime: String?
-
 }

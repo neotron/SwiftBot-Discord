@@ -135,7 +135,8 @@ public class WebsocketAPIManager: NSObject, WebSocketDelegate {
     public func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
         cancelKeepAlive()
         if let err = error {
-            LOG_ERROR("Websocket disconnected with error: \(err)")
+            LOG_ERROR("Websocket disconnected with error: \(err) - attempting reconnect")
+            connectWebSocket()
         } else {
             LOG_INFO("Websocket disconnected")
         }

@@ -47,10 +47,10 @@ enum CustomComandImportError: ErrorType {
                     var cmdObject = cdm.loadCommandAlias(commandStr)
                     if cmdObject == nil {
                         cmdObject = cdm.createCommandAlias(commandStr, value: commandText)
-                        cmdImported++
+                        cmdImported += 1
                     } else {
                         cmdObject?.value = commandText
-                        cmdUpdated++
+                        cmdUpdated += 1
                     }
 
                     LOG_DEBUG("Importing \(commandStr): \(commandText)")
@@ -63,7 +63,7 @@ enum CustomComandImportError: ErrorType {
                             var catObj = cdm.loadCommandGroup(category)
                             if catObj == nil {
                                 catObj = cdm.createCommandGroup(category)
-                                catImported++
+                                catImported += 1
                             }
                             catObj?.commands.insert(cmdObject!)
                             if let catHelp = categoryHelp[category] {
