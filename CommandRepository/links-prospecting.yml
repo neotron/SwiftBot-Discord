@@ -10,7 +10,7 @@ commands:
 
   richDump:
     content:
-      extended_help: null
+      extendged_help: null
       short_help: Akira Masakari's PSA thread - Jumponium-rich Systems
       text: https://forums.frontier.co.uk/showthread.php?t=212600
     options:
@@ -44,7 +44,7 @@ commands:
       detailed_pm: false
       category: prospecting
 
-  neuralnet:
+  neuralnetMini:
     content:
       extended_help: null
       short_help: LordFedora's Neural Network - Using Level 1 Scan Data from The Monster
