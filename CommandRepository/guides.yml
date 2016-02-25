@@ -43,3 +43,52 @@ commands:
     options:
       detailed_pm: false
       category: guides
+
+  datavalues:
+    content:
+      extended_help: |
+        **Data Value Formulae** 
+        *note: these formulae don't factor terraformability into account.*
+
+        **Stars**
+
+        `value = k + (m * k / 66.25)`
+        `m = solar masses`
+        `k = constant`
+        values of k:
+        ```
+        | Star Type     |   k   |
+        +---------------+-------+
+        | Black Hole    | 42994 |
+        | Neutron Star  | 42994 |
+        | White Dwarf   | 26949 |
+        | O/B/A/F/G/K/M |  2880 |
+        | L/T/Y/S/C     |  2880 | 
+        | WR/TT/Ae/Be   |  2880 |
+        ```
+
+        **Planets**
+
+        `value = k + ( 3 * k * ⁵√m / 5.3 )`
+        `m = earth masses`
+        `k = constant`
+
+        values of k:
+        ```
+        | Planet Type         |   k   |             | Gas Giant Type |   k   |
+        +---------------------+-------+             +----------------+-------+
+        | Metal Rich          |  8331 |             | Class I        |  1481 |
+        | High Metal Content  |   720 |             | Class II       |  4525 |
+        | Ammonia             | 27358 |             | Class III      |   720 |
+        | Water               | 19747 |             | Class IV       |   720 |
+        | Earth-Like          | 45624 |             | Class V        |   720 |
+        | Rocky               |   720 |             | Water          |   720 |
+        | Ice                 |   720 |             | Helium-Rich    |   720 |
+        | Rocky Ice           |   720 |             | Water Life     |   720 |
+                                                    | Ammonia Life   |   720 |
+        ```
+      short_help: Calculate the exact value of each detailed scan you take.
+      text: https://forums.frontier.co.uk/showthread.php?t=232000
+    options:
+      detailed_pm: false
+      category: guides
