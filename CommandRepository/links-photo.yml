@@ -1,0 +1,54 @@
+commands:
+  photothread:
+    content:
+      extended_help: null
+      short_help: 
+      text: https://forums.frontier.co.uk/showthread.php?t=222490
+    options:
+      detailed_pm: false
+      category: photos
+
+  submit:
+    content:
+      extended_help: null
+      short_help: 
+      text: https://dropitto.me/distantworlds
+    options:
+      detailed_pm: false
+      category: photos
+
+  submit-contest:
+    content:
+      extended_help: null
+      short_help: 
+      text: https://dropitto.me/distantworldscontest
+    options:
+      detailed_pm: false
+      category: photos
+
+  submit-edited:
+    content:
+      extended_help: null
+      short_help: 
+      text: https://dropitto.me/edit-dangerous
+    options:
+      detailed_pm: false
+      category: photos
+
+  submit-sgra:
+    content:
+      extended_help: null
+      short_help: 
+      text: https://dropitto.me/sgra-gathering
+    options:
+      detailed_pm: false
+      category: photos
+
+  imgur:
+    content:
+      extended_help: null
+      short_help: 
+      text: https://elitedistantworlds.imgur.com/
+    options:
+      detailed_pm: false
+      category: photos
