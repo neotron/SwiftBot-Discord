@@ -67,4 +67,5 @@ Pods
 .idea/workspace.xml
 config-dev.json
 db/
+CommandRepository/yaml-ref.md
 *~
