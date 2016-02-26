@@ -1,0 +1,18 @@
+commands:
+  bindings:
+    content:
+      extended_help: null
+      short_help: Generate reference sheets for your personal bindings.
+      text: http://www.mcdee.net/elite
+    options:
+      detailed_pm: false
+      category: tools
+  
+  edsm:
+    content:
+      extended_help: null
+      short_help: Save your travel logs online and view your progress on the map.
+      text: http://www.edsm.net
+    options:
+      detailed_pm: false
+      category: tools

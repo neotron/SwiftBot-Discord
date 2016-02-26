@@ -1,0 +1,62 @@
+commands:
+  photothread:
+    content:
+      extended_help: null
+      short_help: The central resource for content created by the DWE Photo Team
+      text: https://forums.frontier.co.uk/showthread.php?t=222490
+    options:
+      detailed_pm: false
+      category: photos
+
+  submit:
+    content:
+      extended_help: null
+      short_help: Submit photos to the official gallery!
+      text: |
+        https://dropitto.me/distantworlds 
+        password: `beaglepoint`
+    options:
+      detailed_pm: false
+      category: photos
+
+  submit-contest:
+    content:
+      extended_help: null
+      short_help: Submit photos to the weekly contest and win a bobblehead!
+      text: |
+        https://dropitto.me/distantworldscontest
+        password: `beaglepoint`
+    options:
+      detailed_pm: false
+      category: photos
+
+  submit-edited:
+    content:
+      extended_help: null
+      short_help: Submit any and all edited photos of the game. Movie posters, edited screenshots, art, you name it!
+      text: |
+        https://dropitto.me/edit-dangerous
+        password: `beaglepoint`
+    options:
+      detailed_pm: false
+      category: photos
+
+  submit-sgra:
+    content:
+      extended_help: null
+      short_help: "Submit your photos from the mass gatherings at Sagittarius A*!"
+      text: |
+        https://dropitto.me/sgra-gathering
+        password: `beaglepoint`
+    options:
+      detailed_pm: false
+      category: photos
+
+  imgur:
+    content:
+      extended_help: null
+      short_help: See the published albums from the DWE Photo Team!
+      text: https://elitedistantworlds.imgur.com/
+    options:
+      detailed_pm: false
+      category: photos

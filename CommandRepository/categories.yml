@@ -1,0 +1,8 @@
+categories:
+  apps: 
+    help: "Various useful applications for Elite: Dangerous commanders."
+  links:
+    help: "Useful links"
+    subcat:
+      - propsecting
+      - photos

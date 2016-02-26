@@ -1,0 +1,9 @@
+commands:
+  jumponiumReq:
+    content:
+      extended_help: null
+      short_help: Calculate the amount of jumponium needed to reach Beagle Point
+      text: https://docs.google.com/spreadsheets/d/17WOwinil5HuS3AAZX8SuQ91PrcdpcjKBf0GHxGSVE4k/edit?usp=sharing
+    options:
+      detailed_pm: false
+      category: links
