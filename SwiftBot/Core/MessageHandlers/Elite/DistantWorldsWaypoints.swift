@@ -8,7 +8,7 @@ import DiscordAPI
 import EVReflection
 
 class DistantWorldsWaypoints: MessageHandler {
-    private var database: Waypoints?
+    static var database: Waypoints?
 
     override init() {
         super.init()
@@ -68,7 +68,7 @@ extension DistantWorldsWaypoints {
             message.replyToChannel("Waypoint \(stageStr) is not an integer.")
             return
         }
-        guard let stages = self.database?.stages else {
+        guard let stages = DistantWorldsWaypoints.database?.stages else {
             message.replyToChannel("Failed to load stage database, sorry.")
             return
         }
@@ -91,7 +91,7 @@ extension DistantWorldsWaypoints {
             message.replyToChannel("Waypoint \(wpString) is not an integer.")
             return
         }
-        guard let wps = self.database?.waypoints else {
+        guard let wps = DistantWorldsWaypoints.database?.waypoints else {
             message.replyToChannel("Failed to load waypoint database, sorry.")
             return
         }
@@ -133,6 +133,7 @@ extension DistantWorldsWaypoints {
             verboseOutput.append("\(events.joinWithSeparator("\n"))")
             terseOutput.append(verboseOutput.last!)
         }
+        var ignorePrivateMessage = false
         if hasBaseCamp {
             var doubles = [Double]()
             for arg in args {
@@ -144,21 +145,24 @@ extension DistantWorldsWaypoints {
                 }
             }
             if doubles.count == 2 {
+
+                ignorePrivateMessage = true
                 let end = PlanetaryMath.LatLong(wp.baseCamp.coords[0], wp.baseCamp.coords[1])
                 let start = PlanetaryMath.LatLong(doubles[0], doubles[1])
                 let result = PlanetaryMath.calculateBearingAndDistance(start: start, end:end, radius: wp.planet.radius)
                 let distance = PlanetaryMath.distanceFor(result.distance)
-                verboseOutput.append(String(format: "\n`To get to the base camp from \(start) head in bearing %.1f°\(distance).`", result.bearing))
+                verboseOutput.append(String(format: "\n`To get to the base camp from \(String(latlong: start)) head in bearing %.1f°\(distance).`", result.bearing))
                 terseOutput = [terseOutput[0]]
-                terseOutput.append(String(format: "To get to the base camp at `\(end)` from `\(start)` head in bearing **%.1f°**\(distance).", result.bearing))
-
+                terseOutput.append(String(format: "To get to the base camp at `\(String(latlong: end))` from `\(String(latlong: start))` head in bearing **%.1f°**\(distance).", result.bearing))
             }
         }
         let reply = verboseOutput.joinWithSeparator("\n")
         if verbose {
             message.replyToChannel(reply)
         } else {
-            message.replyToSender(reply)
+            if !ignorePrivateMessage {
+                message.replyToSender(reply)
+            }
             if !message.isPrivateMessage {
                 message.replyToChannel(terseOutput.joinWithSeparator("\n"))
             }
@@ -188,7 +192,7 @@ extension DistantWorldsWaypoints {
         print(db.toJsonString());
         LOG_DEBUG("\n****\n")
 
-        self.database = db
+        DistantWorldsWaypoints.database = db
     }
 
 }

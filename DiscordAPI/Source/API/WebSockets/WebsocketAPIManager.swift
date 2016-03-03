@@ -7,6 +7,7 @@
 import Foundation
 import Starscream
 import ObjectMapper
+import Dispatch
 
 public protocol WebsocketAPIManagerDelegate : class {
     func websocketAuthenticationError()
@@ -136,7 +137,10 @@ public class WebsocketAPIManager: NSObject, WebSocketDelegate {
         cancelKeepAlive()
         if let err = error {
             LOG_ERROR("Websocket disconnected with error: \(err) - attempting reconnect")
-            connectWebSocket()
+            dispatch_async(dispatch_get_main_queue()) {
+                self.socket = nil
+                self.connectWebSocket()
+            }
         } else {
             LOG_INFO("Websocket disconnected")
         }

@@ -68,14 +68,14 @@ class ScienceMessageHandler: MessageHandler {
                 start = (lat1, lon1)
                 end = (lat2, lon2)
             default:
-                message.replyToChannel("Insufficient number og arguments. Expected 4-5 numbers.")
+                message.replyToChannel("Insufficient number of arguments. Expected 4-5 numbers (lat1 lon1 lat2 lon2 [optional radius]).")
                 return
             }
         }
         if let start = start, end = end {
             let result = PlanetaryMath.calculateBearingAndDistance(start: start, end: end, radius: radius)
             let distance = PlanetaryMath.distanceFor(result.distance)
-            message.replyToChannel(String(format: "To get from \(start) to \(end) head in bearing %.1f°\(distance).", result.bearing))
+            message.replyToChannel(String(format: "To get from \(String(latlong:start)) to \(String(latlong:end)) head in bearing %.1f°\(distance).", result.bearing))
         } else {
             message.replyToChannel("Couldn't parse start/end coordinates.")
         }
@@ -207,6 +207,12 @@ private extension Double {
     var toDegrees: Double {
         return self * 180.0 / M_PI
     }
+    func toString(fractionDigits:Int, minFractionDigits: Int = 1) -> String {
+        let formatter = NSNumberFormatter()
+        formatter.minimumFractionDigits = minFractionDigits
+        formatter.maximumFractionDigits = fractionDigits
+        return formatter.stringFromNumber(self) ?? "\(self)"
+    }
 }
 
 
@@ -214,13 +220,14 @@ class PlanetaryMath {
     typealias LatLong = (lat:Double, lon:Double)
 
     class func calculateBearingAndDistance(start start: LatLong, end: LatLong, radius: Double?) -> (bearing:Double, distance:Double?) {
-        let λ1 = start.lat.toRadians
-        let λ2 = end.lat.toRadians
-        let φ1 = start.lon.toRadians
-        let φ2 = end.lon.toRadians
+        let λ1 = start.lon.toRadians
+        let λ2 = end.lon.toRadians
+        let φ1 = start.lat.toRadians
+        let φ2 = end.lat.toRadians
         let y = sin(λ2 - λ1) * cos(φ2)
         let x = cos(φ1) * sin(φ2) - sin(φ1) * cos(φ2) * cos(λ2 - λ1)
-        let bearing = (atan2(y, x).toDegrees + 450) % 360
+        let bearing = (atan2(y, x).toDegrees + 360)%360
+
         var distance: Double?
         if let R = radius {
             if R > 0 {
@@ -246,5 +253,11 @@ class PlanetaryMath {
             }
         }
         return distance
+    }
+}
+
+extension String {
+    init(latlong: PlanetaryMath.LatLong) {
+        self.init("(\(latlong.lat.toString(4)), \(latlong.lon.toString(4)))")
     }
 }

@@ -29,7 +29,7 @@ class RandomAnimalsMessageHandler: MessageHandler, NSURLSessionTaskDelegate {
     }
 
     override var commands: [MessageCommand]? {
-        return [("random", "Show image of random animal. Supports cat, dog, corgi and kitten. Space between *random* and *animal* is optiona.")]
+        return [("random", "Show image of random animal. Supports cat, dog, corgi, and kitten. Space between *random* and *animal* is optional.")]
     }
 
     override func handlePrefix(prefix: String, command: String, args: [String], message: Message) -> Bool {
