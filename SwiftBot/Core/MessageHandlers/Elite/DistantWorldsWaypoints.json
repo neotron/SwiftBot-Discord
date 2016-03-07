@@ -462,7 +462,8 @@
       "baseCamp": {
         "name": "The Mound",
         "coords": [
-          26.63, -120.95
+          26.63,
+          -120.95
         ],
         "guide": "http://i65.tinypic.com/ipb8kj.jpg"
       },
@@ -487,7 +488,8 @@
       "baseCamp": {
         "name": "The Sacagagwea Tundra",
         "coords": [
-          83.40, 35.45
+          83.40,
+          35.45
         ],
         "guide": "http://i63.tinypic.com/2ci7k0n.jpg"
       },
@@ -496,38 +498,40 @@
       "desc": "Less than 1,000 LYs from the mysterious Bleia Borders, the Magnus Nebula is one of the largest so far discovered on the far galactic core. Embedded within are several thousand star systems including several neutron stars."
     },
     {
-      "system": "TBA",
-      "events": null,
+      "system": "GREEROI MD-Q D6-5",
+      "events": [
+        "`Prime Rendezvous:` March 8th, 3302. EU: 19:00 UTC, US: 02:00 UTC",
+        "`Interesting System:` GREEROI AA-A H5 (double Wolf-Rayet stars about 420 ly from target area)."
+      ],
       "distance": {
         "next": 4900,
         "traveled": 48500
       },
       "planet": {
-        "name": "TBA",
-        "gravity": 0,
-        "radius": 0
+        "name": "B 1",
+        "gravity": 0.18,
+        "radius": 1233
       },
       "baseCamp": {
         "name": "Camp Amundsen",
         "coords": [
-          0,
-          0
+          -38.05, -82.51
         ],
-        "guide": null
+        "guide": "http://i63.tinypic.com/2wmnwc9.jpg"
       },
       "keyEvent": null,
       "name": "The Greeroi Veil",
       "desc": "After an arduous journey across the uncharted Perseus Stem, we reach Greeroi Veil. A small nebula that can be tricky to reach due to it being high above the galactic plane. The view from the Veil as you look out across the galactic core is one not to miss. Ships with less than 30 LY range will struggle to reach this base camp, and only ships with 33 LYs or more will be able to actully enter the nebula itself. Our base camp sits on its outskirts. The Greeroi Veil marks the final nebula along our route. We now begin the long trek across the Aphelion Bleak Lands."
     },
     {
-      "system": "TBA",
+      "system": "Eactainds GN-W C1-6",
       "events": null,
       "distance": {
         "next": 4200,
         "traveled": 53400
       },
       "planet": {
-        "name": "TBA",
+        "name": "",
         "gravity": 0,
         "radius": 0
       },
@@ -541,17 +545,17 @@
       },
       "keyEvent": null,
       "name": "Rendezvous Point",
-      "desc": "Rendezvous Point has some airless worlds - giving us a chance to explore this famous system in some detail. As some of you may be aware, this system made the GalNet News in March 3301 when the first recorded deep space meeting occurred there, 43,000 LYs from Sol. A brief recording of the event was made at the time: \n\n*A Distant Rendezvous. Leaving Rendezvous Point we cross the Cygnus Arm and head into the Scutum-Centaurus Arm.*"
+      "desc": "Rendezvous Point has some airless worlds - giving us a chance to explore this famous system in some detail. As some of you may be aware, this system made the GalNet News in March 3301 when the first recorded deep space meeting occurred there, 43,000 LYs from Sol. A brief recording of the event was made at the time: \n\n`A Distant Rendezvous:` https://www.youtube.com/watch?v=aEO6tQlmD2c\n\nLeaving Rendezvous Point we cross the Cygnus Arm and head into the Scutum-Centaurus Arm."
     },
     {
-      "system": "TBA",
+      "system": "Oupailks AA-A H0",
       "events": null,
       "distance": {
         "next": 8700,
         "traveled": 57600
       },
       "planet": {
-        "name": "TBA",
+        "name": "(TBA)",
         "gravity": 0,
         "radius": 0
       },
@@ -568,7 +572,7 @@
       "desc": "We're now deep in the Bleak Lands. Stretching across 20,000 LYs of the Aphelion regions, the Bleak Lands are an enormous expanse of sectors that contain very little in the form of nebulae and star clusters. It is a conundrum that has baffled astronomers since the early days of deep space exploration as to why this part of the galaxy is in stark contrast to the beauty and content we enjoy throughout the Orion Spur region. Here we make base camp in 'The Pit' - A 1.12G High Metal Content World orbiting its parent star at a mere 8 LS away. Surface temperature on the daylight side of this world can reach up to 1,534K. This is an inhospitable place in a desolate region and it is from here that we begin one of the longest treks between waypoints; 8,700 LYs across the Scutum-Centaurus Arm."
     },
     {
-      "system": "TBA",
+      "system": "Qautheia BA-A E0",
       "events": [
         "**Preparing for The Abyss, and Beyond**"
       ],
@@ -577,7 +581,7 @@
         "traveled": 66300
       },
       "planet": {
-        "name": "TBA",
+        "name": "(TBA)",
         "gravity": 0,
         "radius": 0
       },
@@ -594,14 +598,14 @@
       "desc": "Before heading out across the Abyss, we gather at its southern edge and stock up on Jumponium fuel as this will be essential the closer to our final goal we travel. When crossing the Abyss, we skirt around the Chiea Pocket badlands and begin the final leg of the outbound journey - crossing the inhospitable Solitude Void and edge our way to the distant Ceeckia star systems."
     },
     {
-      "system": "TBA",
+      "system": "Cheae Eurl AA-A E0",
       "events": null,
       "distance": {
         "next": 10000,
         "traveled": 71500
       },
       "planet": {
-        "name": "TBA",
+        "name": "(TBA)",
         "gravity": 0,
         "radius": 0
       },
