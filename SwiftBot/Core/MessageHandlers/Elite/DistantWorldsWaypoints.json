@@ -2,7 +2,7 @@
   "stages": [
     {
       "name": "Leaving the Orion Spur",
-      "image": "http:\/\/i64.tinypic.com\/15oupp2.jpg",
+      "image": "http://i64.tinypic.com/15oupp2.jpg",
       "waypoints": [
         1,
         5
@@ -10,7 +10,7 @@
     },
     {
       "name": "Crossing the Norma Expanse",
-      "image": "http:\/\/i68.tinypic.com\/2w39v91.jpg",
+      "image": "http://i68.tinypic.com/2w39v91.jpg",
       "waypoints": [
         6,
         8
@@ -18,7 +18,7 @@
     },
     {
       "name": "The Galactic Core Regions",
-      "image": "http:\/\/i64.tinypic.com\/1zpirk7.jpg",
+      "image": "http://i64.tinypic.com/1zpirk7.jpg",
       "waypoints": [
         9,
         17
@@ -26,7 +26,7 @@
     },
     {
       "name": "Traversing The Aphelion Bleak Lands",
-      "image": "http:\/\/i66.tinypic.com\/33lkw43.jpg",
+      "image": "http://i66.tinypic.com/33lkw43.jpg",
       "waypoints": [
         18,
         20
@@ -34,7 +34,7 @@
     },
     {
       "name": "Beyond the Abyss",
-      "image": "http:\/\/i66.tinypic.com\/2efqixf.jpg",
+      "image": "http://i66.tinypic.com/2efqixf.jpg",
       "waypoints": [
         21,
         23
@@ -62,7 +62,6 @@
         ],
         "guide": null
       },
-      "keyEvent": null,
       "name": "Pallaeni",
       "desc": "Expedition Launching Point"
     },
@@ -84,9 +83,8 @@
           -19.15,
           85.02
         ],
-        "guide": "http:\/\/imgur.com\/a\/Sw4qO"
+        "guide": "http://imgur.com/a/Sw4qO"
       },
-      "keyEvent": null,
       "name": "Fine Ring Sector (Shapley 1)",
       "desc": "Leaving Pallaeni we cross the Frontier to the Shapley 1 region. Shapley 1 has no landable planets so we would look for airless worlds close to the Wolf-Rayet system and capture some great vistas with the gas cloud in the backdrop."
     },
@@ -108,9 +106,8 @@
           -12.71,
           70.28
         ],
-        "guide": "http:\/\/i64.tinypic.com\/29fp9vr.jpg"
+        "guide": "http://i64.tinypic.com/29fp9vr.jpg"
       },
-      "keyEvent": null,
       "name": "The Lagoon Nebula",
       "desc": "From Shapley 1, we travel across the Sagittarius Gap and avoid the Aucocks Pocket by plotting a route around 100 LYs above or below the galactic plane. Onwards to the Lagoon Nebula with an optional excursion to Thor's Eye en-route, (although this black hole system has no landable worlds). The Lagoon Nebula is one of the most colorful nebulae so far charted. Its a large nebula offering plenty of systems with airless planets and moons to make planetfall on."
     },
@@ -132,9 +129,8 @@
           18.44,
           -139.3
         ],
-        "guide": "http:\/\/i66.tinypic.com\/25klaw6.jpg"
+        "guide": "http://i66.tinypic.com/25klaw6.jpg"
       },
-      "keyEvent": null,
       "name": "The Omega Nebula and The PW2010 Super Cluster",
       "desc": "From the Lagoon its a short haul to the Trifid Nebula that sits between our previous waypoint and the Omega Nebula - two nebulae of similar appearance and both of which can be visited en-route to the Eagle Nebula. The Omega Nebula base camp is situated between the nebula itself and the neighboring PW2010 Super Cluster, making it the ideal location to begin expeditions out to these two prominent locations."
     },
@@ -158,7 +154,6 @@
         ],
         "guide": null
       },
-      "keyEvent": null,
       "name": "The Eagle Nebula",
       "desc": "This nebula contains one of the most closely compacted star clusters known, with some stars within it less than a light year apart. After making planetfall inside the Eagle Nebula and exploring some of its worlds, we'll head across the Sagittarius Arm to NGC 6357."
     },
@@ -180,11 +175,10 @@
         "name": "Drake's Ridge",
         "coords": [
           47.77,
-          -95.70999999999999
+          -95.71
         ],
-        "guide": "http:\/\/i66.tinypic.com\/25klaw6.jpg"
+        "guide": "http://i66.tinypic.com/25klaw6.jpg"
       },
-      "keyEvent": null,
       "name": "NGC 6357",
       "desc": "NGC 6357 is one of the most prominent sites when heading coreward. Embedded within the vast dust cloud is the Pismis Star Cluster. From NGC 6357 we leave the Local Orion Spur behind and head across the Norma Arm."
     },
@@ -197,7 +191,7 @@
       },
       "planet": {
         "name": "2 A",
-        "gravity": 0.07000000000000001,
+        "gravity": 0.07,
         "radius": 0
       },
       "baseCamp": {
@@ -206,9 +200,8 @@
           19.51,
           162.19
         ],
-        "guide": "http:\/\/i68.tinypic.com\/2v0xx69.jpg"
+        "guide": "http://i68.tinypic.com/2v0xx69.jpg"
       },
-      "keyEvent": null,
       "name": "The Hollow Veil",
       "desc": "On the southern edge of the Norma Expanse we'll visit The Hollow Veil (also known as the Screaming Nebula). From the Veil we head out across the Expanse to our next POI, 4,320 LYs away. We're heading to the Near 3KPC Arm and into the Greae Phio Stellar Forge to explore the Forge Trojan Worlds in SRVs."
     },
@@ -230,9 +223,8 @@
           16.1,
           -167.73
         ],
-        "guide": "http:\/\/i67.tinypic.com\/91cw11.jpg"
+        "guide": "http://i67.tinypic.com/91cw11.jpg"
       },
-      "keyEvent": null,
       "name": "The Greae Phio Stellar Forge",
       "desc": "The Greae Phio Stellar Forge is one of the most visually stunning places in the galaxy. This vast cloud of dust and gas is home to hundreds of thousands of young star systems and Trojan Worlds (worlds so close to each other that they could offer stunning backdrops whilst exploring their surfaces). A few hundred light years away is the smaller satellite nebula - The Anvil. Leaving the Forge, we begin a 'decent' through the galactic plane and pass by dozens of non-main sequence star systems (including neutron stars, white dwarfs, and black holes). We're heading across the outer galactic core to New Botany Bay."
     },
@@ -251,19 +243,17 @@
       "baseCamp": {
         "name": "Camp Uluru",
         "coords": [
-          -67.06999999999999,
+          -67.07,
           -104.66
         ],
-        "guide": "http:\/\/i63.tinypic.com\/34y70xv.jpg"
+        "guide": "http://i63.tinypic.com/34y70xv.jpg"
       },
-      "keyEvent": null,
       "name": "New Botany Bay",
       "desc": "This remarkable system contains a staggering 4 Earth-Like Worlds! - currently the highest concentration of ELWs in a single system so far discovered. The primary hyperspace exit point is a neutron star, but at 23,000 LS distance there is an M-class world blessed with 4 orbiting ELW's; nicknamed 'Eora', 'Bidjigal', 'Gweagal', and 'Kameygal'.\n\nWe're 1,835 LYs below the galactic plane here - a location that gives us a breathtaking glimpse of the expansive galactic core regions ahead of us, stretching out across 10,000 LYs to the distant Far 3kpc Arm."
     },
     {
       "system": "ATHAIP CR-C B55-4",
       "events": [
-        "`FGE Meetup:` Sun 28 Feb, 19:00 UTC, Hosted by Corbin"
       ],
       "distance": {
         "next": 3000,
@@ -278,18 +268,16 @@
         "name": "Mt. Hillary",
         "coords": [
           -15.82,
-          -72.29000000000001
+          -72.29
         ],
-        "guide": "http:\/\/i63.tinypic.com\/1zldahd.jpg"
+        "guide": "http://i63.tinypic.com/1zldahd.jpg"
       },
-      "keyEvent": null,
       "name": "The Athaip Wisteria Nebula",
       "desc": "This blue coloured ejecta cloud nebula surrounding a black hole sits toward the southern edge of the galactic core regions. The nebula itself has no planets to land on but a visit to the system is worth it just to see the gravitational effects on the blue glowing ejecta cloud. Our base camp is in a neighbouring system."
     },
     {
       "system": "MYRIESLY EC-B C27-381",
       "events": [
-        "`FGE Meetup:` Sat 5 Mar, 19:00 UTC, hosted by Corbin"
       ],
       "distance": {
         "next": 600,
@@ -303,12 +291,11 @@
       "baseCamp": {
         "name": "Tereshkova's Ridge",
         "coords": [
-          -70.26000000000001,
+          -70.26,
           47.59
         ],
-        "guide": "http:\/\/i64.tinypic.com\/23ijvnr.jpg"
+        "guide": "http://i64.tinypic.com/23ijvnr.jpg"
       },
-      "keyEvent": null,
       "name": "The Amethyst Cloud",
       "desc": "This is one of several close proximity stellar remnant ejecta nebula within the Myriesly Sector. The Amethyst Cloud being one of the most colourful. We're less that 600 LYs from Sagittarius A* now so our stay at this nebula will be brief as we prepare for the galactic core gathering."
     },
@@ -316,7 +303,6 @@
       "system": "STUEMEAE KM-W C1-342",
       "events": [
         "**Fleet rendezvous at the galactic core**",
-        "`FGE Meetup:` Sat 5 Mar, 19:00 UTC, hosted by Corbin"
       ],
       "distance": {
         "next": 2000,
@@ -333,18 +319,13 @@
           57.25,
           78.06
         ],
-        "guide": "http:\/\/i66.tinypic.com\/xmud61.jpg"
+        "guide": "http://i66.tinypic.com/xmud61.jpg"
       },
-      "keyEvent": null,
       "name": "Sagittarius A*",
       "desc": "Here we visit Sagittarius A* - the famous supermassive blackhole at the centre of the galaxy. The closest star systems are less than a light year away and it is at one of them where our core base camp is situated - an ideal staging post to prepare for the exploration of the Milky Way's heart. A trip to the roof of the galactic core awaits after this!"
     },
     {
       "system": "NYUENA JS-B D342",
-      "events": [
-        "`DWE Meetup:` Monday 22nd Feb. 3302 19:00 UTC for EU, 02:00 UTC for USA.",
-        "`FGE Meetup:` Pending"
-      ],
       "distance": {
         "next": 2900,
         "traveled": 32800
@@ -360,17 +341,15 @@
           -66.88,
           -96
         ],
-        "guide": "http:\/\/i64.tinypic.com\/ws5q82.jpg"
+        "guide": "http://i64.tinypic.com/ws5q82.jpg"
       },
-      "keyEvent": null,
       "name": "Altum Sagittarii",
       "desc": "We're heading to the roof of the galaxy, some 2,000 LYs directly above Sgr A. From our base camp vantage point we get a spectacular view of the expansive galactic core regions below us. An awe-inspiring site that only a few have witnessed first hand."
     },
     {
       "system": "PHIPOEA DD-F C26-1311",
       "events": [
-        "`DWE Meetup:` Thursday 25th Feb. 3302 19:00 UTC for EU, 02:00 UTC for USA.",
-        "`FGE Meetup:` Pending"
+        "`FGE Meetup:` Saturday March 12th, 3302, 19:00 UTC"
       ],
       "distance": {
         "next": 1300,
@@ -387,9 +366,8 @@
           24.58,
           -178.3
         ],
-        "guide": "http:\/\/i68.tinypic.com\/2nth17m.jpg"
+        "guide": "http://i68.tinypic.com/2nth17m.jpg"
       },
-      "keyEvent": null,
       "name": "The Phipoea Nebula",
       "desc": "Leaving the galactic centre we head across the core regions to The Phipoea Nebula, with an optional trip out to the Scaulo-Systimbu Stellar Graveyard. The graveyard has one of the highest concentrations of black holes throughout the known galaxy. From here its onwards to the The Dryao Chrea Stellar Remnant."
     },
@@ -410,11 +388,9 @@
           -19.63,
           39.73
         ],
-        "guide": "http:\/\/i67.tinypic.com\/2cdjpr9.jpg"
+        "guide": "http://i67.tinypic.com/2cdjpr9.jpg"
       },
-      "keyEvent": null,
       "events": [
-        "`DWE Meetup:` Friday 26th Feb. 3302 19:00 UTC for EU,  02:00 UTC for USA."
       ],
       "name": "The Dryao Chrea Stellar Remnant",
       "desc": "Here we arrive at another colorful planetary nebula, but this one is illuminated by the light of a hundred billion star systems in all directions! The primary is a Black Hole that is embedded within the blue glowing ejecta nebula. The sheer luminosity of the gas cloud gives all the worlds in this strange system a perpetual twilight of blue and purple."
@@ -422,7 +398,6 @@
     {
       "system": "EORLD BYOE YA-W E2-4084",
       "events": [
-        "`DWE Meetup:` Saturday 27th Feb. 3302 18:00 UTC."
       ],
       "distance": {
         "next": 500,
@@ -436,19 +411,17 @@
       "baseCamp": {
         "name": "Gemstone Canyon",
         "coords": [
-          7.70,
+          7.7,
           -103.58
         ],
         "guide": "http://i68.tinypic.com/5lujhg.jpg"
       },
-      "keyEvent": null,
       "name": "The Rose Nebula",
       "desc": "We're now in a region of stunning ejecta nebula, many with vibrant colours. The Rose Nebula is no exception with its red and green dust cloud giving off an eerie glow on all worlds that sit within it."
     },
     {
       "system": "Eok Gree TO-Q e5-3167",
       "events": [
-        "`DWE Meetup:` Sunday 28th Feb. 3302 18:00 UTC."
       ],
       "distance": {
         "next": 6000,
@@ -467,14 +440,12 @@
         ],
         "guide": "http://i65.tinypic.com/ipb8kj.jpg"
       },
-      "keyEvent": null,
       "name": "The Green Crystal",
       "desc": "This is probably the most stunning planetary nebulae throughout the region. The sheer brightness and vibrant shades of green that make up the dust and gas cloud make it a sight you will never forget. Stunning! From here we begin one of our longest treks so far, a 6,000 journey out to the Magnus Nebula on the Bleia Permit Zone frontier."
     },
     {
       "system": "Pheia Briae DK-A E303",
       "events": [
-        "`DWE Meetup:` Saturday 5th March, 3302 18:00 UTC."
       ],
       "distance": {
         "next": 4000,
@@ -488,19 +459,17 @@
       "baseCamp": {
         "name": "The Sacagagwea Tundra",
         "coords": [
-          83.40,
+          83.4,
           35.45
         ],
         "guide": "http://i63.tinypic.com/2ci7k0n.jpg"
       },
-      "keyEvent": null,
       "name": "The Magnus Nebula",
       "desc": "Less than 1,000 LYs from the mysterious Bleia Borders, the Magnus Nebula is one of the largest so far discovered on the far galactic core. Embedded within are several thousand star systems including several neutron stars."
     },
     {
       "system": "GREEROI MD-Q D6-5",
       "events": [
-        "`Prime Rendezvous:` March 8th, 3302. EU: 19:00 UTC, US: 02:00 UTC",
         "`Interesting System:` GREEROI AA-A H5 (double Wolf-Rayet stars about 420 ly from target area)."
       ],
       "distance": {
@@ -515,35 +484,36 @@
       "baseCamp": {
         "name": "Camp Amundsen",
         "coords": [
-          -38.05, -82.51
+          -38.05,
+          -82.51
         ],
         "guide": "http://i63.tinypic.com/2wmnwc9.jpg"
       },
-      "keyEvent": null,
       "name": "The Greeroi Veil",
       "desc": "After an arduous journey across the uncharted Perseus Stem, we reach Greeroi Veil. A small nebula that can be tricky to reach due to it being high above the galactic plane. The view from the Veil as you look out across the galactic core is one not to miss. Ships with less than 30 LY range will struggle to reach this base camp, and only ships with 33 LYs or more will be able to actully enter the nebula itself. Our base camp sits on its outskirts. The Greeroi Veil marks the final nebula along our route. We now begin the long trek across the Aphelion Bleak Lands."
     },
     {
       "system": "Eactainds GN-W C1-6",
-      "events": null,
+      "events": [
+        "`Prime Rendezvous:` Saturday March 12th, 3302, 18:00 UTC",
+      ],
       "distance": {
         "next": 4200,
         "traveled": 53400
       },
       "planet": {
-        "name": "",
-        "gravity": 0,
+        "name": "5 A",
+        "gravity": 0.41,
         "radius": 0
       },
       "baseCamp": {
         "name": "Columbus Basin",
         "coords": [
-          0,
-          0
+          9.58,
+          -35.59
         ],
-        "guide": null
+        "guide": "http://i68.tinypic.com/2utn8t5.jpg"
       },
-      "keyEvent": null,
       "name": "Rendezvous Point",
       "desc": "Rendezvous Point has some airless worlds - giving us a chance to explore this famous system in some detail. As some of you may be aware, this system made the GalNet News in March 3301 when the first recorded deep space meeting occurred there, 43,000 LYs from Sol. A brief recording of the event was made at the time: \n\n`A Distant Rendezvous:` https://www.youtube.com/watch?v=aEO6tQlmD2c\n\nLeaving Rendezvous Point we cross the Cygnus Arm and head into the Scutum-Centaurus Arm."
     },
@@ -567,7 +537,6 @@
         ],
         "guide": null
       },
-      "keyEvent": null,
       "name": "The Furnace",
       "desc": "We're now deep in the Bleak Lands. Stretching across 20,000 LYs of the Aphelion regions, the Bleak Lands are an enormous expanse of sectors that contain very little in the form of nebulae and star clusters. It is a conundrum that has baffled astronomers since the early days of deep space exploration as to why this part of the galaxy is in stark contrast to the beauty and content we enjoy throughout the Orion Spur region. Here we make base camp in 'The Pit' - A 1.12G High Metal Content World orbiting its parent star at a mere 8 LS away. Surface temperature on the daylight side of this world can reach up to 1,534K. This is an inhospitable place in a desolate region and it is from here that we begin one of the longest treks between waypoints; 8,700 LYs across the Scutum-Centaurus Arm."
     },
@@ -593,7 +562,6 @@
         ],
         "guide": null
       },
-      "keyEvent": null,
       "name": "The Roncevaux Crossing",
       "desc": "Before heading out across the Abyss, we gather at its southern edge and stock up on Jumponium fuel as this will be essential the closer to our final goal we travel. When crossing the Abyss, we skirt around the Chiea Pocket badlands and begin the final leg of the outbound journey - crossing the inhospitable Solitude Void and edge our way to the distant Ceeckia star systems."
     },
@@ -617,7 +585,6 @@
         ],
         "guide": null
       },
-      "keyEvent": null,
       "name": "The Sublustris Beacon",
       "desc": "Situated on the far edge of the 'southeastern' part of the Abyss, this system acts as a 61,000 LY distance marker and a navigational waypoint for starships heading out to the galactic rim from the Roncevaux Crossing. It is almost exactly 10,000 LYs to Beagle Point from this beacon star system. This is our penultimate base camp gathering before we set off across the vast Solitude Void... a lonely journey out on the galactic fringe - through ever sparser star systems, beyond which awaits our final goal."
     },
@@ -643,7 +610,6 @@
         ],
         "guide": null
       },
-      "keyEvent": null,
       "name": "Beagle Point",
       "desc": "Finally we arrive at Beagle Point. A star system on the edge of the Milky Way Galaxy offering all who reach it a real sense of remoteness as you look back at the very distant core regions, 35,000 light years away, and realize home is yet another 30,000 light years beyond that! There are not many places in the galaxy that can give an explorer that sense of scale. Outwards looking you see nothing but the vast inky blackness of the intergalactic void. Here at Beagle Point, at least one airless world and several airless moons await our exploration. A 1,200 LY excursion to explore The Moons of Podar can also be planned at this point. Podar is west and south of Beagle Point and sits on the northern edge of the Abyss. It is a ringed Earth-Like World that has 3 airless moons orbiting it - ripe for exploration."
     }
