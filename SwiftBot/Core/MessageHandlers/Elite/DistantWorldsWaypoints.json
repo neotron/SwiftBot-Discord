@@ -518,24 +518,26 @@
       "desc": "Rendezvous Point has some airless worlds - giving us a chance to explore this famous system in some detail. As some of you may be aware, this system made the GalNet News in March 3301 when the first recorded deep space meeting occurred there, 43,000 LYs from Sol. A brief recording of the event was made at the time: \n\n`A Distant Rendezvous:` https://www.youtube.com/watch?v=aEO6tQlmD2c\n\nLeaving Rendezvous Point we cross the Cygnus Arm and head into the Scutum-Centaurus Arm."
     },
     {
-      "system": "Oupailks AA-A H0",
-      "events": null,
+      "system": "Oupailks BB-M C8-5",
+      "events": [
+        "`Prime Rendezvous:` Tuesday March 15th, 19:00 UTC EU / 7 hrs later, 02:00 UTC US",
+      ],
       "distance": {
         "next": 8700,
         "traveled": 57600
       },
       "planet": {
-        "name": "(TBA)",
-        "gravity": 0,
+        "name": "1",
+        "gravity": 1.12,
         "radius": 0
       },
       "baseCamp": {
         "name": "The Pit",
         "coords": [
-          0,
-          0
+          3.73,
+          -135.70
         ],
-        "guide": null
+        "guide": "http://i64.tinypic.com/dxoaip.jpg"
       },
       "name": "The Furnace",
       "desc": "We're now deep in the Bleak Lands. Stretching across 20,000 LYs of the Aphelion regions, the Bleak Lands are an enormous expanse of sectors that contain very little in the form of nebulae and star clusters. It is a conundrum that has baffled astronomers since the early days of deep space exploration as to why this part of the galaxy is in stark contrast to the beauty and content we enjoy throughout the Orion Spur region. Here we make base camp in 'The Pit' - A 1.12G High Metal Content World orbiting its parent star at a mere 8 LS away. Surface temperature on the daylight side of this world can reach up to 1,534K. This is an inhospitable place in a desolate region and it is from here that we begin one of the longest treks between waypoints; 8,700 LYs across the Scutum-Centaurus Arm."
