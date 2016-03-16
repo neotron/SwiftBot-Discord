@@ -18,7 +18,7 @@ class Menulet : NSObject, NSMenuDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         statusItem.menu = menu
-        statusItem.image = NSImage(named: "menulet")
+        statusItem.image = NSImage(named: "MenuIcon")
         statusItem.image?.template = true
         statusItem.highlightMode = true
         statusItem.length = NSVariableStatusItemLength

@@ -302,7 +302,7 @@
     {
       "system": "STUEMEAE KM-W C1-342",
       "events": [
-        "**Fleet rendezvous at the galactic core**",
+        "**Fleet rendezvous at the galactic core**"
       ],
       "distance": {
         "next": 2000,
@@ -495,7 +495,7 @@
     {
       "system": "Eactainds GN-W C1-6",
       "events": [
-        "`Prime Rendezvous:` Saturday March 12th, 3302, 18:00 UTC",
+        "`Prime Rendezvous:` Saturday March 12th, 3302, 18:00 UTC"
       ],
       "distance": {
         "next": 4200,
@@ -520,7 +520,7 @@
     {
       "system": "Oupailks BB-M C8-5",
       "events": [
-        "`Prime Rendezvous:` Tuesday March 15th, 19:00 UTC EU / 7 hrs later, 02:00 UTC US",
+        "`Prime Rendezvous:` Tuesday March 15th, 19:00 UTC EU / 7 hrs later, 02:00 UTC US"
       ],
       "distance": {
         "next": 8700,
@@ -545,31 +545,35 @@
     {
       "system": "Qautheia BA-A E0",
       "events": [
-        "**Preparing for The Abyss, and Beyond**"
+        "`Key Event`: **Preparing for The Abyss, and Beyond**",
+        "`Prime Rendezvous:` Monday March 21st, 19:00 UTC EU / 7 hrs later, 02:00 UTC US",
+        "`Prospectors Key Event:` Saturday 19th and Sunday 20th, 20:00 UTC / 02:00 UTC"
       ],
       "distance": {
         "next": 5200,
         "traveled": 66300
       },
       "planet": {
-        "name": "(TBA)",
-        "gravity": 0,
+        "name": "A 1 A",
+        "gravity": 0.1,
         "radius": 0
       },
       "baseCamp": {
         "name": "Shackleton Plateau",
         "coords": [
-          0,
-          0
+          74.07,
+          141.47
         ],
-        "guide": null
+        "guide": "http://i66.tinypic.com/34fi1d2.jpg"
       },
       "name": "The Roncevaux Crossing",
       "desc": "Before heading out across the Abyss, we gather at its southern edge and stock up on Jumponium fuel as this will be essential the closer to our final goal we travel. When crossing the Abyss, we skirt around the Chiea Pocket badlands and begin the final leg of the outbound journey - crossing the inhospitable Solitude Void and edge our way to the distant Ceeckia star systems."
     },
     {
       "system": "Cheae Eurl AA-A E0",
-      "events": null,
+      "events": [
+        "`Prime Rendezvous:` Friday March 25th, 19:00 UTC EU / 7 hrs later, 02:00 UTC US"
+      ],
       "distance": {
         "next": 10000,
         "traveled": 71500
@@ -593,14 +597,15 @@
     {
       "system": "CEECKIA ZQ-L C24-0",
       "events": [
-        "**Journeys End**"
+        "`Key Event:` **Journeys End**",
+        "`Prime Rendezvous:` This will mark a week of events with the following gatherings: Saturday **April 2nd, 18:00 UTC**, Sunday **April 3rd, 18:00 UTC**, Mon-Fri **April 4th to 8th, 19:00 UTC / 02:00 UTC** and finally Saturday **April 9th, 18:00 UTC**"
       ],
       "distance": {
         "next": 65279,
         "traveled": 81500
       },
       "planet": {
-        "name": "- TBA",
+        "name": "(TBA)",
         "gravity": 0,
         "radius": 0
       },
@@ -613,6 +618,17 @@
         "guide": null
       },
       "name": "Beagle Point",
+      "special_events": [
+        "`Exploring the Moons of Podar:` A group trip to explore the Moons of Podar. The Moons of Podar orbit an Earth Like World on the edge of the Abyss, 1,200 LYs from Beagle Point. An extra excursion from Podar is also scheduled - a visit to the nearby planetary nebula 'Distant View in Blue', thought to be the most distant nebulae of its kind ever discovered.\n\nVolunteers needed to organize and host this event.",
+        "`Pilgrimage to Asterous:` A visit to Asterous. At 65,400 LYs 'north' of Sol, along the 0 meridian, this is the most northerly reachable star system from Sol. Only high-range Anaconda's with J3 Jumponium will be able to reach it. Asterous is less than 1,000 LYs from Beagle Point.",
+        "`Wacky Racers:` Canyon races around a suitable world within the Beagle Point star system.\n\nVolunteers needed to organize and host this event (will require someone to create aerial photos of the course, provide surface waypoint coordinates, and devise the rules).",
+        "`The 65K Scavenger Hunt:` Find the Lavian Brandy hidden near Darwin's Legacy - following clues given by the event organizer.\n\nVolunteers needed to organize and host this event (will require some cargo donated by one of the fleet haulers and someone good at organizing scavenger hunts and coming up with riddles & surface coordinate clues as to where the loot is hidden).",
+        "`Stop the Pigeon:` A game of high stakes; one player in an SRV being hunted down by a squadron of armed ships who need to seek-locate-destroy him/her before he/she reaches a designated surface coordinate on a world at Beagle Point.\n\nVolunteers needed to organize and host this event (will require a player who has a spare SRV and a willingness to lose it to hail of missiles and laser fire if he's not cunning enough to escape).",
+        "`Outer Rim Excursion:` A trip for those in long range Anaconda's with Jumponium to burn - visiting the most distant star systems possible.",
+        "`Whack-a-Rat:` Three rogue rock rats have gone crazy due to space madness and need to be hunted down by a group of pursuing SRVs. Ramming, shooting, and all sorts of underhand shenanigans are encouraged to whack those rats before they reach their designated escape coordinates on a world at Beagle Point.\n\nVolunteers needed to organize and host this event (will require players who have spare SRVs and a willingness to lose them. The rats need not be actual rock rats, just volunteers to play the roles. Only 1 rat need escape for the rat pack to win).",
+        "`Galactic Tag Xtreme:` An already established pastime at DW basecamps, and a game that has proved popular with some fleet members already. More details on GTX can be found : https://forums.frontier.co.uk/showthread.php?t=198085&page=113&p=3526705&viewfull=1#post3526705",
+        "`Locate and Map the 'Western Passage':` A mission to travel beyond Svenno's Crossing (which lies to the 'southwest' of Beagle Point) and see if a Jumponium route from the outer rim, back into the Scutum-Centaurus arm, is possible now that we have Jumponium tech to boost our range. Locating a viable Western Route will save future explorers heading from Beagle Point to the Abyssal Plain a detour of 20,000 light years, so will prove invaluable for the Galactic Mapping Project if such a route can be found. Note that this will be a time-consuming venture that could take a week or two to complete so it is scheduled for the very end of Beagle Point Week (9th April onward). "
+      ],
       "desc": "Finally we arrive at Beagle Point. A star system on the edge of the Milky Way Galaxy offering all who reach it a real sense of remoteness as you look back at the very distant core regions, 35,000 light years away, and realize home is yet another 30,000 light years beyond that! There are not many places in the galaxy that can give an explorer that sense of scale. Outwards looking you see nothing but the vast inky blackness of the intergalactic void. Here at Beagle Point, at least one airless world and several airless moons await our exploration. A 1,200 LY excursion to explore The Moons of Podar can also be planned at this point. Podar is west and south of Beagle Point and sits on the northern edge of the Abyss. It is a ringed Earth-Like World that has 3 airless moons orbiting it - ripe for exploration."
     }
   ]
