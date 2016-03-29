@@ -504,7 +504,7 @@
       "planet": {
         "name": "5 A",
         "gravity": 0.41,
-        "radius": 0
+        "radius": 6190
       },
       "baseCamp": {
         "name": "Columbus Basin",
@@ -529,7 +529,7 @@
       "planet": {
         "name": "1",
         "gravity": 1.12,
-        "radius": 0
+        "radius": 3503
       },
       "baseCamp": {
         "name": "The Pit",
@@ -547,7 +547,6 @@
       "events": [
         "`Key Event`: **Preparing for The Abyss, and Beyond**",
         "`Prime Rendezvous:` Monday March 21st, 19:00 UTC EU / 7 hrs later, 02:00 UTC US",
-        "`Prospectors Key Event:` Saturday 19th and Sunday 20th, 20:00 UTC / 02:00 UTC"
       ],
       "distance": {
         "next": 5200,
@@ -556,7 +555,7 @@
       "planet": {
         "name": "A 1 A",
         "gravity": 0.1,
-        "radius": 0
+        "radius": 829
       },
       "baseCamp": {
         "name": "Shackleton Plateau",
@@ -579,23 +578,23 @@
         "traveled": 71500
       },
       "planet": {
-        "name": "(TBA)",
-        "gravity": 0,
-        "radius": 0
+        "name": "7",
+        "gravity": 1.2,
+        "radius": 6499
       },
       "baseCamp": {
         "name": "Desolation Ridge",
         "coords": [
-          0,
-          0
+          -48.63,
+          108.72
         ],
-        "guide": null
+        "guide": "http://i63.tinypic.com/2ni1iqc.jpg"
       },
       "name": "The Sublustris Beacon",
       "desc": "Situated on the far edge of the 'southeastern' part of the Abyss, this system acts as a 61,000 LY distance marker and a navigational waypoint for starships heading out to the galactic rim from the Roncevaux Crossing. It is almost exactly 10,000 LYs to Beagle Point from this beacon star system. This is our penultimate base camp gathering before we set off across the vast Solitude Void... a lonely journey out on the galactic fringe - through ever sparser star systems, beyond which awaits our final goal."
     },
     {
-      "system": "CEECKIA ZQ-L C24-0",
+      "system": "Ceeckia ZQ-L c24-0",
       "events": [
         "`Key Event:` **Journeys End**",
         "`Prime Rendezvous:` This will mark a week of events with the following gatherings: Saturday **April 2nd, 18:00 UTC**, Sunday **April 3rd, 18:00 UTC**, Mon-Fri **April 4th to 8th, 19:00 UTC / 02:00 UTC** and finally Saturday **April 9th, 18:00 UTC**"
@@ -605,17 +604,17 @@
         "traveled": 81500
       },
       "planet": {
-        "name": "(TBA)",
-        "gravity": 0,
-        "radius": 0
+        "name": "2",
+        "gravity": 0.17,
+        "radius": 1186
       },
       "baseCamp": {
         "name": "Darwin's Legacy",
         "coords": [
-          0,
-          0
+          48.56,
+          -35.57
         ],
-        "guide": null
+        "guide": "http://i65.tinypic.com/2ufepkw.jpg"
       },
       "name": "Beagle Point",
       "special_events": [
