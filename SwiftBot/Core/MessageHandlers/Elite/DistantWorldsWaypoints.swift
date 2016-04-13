@@ -209,7 +209,7 @@ class Stage: EVObject {
 
 
     // This is needed to convert waypoints to/from a tuple.
-    override func propertyConverters() -> [(String?, (Any?) -> (), () -> Any?)] {
+    func propertyConverters() -> [(String?, (Any?) -> (), () -> Any?)] {
         return [("waypoints",
                 {
                     guard let arr = $0 as? [Int] else {
