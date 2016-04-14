@@ -146,7 +146,7 @@
 		6D9990B4EBC738A664884A81 /* CommandGroup+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CommandGroup+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		6D9990D348D50D16B983FB8D /* PingMessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PingMessageHandler.swift; sourceTree = "<group>"; };
 		6D99911179065165BBD88A63 /* ChannelModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelModel.swift; sourceTree = "<group>"; };
-		6D999115D5F67B0A19012ACB /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		6D999115D5F67B0A19012ACB /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		6D99914B9A4F9F2397C28447 /* URLEndpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLEndpoints.swift; sourceTree = "<group>"; };
 		6D9991664D2B6F66527B8093 /* CommandAlias+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CommandAlias+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		6D99917D6A5D49B160B3A7F3 /* Commandable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commandable.swift; sourceTree = "<group>"; };
