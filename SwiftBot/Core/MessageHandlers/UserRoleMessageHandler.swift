@@ -10,7 +10,7 @@ class UserRoleMessageHandler: AuthenticatedMessageHandler {
     override var commands: [MessageCommand]? {
         return [
                 ("setadm", "Add administrator role to users. Syntax: \(Config.commandPrefix)setadm @User1 [@User2, ...]"),
-                ("rmadm", "Remove administrator role from sers. Syntax: \(Config.commandPrefix)rmadm @User1 [@User2, ...]"),
+                ("rmadm", "Remove administrator role from users. Syntax: \(Config.commandPrefix)rmadm @User1 [@User2, ...]"),
         ]
     }
     override var commandGroup: String? {
