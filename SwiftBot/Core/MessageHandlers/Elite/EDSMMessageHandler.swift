@@ -123,6 +123,7 @@ class EDSMMessageHandler: MessageHandler {
                         LOG_ERROR("Get Position api failed with error \(response.error)")
                         return
                     }
+                    
                     if let system = location.system {
                         self.getSystemCoords(system, message: message) {
                             (model: SystemModel?) in
@@ -131,11 +132,11 @@ class EDSMMessageHandler: MessageHandler {
                                 calcDist(system)
                                 return
                             } else {
-                                message.replyToChannel("\(systemName) is not known system.")
+                                self.reportNotTrilaterated(systemName, message: message)
                             }
                         }
                     } else {
-                        message.replyToChannel("\(systemName) is not known system.")
+                        self.reportNotTrilaterated(systemName, message: message)
                     }
                 }
             }
@@ -150,7 +151,7 @@ class EDSMMessageHandler: MessageHandler {
             if let system = response.value {
                 guard let _ = system.coords else {
                     if system.name != "" {
-                        message.replyToChannel("\(systemName) has no known coordinates.")
+                        self.reportNotTrilaterated(systemName, message: message)
                     } else {
                         callback(nil)
                     }
@@ -161,6 +162,10 @@ class EDSMMessageHandler: MessageHandler {
                 callback(nil)
             }
         }
+    }
+
+    private func reportNotTrilaterated(systemName: String, message: Message) {
+        message.replyToChannel("\(systemName) has not been trilaterated.")
     }
 
     private func calculateDistance(systems: [SystemModel], message: Message) {

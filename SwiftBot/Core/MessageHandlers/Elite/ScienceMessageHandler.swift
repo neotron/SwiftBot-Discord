@@ -62,13 +62,13 @@ class ScienceMessageHandler: MessageHandler {
 
             case 4:
                 guard let lat1 = Double(args[0]), lon1 = Double(args[1]), lat2 = Double(args[2]), lon2 = Double(args[3])  else {
-                    message.replyToChannel("Invalid, non-number coordinates. Check input.")
+                    message.replyToChannel("The coordinates must be a number (lat1 lon1 lat2 lon2 [optional radius in km]).")
                     return
                 }
                 start = (lat1, lon1)
                 end = (lat2, lon2)
             default:
-                message.replyToChannel("Insufficient number of arguments. Expected 4-5 numbers (lat1 lon1 lat2 lon2 [optional radius]).")
+                message.replyToChannel("Not enough arguments. Expected 4-5 numbers (lat1 lon1 lat2 lon2 [optional radius in km]).")
                 return
             }
         }
@@ -89,7 +89,7 @@ class ScienceMessageHandler: MessageHandler {
         }
 
         guard let jumpRange = Double(args[0]) else {
-            message.replyToChannel("Error: Jump range be a numbers.")
+            message.replyToChannel("The jump range must be a number ( <jump range> [time per jump in seconds]).")
             return
         }
 
@@ -108,12 +108,12 @@ class ScienceMessageHandler: MessageHandler {
 
     private func handleGravity(args: [String], message: Message) {
         if args.count < 2 {
-            message.replyToChannel("Missing arguments. Expected: <EarthMasses> <Radius in KM>")
+            message.replyToChannel("Missing arguments. Expected: <EarthMasses> <Radius in km>")
             return
         }
 
         guard let planetMass = Double(args[0]), planetRadius = Double(args[1]) else {
-            message.replyToChannel("Error: earth masses and planet radius parameters should be numbers.")
+            message.replyToChannel("The arguments must be numbers. Expected: <EarthMasses> <Radius in km>")
             return
         }
 
@@ -161,7 +161,7 @@ class ScienceMessageHandler: MessageHandler {
         }
 
         guard let jumpRange = Double(args[0]), var distance = Double(args[1]) else {
-            message.replyToChannel("Error: jump range and distance parameters should be numbers.")
+            message.replyToChannel("Jump range and distance parameters should be numbers. Expected: <JumpRange> <SgrA* distance in kly> [optional max plot in ly]")
             return
         }
 
