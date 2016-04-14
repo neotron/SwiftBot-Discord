@@ -14,15 +14,15 @@ class ScienceMessageHandler: MessageHandler {
         return "Elite: Dangerous"
     }
 
-    private let densitySigmaArray: [(String, Double, Double, Double, Double)] = [
-            ("IW", 1.06E+12, 1.84E+12, 2.62E+12, 3.40E+12),
-            ("RIW", 2.25E+12, 2.82E+12, 3.38E+12, 3.95E+12),
-            ("RW", 2.94E+12, 3.77E+12, 4.60E+12, 5.43E+12),
-            ("HMC", 1.21E+12, 4.60E+12, 8.00E+12, 1.14E+13),
-            ("MR", 1.47E+12, 7.99E+12, 1.45E+13, 2.10E+13),
-            ("WW", 1.51E+12, 4.24E+12, 6.97E+12, 9.70E+12),
-            ("ELW", 4.87E+12, 5.65E+12, 6.43E+12, 7.21E+12),
-            ("AW", 4.23E+11, 3.50E+12, 6.59E+12, 9.67E+12)
+    private let densitySigmaArray: [(String, Double, Double, Double, Double)] = [ // in SI units of kg/m^3
+            ("IW", 1.06E+3, 1.84E+3, 2.62E+3, 3.40E+3),
+            ("RIW", 2.25E+3, 2.82E+3, 3.38E+3, 3.95E+3),
+            ("RW", 2.94E+3, 3.77E+3, 4.60E+3, 5.43E+3),
+            ("HMC", 1.21E+3, 4.60E+3, 8.00E+3, 1.14E+4),
+            ("MR", 1.47E+3, 7.99E+3, 1.45E+4, 2.10E+4),
+            ("WW", 1.51E+3, 4.24E+3, 6.97E+3, 9.70E+3),
+            ("ELW", 4.87E+3, 5.65E+3, 6.43E+3, 7.21E+3),
+            ("AW", 4.23E+2, 3.50E+3, 6.59E+3, 9.67E+3)
     ]
 
     override var commands: [MessageCommand]? {
@@ -117,21 +117,14 @@ class ScienceMessageHandler: MessageHandler {
             return
         }
 
-        let G = 6.67 * pow(10, -11)
-        let earthMass = 5.98 * pow(10, 24)
+        let G = 6.67e-11
+        let earthMass = 5.98e24
         let earthRadius = 6367444.7
-        let baseG = G * earthMass / pow(earthRadius, 2.0)
-        let planetG = (G * planetMass * earthMass / pow(planetRadius * 1000, 2.0))
-        let planetDensity = planetMass * earthMass / (4.0 / 3.0 * M_PI * pow(planetRadius, 3))
-        var planetM2Str: String
-        var planetGStr: String
-        if planetG > 1000 {
-            planetM2Str = String(format: "%.2e", planetG)
-            planetGStr = String(format: "%.2e", planetG / baseG)
-        } else {
-            planetM2Str = String(format: "%.2f", planetG)
-            planetGStr = String(format: "%.2f", planetG / baseG)
-        }
+        let baseG = G * earthMass / (earthRadius * earthRadius)
+        let planetG = G * planetMass * earthMass / (planetRadius * planetRadius * 1e6)
+        let planetDensity = planetMass * earthMass / (4.0 / 3.0 * M_PI * planetRadius * planetRadius * planetRadius) * 1e-9 // in SI units of kg/m^3
+        let planetM2Str = String(format: "%#.3g", planetG)
+        let planetGStr = String(format: "%#.3g", planetG / baseG)
         var maybeTypes = [String]()
         var likelyTypes = [String]()
         for row in densitySigmaArray {
@@ -143,14 +136,14 @@ class ScienceMessageHandler: MessageHandler {
         }
         var densityString = ""
         if likelyTypes.count > 0 {
-            densityString += ". **Likely**: " + likelyTypes.sort().joinWithSeparator(", ")
+            densityString += "\n**Likely**: " + likelyTypes.sort().joinWithSeparator(", ")
         }
         if maybeTypes.count > 0 {
-            densityString += ". **Possible**: " + maybeTypes.sort().joinWithSeparator(", ")
+            densityString += "\n**Possible**: " + maybeTypes.sort().joinWithSeparator(", ")
         }
-        let planetDensityStr = String(format: "%.2e", planetDensity)
+        let planetDensityStr = String(format: "%#.3g", planetDensity)
 
-        message.replyToChannel("The gravity for a planet with \(planetMass) Earth Masses and a radius of \(planetRadius) km is **\(planetM2Str)** m/s^2 or **\(planetGStr)** g. It has a density of **\(planetDensityStr)** kg/km^3\(densityString)")
+        message.replyToChannel("The gravity for a planet with \(planetMass) Earth Masses and a radius of \(planetRadius) km is **\(planetM2Str)** m/s^2 or **\(planetGStr)** g. It has a density of **\(planetDensityStr)** kg/m^3.\(densityString)")
     }
 
     private func handleRoute(args: [String], message: Message) {
