@@ -44,19 +44,20 @@ class EDSMMessageHandler: MessageHandler {
         case "loc":
             handleLocationLookup(args.joinWithSeparator(" "), message: message)
         case "dist":
-            handleDistance(args.joinWithSeparator(" ").componentsSeparatedByString("->").map {
+            var systems = args.joinWithSeparator(" ").componentsSeparatedByString("->").map {
                 $0.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-            }, message: message)
+            }
+            if (systems.count == 1) {
+                systems.append("Sol")
+            }
+           handleDistance(systems, message: message)
         default:
             return false
         }
         return true
     }
 
-    private func handleDistance(var systems: [String], message: Message) {
-        if (systems.count == 1) {
-            systems.append("Sol")
-        }
+    private func handleDistance( systems: [String], message: Message) {
         if systems.count != 2 {
             message.replyToChannel("Invalid syntax. Expected: `\(Config.commandPrefix)dist System Name -> System 2 Name`")
             return
