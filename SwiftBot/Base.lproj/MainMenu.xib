@@ -24,17 +24,20 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Edit" id="vHQ-wA-h50">
                         <items>
-                            <menuItem title="Cut" keyEquivalent="x" id="b6b-4t-J8f">
+                            <menuItem title="Cut" id="b6b-4t-J8f">
+                                <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="cut:" target="-1" id="7F8-gC-twY"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Copy" keyEquivalent="c" id="Ofh-P4-Xda">
+                            <menuItem title="Copy" id="Ofh-P4-Xda">
+                                <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="copy:" target="-1" id="J1F-9M-NCg"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Paste" keyEquivalent="v" id="D4I-zT-t4A">
+                            <menuItem title="Paste" id="D4I-zT-t4A">
+                                <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="paste:" target="-1" id="ZVA-et-63l"/>
                                 </connections>
@@ -45,7 +48,8 @@
                                     <action selector="delete:" target="-1" id="rDW-GJ-DRJ"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Select All" keyEquivalent="a" id="CZm-UZ-24B">
+                            <menuItem title="Select All" id="CZm-UZ-24B">
+                                <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="selectAll:" target="-1" id="SFd-Ia-zxr"/>
                                 </connections>
@@ -59,7 +63,8 @@
                         <action selector="openPreferences:" target="KxR-7s-hht" id="tF0-Iu-ee7"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Quit" keyEquivalent="q" id="UXf-Px-NAk">
+                <menuItem title="Quit" id="UXf-Px-NAk">
+                    <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="terminate:" target="-1" id="rt3-d6-iUh"/>
                     </connections>
