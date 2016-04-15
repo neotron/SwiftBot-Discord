@@ -47,6 +47,7 @@
 
 - (void)viewWillAppear
 {
+    [super viewWillAppear];
     _commandPrefix.stringValue = [Config commandPrefix];
     _databaseDirectory.stringValue = [Config databaseDirectory]?:@"";
     NSSet *owners = [Config ownerIds];
@@ -55,13 +56,14 @@
     }
 }
 
-- (void)viewDidDisappear
+- (void)viewWillDisappear
 {
     [Config setCommandPrefix:[_commandPrefix.stringValue stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
     [Config setDatabaseDirectory:_databaseDirectory.stringValue];
     NSArray *owners = [[_ownerIds.stringValue stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]
             componentsSeparatedByString:@","];
     [Config setOwnerIds:[NSSet setWithArray:owners]];
+    [super viewWillDisappear];
 }
 
 @end
