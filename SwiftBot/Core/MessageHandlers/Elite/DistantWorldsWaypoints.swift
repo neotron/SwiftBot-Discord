@@ -40,7 +40,8 @@ class DistantWorldsWaypoints: MessageHandler {
         return true
     }
 
-    override func handleCommand(command: String, var args: [String], message: Message) -> Bool {
+    override func handleCommand(command: String, args: [String], message: Message) -> Bool {
+        var args = args
         switch command {
         case "wp":
             if args.count == 0 || message.flags.contains(.Help) {
