@@ -221,7 +221,8 @@ extension CustomCommandMessageHandler {
             } else {
             output.append("**Categories:** \n\tNone found")
         }
-        if let commands = cdm.fetchObjectsOfType(.CommandAlias, withPredicate: nil, sortedBy: sortOrder) as? [CommandAlias] && !commands.isEmpty {
+        let fetchedCommands = cdm.fetchObjectsOfType(.CommandAlias, withPredicate: nil, sortedBy: sortOrder) as? [CommandAlias]
+        if let commands = fetchedCommands where !commands.isEmpty {
             output.append("\n**Uncategorised Commands:**\n\t\(commands.filter { $0.group == nil }.map { $0.command }.joinWithSeparator(", "))")
         } else {
             output.append("\n**Uncategorised Commands:**\n\tNone found")
