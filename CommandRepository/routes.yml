@@ -20,7 +20,7 @@ commands:
   zeewolf:
     content:
       extended_help: null
-      short_help: Zeewolf's shortcut - 34ly route: needs some jumponium.
+      short_help: Zeewolf's shortcut - 34ly route. Needs some jumponium.
       text: https://forums.frontier.co.uk/showthread.php?t=198085&page=515&p=3658522&viewfull=1#post3658522
     options:
       detailed_pm: false
@@ -29,7 +29,7 @@ commands:
   kremmen:
     content:
       extended_help: null
-      short_help: Kremmen's refinement of Zeewolf's shortcut - 34ly route: needs some jumponium.
+      short_help: Kremmen's refinement of Zeewolf's shortcut - 34ly route. Needs some jumponium.
       text: https://forums.frontier.co.uk/showthread.php?t=198085&page=652&p=3743792#post3743792
     options:
       detailed_pm: false
