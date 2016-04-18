@@ -10,6 +10,6 @@ class Registry {
     static let userAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_3) AppleWebKit/537.36 (KHTML, like Gecko) discord/0.0.235 Chrome/47.0.2526.110 SwiftBot/1.0.0 Safari/537.36"
     var token: String?
     var websocketEndpoint: String?
-    var debugEnabled = true
+    var debugEnabled = false
     var user: UserModel?
 }

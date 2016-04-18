@@ -217,14 +217,15 @@ extension CustomCommandMessageHandler {
         let sortOrder = [NSSortDescriptor(key: "command", ascending: true)]
         var output = [""]
         if let groups = cdm.fetchObjectsOfType(.CommandGroup, withPredicate: nil, sortedBy: sortOrder) {
-            output.append("**Categories**:\n\t\(groups.map {" **\($0.command)**:\($0.commands.map { $0.command }.joinWithSeparator(", "))"}.joinWithSeparator("\n\t"))")
+            output.append("**Commands by Category**:\n\t\(groups.map {" **\($0.command):** \($0.commands.map { $0.command }.joinWithSeparator(", "))"}.joinWithSeparator("\n\t"))")
             } else {
-            output.append("**Categories**:\n\tNone found")
+            output.append("**Categories:** \n\tNone found")
         }
-        if let commands = cdm.fetchObjectsOfType(.CommandAlias, withPredicate: nil, sortedBy: sortOrder) as? [CommandAlias] {
-            output.append("\n**Commands**:\n\t\(commands.filter { $0.group == nil }.map { $0.command }.joinWithSeparator(", "))")
+        let fetchedCommands = cdm.fetchObjectsOfType(.CommandAlias, withPredicate: nil, sortedBy: sortOrder) as? [CommandAlias]
+        if let commands = fetchedCommands where !commands.isEmpty {
+            output.append("\n**Uncategorised Commands:**\n\t\(commands.filter { $0.group == nil }.map { $0.command }.joinWithSeparator(", "))")
         } else {
-            output.append("\n**Commands**: None found")
+            output.append("\n**Uncategorised Commands:**\n\tNone found")
         }
 
         let outputString = output.joinWithSeparator("\n")

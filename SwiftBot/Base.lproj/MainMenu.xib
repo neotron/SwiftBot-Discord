@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -21,13 +20,51 @@
         </customObject>
         <menu id="dEo-o9-O1n" userLabel="Menulet Menu">
             <items>
+                <menuItem title="Edit" id="bpc-0L-zmc">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Edit" id="vHQ-wA-h50">
+                        <items>
+                            <menuItem title="Cut" id="b6b-4t-J8f">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="cut:" target="-1" id="7F8-gC-twY"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Copy" id="Ofh-P4-Xda">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="copy:" target="-1" id="J1F-9M-NCg"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Paste" id="D4I-zT-t4A">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="paste:" target="-1" id="ZVA-et-63l"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Delete" id="L9o-KN-5uo">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="delete:" target="-1" id="rDW-GJ-DRJ"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Select All" id="CZm-UZ-24B">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="selectAll:" target="-1" id="SFd-Ia-zxr"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
                 <menuItem title="Preferences..." id="1oy-r5-neZ">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="openPreferences:" target="KxR-7s-hht" id="tF0-Iu-ee7"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Quit" keyEquivalent="q" id="UXf-Px-NAk">
+                <menuItem title="Quit" id="UXf-Px-NAk">
+                    <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="terminate:" target="-1" id="rt3-d6-iUh"/>
                     </connections>

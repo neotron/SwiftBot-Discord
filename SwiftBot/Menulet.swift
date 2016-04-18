@@ -24,7 +24,7 @@ class Menulet : NSObject, NSMenuDelegate {
         statusItem.length = NSVariableStatusItemLength
         statusItem.enabled = true
         updateTitle()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateTitle", name: Config.CONFIG_CHANGE_KEY, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updateTitle), name: Config.CONFIG_CHANGE_KEY, object: nil)
    }
 
     func updateTitle() {

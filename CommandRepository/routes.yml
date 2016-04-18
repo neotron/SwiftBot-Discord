@@ -1,0 +1,37 @@
+commands:
+  route33:
+    content:
+      extended_help: null
+      short_help: A mapped route through the Abyss for 33Ly ships plus a new POI "The distant view in blue"
+      text: https://forums.frontier.co.uk/showthread.php?t=238330
+    options:
+      detailed_pm: false
+      category: routes
+
+  smugglers:
+    content:
+      extended_help: null
+      short_help: Smugglers Path - across the abyss with 33ly, direct south from Beagle Point. No jumponium.
+      text: https://forums.frontier.co.uk/showthread.php?t=242627
+    options:
+      detailed_pm: false
+      category: routes
+
+  zeewolf:
+    content:
+      extended_help: null
+      short_help: Zeewolf's shortcut - 34ly route. Needs some jumponium.
+      text: https://forums.frontier.co.uk/showthread.php?t=198085&page=515&p=3658522&viewfull=1#post3658522
+    options:
+      detailed_pm: false
+      category: routes
+
+  kremmen:
+    content:
+      extended_help: null
+      short_help: Kremmen's refinement of Zeewolf's shortcut - 34ly route. Needs some jumponium.
+      text: https://forums.frontier.co.uk/showthread.php?t=198085&page=652&p=3743792#post3743792
+    options:
+      detailed_pm: false
+      category: routes
+
