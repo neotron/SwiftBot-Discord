@@ -8,20 +8,20 @@ import ObjectMapper
 
 class WebsocketHeartbeatModel : MappableBase {
     var op = 1
-    var timestamp: String?
+    var sequence: Int?
 
     required init?(_ map: Map) {
         super.init(map)
     }
 
-    override init() {
-        timestamp = "\(Int(NSDate().timeIntervalSince1970*1000))"
+    init(sequence: Int) {
+        self.sequence = sequence
         super.init()
     }
 
     override func mapping(map: Map) {
-        op          <- map["op"]
-        timestamp   <- map["d"]
+        op        <- map["op"]
+        sequence  <- map["d"]
     }
 
 }

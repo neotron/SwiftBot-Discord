@@ -35,14 +35,14 @@ public enum LoggingLevel : String{
     case Info = " INFO", Error = "ERROR", Debug = "DEBUG"
 }
 
-public func LOG_INFO(message: String, file: String = __FILE__, function: String = __FUNCTION__, line: Int32 = __LINE__ ) {
+public func LOG_INFO(message: String, file: String = #file, function: String = #function, line: Int32 = #line ) {
     Logger._logMessage(message, withLevel: .Info, file: file, function: function, line: line)
 }
 
-public func LOG_ERROR(message: String, file: String = __FILE__, function: String = __FUNCTION__, line: Int32 = __LINE__ ) {
+public func LOG_ERROR(message: String, file: String = #file, function: String = #function, line: Int32 = #line) {
     Logger._logMessage(message, withLevel: .Error, file: file, function: function, line: line)
 }
 
-public func LOG_DEBUG(message: String, file: String = __FILE__, function: String = __FUNCTION__, line: Int32 = __LINE__ ) {
+public func LOG_DEBUG(message: String, file: String = #file, function: String = #function, line: Int32 = #line ) {
     Logger._logMessage(message, withLevel: .Debug, file: file, function: function, line: line)
 }

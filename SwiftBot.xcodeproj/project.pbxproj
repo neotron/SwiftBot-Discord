@@ -7,14 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		48075669962828FDB0387A06 /* Pods_DiscordAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4E416147C422B787B64C291 /* Pods_DiscordAPI.framework */; };
 		6D9990DC3ECD65E797C30117 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9991DDE5C419B778B2552B /* CoreDataManager.swift */; };
 		6D99915DACF12BBF53AEBABA /* ChannelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D99911179065165BBD88A63 /* ChannelModel.swift */; };
 		6D99917F2F7A1CCA316A5521 /* Menulet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9996A57C8CDC6AB612A7E0 /* Menulet.swift */; };
 		6D9991B519E4ABB0A5BCCCAF /* DiscordAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D999D8AD96391746921114A /* DiscordAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6D9991CED5C7FB3741405903 /* Registry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9999B3F35104A0B78148BE /* Registry.swift */; };
 		6D999202F786D152B2DCB4EC /* CommandGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999C60B66AD043180F1CD4 /* CommandGroup.swift */; };
-		6D99927020E36F0DA1AF16F0 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D99956D1FD7B7AE169D4817 /* LoginRequest.swift */; };
 		6D9992D83C598ECA6A8E1967 /* ScienceMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D99921B51234AA515E43E77 /* ScienceMessageHandler.swift */; };
 		6D9992FC35CAADEC17453AE4 /* Discord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999E440754D89B92EDC8A6 /* Discord.swift */; };
 		6D9993BDEA206B45191EF145 /* Commandable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D99917D6A5D49B160B3A7F3 /* Commandable.swift */; };
@@ -35,9 +33,7 @@
 		6D9998F67FF8F9D8B42870E1 /* PingMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9990D348D50D16B983FB8D /* PingMessageHandler.swift */; };
 		6D999923FC77410E8EE0C5A7 /* IdentifierMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999726A82A76DBBB2EAE6A /* IdentifierMessageHandler.swift */; };
 		6D99995DCBF32F84D26A32FB /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D99937B9623142428ED9A20 /* Message.swift */; };
-		6D999961D5112A2A0DA89DA6 /* LoginResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999F4CA01620CF2F480E9F /* LoginResponseModel.swift */; };
 		6D999974CC66BCDA29516771 /* GatewayUrlRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9995D489B0FFBEED644BF9 /* GatewayUrlRequest.swift */; };
-		6D99997566272638C677E6D5 /* LogoutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D999F17315965A965314B5E /* LogoutRequest.swift */; };
 		6D99997E846BCDDE3C4DCD9A /* CommandGroup+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9990B4EBC738A664884A81 /* CommandGroup+CoreDataProperties.swift */; };
 		6D9999F6C67A599DBBA83E12 /* EmbedsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9997A0A7A61B3971877C0D /* EmbedsModel.swift */; };
 		6D999A0EE363850856DDE569 /* WebsocketReadyMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9997EEEA591718925F4E2C /* WebsocketReadyMessageModel.swift */; };
@@ -71,10 +67,10 @@
 		72F850721C790D060077B4AB /* GeneralPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72F850701C790D060077B4AB /* GeneralPreferences.xib */; };
 		72F850751C790E680077B4AB /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F850741C790E680077B4AB /* Preferences.m */; };
 		72F850861C7939470077B4AB /* DiscordAPI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 724A77D71C6ED97200CB0F1D /* DiscordAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		72F850871C7939470077B4AB /* Pods_DiscordAPI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = E4E416147C422B787B64C291 /* Pods_DiscordAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		72F850901C7AE4010077B4AB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F8508F1C7AE4010077B4AB /* main.m */; };
 		72F8509A1C7AE6F90077B4AB /* SwiftBotKeeperAliver in Copy Executables */ = {isa = PBXBuildFile; fileRef = 72F8508D1C7AE4000077B4AB /* SwiftBotKeeperAliver */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		CF25CA6E7B08A39BE192ED52 /* Pods_SwiftBot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE5B29F117095BC90A629859 /* Pods_SwiftBot.framework */; };
+		B42E0F49348960075306B580 /* Pods_SwiftBot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03BDA3D56BD1FBD600C9CA7B /* Pods_SwiftBot.framework */; };
+		E98B552837B2388AC1296FDE /* Pods_DiscordAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 611CA8FCF19E5517D2BA8534 /* Pods_DiscordAPI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,7 +107,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				72F850861C7939470077B4AB /* DiscordAPI.framework in Copy Frameworks */,
-				72F850871C7939470077B4AB /* Pods_DiscordAPI.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,8 +134,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5846A0C2B2F8A6C6915B5647 /* Pods-SwiftBot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftBot.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftBot/Pods-SwiftBot.release.xcconfig"; sourceTree = "<group>"; };
-		5A3120B4220ABE4499CF2F5E /* Pods-DiscordAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscordAPI.release.xcconfig"; path = "Pods/Target Support Files/Pods-DiscordAPI/Pods-DiscordAPI.release.xcconfig"; sourceTree = "<group>"; };
+		03BDA3D56BD1FBD600C9CA7B /* Pods_SwiftBot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftBot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		05245451060EB42D8B92B6D3 /* Pods-DiscordAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscordAPI.release.xcconfig"; path = "Pods/Target Support Files/Pods-DiscordAPI/Pods-DiscordAPI.release.xcconfig"; sourceTree = "<group>"; };
+		39E840BE8980B86B6A9FECAE /* Pods-SwiftBot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftBot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftBot/Pods-SwiftBot.debug.xcconfig"; sourceTree = "<group>"; };
+		611CA8FCF19E5517D2BA8534 /* Pods_DiscordAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DiscordAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D99906829F44B37B45625B1 /* CustomCommandImporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCommandImporter.swift; sourceTree = "<group>"; };
 		6D99908BB5B4D344DC2E67A1 /* MessageDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageDispatcher.swift; sourceTree = "<group>"; };
 		6D9990B4EBC738A664884A81 /* CommandGroup+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CommandGroup+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -159,7 +156,6 @@
 		6D99937B9623142428ED9A20 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		6D99939A76C13825603A8054 /* RandomAnimalsMessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomAnimalsMessageHandler.swift; sourceTree = "<group>"; };
 		6D99950734647C3C6E5A81F0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
-		6D99956D1FD7B7AE169D4817 /* LoginRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		6D9995D489B0FFBEED644BF9 /* GatewayUrlRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GatewayUrlRequest.swift; sourceTree = "<group>"; };
 		6D99961C2254A229E044174D /* AttachmentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentModel.swift; sourceTree = "<group>"; };
 		6D9996359282085CD1B1357C /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -196,8 +192,6 @@
 		6D999E11D0C117EEB613F4B4 /* AuthPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthPreferences.m; sourceTree = "<group>"; };
 		6D999E440754D89B92EDC8A6 /* Discord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Discord.swift; sourceTree = "<group>"; };
 		6D999EE47A752A4ECF163C52 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
-		6D999F17315965A965314B5E /* LogoutRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutRequest.swift; sourceTree = "<group>"; };
-		6D999F4CA01620CF2F480E9F /* LoginResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResponseModel.swift; sourceTree = "<group>"; };
 		6D999F8815FE59DF1EA1E080 /* SwiftBotCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftBotCore.h; sourceTree = "<group>"; };
 		6D999FCBE842D9A88EFA40C5 /* WebsocketHelloMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebsocketHelloMessageModel.swift; sourceTree = "<group>"; };
 		6D999FFEEB41A5191942AFA8 /* MessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageHandler.swift; sourceTree = "<group>"; };
@@ -224,10 +218,8 @@
 		72F850741C790E680077B4AB /* Preferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Preferences.m; sourceTree = "<group>"; };
 		72F8508D1C7AE4000077B4AB /* SwiftBotKeeperAliver */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftBotKeeperAliver; sourceTree = BUILT_PRODUCTS_DIR; };
 		72F8508F1C7AE4010077B4AB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		850412938E3FC845453A5CEE /* Pods-DiscordAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscordAPI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DiscordAPI/Pods-DiscordAPI.debug.xcconfig"; sourceTree = "<group>"; };
-		E4E416147C422B787B64C291 /* Pods_DiscordAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DiscordAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA33E25714B096E50A07D5D3 /* Pods-SwiftBot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftBot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftBot/Pods-SwiftBot.debug.xcconfig"; sourceTree = "<group>"; };
-		EE5B29F117095BC90A629859 /* Pods_SwiftBot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftBot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D50FC03FE5E873702F98BA03 /* Pods-SwiftBot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftBot.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftBot/Pods-SwiftBot.release.xcconfig"; sourceTree = "<group>"; };
+		E89DF652A2ABD5B25034908B /* Pods-DiscordAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscordAPI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DiscordAPI/Pods-DiscordAPI.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,7 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				723DAF821C744A1F000CCCCE /* libz.tbd in Frameworks */,
-				48075669962828FDB0387A06 /* Pods_DiscordAPI.framework in Frameworks */,
+				E98B552837B2388AC1296FDE /* Pods_DiscordAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,7 +244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				72C1F47C1C78EEA600B32B42 /* DiscordAPI.framework in Frameworks */,
-				CF25CA6E7B08A39BE192ED52 /* Pods_SwiftBot.framework in Frameworks */,
+				B42E0F49348960075306B580 /* Pods_SwiftBot.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,24 +265,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		372C0BB9A38A7D48F66F7FFA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E89DF652A2ABD5B25034908B /* Pods-DiscordAPI.debug.xcconfig */,
+				05245451060EB42D8B92B6D3 /* Pods-DiscordAPI.release.xcconfig */,
+				39E840BE8980B86B6A9FECAE /* Pods-SwiftBot.debug.xcconfig */,
+				D50FC03FE5E873702F98BA03 /* Pods-SwiftBot.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		60737DB67018A2737B140ABE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				723DAF811C744A1F000CCCCE /* libz.tbd */,
-				E4E416147C422B787B64C291 /* Pods_DiscordAPI.framework */,
-				EE5B29F117095BC90A629859 /* Pods_SwiftBot.framework */,
+				611CA8FCF19E5517D2BA8534 /* Pods_DiscordAPI.framework */,
+				03BDA3D56BD1FBD600C9CA7B /* Pods_SwiftBot.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		6D9990D431155687F34CBA42 /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				6D99956D1FD7B7AE169D4817 /* LoginRequest.swift */,
-				6D999F17315965A965314B5E /* LogoutRequest.swift */,
-				6D999F4CA01620CF2F480E9F /* LoginResponseModel.swift */,
-			);
-			path = Auth;
 			sourceTree = "<group>";
 		};
 		6D9991D64AD120E93696A692 /* Permissions */ = {
@@ -447,7 +440,6 @@
 			isa = PBXGroup;
 			children = (
 				6D9993997EE595B0A48EAB93 /* Channels */,
-				6D9990D431155687F34CBA42 /* Auth */,
 				6D999CC8F3BF7FFA7C7909C8 /* Users */,
 				6D999237498FA0ADAADC1E8F /* Utility */,
 				6D9993F234698F7EBABB94A2 /* WebSockets */,
@@ -510,7 +502,7 @@
 				6D999981E4209E0BC1738829 /* README.md */,
 				72B35E1F1C6ECD4200027CF2 /* Products */,
 				60737DB67018A2737B140ABE /* Frameworks */,
-				BEB1610B873F466B988A11CE /* Pods */,
+				372C0BB9A38A7D48F66F7FFA /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -557,17 +549,6 @@
 			path = SwifBottKeeperAliver;
 			sourceTree = "<group>";
 		};
-		BEB1610B873F466B988A11CE /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				850412938E3FC845453A5CEE /* Pods-DiscordAPI.debug.xcconfig */,
-				5A3120B4220ABE4499CF2F5E /* Pods-DiscordAPI.release.xcconfig */,
-				EA33E25714B096E50A07D5D3 /* Pods-SwiftBot.debug.xcconfig */,
-				5846A0C2B2F8A6C6915B5647 /* Pods-SwiftBot.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -603,13 +584,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 724A77DC1C6ED97200CB0F1D /* Build configuration list for PBXNativeTarget "DiscordAPI" */;
 			buildPhases = (
-				B3D344BBAC8F859BBA44958E /* Check Pods Manifest.lock */,
+				0206FD0E0E08C842AC419C8F /* 📦 Check Pods Manifest.lock */,
 				724A77D21C6ED97200CB0F1D /* Sources */,
 				724A77D31C6ED97200CB0F1D /* Frameworks */,
 				724A77D41C6ED97200CB0F1D /* Headers */,
 				724A77D51C6ED97200CB0F1D /* Resources */,
-				AF6BFC16AB9027727E113EFC /* Copy Pods Resources */,
 				72C1F4571C78E7C500B32B42 /* Crashlytics */,
+				B87ABC4F256A87750EF83F86 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -624,16 +605,16 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 72C1F4711C78E82800B32B42 /* Build configuration list for PBXNativeTarget "SwiftBot" */;
 			buildPhases = (
-				EF291FF1DC6BFEF2E74218D7 /* Check Pods Manifest.lock */,
+				7086343F6432C4FB7B53D3CE /* 📦 Check Pods Manifest.lock */,
 				72C1F4581C78E82800B32B42 /* Sources */,
 				72C1F4591C78E82800B32B42 /* Frameworks */,
 				72C1F45A1C78E82800B32B42 /* Resources */,
-				3DC4A2777D7B5C1903426AC7 /* Embed Pods Frameworks */,
 				72F850781C79289E0077B4AB /* Copy Linked Framework Pods */,
-				D42EBFB0F987C735543AC71A /* Copy Pods Resources */,
 				72F850851C7939280077B4AB /* Copy Frameworks */,
 				72C1F4791C78E84500B32B42 /* Crashlytics */,
 				72F850961C7AE5190077B4AB /* Copy Executables */,
+				790648DB2E065AD2CB27659C /* 📦 Embed Pods Frameworks */,
+				DA8B928112638C145AA07C85 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -760,19 +741,34 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3DC4A2777D7B5C1903426AC7 /* Embed Pods Frameworks */ = {
+		0206FD0E0E08C842AC419C8F /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "\uD83D\uDCE6 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftBot/Pods-SwiftBot-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7086343F6432C4FB7B53D3CE /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "\uD83D\uDCE6 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		72C1F4571C78E7C500B32B42 /* Crashlytics */ = {
@@ -820,14 +816,29 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DiscordAPI/Pods-DiscordAPI-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AF6BFC16AB9027727E113EFC /* Copy Pods Resources */ = {
+		790648DB2E065AD2CB27659C /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "\uD83D\uDCE6 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftBot/Pods-SwiftBot-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B87ABC4F256A87750EF83F86 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "\uD83D\uDCE6 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -835,49 +846,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DiscordAPI/Pods-DiscordAPI-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B3D344BBAC8F859BBA44958E /* Check Pods Manifest.lock */ = {
+		DA8B928112638C145AA07C85 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		D42EBFB0F987C735543AC71A /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
+			name = "\uD83D\uDCE6 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftBot/Pods-SwiftBot-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EF291FF1DC6BFEF2E74218D7 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -894,9 +875,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D99927020E36F0DA1AF16F0 /* LoginRequest.swift in Sources */,
-				6D99997566272638C677E6D5 /* LogoutRequest.swift in Sources */,
-				6D999961D5112A2A0DA89DA6 /* LoginResponseModel.swift in Sources */,
 				6D99985B6C873F056EEBD82B /* MessageModel.swift in Sources */,
 				6D99948D99C4C64663CEA6D0 /* AttachmentModel.swift in Sources */,
 				6D999F298F0DCC2EC5C526A5 /* UserModel.swift in Sources */,
@@ -1022,7 +1000,7 @@
 		};
 		724A77DD1C6ED97200CB0F1D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 850412938E3FC845453A5CEE /* Pods-DiscordAPI.debug.xcconfig */;
+			baseConfigurationReference = E89DF652A2ABD5B25034908B /* Pods-DiscordAPI.debug.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1051,7 +1029,7 @@
 		};
 		724A77DE1C6ED97200CB0F1D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5A3120B4220ABE4499CF2F5E /* Pods-DiscordAPI.release.xcconfig */;
+			baseConfigurationReference = 05245451060EB42D8B92B6D3 /* Pods-DiscordAPI.release.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1162,7 +1140,7 @@
 		};
 		72C1F4721C78E82800B32B42 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EA33E25714B096E50A07D5D3 /* Pods-SwiftBot.debug.xcconfig */;
+			baseConfigurationReference = 39E840BE8980B86B6A9FECAE /* Pods-SwiftBot.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1180,7 +1158,7 @@
 		};
 		72C1F4731C78E82800B32B42 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5846A0C2B2F8A6C6915B5647 /* Pods-SwiftBot.release.xcconfig */;
+			baseConfigurationReference = D50FC03FE5E873702F98BA03 /* Pods-SwiftBot.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

@@ -10,23 +10,17 @@ import Locksmith
 @objc class DiscordAccount: NSObject, ReadableSecureStorable, CreateableSecureStorable,
         DeleteableSecureStorable, GenericPasswordSecureStorable {
 
-    var email = ""
-    var password = ""
     var token = ""
 
     override init() {
         super.init()
         let result = self.readFromSecureStore()
         if let data = result?.data {
-            self.email = data["email"] as! String
-            self.password = data["password"] as! String
             self.token = data["token"] as! String
         }
     }
 
-    init(email: String, password: String, token: String) {
-        self.email = email
-        self.password = password
+    init(token: String) {
         self.token = token
         super.init()
     }
@@ -38,8 +32,6 @@ import Locksmith
 
     var data: [String:AnyObject] {
         return [
-                "email": email,
-                "password": password,
                 "token": token
         ]
     }
@@ -48,22 +40,8 @@ import Locksmith
 @objc class AuthenticationManager: NSObject {
     static var instance = AuthenticationManager()
 
-    func validateCredentialsWithEmail(email: String, password: String, callback: (token:String?, error:NSError?) -> Void) {
-        let request = LoginRequest(email, password: password)
-        request.execute({
-            (response: LoginResponseModel?, error: NSError?) in
-            if let token = response?.token {
-                callback(token: token, error: nil)
-                LOG_INFO("Validated login for email \(email)")
-            } else {
-                callback(token: nil, error: error)
-                LOG_ERROR("Login error \(error)")
-            }
-        })
-    }
-
-    func updateCredentialsWithEmail(email: String, password: String, token: String) -> Bool {
-        let account = DiscordAccount(email: email, password: password, token: token)
+    func updateCredentialsWithToken(token: String) -> Bool {
+        let account = DiscordAccount(token: token)
         do {
             try account.createInSecureStore()
         } catch LocksmithError.Duplicate {

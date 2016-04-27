@@ -36,7 +36,7 @@ public class SwiftBotMain: NSObject, DiscordDelegate {
     public func runWithDoneCallback(callback: ((Void) -> Void)?) {
         self.doneCallback = callback
         let account = DiscordAccount()
-        self.discord.login(account.email, password: account.password, token: account.token)
+        self.discord.login(account.token)
     }
 
     public func discordLoginDidComplete(error: NSError?) {

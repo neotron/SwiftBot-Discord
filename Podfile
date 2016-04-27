@@ -12,6 +12,8 @@ target :DiscordAPI do
 end
 
 target :SwiftBot do
+  pod "AlamofireJsonToObjects"
+  pod 'EVReflection'
   pod 'Locksmith'
   pod 'Yaml'
   pod 'Fabric'

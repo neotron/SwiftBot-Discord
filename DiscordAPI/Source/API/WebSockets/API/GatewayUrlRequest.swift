@@ -17,7 +17,7 @@ class GatewayUrlRequest {
         Alamofire.request(.GET, Endpoints.Simple(.Gateway), headers: [
                 "Content-Type": "application/json",
                 "User-Agent": Registry.userAgent,
-                "Authorization": token
+                "Authorization": "Bot \(token)",
         ]).responseObject {
             (response: Response<GatewayUrlResponseModel, NSError>) in
             var success = false

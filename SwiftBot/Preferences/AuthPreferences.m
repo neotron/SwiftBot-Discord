@@ -11,7 +11,6 @@
 
 @interface AuthPreferences ()
 @property (weak) IBOutlet NSTextField *email;
-@property (weak) IBOutlet NSSecureTextField *password;
 
 @end
 
@@ -36,23 +35,16 @@
 - (void)viewWillAppear
 {
     DiscordAccount *account = [[DiscordAccount alloc] init];
-    if(account.email.length) {
-        _password.stringValue = account.password;
-        _email.stringValue = account.email;
-
-    }
+    _email.stringValue = account.token;
 }
 
 
 - (IBAction)validateCredentials:(id)sender {
-    NSString *password = _password.stringValue;
-    NSString *email = _email.stringValue;
+    NSString *token = _email.stringValue;
     AuthenticationManager *manager = [AuthenticationManager instance];
-    [manager validateCredentialsWithEmail:email password:password callback:^(NSString *token, NSError *error) {
-        if(token) {
-            [manager updateCredentialsWithEmail:email password: password token: token];
-        }
-    }];
+    if(token.length) {
+        [manager updateCredentialsWithToken: token];
+    }
 }
 
 @end

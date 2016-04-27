@@ -20,6 +20,7 @@ public class WebsocketAPIManager: NSObject, WebSocketDelegate {
 
     private var socket: WebSocket?
     private var timer: NSTimer?
+    private var sequence: Int?
 
     public func fetchEndpointAndConnect() {
         // This will fetch the websocket URL
@@ -53,6 +54,7 @@ public class WebsocketAPIManager: NSObject, WebSocketDelegate {
 
     func handleMessage(text: String) {
         if let message = Mapper<WebsocketMessageModel>().map(text), type = message.type, data = message.data {
+            self.sequence = message.sequence // for heart beat
             switch (type) {
             case "READY":
                 processReady(data)
@@ -115,11 +117,15 @@ public class WebsocketAPIManager: NSObject, WebSocketDelegate {
     func enableKeepAlive(interval: Double) {
         cancelKeepAlive()
         LOG_DEBUG("Starting heartbeat timer with an interval of \(interval).");
-        timer = NSTimer.scheduledTimerWithTimeInterval(interval, target: self, selector: "sendHeartbeat", userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(interval, target: self, selector: #selector(sendHeartbeat), userInfo: nil, repeats: true)
     }
 
     func sendHeartbeat() {
-        if let socket = self.socket, heartbeat = Mapper().toJSONString(WebsocketHeartbeatModel()) {
+        guard let sequence = self.sequence else {
+            LOG_ERROR("Missing sequence for heartbeat.")
+            return
+        }
+        if let socket = self.socket, heartbeat = Mapper().toJSONString(WebsocketHeartbeatModel(sequence: sequence)) {
             socket.writeString(heartbeat);
             LOG_DEBUG("Sent heartbeat \(heartbeat)");
         }
@@ -137,7 +143,7 @@ public class WebsocketAPIManager: NSObject, WebSocketDelegate {
         cancelKeepAlive()
         if let err = error {
             LOG_ERROR("Websocket disconnected with error: \(err) - attempting reconnect")
-            dispatch_async(dispatch_get_main_queue()) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(5*NSEC_PER_SEC)), dispatch_get_main_queue()) {
                 self.socket = nil
                 self.connectWebSocket()
             }
