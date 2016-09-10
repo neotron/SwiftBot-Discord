@@ -31,6 +31,11 @@ class SystemModel: EVObject {
 }
 
 class EDSMMessageHandler: MessageHandler {
+    private let aliases = [
+            "jaques": "Eol Prou RS-T D3-94",
+            "jaques station": "Eol Prou RS-T D3-94",
+    ]
+
     override var commands: [MessageCommand]? {
         return [("loc", "Try to get a commanders location from EDSM. Syntax: loc <commander name>"),
                 ("dist", "Calculate distance between two systems. Syntax: dist <system> -> <system> (i.e: `dist Sol -> Sagittarius A*`)")
@@ -71,6 +76,11 @@ class EDSMMessageHandler: MessageHandler {
             }
         }
         for var systemName in systems {
+            var waypointName: String?
+            if let alias = self.aliases[systemName.lowercaseString] {
+                waypointName = "\(systemName) (\(alias))"
+                systemName = alias
+            }
             let parts = systemName.componentsSeparatedByString(" ")
             if (parts.count == 3) {
                 if let x = Double(parts[0]), y = Double(parts[1]), z = Double(parts[2]) {
@@ -85,7 +95,6 @@ class EDSMMessageHandler: MessageHandler {
                     continue
                 }
             }
-            var waypointName: String?
             if (parts.count == 1) {
                 if let wp = Int(parts[0]) {
                     guard let wps = DistantWorldsWaypoints.database?.waypoints else {

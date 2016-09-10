@@ -23,7 +23,7 @@ public class Discord: WebsocketAPIManagerDelegate {
 
     public func login(token: String? = nil) {
         if let token = token {
-            Registry.instance.token = token
+            Registry.instance.token = "Bot "+token
             self.websocketManager.fetchEndpointAndConnect()
         } else {
             LOG_ERROR("No bot token available, try again.")
@@ -33,7 +33,7 @@ public class Discord: WebsocketAPIManagerDelegate {
     }
 
     public func updateLoginWithToken(token: String) {
-        Registry.instance.token = token
+        Registry.instance.token = "Bot "+token
         self.websocketManager.fetchEndpointAndConnect()
     }
 

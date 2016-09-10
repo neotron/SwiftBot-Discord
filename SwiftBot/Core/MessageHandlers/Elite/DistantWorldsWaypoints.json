@@ -493,7 +493,7 @@
       "desc": "After an arduous journey across the uncharted Perseus Stem, we reach Greeroi Veil. A small nebula that can be tricky to reach due to it being high above the galactic plane. The view from the Veil as you look out across the galactic core is one not to miss. Ships with less than 30 LY range will struggle to reach this base camp, and only ships with 33 LYs or more will be able to actully enter the nebula itself. Our base camp sits on its outskirts. The Greeroi Veil marks the final nebula along our route. We now begin the long trek across the Aphelion Bleak Lands."
     },
     {
-      "system": "Eactainds GN-W C1-6",
+      "system": "Rendezvous Point",
       "events": [
         "`Prime Rendezvous:` Saturday March 12th, 3302, 18:00 UTC"
       ],
@@ -546,7 +546,7 @@
       "system": "Qautheia BA-A E0",
       "events": [
         "`Key Event`: **Preparing for The Abyss, and Beyond**",
-        "`Prime Rendezvous:` Monday March 21st, 19:00 UTC EU / 7 hrs later, 02:00 UTC US",
+        "`Prime Rendezvous:` Monday March 21st, 19:00 UTC EU / 7 hrs later, 02:00 UTC US"
       ],
       "distance": {
         "next": 5200,
@@ -594,7 +594,7 @@
       "desc": "Situated on the far edge of the 'southeastern' part of the Abyss, this system acts as a 61,000 LY distance marker and a navigational waypoint for starships heading out to the galactic rim from the Roncevaux Crossing. It is almost exactly 10,000 LYs to Beagle Point from this beacon star system. This is our penultimate base camp gathering before we set off across the vast Solitude Void... a lonely journey out on the galactic fringe - through ever sparser star systems, beyond which awaits our final goal."
     },
     {
-      "system": "Ceeckia ZQ-L c24-0",
+      "system": "Beagle Point",
       "events": [
         "`Key Event:` **Journeys End**",
         "`Prime Rendezvous:` This will mark a week of events with the following gatherings: Saturday **April 2nd, 18:00 UTC**, Sunday **April 3rd, 18:00 UTC**, Mon-Fri **April 4th to 8th, 19:00 UTC / 02:00 UTC** and finally Saturday **April 9th, 18:00 UTC**"
@@ -629,6 +629,28 @@
         "`Locate and Map the 'Western Passage':` A mission to travel beyond Svenno's Crossing (which lies to the 'southwest' of Beagle Point) and see if a Jumponium route from the outer rim, back into the Scutum-Centaurus arm, is possible now that we have Jumponium tech to boost our range. Locating a viable Western Route will save future explorers heading from Beagle Point to the Abyssal Plain a detour of 20,000 light years, so will prove invaluable for the Galactic Mapping Project if such a route can be found. Note that this will be a time-consuming venture that could take a week or two to complete so it is scheduled for the very end of Beagle Point Week (9th April onward). "
       ],
       "desc": "Finally we arrive at Beagle Point. A star system on the edge of the Milky Way Galaxy offering all who reach it a real sense of remoteness as you look back at the very distant core regions, 35,000 light years away, and realize home is yet another 30,000 light years beyond that! There are not many places in the galaxy that can give an explorer that sense of scale. Outwards looking you see nothing but the vast inky blackness of the intergalactic void. Here at Beagle Point, at least one airless world and several airless moons await our exploration. A 1,200 LY excursion to explore The Moons of Podar can also be planned at this point. Podar is west and south of Beagle Point and sits on the northern edge of the Abyss. It is a ringed Earth-Like World that has 3 airless moons orbiting it - ripe for exploration."
+    },
+    {
+      "system": "Epsilon Indi",
+      "events": [
+        "`Reunion Rendezvous:` ~December 1st."
+      ],
+      "distance": {
+        "next": 0,
+        "traveled": 160000
+      },
+      "planet": {
+        "name": "Mitterand Hollow",
+        "gravity": 0.09,
+        "radius": 0
+      },
+      "baseCamp": {
+        "name": "Reunion Landing",
+        "coords": [ 0, 0 ]
+      },
+      "name": "Reunion",
+      "special_events": [],
+      "desc": "Reunion time! Exact coordinates not available, but it's 2km away from Barcelo Colony."
     }
   ]
 }
