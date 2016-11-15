@@ -640,7 +640,10 @@
     {
       "system": "Epsilon Indi",
       "events": [
-        "`Reunion Rendezvous:` ~December 1st."
+        "`#1 18:00 gametime : The Gathering` - Pilots begin arriving at Reunion Landing.",
+        "`#2 19:00 gametime : SRV Rally` - An event hosted by Raijin of the Candy Crew.",
+        "`#3 20:30 gametime : Fighter Canyon Race` - details coming soon.",
+        "`#4 22:00 gametime : Whack-a-Rat` - details in forum post."
       ],
       "distance": {
         "next": 0,
@@ -653,11 +656,12 @@
       },
       "baseCamp": {
         "name": "Reunion Landing",
-        "coords": [ 0.0, 0.0]
+        "coords": [ -72.1, 74.1],
+        "guide": "http://i.imgur.com/wYJpE0i.jpg"
       },
       "name": "Reunion",
       "special_events": [],
-      "desc": "Reunion time! Exact coordinates not available, but it's 2km away from Barcelo Colony."
+      "desc": "Reunion time! Use Barcelo Colony as a guide to finding the base camp location."
     }
   ]
 }

@@ -113,8 +113,8 @@ extension DistantWorldsWaypoints {
         let hasBaseCamp = wp.system != "TBA"
         var terseOutput = [String]()
         if hasBaseCamp {
-            terseOutput.append("`Waypoint \(wpnum)`: *\(wp.name)* - **\(wp.system) \(wp.planet.name)**")
-            verboseOutput.append("`Location`: **\(wp.system) \(wp.planet.name)**")
+            terseOutput.append("`Waypoint \(wpnum)`: *\(wp.name)* - **\(wp.system)** on planet **\(wp.planet.name)**")
+            verboseOutput.append("`Location`: **\(wp.system)** on planet **\(wp.planet.name)**")
             if wp.planet.gravity > 0 && wp.baseCamp.coords.count >= 2 {
                 var basecamp = "`Base Camp`: *\(wp.baseCamp.name)* - **\(wp.baseCamp.coords[0]) / \(wp.baseCamp.coords[1])** (\(wp.planet.gravity) g)  "
                 terseOutput.append(basecamp)
