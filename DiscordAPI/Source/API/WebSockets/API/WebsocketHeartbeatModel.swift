@@ -10,8 +10,8 @@ class WebsocketHeartbeatModel : MappableBase {
     var op = 1
     var sequence: Int?
 
-    required init?(_ map: Map) {
-        super.init(map)
+    required init?(map: Map) {
+        super.init(map: map)
     }
 
     init(sequence: Int) {

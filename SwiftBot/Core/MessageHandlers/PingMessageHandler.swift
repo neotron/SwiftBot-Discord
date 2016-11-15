@@ -7,9 +7,9 @@ import Foundation
 import DiscordAPI
 
 class PingMessageHandler: MessageHandler {
-    private let PING = "ping"
-    private let PONG = "pong"
-    private let PINGME = "pingme"
+    fileprivate let PING = "ping"
+    fileprivate let PONG = "pong"
+    fileprivate let PINGME = "pingme"
 
     override var commands: [MessageCommand]? {
         return [(PING, "Sends a pong message back to you."),
@@ -17,7 +17,7 @@ class PingMessageHandler: MessageHandler {
                 (PINGME, "Pongs you in a personal message.")]
     }
 
-    override func handleCommand(command: String, args: [String], message: Message) -> Bool {
+    override func handleCommand(_ command: String, args: [String], message: Message) -> Bool {
         switch (command) {
         case PONG:
             message.replyToChannel("Ping!")

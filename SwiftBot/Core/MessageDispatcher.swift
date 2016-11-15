@@ -9,7 +9,7 @@ import DiscordAPI
 
 typealias MessageCommand = (c:String, h:String?)
 
-struct CommandFlags: OptionSetType {
+struct CommandFlags: OptionSet {
     let rawValue: Int
     static let None = CommandFlags(rawValue: 0)
     static let Verbose = CommandFlags(rawValue: 1 << 0)
@@ -18,13 +18,13 @@ struct CommandFlags: OptionSetType {
 }
 
 class MessageDispatchManager: MessageHandler {
-    private var prefixHandlers = [String: [MessageHandler]]()
+    fileprivate var prefixHandlers = [String: [MessageHandler]]()
     // allows prefix handling, i.e "randomcat" and "randomdog" could both go to a "random" prefix handler
-    private var commandHandlers = [String: [MessageHandler]]()
+    fileprivate var commandHandlers = [String: [MessageHandler]]()
     // requires either just the command, i.e "route" or command with arguments "route 32 2.3"
-    private var anythingHandlers = [MessageHandler]()
+    fileprivate var anythingHandlers = [MessageHandler]()
     // These are called, in order, if nothing else matches. The matching logic can be whatever, such as substring matches.
-    private var commandHelp = [String: [String: [String]]]()
+    fileprivate var commandHelp = [String: [String: [String]]]()
     weak var discord: Discord?
 
     override init() {
@@ -36,28 +36,28 @@ class MessageDispatchManager: MessageHandler {
         return [("help", nil)]
     }
 
-    override func handleCommand(command: String, args: [String], message: Message) -> Bool {
+    override func handleCommand(_ command: String, args: [String], message: Message) -> Bool {
 
-        for group in commandHelp.keys.sort() {
+        for group in commandHelp.keys.sorted() {
             var output = [String]()
             if group != "" {
                 output.append("**\(group)**")
             } else {
                 output.append("**SwiftBot Commands**:")
             }
-            for command in commandHelp[group]!.keys.sort() {
-                output.append(commandHelp[group]![command]!.joinWithSeparator("\n"))
+            for command in commandHelp[group]!.keys.sorted() {
+                output.append(commandHelp[group]![command]!.joined(separator: "\n"))
             }
             if message.flags.contains(.Here) {
-                message.replyToChannel(output.joinWithSeparator("\n"));
+                message.replyToChannel(output.joined(separator: "\n"));
             } else {
-                message.replyToSender(output.joinWithSeparator("\n"));
+                message.replyToSender(output.joined(separator: "\n"));
             }
         }
         return true
     }
 
-    private func registerMessageHandlers() {
+    fileprivate func registerMessageHandlers() {
         registerMessageHandler(self) // this registers the help command
         registerMessageHandler(PingMessageHandler())
         registerMessageHandler(RandomAnimalsMessageHandler())
@@ -71,7 +71,7 @@ class MessageDispatchManager: MessageHandler {
     }
 
 
-    func registerMessageHandler(handler: MessageHandler) {
+    func registerMessageHandler(_ handler: MessageHandler) {
         if let prefixes = handler.prefixes {
             for prefix in prefixes {
                 addHandlerForCommand(prefix, inDict: &prefixHandlers, handler: handler)
@@ -89,9 +89,9 @@ class MessageDispatchManager: MessageHandler {
         }
     }
 
-    private func addHandlerForCommand(command: MessageCommand, inout inDict dict: [String:[MessageHandler]], handler: MessageHandler) {
-        let commandStr = command.c.lowercaseString
-        if let helpString = command.h, group = handler.commandGroup {
+    fileprivate func addHandlerForCommand(_ command: MessageCommand, inDict dict: inout [String:[MessageHandler]], handler: MessageHandler) {
+        let commandStr = command.c.lowercased()
+        if let helpString = command.h, let group = handler.commandGroup {
             if commandHelp[group] == nil {
                 commandHelp[group] = [commandStr: []]
             } else if commandHelp[group]![commandStr] == nil {
@@ -106,7 +106,7 @@ class MessageDispatchManager: MessageHandler {
         LOG_INFO("Registered \(handler) for \(commandStr)")
     }
 
-    func parseCommandFlags(args: [String]) -> CommandFlags {
+    func parseCommandFlags(_ args: [String]) -> CommandFlags {
         var flags = CommandFlags.None
         let argSet = Set(args)
         if argSet.contains("-v") || argSet.contains("--verbose") || argSet.contains("verbose") {
@@ -121,8 +121,8 @@ class MessageDispatchManager: MessageHandler {
         return flags
     }
 
-    func processMessage(message: MessageModel, event: MessageEventType) {
-        guard let content = message.content, _ = message.author?.username, _ = message.author?.id, _ = message.channelId else {
+    func processMessage(_ message: MessageModel, event: MessageEventType) {
+        guard let content = message.content, let _ = message.author?.username, let _ = message.author?.id, let _ = message.channelId else {
             LOG_DEBUG("Not handling message - missing content, author username or channel id");
             return
         }
@@ -131,10 +131,10 @@ class MessageDispatchManager: MessageHandler {
             return
         }
         var contentWithoutPrefix = content
-        if let prefixRange = content.rangeOfString(Config.commandPrefix, options: []) {
-            contentWithoutPrefix = content.substringFromIndex(prefixRange.endIndex)
+        if let prefixRange = content.range(of: Config.commandPrefix, options: []) {
+            contentWithoutPrefix = content.substring(from: prefixRange.upperBound)
         }
-        var args = contentWithoutPrefix.componentsSeparatedByString(" ")
+        var args = contentWithoutPrefix.components(separatedBy: " ")
         let flags = parseCommandFlags(args)
         let messageWrapper = Message(message: message, event: event, discord: discord, flags: flags)
         messageWrapper.rawArgs = args
@@ -145,7 +145,7 @@ class MessageDispatchManager: MessageHandler {
             LOG_DEBUG("No command, just a prefix!")
             return
         }
-        let command = args.removeAtIndex(0).lowercaseString
+        let command = args.remove(at: 0).lowercased()
 
         if let handlers = commandHandlers[command] {
             LOG_DEBUG("Found command handler for \(command)")

@@ -17,7 +17,7 @@ class UserRoleMessageHandler: AuthenticatedMessageHandler {
         return "User role administration"
     }
 
-    override func handleAuthenticatedCommand(command: String, args: [String], message: Message) -> Bool {
+    override func handleAuthenticatedCommand(_ command: String, args: [String], message: Message) -> Bool {
         switch (command) {
         case "setadm":
             addAdminRights(message)
@@ -29,7 +29,7 @@ class UserRoleMessageHandler: AuthenticatedMessageHandler {
         return true
     }
 
-    private func mentionedUserIds(message: Message) -> [String]? {
+    fileprivate func mentionedUserIds(_ message: Message) -> [String]? {
         guard let userIds = {
             (Void) -> [String]? in
             guard let mentions = message.mentions  else {
@@ -49,28 +49,28 @@ class UserRoleMessageHandler: AuthenticatedMessageHandler {
         return userIds
     }
 
-    private func addAdminRights(message: Message) {
+    fileprivate func addAdminRights(_ message: Message) {
         guard let userIds = mentionedUserIds(message) else {
             return
         }
         var numAdded = 0
         let cdm = CoreDataManager.instance
         for id in userIds {
-            if cdm.addRoleForUserId(id, role: .Admin) {
+            if cdm.addRoleForUserId(id, role: .admin) {
                 numAdded += 1
             }
         }
         message.replyToChannel("Added admin role to \(numAdded) users.")
     }
 
-    private func removeAdminRights(message: Message) {
+    fileprivate func removeAdminRights(_ message: Message) {
         guard let userIds = mentionedUserIds(message) else {
             return
         }
         var numRemoved = 0
         let cdm = CoreDataManager.instance
         for id in userIds {
-            if cdm.removeRoleForUser(id, role: .Admin) {
+            if cdm.removeRoleForUser(id, role: .admin) {
                 numRemoved += 1
             }
         }

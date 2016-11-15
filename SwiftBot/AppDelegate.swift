@@ -14,38 +14,38 @@ import Crashlytics
 
 private class CrashlyticsLogger : Logger {
     override init() {
-        NSUserDefaults.standardUserDefaults().registerDefaults(["NSApplicationCrashOnExceptions": true])
+        UserDefaults.standard.register(defaults: ["NSApplicationCrashOnExceptions": true])
         Fabric.with([Crashlytics.self])
         super.init()
     }
 
-    override func log(message: String, args: CVaListPointer) {
+    override func log(_ message: String, args: CVaListPointer) {
         CLSNSLogv(message, args)
     }
 }
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-    private var main: SwiftBotMain?
+    fileprivate var main: SwiftBotMain?
     @IBOutlet weak var window: NSWindow!
 
 
     func launchWatchDog() {
-        guard let watcherPath = NSBundle.mainBundle().pathForResource("SwiftBotKeeperAliver", ofType: nil, inDirectory: "../MacOS"),
-        selfPath = NSBundle.mainBundle().pathForResource("SwiftBot", ofType: nil, inDirectory: "../MacOS") else {
+        guard let watcherPath = Bundle.main.path(forResource: "SwiftBotKeeperAliver", ofType: nil, inDirectory: "../MacOS"),
+        let selfPath = Bundle.main.path(forResource: "SwiftBot", ofType: nil, inDirectory: "../MacOS") else {
             LOG_ERROR("Can't find the watcher.")
             return
         }
-        let task = NSTask()
+        let task = Process()
         task.launchPath = watcherPath
         task.arguments = [selfPath, "\(getpid())"]
         task.launch()
     }
 
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
 
         Logger.instance = CrashlyticsLogger();
-        let args = NSProcessInfo.processInfo().arguments
+        let args = ProcessInfo.processInfo.arguments
         Config.development = args.contains("--development")
 #if false
         if !Config.development {
@@ -60,7 +60,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     }
 
-    func applicationWillTerminate(aNotification: NSNotification) {
+    func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
 

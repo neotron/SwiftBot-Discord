@@ -6,27 +6,27 @@
 import Foundation
 import ObjectMapper
 
-public class MappableBase : Mappable, CustomStringConvertible, CustomDebugStringConvertible {
+open class MappableBase : Mappable, CustomStringConvertible, CustomDebugStringConvertible {
 
-    public required init?(_ map: Map) {
-        self.mapping(map)
+    public required init?(map: Map) {
+        self.mapping(map: map)
     }
 
     public init() {}
 
-    public func mapping(map: Map) {    }
+    open func mapping(map: Map) {    }
 
 
-    private func formatDescription(prettyPrint: Bool) -> String {
+    fileprivate func formatDescription(_ prettyPrint: Bool) -> String {
         let json = Mapper().toJSONString(self, prettyPrint: prettyPrint)
-        let cls = NSStringFromClass(self.dynamicType)
+        let cls = NSStringFromClass(type(of: self))
         return "\(cls)(\(json))"
     }
-    public var description: String {
+    open var description: String {
         return formatDescription(false)
     }
 
-    public var debugDescription: String {
+    open var debugDescription: String {
         return formatDescription(false)
     }
 

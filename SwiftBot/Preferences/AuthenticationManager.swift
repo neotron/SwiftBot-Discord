@@ -7,8 +7,7 @@ import Foundation
 import DiscordAPI
 import Locksmith
 
-@objc class DiscordAccount: NSObject, ReadableSecureStorable, CreateableSecureStorable,
-        DeleteableSecureStorable, GenericPasswordSecureStorable {
+@objc class DiscordAccount: NSObject, ReadableSecureStorable, DeleteableSecureStorable, CreateableSecureStorable, GenericPasswordSecureStorable {
 
     var token = ""
 
@@ -30,21 +29,23 @@ import Locksmith
         return "SwiftBotLogin"
     }
 
-    var data: [String:AnyObject] {
+    var data: [String:Any] {
         return [
                 "token": token
         ]
     }
+
+
 }
 
 @objc class AuthenticationManager: NSObject {
     static var instance = AuthenticationManager()
 
-    func updateCredentialsWithToken(token: String) -> Bool {
+    func updateCredentialsWithToken(_ token: String) -> Bool {
         let account = DiscordAccount(token: token)
         do {
             try account.createInSecureStore()
-        } catch LocksmithError.Duplicate {
+        } catch LocksmithError.duplicate {
             do {
                 try account.updateInSecureStore()
             } catch {
@@ -55,7 +56,7 @@ import Locksmith
             LOG_ERROR("Failed to store new login information in secure storage: \(error)")
             return false
         }
-        NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "DiscordAuthenticationChanged", object: nil, userInfo: ["token": token]))
+        NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: "DiscordAuthenticationChanged"), object: nil, userInfo: ["token": token]))
         return true
     }
 }

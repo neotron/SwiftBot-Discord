@@ -37,7 +37,7 @@ class Message {
     }
 
 
-    func replyToChannel(reply: String, tts: Bool = false, mentions: [String]? = nil) {
+    func replyToChannel(_ reply: String, tts: Bool = false, mentions: [String]? = nil) {
         guard let channel = message.channelId else {
             LOG_ERROR("Couldn't send reply message - missing channel id in message.");
             return
@@ -45,7 +45,7 @@ class Message {
         self.discord?.sendMessage(reply, channel: channel, tts: tts, mentions: mentions)
     }
 
-    func replyToSender(reply: String) {
+    func replyToSender(_ reply: String) {
         guard let recipientId = message.author?.id else {
             LOG_ERROR("Couldn't send reply message - missing author id in message.");
             return

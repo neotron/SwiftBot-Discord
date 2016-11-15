@@ -15,15 +15,15 @@ enum URLEndpoint: String {
 }
 
 class Endpoints {
-    class func Simple(endpoint: URLEndpoint) -> String {
+    class func Simple(_ endpoint: URLEndpoint) -> String {
         return "https://discordapp.com/api/\(endpoint.rawValue)"
     }
 
-    class func Channel(channel: String) -> String {
+    class func Channel(_ channel: String) -> String {
         return "\(Simple(.Channel))/\(channel)/messages"
     }
 
-    class func User(userId: String, endpoint: URLEndpoint) -> String {
+    class func User(_ userId: String, endpoint: URLEndpoint) -> String {
         return "\(Simple(.User))/\(userId)/\(endpoint.rawValue)"
     }
 }

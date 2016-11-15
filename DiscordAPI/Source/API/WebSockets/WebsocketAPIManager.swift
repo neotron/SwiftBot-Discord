@@ -12,17 +12,17 @@ import Dispatch
 public protocol WebsocketAPIManagerDelegate : class {
     func websocketAuthenticationError()
     func websocketEndpointError()
-    func websocketMessageReceived(message: MessageModel, event: MessageEventType)
+    func websocketMessageReceived(_ message: MessageModel, event: MessageEventType)
 }
 
-public class WebsocketAPIManager: NSObject, WebSocketDelegate {
+open class WebsocketAPIManager: NSObject, WebSocketDelegate {
     weak var delegate: WebsocketAPIManagerDelegate?
 
-    private var socket: WebSocket?
-    private var timer: NSTimer?
-    private var sequence: Int?
+    fileprivate var socket: WebSocket?
+    fileprivate var timer: Timer?
+    fileprivate var sequence: Int?
 
-    public func fetchEndpointAndConnect() {
+    open func fetchEndpointAndConnect() {
         // This will fetch the websocket URL
         if Registry.instance.websocketEndpoint == nil {
             let request = GatewayUrlRequest()
@@ -40,9 +40,9 @@ public class WebsocketAPIManager: NSObject, WebSocketDelegate {
         }
     }
 
-    private func connectWebSocket()
+    fileprivate func connectWebSocket()
     {
-        guard let urlString = Registry.instance.websocketEndpoint, url = NSURL(string: urlString) else {
+        guard let urlString = Registry.instance.websocketEndpoint, let url = URL(string: urlString) else {
             LOG_ERROR("Failed to create websocket endpoint URL")
             delegate?.websocketEndpointError()
             return
@@ -52,8 +52,8 @@ public class WebsocketAPIManager: NSObject, WebSocketDelegate {
         socket!.connect()
     }
 
-    func handleMessage(text: String) {
-        if let message = Mapper<WebsocketMessageModel>().map(text), type = message.type, data = message.data {
+    func handleMessage(_ text: String) {
+        if let message = Mapper<WebsocketMessageModel>().map(JSONString: text), let type = message.type, let data = message.data {
             self.sequence = message.sequence // for heart beat
             switch (type) {
             case "READY":
@@ -75,9 +75,9 @@ public class WebsocketAPIManager: NSObject, WebSocketDelegate {
         }
     }
 
-    func processMessage(dict: [String:AnyObject], event: MessageEventType) {
-        if let message = Mapper<MessageModel>().map(dict) {
-            if let authorId = message.author?.id, myId = Registry.instance.user?.id {
+    func processMessage(_ dict: [String:AnyObject], event: MessageEventType) {
+        if let message = Mapper<MessageModel>().map(JSON: dict) {
+            if let authorId = message.author?.id, let myId = Registry.instance.user?.id {
                 if authorId == myId {
                     LOG_DEBUG("Ignoring message from myself.")
                     return
@@ -90,8 +90,8 @@ public class WebsocketAPIManager: NSObject, WebSocketDelegate {
         }
     }
 
-    func processReady(dict: [String:AnyObject]) {
-        if let ready = Mapper<WebsocketReadyMessageModel>().map(dict) {
+    func processReady(_ dict: [String:AnyObject]) {
+        if let ready = Mapper<WebsocketReadyMessageModel>().map(JSON: dict) {
             if let hbi = ready.heartbeatInterval {
                 LOG_INFO("Ready response received. Enabling heartbeat.")
                 enableKeepAlive(Double(hbi) / 1000.0)
@@ -114,10 +114,10 @@ public class WebsocketAPIManager: NSObject, WebSocketDelegate {
         }
     }
 
-    func enableKeepAlive(interval: Double) {
+    func enableKeepAlive(_ interval: Double) {
         cancelKeepAlive()
         LOG_DEBUG("Starting heartbeat timer with an interval of \(interval).");
-        timer = NSTimer.scheduledTimerWithTimeInterval(interval, target: self, selector: #selector(sendHeartbeat), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(sendHeartbeat), userInfo: nil, repeats: true)
     }
 
     func sendHeartbeat() {
@@ -125,25 +125,25 @@ public class WebsocketAPIManager: NSObject, WebSocketDelegate {
             LOG_ERROR("Missing sequence for heartbeat.")
             return
         }
-        if let socket = self.socket, heartbeat = Mapper().toJSONString(WebsocketHeartbeatModel(sequence: sequence)) {
-            socket.writeString(heartbeat);
+        if let socket = self.socket, let heartbeat = Mapper().toJSONString(WebsocketHeartbeatModel(sequence: sequence)) {
+            socket.write(string: heartbeat)
             LOG_DEBUG("Sent heartbeat \(heartbeat)");
         }
     }
 
     // Websocket API callbacks below.
-    public func websocketDidConnect(socket: WebSocket) {
+    open func websocketDidConnect(socket: WebSocket) {
         LOG_INFO("Websocket connected")
         if let helloMessage = Mapper().toJSONString(WebsocketHelloMessageModel()) {
-            socket.writeString(helloMessage);
+            socket.write(string: helloMessage);
         }
     }
 
-    public func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
+    open func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
         cancelKeepAlive()
         if let err = error {
             LOG_ERROR("Websocket disconnected with error: \(err) - attempting reconnect")
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(5*NSEC_PER_SEC)), dispatch_get_main_queue()) {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(5*NSEC_PER_SEC)) / Double(NSEC_PER_SEC)) {
                 self.socket = nil
                 self.connectWebSocket()
             }
@@ -152,16 +152,16 @@ public class WebsocketAPIManager: NSObject, WebSocketDelegate {
         }
     }
 
-    public func websocketDidReceiveMessage(socket: WebSocket, text: String) {
+    open func websocketDidReceiveMessage(socket: WebSocket, text: String) {
         LOG_DEBUG("Websocket text message received.")
         handleMessage(text)
     }
 
-    public func websocketDidReceiveData(socket: WebSocket, data: NSData) {
+    open func websocketDidReceiveData(socket: WebSocket, data: Data) {
         do {
-            let inflatedData = try data.gunzippedData()
-            if let text = String(data: inflatedData, encoding: NSUTF8StringEncoding) {
-                LOG_DEBUG("Websocket binary message received (\(data.length) -> \(inflatedData.length))")
+            let inflatedData = try data.gunzipped()
+            if let text = String(data: inflatedData, encoding: String.Encoding.utf8) {
+                LOG_DEBUG("Websocket binary message received (\(data.count) -> \(inflatedData.count))")
                 handleMessage(text)
             } else {
                 LOG_ERROR("Failed to decode binary message.")

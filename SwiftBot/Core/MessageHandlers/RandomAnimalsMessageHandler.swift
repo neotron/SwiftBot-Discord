@@ -13,14 +13,14 @@ class MeowModel: EVObject {
     var file: String?
 }
 
-class RandomAnimalsMessageHandler: MessageHandler, NSURLSessionTaskDelegate {
-    private var pendingCorgieChannels = [Int: Message]()
-    private var urlSession: NSURLSession?
+class RandomAnimalsMessageHandler: MessageHandler, URLSessionTaskDelegate {
+    fileprivate var pendingCorgieChannels = [Int: Message]()
+    fileprivate var urlSession: Foundation.URLSession?
 
     override init() {
         super.init()
-        urlSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
-                delegate: self, delegateQueue: NSOperationQueue.currentQueue());
+        urlSession = Foundation.URLSession(configuration: URLSessionConfiguration.default,
+                delegate: self, delegateQueue: OperationQueue.current);
 
     }
 
@@ -32,14 +32,14 @@ class RandomAnimalsMessageHandler: MessageHandler, NSURLSessionTaskDelegate {
         return [("random", "Show image of random animal. Supports cat, dog, corgi, and kitten. Space between *random* and *animal* is optional.")]
     }
 
-    override func handlePrefix(prefix: String, command: String, args: [String], message: Message) -> Bool {
+    override func handlePrefix(_ prefix: String, command: String, args: [String], message: Message) -> Bool {
         switch (command) {
         case "randomcat":
             handleRandomCat(message)
         case "randomdog":
-            message.replyToChannel("http://www.randomdoggiegenerator.com/randomdoggie.php/\(NSDate().timeIntervalSince1970).jpg")
+            message.replyToChannel("http://www.randomdoggiegenerator.com/randomdoggie.php/\(Date().timeIntervalSince1970).jpg")
         case "randomkitten":
-            message.replyToChannel("http://www.randomkittengenerator.com/cats/rotator.php/\(NSDate().timeIntervalSince1970).jpg")
+            message.replyToChannel("http://www.randomkittengenerator.com/cats/rotator.php/\(Date().timeIntervalSince1970).jpg")
         case "randomcorgi":
             handleRandomCorgi(message)
         default:
@@ -48,48 +48,48 @@ class RandomAnimalsMessageHandler: MessageHandler, NSURLSessionTaskDelegate {
         return true
     }
 
-    override func handleCommand(command: String, args: [String], message: Message) -> Bool {
+    override func handleCommand(_ command: String, args: [String], message: Message) -> Bool {
         switch (args.count) {
         case 0:
             message.replyToChannel("I know of the following random images: cat, dog corgi and kitten.")
             return true
         case 1:
-            return handlePrefix(command, command: "\(command)\(args[0].lowercaseString)", args: args, message: message)
+            return handlePrefix(command, command: "\(command)\(args[0].lowercased())", args: args, message: message)
         default:
             return false // Only handle empty random
         }
     }
 
 
-    private func handleRandomCat(message: Message) {
+    fileprivate func handleRandomCat(_ message: Message) {
         EVReflection.setBundleIdentifier(SwiftBotMain)
-        Alamofire.request(.GET, "http://random.cat/meow").responseObject {
-            (response: Result<MeowModel, NSError>) in
-            if let meow = response.value, url = meow.file {
-                message.replyToChannel(url)
-            } else {
-                message.replyToChannel("Unfortunately, I failed to find any random cats for you today. :-(")
-                LOG_ERROR("Failed to get meow: \(response.error)")
-            }
-        }
+        Alamofire.request("http://random.cat/meow").responseObject {
+            (response: DataResponse<MeowModel>) in
+                     if let url = response.result.value?.file {
+                         message.replyToChannel(url)
+                     } else {
+                         message.replyToChannel("Unfortunately, I failed to find any random cats for you today. :-(")
+                         LOG_ERROR("Failed to get meow: \(response.result.error)")
+                     }
+                 }
     }
 
-    private func handleRandomCorgi(message: Message) {
+    fileprivate func handleRandomCorgi(_ message: Message) {
 
-        guard let url = NSURL(string: "http://cor.gi/random") else {
+        guard let url = URL(string: "http://cor.gi/random") else {
             LOG_ERROR("Failed to create corgi url.")
             return
         }
 
-        if let task = self.urlSession?.dataTaskWithURL(url) {
+        if let task = self.urlSession?.dataTask(with: url) {
             self.pendingCorgieChannels[task.taskIdentifier] = message
             task.resume()
         }
     }
 
-    @available(OSX 10.9, *) func URLSession(session: NSURLSession, task: NSURLSessionTask,
-                                            willPerformHTTPRedirection response: NSHTTPURLResponse,
-                                            newRequest request: NSURLRequest, completionHandler: (NSURLRequest?) -> Void) {
+    @available(OSX 10.9, *) func urlSession(_ session: URLSession, task: URLSessionTask,
+                                            willPerformHTTPRedirection response: HTTPURLResponse,
+                                            newRequest request: URLRequest, completionHandler: @escaping (URLRequest?) -> Void) {
         if let message = self.pendingCorgieChannels[task.taskIdentifier] {
             if (response.statusCode == 302) {
                 if let doge = response.allHeaderFields["Location"] as? String {

@@ -7,7 +7,7 @@ import Foundation
 import DiscordAPI
 import EVReflection
 
-@objc class Config: EVObject {
+class Config: EVObject {
     static let CONFIG_CHANGE_KEY = "ApplicationModeChange"
 
     // Instance accessible read-only settings.
@@ -58,20 +58,20 @@ import EVReflection
 
     var development = false {
         didSet {
-            let center = NSNotificationCenter.defaultCenter()
-            center.postNotification(NSNotification(name: Config.CONFIG_CHANGE_KEY, object: nil))
+            let center = NotificationCenter.default
+            center.post(Notification(name: Notification.Name(rawValue: Config.CONFIG_CHANGE_KEY), object: nil))
         }
     }
 
-    private static let instance = Config()
+    fileprivate static let instance = Config()
 
     required init() {
         super.init()
         loadUserSettings()
     }
 
-    private func loadUserSettings()  {
-        if let settings = NSUserDefaults.standardUserDefaults().objectForKey(settingsKey(development)) {
+    fileprivate func loadUserSettings()  {
+        if let settings = UserDefaults.standard.object(forKey: settingsKey(development)) as? [String:Any]{
             LOG_DEBUG("Loaded settings: \(settings)")
             if let prefix = settings["commandPrefix"] as? String {
                 self.commandPrefix = prefix
@@ -85,18 +85,18 @@ import EVReflection
         }
     }
 
-    private func saveUserSettings() {
-        let settings : NSMutableDictionary = self.toDictionary(false).mutableCopy() as! NSMutableDictionary
+    fileprivate func saveUserSettings() {
+        let settings : NSMutableDictionary = self.toDictionary().mutableCopy() as! NSMutableDictionary
         for (key, value) in settings {
             if let _ = value as? NSNull {
-                settings.removeObjectForKey(key)
+                settings.removeObject(forKey: key)
             }
         }
         LOG_DEBUG("Saving settings: \(settings)")
-        NSUserDefaults.standardUserDefaults().setObject(settings, forKey: settingsKey(development))
+        UserDefaults.standard.set(settings, forKey: settingsKey(development))
     }
 
-    private func settingsKey(development: Bool = false) -> String {
+    fileprivate func settingsKey(_ development: Bool = false) -> String {
         return development ? "SwiftBotSettingsDevelopment" : "SwiftBotSettings"
     }
 

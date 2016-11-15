@@ -7,21 +7,21 @@
 import Foundation
 
 public protocol DiscordDelegate : class {
-    func discordLoginDidComplete(error: NSError?)
-    func discordWebsocketEndpointError(error: NSError?)
-    func discordMessageReceived(message: MessageModel, event: MessageEventType)
+    func discordLoginDidComplete(_ error: NSError?)
+    func discordWebsocketEndpointError(_ error: NSError?)
+    func discordMessageReceived(_ message: MessageModel, event: MessageEventType)
 }
 
-public class Discord: WebsocketAPIManagerDelegate {
-    private var websocketManager: WebsocketAPIManager
-    public weak var delegate: DiscordDelegate?
+open class Discord: WebsocketAPIManagerDelegate {
+    fileprivate var websocketManager: WebsocketAPIManager
+    open weak var delegate: DiscordDelegate?
 
     public init() {
         self.websocketManager = WebsocketAPIManager()
         self.websocketManager.delegate = self
     }
 
-    public func login(token: String? = nil) {
+    open func login(_ token: String? = nil) {
         if let token = token {
             Registry.instance.token = "Bot "+token
             self.websocketManager.fetchEndpointAndConnect()
@@ -32,18 +32,18 @@ public class Discord: WebsocketAPIManagerDelegate {
         }
     }
 
-    public func updateLoginWithToken(token: String) {
+    open func updateLoginWithToken(_ token: String) {
         Registry.instance.token = "Bot "+token
         self.websocketManager.fetchEndpointAndConnect()
     }
 
-    public func sendMessage(message: String, channel: String, tts: Bool = false, mentions: [String]? = nil) {
+    open func sendMessage(_ message: String, channel: String, tts: Bool = false, mentions: [String]? = nil) {
         let messageSender = SendMessageRequest(content: message, mentions: mentions)
         messageSender.tts = tts
-        messageSender.sendOnChannel(channel)
+        messageSender.sendOnChannel(channelId: channel)
     }
 
-    public func sendPrivateMessage(message: String, recipientId: String) {
+    open func sendPrivateMessage(_ message: String, recipientId: String) {
         let privateChannelRequest = PrivateChannelRequest(recipientId: recipientId)
         privateChannelRequest.execute({ (channelId: String?) in
             guard let channelId = channelId else {
@@ -54,16 +54,16 @@ public class Discord: WebsocketAPIManagerDelegate {
         })
     }
 
-    public func websocketEndpointError() {
+    open func websocketEndpointError() {
         delegate?.discordWebsocketEndpointError(NSError(domain: "Discord", code: -1, userInfo: nil))
     }
 
-    public func websocketMessageReceived(message: MessageModel, event: MessageEventType) {
+    open func websocketMessageReceived(_ message: MessageModel, event: MessageEventType) {
         delegate?.discordMessageReceived(message, event: event)
     }
 
     // Typically means login is out-of-date, try to log in again
-    public func websocketAuthenticationError() {
+    open func websocketAuthenticationError() {
         self.delegate?.discordLoginDidComplete(NSError(domain:"SwiftBotTokenInvalid", code:-1, userInfo: nil))
 
     }

@@ -18,15 +18,15 @@ class SendMessageRequest {
         if let mentions = mentions {
             self.mentions = mentions
         }
-        self.nonce = NSUUID().UUIDString.stringByReplacingOccurrencesOfString("-", withString: "", options: [])
+        self.nonce = NSUUID().uuidString.replacingOccurrences(of: "-", with: "")
     }
 
-    private func createMessage() -> [String:AnyObject] {
+    private func createMessage() -> Parameters {
         return [
                 "content": self.content,
                 "mentions": self.mentions,
                 "nonce": self.nonce,
-                "tts" : self.tts
+                "tts": self.tts
         ]
     }
 
@@ -35,10 +35,12 @@ class SendMessageRequest {
             LOG_ERROR("No authorization token found.")
             return
         }
-        Alamofire.request(.POST, Endpoints.Channel(channelId), headers: ["Authorization": token], parameters:createMessage(), encoding: .JSON).responseObject {
-            (response: Response<MessageModel, NSError>) in
-            print("message is \(response.result.value)")
-        }
+        Alamofire.request(Endpoints.Channel(channelId), method: .post, parameters: createMessage(),
+                         encoding: JSONEncoding.default, headers: ["Authorization": token])
+                .responseObject {
+                    (response: DataResponse<MessageModel>) in
+                    print("message is \(response.result.value)")
+                }
     }
 }
 

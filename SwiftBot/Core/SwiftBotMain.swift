@@ -7,10 +7,10 @@ import Foundation
 import AppKit
 import DiscordAPI
 
-public class SwiftBotMain: NSObject, DiscordDelegate {
-    private let discord = Discord()
-    private var doneCallback: ((Void) -> Void)?
-    private let messageDispatcher: MessageDispatchManager
+open class SwiftBotMain: NSObject, DiscordDelegate {
+    fileprivate let discord = Discord()
+    fileprivate var doneCallback: ((Void) -> Void)?
+    fileprivate let messageDispatcher: MessageDispatchManager
 
     override public init() {
         self.messageDispatcher = MessageDispatchManager()
@@ -24,39 +24,39 @@ public class SwiftBotMain: NSObject, DiscordDelegate {
         } else {
             cdm.updateOwnerRolesFromConfig()
         }
-        NSNotificationCenter.defaultCenter().addObserverForName("DiscordAuthenticationChanged", object: nil,
-                queue: NSOperationQueue.currentQueue(), usingBlock: {
-            (notification: NSNotification) in
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "DiscordAuthenticationChanged"), object: nil,
+                queue: OperationQueue.current, using: {
+            (notification: Notification) in
             if let token = notification.userInfo?["token"] as? String {
                 self.discord.updateLoginWithToken(token)
             }
         });
     }
 
-    public func runWithDoneCallback(callback: ((Void) -> Void)?) {
+    open func runWithDoneCallback(_ callback: ((Void) -> Void)?) {
         self.doneCallback = callback
         let account = DiscordAccount()
         self.discord.login(account.token)
     }
 
-    public func discordLoginDidComplete(error: NSError?) {
+    open func discordLoginDidComplete(_ error: NSError?) {
         if let _ = error {
             let alert = NSAlert();
-            alert.addButtonWithTitle("OK")
+            alert.addButton(withTitle: "OK")
             alert.messageText = "Failed to login to Discord."
             alert.informativeText = "An error occurred while attempting to connect to Discord. Please check your credentials in the preferences."
-            alert.alertStyle = .CriticalAlertStyle
-            NSApp.activateIgnoringOtherApps(true)
+            alert.alertStyle = .critical
+            NSApp.activate(ignoringOtherApps: true)
             alert.runModal()
         }
     }
 
-    public func discordWebsocketEndpointError(error: NSError?) {
+    open func discordWebsocketEndpointError(_ error: NSError?) {
         LOG_ERROR("Exiting due to websocket endpoint error: \(error)")
         self.doneCallback?()
     }
 
-    public func discordMessageReceived(message: MessageModel, event: MessageEventType) {
+    open func discordMessageReceived(_ message: MessageModel, event: MessageEventType) {
         self.messageDispatcher.processMessage(message, event: event)
     }
 

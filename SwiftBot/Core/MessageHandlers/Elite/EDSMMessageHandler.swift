@@ -31,7 +31,7 @@ class SystemModel: EVObject {
 }
 
 class EDSMMessageHandler: MessageHandler {
-    private let aliases = [
+    fileprivate let aliases = [
             "jaques": "Eol Prou RS-T D3-94",
             "jaques station": "Eol Prou RS-T D3-94",
     ]
@@ -44,13 +44,13 @@ class EDSMMessageHandler: MessageHandler {
     override var commandGroup: String? {
         return "EDSM Api Queries"
     }
-    override func handleCommand(command: String, args: [String], message: Message) -> Bool {
+    override func handleCommand(_ command: String, args: [String], message: Message) -> Bool {
         switch (command) {
         case "loc":
-            handleLocationLookup(args.joinWithSeparator(" "), message: message)
+            handleLocationLookup(args.joined(separator: " "), message: message)
         case "dist":
-            var systems = args.joinWithSeparator(" ").componentsSeparatedByString("->").map {
-                $0.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            var systems = args.joined(separator: " ").components(separatedBy: "->").map {
+                $0.trimmingCharacters(in: CharacterSet.whitespaces)
             }
             if (systems.count == 1) {
                 systems.append("Sol")
@@ -62,7 +62,7 @@ class EDSMMessageHandler: MessageHandler {
         return true
     }
 
-    private func handleDistance( systems: [String], message: Message) {
+    fileprivate func handleDistance( _ systems: [String], message: Message) {
         if systems.count != 2 {
             message.replyToChannel("Invalid syntax. Expected: `\(Config.commandPrefix)dist System Name -> System 2 Name`")
             return
@@ -77,13 +77,13 @@ class EDSMMessageHandler: MessageHandler {
         }
         for var systemName in systems {
             var waypointName: String?
-            if let alias = self.aliases[systemName.lowercaseString] {
+            if let alias = self.aliases[systemName.lowercased()] {
                 waypointName = "\(systemName) (\(alias))"
                 systemName = alias
             }
-            let parts = systemName.componentsSeparatedByString(" ")
+            let parts = systemName.components(separatedBy: " ")
             if (parts.count == 3) {
-                if let x = Double(parts[0]), y = Double(parts[1]), z = Double(parts[2]) {
+                if let x = Double(parts[0]), let y = Double(parts[1]), let z = Double(parts[2]) {
                     let system = SystemModel()
                     let coords = CoordModel()
                     coords.x = x
@@ -125,11 +125,11 @@ class EDSMMessageHandler: MessageHandler {
                     return
                 }
 
-                Alamofire.request(.GET, "http://www.edsm.net/api-logs-v1/get-position/", parameters: ["commanderName": systemName]).responseObject {
-                    (response: Result<CommanderPositionModel, NSError>) in
-                    guard let location = response.value else {
+                Alamofire.request("http://www.edsm.net/api-logs-v1/get-position/", parameters: ["commanderName": systemName]).responseObject {
+                    (response: DataResponse<CommanderPositionModel>) in
+                    guard let location = response.result.value else {
                         message.replyToChannel("Failed to complete request.")
-                        LOG_ERROR("Get Position api failed with error \(response.error)")
+                        LOG_ERROR("Get Position api failed with error \(response.result.error)")
                         return
                     }
                     
@@ -152,12 +152,12 @@ class EDSMMessageHandler: MessageHandler {
         }
     }
 
-    private func getSystemCoords(systemName: String, message: Message, callback: (SystemModel?) -> Void) {
-        Alamofire.request(.GET, "http://www.edsm.net/api-v1/system",
-                parameters: ["systemName": systemName,
-                             "coords": "1"]).responseObject {
-            (response: Result<SystemModel, NSError>) in
-            if let system = response.value {
+    fileprivate func getSystemCoords(_ systemName: String, message: Message, callback: @escaping (SystemModel?) -> Void) {
+        Alamofire.request("http://www.edsm.net/api-v1/system",
+                          parameters: ["systemName": systemName,
+                                       "coords": "1"]).responseObject {
+            (response: DataResponse<SystemModel>) in
+            if let system = response.result.value {
                 guard let _ = system.coords else {
                     if system.name != "" {
                         self.reportNotTrilaterated(systemName, message: message)
@@ -173,12 +173,12 @@ class EDSMMessageHandler: MessageHandler {
         }
     }
 
-    private func reportNotTrilaterated(systemName: String, message: Message) {
+    fileprivate func reportNotTrilaterated(_ systemName: String, message: Message) {
         message.replyToChannel("\(systemName) has not been trilaterated.")
     }
 
-    private func calculateDistance(systems: [SystemModel], message: Message) {
-        guard let c1 = systems[0].coords, c2 = systems[1].coords else {
+    fileprivate func calculateDistance(_ systems: [SystemModel], message: Message) {
+        guard let c1 = systems[0].coords, let c2 = systems[1].coords else {
             message.replyToChannel("Couldn't get coordinates for both systems.")
             return
         }
@@ -193,13 +193,13 @@ class EDSMMessageHandler: MessageHandler {
 
     }
 
-    private func handleLocationLookup(commander: String, message: Message) {
+    fileprivate func handleLocationLookup(_ commander: String, message: Message) {
 
-        Alamofire.request(.GET, "http://www.edsm.net/api-logs-v1/get-position/", parameters: ["commanderName": commander]).responseObject {
-            (response: Result<CommanderPositionModel, NSError>) in
-            guard let location = response.value else {
+        Alamofire.request("http://www.edsm.net/api-logs-v1/get-position/", parameters: ["commanderName": commander]).responseObject {
+            (response: DataResponse<CommanderPositionModel>) in
+            guard let location = response.result.value else {
                 message.replyToChannel("Failed to complete request.")
-                LOG_ERROR("Get Position api failed with error \(response.error)")
+                LOG_ERROR("Get Position api failed with error \(response.result.error)")
                 return
             }
             if let system = location.system {

@@ -14,7 +14,7 @@ class ScienceMessageHandler: MessageHandler {
         return "Elite: Dangerous"
     }
 
-    private let densitySigmaArray: [(String, Double, Double, Double, Double)] = [ // in SI units of kg/m^3
+    fileprivate let densitySigmaArray: [(String, Double, Double, Double, Double)] = [ // in SI units of kg/m^3
             ("IW", 1.06E+3, 1.84E+3, 2.62E+3, 3.40E+3),
             ("RIW", 2.25E+3, 2.82E+3, 3.38E+3, 3.95E+3),
             ("RW", 2.94E+3, 3.77E+3, 4.60E+3, 5.43E+3),
@@ -34,7 +34,7 @@ class ScienceMessageHandler: MessageHandler {
         ]
     }
 
-    override func handleCommand(command: String, args: [String], message: Message) -> Bool {
+    override func handleCommand(_ command: String, args: [String], message: Message) -> Bool {
         switch (command) {
         case "g":
             handleGravity(args, message: message)
@@ -50,7 +50,7 @@ class ScienceMessageHandler: MessageHandler {
         return true
     }
 
-    private func handleBearingAndDistance(args: [String], message: Message) {
+    fileprivate func handleBearingAndDistance(_ args: [String], message: Message) {
         var radius: Double?
         var start: PlanetaryMath.LatLong?
         var end: PlanetaryMath.LatLong?
@@ -61,7 +61,7 @@ class ScienceMessageHandler: MessageHandler {
                 fallthrough
 
             case 4:
-                guard let lat1 = Double(args[0]), lon1 = Double(args[1]), lat2 = Double(args[2]), lon2 = Double(args[3])  else {
+                guard let lat1 = Double(args[0]), let lon1 = Double(args[1]), let lat2 = Double(args[2]), let lon2 = Double(args[3])  else {
                     message.replyToChannel("The coordinates must be a number (lat1 lon1 lat2 lon2 [optional radius in km]).")
                     return
                 }
@@ -72,7 +72,7 @@ class ScienceMessageHandler: MessageHandler {
                 return
             }
         }
-        if let start = start, end = end {
+        if let start = start, let end = end {
             let result = PlanetaryMath.calculateBearingAndDistance(start: start, end: end, radius: radius)
             let distance = PlanetaryMath.distanceFor(result.distance)
             message.replyToChannel(String(format: "To get from \(String(latlong:start)) to \(String(latlong:end)) head in bearing %.1f°\(distance).", result.bearing))
@@ -82,7 +82,7 @@ class ScienceMessageHandler: MessageHandler {
     }
 
 
-    private func handleKlyPerHour(args: [String], message: Message) {
+    fileprivate func handleKlyPerHour(_ args: [String], message: Message) {
         if args.count < 1 {
             message.replyToChannel("Missing arguments. Expected: <jump range> [time per jump in seconds]")
             return
@@ -106,13 +106,13 @@ class ScienceMessageHandler: MessageHandler {
         message.replyToChannel("Spending an average of *\(jumpTime)s* per system, with an average hop of *\(avgJump)* ly, 97% of *\(jumpRange)*, you can travel ** \(rangePerHour) ly / hour**.")
     }
 
-    private func handleGravity(args: [String], message: Message) {
+    fileprivate func handleGravity(_ args: [String], message: Message) {
         if args.count < 2 {
             message.replyToChannel("Missing arguments. Expected: <EarthMasses> <Radius in km>")
             return
         }
 
-        guard let planetMass = Double(args[0]), planetRadius = Double(args[1]) else {
+        guard let planetMass = Double(args[0]), let planetRadius = Double(args[1]) else {
             message.replyToChannel("The arguments must be numbers. Expected: <EarthMasses> <Radius in km>")
             return
         }
@@ -136,17 +136,17 @@ class ScienceMessageHandler: MessageHandler {
         }
         var densityString = ""
         if likelyTypes.count > 0 {
-            densityString += "\n**Likely**: " + likelyTypes.sort().joinWithSeparator(", ")
+            densityString += "\n**Likely**: " + likelyTypes.sorted().joined(separator: ", ")
         }
         if maybeTypes.count > 0 {
-            densityString += "\n**Possible**: " + maybeTypes.sort().joinWithSeparator(", ")
+            densityString += "\n**Possible**: " + maybeTypes.sorted().joined(separator: ", ")
         }
         let planetDensityStr = String(format: "%#.3g", planetDensity)
 
         message.replyToChannel("The gravity for a planet with \(planetMass) Earth Masses and a radius of \(planetRadius) km is **\(planetM2Str)** m/s^2 or **\(planetGStr)** g. It has a density of **\(planetDensityStr)** kg/m^3.\(densityString)")
     }
 
-    private func handleRoute(args: [String], message: Message) {
+    fileprivate func handleRoute(_ args: [String], message: Message) {
         var maxDistance = 1000.0
         if args.count < 2 {
             message.replyToChannel("Missing arguments. Expected: <JumpRange> <SgrA* distance in kly> [optional max plot in ly]")
@@ -200,11 +200,11 @@ private extension Double {
     var toDegrees: Double {
         return self * 180.0 / M_PI
     }
-    func toString(fractionDigits:Int, minFractionDigits: Int = 1) -> String {
-        let formatter = NSNumberFormatter()
+    func toString(_ fractionDigits:Int, minFractionDigits: Int = 1) -> String {
+        let formatter = NumberFormatter()
         formatter.minimumFractionDigits = minFractionDigits
         formatter.maximumFractionDigits = fractionDigits
-        return formatter.stringFromNumber(self) ?? "\(self)"
+        return formatter.string(from: NSNumber(value: self)) ?? "\(self)"
     }
 }
 
@@ -212,14 +212,14 @@ private extension Double {
 class PlanetaryMath {
     typealias LatLong = (lat:Double, lon:Double)
 
-    class func calculateBearingAndDistance(start start: LatLong, end: LatLong, radius: Double?) -> (bearing:Double, distance:Double?) {
+    class func calculateBearingAndDistance(start: LatLong, end: LatLong, radius: Double?) -> (bearing:Double, distance:Double?) {
         let λ1 = start.lon.toRadians
         let λ2 = end.lon.toRadians
         let φ1 = start.lat.toRadians
         let φ2 = end.lat.toRadians
         let y = sin(λ2 - λ1) * cos(φ2)
         let x = cos(φ1) * sin(φ2) - sin(φ1) * cos(φ2) * cos(λ2 - λ1)
-        let bearing = (atan2(y, x).toDegrees + 360)%360
+        let bearing = (atan2(y, x).toDegrees + 360).truncatingRemainder(dividingBy: 360)
 
         var distance: Double?
         if let R = radius {
@@ -236,7 +236,7 @@ class PlanetaryMath {
         return (bearing, distance)
     }
 
-    class func distanceFor(km: Double?) -> String {
+    class func distanceFor(_ km: Double?) -> String {
         var distance = ""
         if let km = km {
             if km > 1 {
@@ -251,6 +251,6 @@ class PlanetaryMath {
 
 extension String {
     init(latlong: PlanetaryMath.LatLong) {
-        self.init("(\(latlong.lat.toString(4)), \(latlong.lon.toString(4)))")
+        self.init("(\(latlong.lat.toString(4)), \(latlong.lon.toString(4)))")!
     }
 }

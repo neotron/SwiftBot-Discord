@@ -32,7 +32,7 @@ class CustomCommandMessageHandler: MessageHandler {
         ];
     }
 
-    override func handleCommand(command: String, args: [String], message: Message) -> Bool {
+    override func handleCommand(_ command: String, args: [String], message: Message) -> Bool {
         guard let cmd = Command(rawValue: command) else {
             LOG_ERROR("Got sent invalid command: \(command) - odd")
             return false
@@ -64,7 +64,7 @@ class CustomCommandMessageHandler: MessageHandler {
         return true
     }
 
-    override func handleAnything(command: String, args: [String], message: Message) -> Bool {
+    override func handleAnything(_ command: String, args: [String], message: Message) -> Bool {
         let cdm = CoreDataManager.instance
         if let commandObject = cdm.loadCommandAlias(command) {
             if message.flags.contains(.Help) {
@@ -93,7 +93,7 @@ class CustomCommandMessageHandler: MessageHandler {
             if let help = group.help {
                 output[0] += help
             }
-            let sortedCommands = group.commands.sort {
+            let sortedCommands = group.commands.sorted {
                 $0.command > $1.command
             }
             for command in sortedCommands {
@@ -103,7 +103,7 @@ class CustomCommandMessageHandler: MessageHandler {
                 }
                 output.append(cmdline)
             }
-            message.replyToChannel(output.joinWithSeparator("\n"))
+            message.replyToChannel(output.joined(separator: "\n"))
             return true
         }
         return false
@@ -116,7 +116,7 @@ class CustomCommandMessageHandler: MessageHandler {
 
 extension CustomCommandMessageHandler {
 
-    func getCommandText(command: String, message: Message) -> String? {
+    func getCommandText(_ command: String, message: Message) -> String? {
         guard var commandValueArgs = message.rawArgs else {
             message.replyToChannel("Missing command alias text.")
             return nil
@@ -124,10 +124,10 @@ extension CustomCommandMessageHandler {
         while commandValueArgs.count > 0 && commandValueArgs.removeFirst() != command {
             // No-op
         }
-        return commandValueArgs.joinWithSeparator(" ")
+        return commandValueArgs.joined(separator: " ")
     }
 
-    func addCommand(args: [String], message: Message) {
+    func addCommand(_ args: [String], message: Message) {
         if args.count < 2 {
             message.replyToChannel("Invalid syntax. Expected: <command> <new text>")
             return
@@ -142,7 +142,7 @@ extension CustomCommandMessageHandler {
             return
         }
 
-        guard let commandText = getCommandText(args[0], message: message), command = cdm.createCommandAlias(args[0], value: commandText) else {
+        guard let commandText = getCommandText(args[0], message: message), let command = cdm.createCommandAlias(args[0], value: commandText) else {
             LOG_ERROR("Command was not created.")
             message.replyToChannel("Internal error. Unable to create command alias.")
             return
@@ -151,7 +151,7 @@ extension CustomCommandMessageHandler {
         message.replyToChannel("Command alias for *\(command.command)* created successfully.")
     }
 
-    func editCommand(args: [String], message: Message) {
+    func editCommand(_ args: [String], message: Message) {
         if args.count < 2 {
             message.replyToChannel("Invalid syntax. Expected: <command> <new text>")
             return
@@ -172,7 +172,7 @@ extension CustomCommandMessageHandler {
         message.replyToChannel("Command *\(existingCommand.command)* updated with new text.")
     }
 
-    func removeCommand(args: [String], message: Message) {
+    func removeCommand(_ args: [String], message: Message) {
         if args.count < 1 {
             message.replyToChannel("Invalid syntax. Expected: <command>")
             return
@@ -190,7 +190,7 @@ extension CustomCommandMessageHandler {
         }
     }
 
-    func addHelp(args: [String], message: Message) {
+    func addHelp(_ args: [String], message: Message) {
         if args.count < 2 {
             message.replyToChannel("Invalid syntax. Expected: <command> <help text>")
             return
@@ -212,23 +212,23 @@ extension CustomCommandMessageHandler {
         message.replyToChannel("Command or category *\(args[0])* doesn't exist.")
     }
 
-    func listCommands(args: [String], message: Message) {
+    func listCommands(_ args: [String], message: Message) {
         let cdm = CoreDataManager.instance
         let sortOrder = [NSSortDescriptor(key: "command", ascending: true)]
         var output = [""]
         if let groups = cdm.fetchObjectsOfType(.CommandGroup, withPredicate: nil, sortedBy: sortOrder) {
-            output.append("**Commands by Category**:\n\t\(groups.map {" **\($0.command):** \($0.commands.map { $0.command }.joinWithSeparator(", "))"}.joinWithSeparator("\n\t"))")
+            output.append("**Commands by Category**:\n\t\(groups.map {" **\($0.command):** \($0.commands.map { $0.command }.joined(separator: ", "))"}.joined(separator: "\n\t"))")
             } else {
             output.append("**Categories:** \n\tNone found")
         }
         let fetchedCommands = cdm.fetchObjectsOfType(.CommandAlias, withPredicate: nil, sortedBy: sortOrder) as? [CommandAlias]
-        if let commands = fetchedCommands where !commands.isEmpty {
-            output.append("\n**Uncategorised Commands:**\n\t\(commands.filter { $0.group == nil }.map { $0.command }.joinWithSeparator(", "))")
+        if let commands = fetchedCommands, !commands.isEmpty {
+            output.append("\n**Uncategorised Commands:**\n\t\(commands.filter { $0.group == nil }.map { $0.command }.joined(separator: ", "))")
         } else {
             output.append("\n**Uncategorised Commands:**\n\tNone found")
         }
 
-        let outputString = output.joinWithSeparator("\n")
+        let outputString = output.joined(separator: "\n")
         if args.count > 0 && args[0] == "here" {
             message.replyToChannel(outputString)
         } else {
@@ -241,7 +241,7 @@ extension CustomCommandMessageHandler {
 // MARK: Command grouping for fun and profit
 
 extension CustomCommandMessageHandler {
-    func loadOrCreateCommandGroup(group: String, shouldCreate: Bool = true) -> CommandGroup? {
+    func loadOrCreateCommandGroup(_ group: String, shouldCreate: Bool = true) -> CommandGroup? {
         let cdm = CoreDataManager.instance
         if let group = cdm.loadCommandGroup(group) {
             return group
@@ -252,7 +252,7 @@ extension CustomCommandMessageHandler {
         return cdm.createCommandGroup(group)
     }
 
-    func addToCategory(args: [String], message: Message) {
+    func addToCategory(_ args: [String], message: Message) {
         if args.count < 2 {
             message.replyToChannel("Invalid syntax. Expected: <category> <command>")
             return
@@ -280,7 +280,7 @@ extension CustomCommandMessageHandler {
         message.replyToChannel("Command *\(command.command)* added to category *\(group.command)*.")
     }
 
-    func removeFromCategory(args: [String], message: Message) {
+    func removeFromCategory(_ args: [String], message: Message) {
         if args.count < 2 {
             message.replyToChannel("Invalid syntax. Expected: <category> <command>")
             return
@@ -315,22 +315,22 @@ class CustomCommandImportMessageHandler: AuthenticatedMessageHandler {
     override var commandGroup: String? {
         return CustomCommandMessageHandler.CustomCommandGroup
     }
-    override func handleAuthenticatedCommand(command: String, args: [String], message: Message) -> Bool {
+    override func handleAuthenticatedCommand(_ command: String, args: [String], message: Message) -> Bool {
         importCommands(args, message: message)
         return true
     }
 
-    private func importCommands(args: [String], message: Message) {
+    fileprivate func importCommands(_ args: [String], message: Message) {
         if args.count < 1 {
             message.replyToChannel("Import URL is missing.")
             return
         }
-        guard let url = NSURL(string: args[0]) else {
+        guard let url = URL(string: args[0]) else {
             message.replyToChannel("Invalid URL provided.")
             return
         }
 
-        if url.fileURL {
+        if url.isFileURL {
             // File URL requires owners permissions
             if let senderId = message.author?.id {
                 if !Config.ownerIds.contains(senderId) {
@@ -340,8 +340,8 @@ class CustomCommandImportMessageHandler: AuthenticatedMessageHandler {
             }
         }
 
-        let task = NSURLSession.sharedSession().downloadTaskWithURL(url, completionHandler: {
-            (location: NSURL?, response: NSURLResponse?, error: NSError?) in
+        let task = URLSession.shared.downloadTask(with: url, completionHandler: {
+            (location: URL?, response: URLResponse?, error: NSError?) in
             if let error = error {
                 message.replyToSender("Failed to import due to error: \(error).")
                 return
@@ -349,12 +349,12 @@ class CustomCommandImportMessageHandler: AuthenticatedMessageHandler {
             if let location = location {
                 do {
                     let importer = CustomCommandImporter()
-                    let data = try NSData(contentsOfURL: location, options: NSDataReadingOptions.DataReadingMappedAlways)
+                    let data = try Data(contentsOf: location, options: NSData.ReadingOptions.alwaysMapped)
                     let result = try importer.importFromData(data)
                     message.replyToChannel("Imported \(result.cmdImported) commands, updated \(result.cmdUpdated) commands and added \(result.catImported) categories")
-                } catch CustomComandImportError.UTF8DecodingFailure {
+                } catch CustomComandImportError.utf8DecodingFailure {
                     message.replyToSender("Failed to import due failure to decode data as UTF-8.")
-                } catch CustomComandImportError.YamlError(let errorMsg) {
+                } catch CustomComandImportError.yamlError(let errorMsg) {
                     if let msg = errorMsg {
                         message.replyToSender("Failed to import due failure to Yaml error: \(msg)")
                     } else {
@@ -366,7 +366,7 @@ class CustomCommandImportMessageHandler: AuthenticatedMessageHandler {
             } else {
                 message.replyToSender("No data returned from network call.")
             }
-        })
+        } as! (URL?, URLResponse?, Error?) -> Void)
         task.resume()
     }
 }
@@ -376,7 +376,7 @@ class CustomCommandImportMessageHandler: AuthenticatedMessageHandler {
 
 extension CustomCommandMessageHandler {
 
-    private enum Command: String {
+    fileprivate enum Command: String {
         case AddCommand = "addcmd",
              RemoveCommand = "rmcmd",
              EditCommand = "editcmd",

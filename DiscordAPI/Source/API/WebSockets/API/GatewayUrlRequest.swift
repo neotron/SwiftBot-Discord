@@ -8,18 +8,28 @@ import Alamofire
 import AlamofireObjectMapper
 
 class GatewayUrlRequest {
-    internal func execute(callback: ((Bool)->Void)?) {
+    internal func execute(_ callback: ((Bool)->Void)?) {
         guard let token = Registry.instance.token else {
             LOG_ERROR("Cannot retrieve endpoint, login first.")
             callback?(false)
             return
         }
-        Alamofire.request(.GET, Endpoints.Simple(.Gateway), headers: [
+
+//        public func request(
+//            _ url: URLConvertible,
+//            method: HTTPMethod = .get,
+//            parameters: Parameters? = nil,
+//            encoding: ParameterEncoding = URLEncoding.default,
+//            headers: HTTPHeaders? = nil)
+//            -> DataRequest
+
+        let headers: HTTPHeaders = [
                 "Content-Type": "application/json",
                 "User-Agent": Registry.userAgent,
                 "Authorization": token,
-        ]).responseObject {
-            (response: Response<GatewayUrlResponseModel, NSError>) in
+        ]
+        Alamofire.request(Endpoints.Simple(.Gateway), headers: headers).responseObject {
+            (response: DataResponse<GatewayUrlResponseModel>) in
             var success = false
             if let url = response.result.value?.url {
                 Registry.instance.websocketEndpoint = url

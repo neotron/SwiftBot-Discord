@@ -12,9 +12,9 @@ import DiscordAPI
 class CoreDataManager: NSObject {
     static let instance = CoreDataManager()
 
-    lazy private var persistentStoreCoordinator = CoreDataManager.instance.createPersistentStoreCoordinator()
-    lazy private var managedObjectModel = CoreDataManager.instance.createManagedObjectModel()
-    lazy private var managedObjectContext = CoreDataManager.instance.createManagedObjectContext()
+    lazy fileprivate var persistentStoreCoordinator = CoreDataManager.instance.createPersistentStoreCoordinator()
+    lazy fileprivate var managedObjectModel = CoreDataManager.instance.createManagedObjectModel()
+    lazy fileprivate var managedObjectContext = CoreDataManager.instance.createManagedObjectContext()
 
     override init() {
         super.init()
@@ -31,10 +31,10 @@ class CoreDataManager: NSObject {
 extension CoreDataManager {
 
 
-    func fetchRolesForId(id: String) -> Set<Role> {
+    func fetchRolesForId(_ id: String) -> Set<Role> {
         var roles = Set<Role>()
         if let ctx = self.managedObjectContext {
-            ctx.performBlockAndWait {
+            ctx.performAndWait {
                 let predicate = NSPredicate(format: "id = %@", id)
                 if let userRoles = self.fetchObjectsOfType(.UserRole, withPredicate: predicate) as? [UserRole] {
                     for userRole in userRoles {
@@ -46,13 +46,13 @@ extension CoreDataManager {
         return roles
     }
 
-    func addRoleForUserId(id: String, role: Role) -> Bool {
+    func addRoleForUserId(_ id: String, role: Role) -> Bool {
         let roles = self.fetchRolesForId(id)
-        if roles.contains(role) || roles.contains(.Owner) {
+        if roles.contains(role) || roles.contains(.owner) {
             return false
         }
         if let ctx = self.managedObjectContext {
-            ctx.performBlock {
+            ctx.perform {
                 self.createUserRole(id, role: role)
                 self.saveCtx(ctx)
             }
@@ -61,15 +61,15 @@ extension CoreDataManager {
         return false;
     }
 
-    func removeRoleForUser(id: String, role: Role) -> Bool {
+    func removeRoleForUser(_ id: String, role: Role) -> Bool {
         let roles = self.fetchRolesForId(id)
-        if !roles.contains(role) || roles.contains(.Owner) {
+        if !roles.contains(role) || roles.contains(.owner) {
             return false
         }
         if let ctx = self.managedObjectContext {
-            ctx.performBlock {
+            ctx.perform {
                 if let userRole = self.fetchUserRoleForId(id, role: role) {
-                    ctx.deleteObject(userRole)
+                    ctx.delete(userRole)
                     self.saveCtx(ctx)
                 }
             }
@@ -82,10 +82,10 @@ extension CoreDataManager {
 
     func updateOwnerRolesFromConfig() {
         if let ctx = self.managedObjectContext {
-            ctx.performBlock {
+            ctx.perform {
                 LOG_INFO("Configured owner ids: \(Config.ownerIds)")
                 var adminIds = Config.ownerIds
-                let predicate = NSPredicate(format: "role = %d", Role.Owner.rawValue)
+                let predicate = NSPredicate(format: "role = %d", Role.owner.rawValue)
                 if let admins = self.fetchObjectsOfType(.UserRole, withPredicate: predicate) as? [UserRole] {
                     // Existing admins
                     for admin in admins {
@@ -97,14 +97,14 @@ extension CoreDataManager {
                     }
                 }
                 for id in adminIds {
-                    self.createUserRole(id, role: Role.Owner)
+                    self.createUserRole(id, role: Role.owner)
                 }
             }
             self.saveCtx(ctx)
         }
     }
 
-    private func createUserRole(id: String, role: Role) {
+    fileprivate func createUserRole(_ id: String, role: Role) {
         if let admin = self.createObjectOfType(.UserRole) as? UserRole {
             admin.id = id
             admin.role = role
@@ -113,10 +113,10 @@ extension CoreDataManager {
 
     }
 
-    private func fetchUserRoleForId(id: String, role: Role) -> UserRole? {
+    fileprivate func fetchUserRoleForId(_ id: String, role: Role) -> UserRole? {
         var userRole: UserRole?
         if let ctx = self.managedObjectContext {
-            ctx.performBlockAndWait {
+            ctx.performAndWait {
                 let predicate = NSPredicate(format: "id = %@ AND role = %d", id, role.rawValue)
                 if let userRoles = self.fetchObjectsOfType(.UserRole, withPredicate: predicate) as? [UserRole] {
                     userRole = userRoles.first
@@ -131,8 +131,8 @@ extension CoreDataManager {
 
 extension CoreDataManager {
     // Return the command with the specified name, or nil if there isn't one
-    func loadCommandAlias(command: String) -> CommandAlias? {
-        let predicate = NSPredicate(format: "command = %@", argumentArray: [command.lowercaseString])
+    func loadCommandAlias(_ command: String) -> CommandAlias? {
+        let predicate = NSPredicate(format: "command = %@", argumentArray: [command.lowercased()])
         if let matches = self.fetchObjectsOfType(.CommandAlias, withPredicate: predicate) {
             var match: AnyObject?
             switch matches.count {
@@ -152,19 +152,19 @@ extension CoreDataManager {
         return nil
     }
 
-    func createCommandAlias(command: String, value: String) -> CommandAlias? {
+    func createCommandAlias(_ command: String, value: String) -> CommandAlias? {
         guard let commandObject = self.createObjectOfType(.CommandAlias) as? CommandAlias else {
             LOG_ERROR("Failed to create new command object.")
             return nil
         }
-        commandObject.command = command.lowercaseString
+        commandObject.command = command.lowercased()
         commandObject.value = value
         return commandObject
     }
 
     // Return the category with the specified name, or nil if there isn't one
-    func loadCommandGroup(command: String) -> CommandGroup? {
-        let predicate = NSPredicate(format: "command = %@", argumentArray: [command.lowercaseString])
+    func loadCommandGroup(_ command: String) -> CommandGroup? {
+        let predicate = NSPredicate(format: "command = %@", argumentArray: [command.lowercased()])
         if let matches = self.fetchObjectsOfType(.CommandGroup, withPredicate: predicate) {
             var match: AnyObject?
             switch matches.count {
@@ -184,12 +184,12 @@ extension CoreDataManager {
         return nil
     }
 
-    func createCommandGroup(command: String) -> CommandGroup? {
+    func createCommandGroup(_ command: String) -> CommandGroup? {
         guard let group = self.createObjectOfType(.CommandGroup) as? CommandGroup else {
             LOG_ERROR("Failed to create new command group object.")
             return nil
         }
-        group.command = command.lowercaseString
+        group.command = command.lowercased()
         return group
     }
 
@@ -198,23 +198,23 @@ extension CoreDataManager {
 // MARK: Base functionality
 
 extension CoreDataManager {
-    func save(synchronous: Bool = false) {
+    func save(_ synchronous: Bool = false) {
         guard let ctx = self.managedObjectContext else {
             LOG_ERROR("Can't save database, no object context available.")
             return
         }
         if synchronous {
-            ctx.performBlockAndWait {
+            ctx.performAndWait {
                 self.saveCtx(ctx)
             }
         } else {
-            ctx.performBlock {
+            ctx.perform {
                 self.saveCtx(ctx)
             }
         }
     }
 
-    private func saveCtx(ctx: NSManagedObjectContext) {
+    fileprivate func saveCtx(_ ctx: NSManagedObjectContext) {
         if ctx.hasChanges {
             do {
                 try ctx.save()
@@ -225,17 +225,17 @@ extension CoreDataManager {
         }
     }
 
-    func createObjectOfType(type: CoreDataObjectTypes) -> NSManagedObject? {
+    func createObjectOfType(_ type: CoreDataObjectTypes) -> NSManagedObject? {
         var newEntity: NSManagedObject?
         if let ctx = self.managedObjectContext {
-            ctx.performBlockAndWait {
-                newEntity = NSEntityDescription.insertNewObjectForEntityForName(type.rawValue, inManagedObjectContext: ctx)
+            ctx.performAndWait {
+                newEntity = NSEntityDescription.insertNewObject(forEntityName: type.rawValue, into: ctx)
             }
         }
         return newEntity
     }
 
-    func fetchObjectsOfType(type: CoreDataObjectTypes, withPredicate predicate: NSPredicate?,
+    func fetchObjectsOfType(_ type: CoreDataObjectTypes, withPredicate predicate: NSPredicate?,
                             sortedBy sortOrder: [NSSortDescriptor]? = nil,
                             fetchOffset: Int = 0, fetchLimit: Int = 0) -> [AnyObject]? {
         guard let ctx = self.managedObjectContext else {
@@ -243,15 +243,15 @@ extension CoreDataManager {
             return nil
         }
         var result: [AnyObject]?
-        ctx.performBlockAndWait {
-            let request = NSFetchRequest()
-            request.entity = NSEntityDescription.entityForName(type.rawValue, inManagedObjectContext: ctx)
+        ctx.performAndWait {
+            let request = NSFetchRequest<NSFetchRequestResult>()
+            request.entity = NSEntityDescription.entity(forEntityName: type.rawValue, in: ctx)
             request.predicate = predicate
             request.sortDescriptors = sortOrder
             request.fetchLimit = fetchLimit
             request.fetchOffset = fetchOffset
             do {
-                result = try ctx.executeFetchRequest(request)
+                result = try ctx.fetch(request)
             } catch {
                 LOG_ERROR("Error during fetch: \(error)")
             }
@@ -262,13 +262,13 @@ extension CoreDataManager {
         return nil
     }
 
-    func deleteObject(object: NSManagedObject) -> Bool {
+    func deleteObject(_ object: NSManagedObject) -> Bool {
         guard let ctx = self.managedObjectContext else {
             LOG_ERROR("Delete failed: No managed object context.")
             return false
         }
-        ctx.performBlock {
-            ctx.deleteObject(object)
+        ctx.perform {
+            ctx.delete(object)
         };
 
         return true
@@ -281,19 +281,19 @@ extension CoreDataManager {
 
 extension CoreDataManager {
 
-    private func createPersistentStoreCoordinator() -> NSPersistentStoreCoordinator? {
+    fileprivate func createPersistentStoreCoordinator() -> NSPersistentStoreCoordinator? {
         guard let dbDir = Config.databaseDirectory else {
             LOG_ERROR("Cannot configure database, no database directory configured.")
             return nil
         }
         do {
-            try NSFileManager.defaultManager().createDirectoryAtPath(dbDir, withIntermediateDirectories: true, attributes: nil)
+            try FileManager.default.createDirectory(atPath: dbDir, withIntermediateDirectories: true, attributes: nil)
         } catch {
             LOG_ERROR("Failed to create database path at \(dbDir) - check permissions.")
             return nil
         }
 
-        let storeUrl = NSURL(fileURLWithPath: NSString(string: dbDir).stringByAppendingPathComponent("swiftbot.sqlite"))
+        let storeUrl = URL(fileURLWithPath: NSString(string: dbDir).appendingPathComponent("swiftbot.sqlite"))
         guard let objectModel = self.managedObjectModel else {
             LOG_ERROR("Failed to load object model, can't open database.")
             return nil
@@ -301,7 +301,7 @@ extension CoreDataManager {
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: objectModel)
 
         do {
-            let _ = try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeUrl, options: [
+            let _ = try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeUrl, options: [
                     NSMigratePersistentStoresAutomaticallyOption: true,
                     NSInferMappingModelAutomaticallyOption: true
             ])
@@ -314,21 +314,21 @@ extension CoreDataManager {
         return coordinator
     }
 
-    private func createManagedObjectModel() -> NSManagedObjectModel? {
-        let bundle = NSBundle(forClass: self.dynamicType)
-        guard let model = bundle.pathForResource("SwiftBotModel", ofType: "momd") else {
+    fileprivate func createManagedObjectModel() -> NSManagedObjectModel? {
+        let bundle = Bundle(for: type(of: self))
+        guard let model = bundle.path(forResource: "SwiftBotModel", ofType: "momd") else {
             LOG_ERROR("Failed to find database model in bundle \(bundle)")
             return nil
         }
-        return NSManagedObjectModel(contentsOfURL: NSURL(fileURLWithPath: model))
+        return NSManagedObjectModel(contentsOf: URL(fileURLWithPath: model))
     }
 
-    private func createManagedObjectContext() -> NSManagedObjectContext? {
+    fileprivate func createManagedObjectContext() -> NSManagedObjectContext? {
         guard let coordinator = self.persistentStoreCoordinator else {
             LOG_ERROR("Can't create managed object context - no coordinator available.")
             return nil
         }
-        let managedObjectContext = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
+        let managedObjectContext = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.privateQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = coordinator
         return managedObjectContext
     }

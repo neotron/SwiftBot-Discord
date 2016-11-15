@@ -8,43 +8,43 @@ import Foundation
 
 class AuthenticatedMessageHandler: MessageHandler {
     var allowedRoles: [Role] {
-        return [.Admin, .Owner]
+        return [.admin, .owner]
     }
 
-    final override func handlePrefix(prefix: String, command: String, args: [String], message: Message) -> Bool {
+    final override func handlePrefix(_ prefix: String, command: String, args: [String], message: Message) -> Bool {
         if !authenticated(message) {
             return false
         }
         return handleAuthenticatedPrefix(prefix, command: command, args: args, message: message)
     }
 
-    final override func handleCommand(command: String, args: [String], message: Message) -> Bool {
+    final override func handleCommand(_ command: String, args: [String], message: Message) -> Bool {
         if !authenticated(message) {
             return false
         }
         return handleAuthenticatedCommand(command, args: args, message: message)
     }
 
-    final override func handleAnything(command: String, args: [String], message: Message) -> Bool {
+    final override func handleAnything(_ command: String, args: [String], message: Message) -> Bool {
         if !authenticated(message) {
             return false
         }
         return handleAuthenticatedAnything(command, args: args, message: message)
     }
 
-    func handleAuthenticatedPrefix(prefix: String, command: String, args: [String], message: Message) -> Bool {
+    func handleAuthenticatedPrefix(_ prefix: String, command: String, args: [String], message: Message) -> Bool {
         return false
     }
 
-    func handleAuthenticatedCommand(command: String, args: [String], message: Message) -> Bool {
+    func handleAuthenticatedCommand(_ command: String, args: [String], message: Message) -> Bool {
         return false
     }
 
-    func handleAuthenticatedAnything(command: String, args: [String], message: Message) -> Bool {
+    func handleAuthenticatedAnything(_ command: String, args: [String], message: Message) -> Bool {
         return false
     }
 
-    final private func authenticated(message: Message) -> Bool {
+    final fileprivate func authenticated(_ message: Message) -> Bool {
         let isAuth = {
             (Void) -> Bool in
             let roles = CoreDataManager.instance.fetchRolesForId(message.author!.id!)
@@ -77,15 +77,15 @@ class MessageHandler: NSObject {
         return false
     }
 
-    func handlePrefix(prefix: String, command: String, args: [String], message: Message) -> Bool {
+    func handlePrefix(_ prefix: String, command: String, args: [String], message: Message) -> Bool {
         return false
     }
 
-    func handleCommand(command: String, args: [String], message: Message) -> Bool {
+    func handleCommand(_ command: String, args: [String], message: Message) -> Bool {
         return false
     }
 
-    func handleAnything(command: String, args: [String], message: Message) -> Bool {
+    func handleAnything(_ command: String, args: [String], message: Message) -> Bool {
         return false
     }
 }

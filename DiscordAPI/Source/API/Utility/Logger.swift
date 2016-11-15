@@ -6,23 +6,23 @@
 import Foundation
 
 
-public class Logger {
-    public static var instance = Logger()
+open class Logger {
+    open static var instance = Logger()
 
     public init() {}
 
-    public func log(message: String, args: CVaListPointer = getVaList([])) {
+    open func log(_ message: String, args: CVaListPointer = getVaList([])) {
         NSLogv(message, args)
     }
 
-    private class func _shouldLogLevel(level: LoggingLevel) -> Bool {
+    fileprivate class func _shouldLogLevel(_ level: LoggingLevel) -> Bool {
         if !Registry.instance.debugEnabled && level == .Debug {
             return false
         }
         return true
     }
 
-    private class func _logMessage(message: String, withLevel level: LoggingLevel, file: String, function: String, line: Int32) {
+    fileprivate class func _logMessage(_ message: String, withLevel level: LoggingLevel, file: String, function: String, line: Int32) {
         if (!_shouldLogLevel(level)) {
             return
         }
@@ -35,14 +35,14 @@ public enum LoggingLevel : String{
     case Info = " INFO", Error = "ERROR", Debug = "DEBUG"
 }
 
-public func LOG_INFO(message: String, file: String = #file, function: String = #function, line: Int32 = #line ) {
+public func LOG_INFO(_ message: String, file: String = #file, function: String = #function, line: Int32 = #line ) {
     Logger._logMessage(message, withLevel: .Info, file: file, function: function, line: line)
 }
 
-public func LOG_ERROR(message: String, file: String = #file, function: String = #function, line: Int32 = #line) {
+public func LOG_ERROR(_ message: String, file: String = #file, function: String = #function, line: Int32 = #line) {
     Logger._logMessage(message, withLevel: .Error, file: file, function: function, line: line)
 }
 
-public func LOG_DEBUG(message: String, file: String = #file, function: String = #function, line: Int32 = #line ) {
+public func LOG_DEBUG(_ message: String, file: String = #file, function: String = #function, line: Int32 = #line ) {
     Logger._logMessage(message, withLevel: .Debug, file: file, function: function, line: line)
 }

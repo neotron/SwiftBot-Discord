@@ -3,42 +3,49 @@
     {
       "name": "Leaving the Orion Spur",
       "image": "http://i64.tinypic.com/15oupp2.jpg",
-      "waypoints": [
-        1,
-        5
-      ]
+      "waypoints": {
+        "start": 1,
+        "end": 5
+      }
     },
     {
       "name": "Crossing the Norma Expanse",
       "image": "http://i68.tinypic.com/2w39v91.jpg",
-      "waypoints": [
-        6,
-        8
-      ]
+      "waypoints": {
+        "start": 6,
+        "end": 8
+      }
     },
     {
       "name": "The Galactic Core Regions",
       "image": "http://i64.tinypic.com/1zpirk7.jpg",
-      "waypoints": [
-        9,
-        17
-      ]
+      "waypoints": {
+        "start": 9,
+        "end": 17
+      }
     },
     {
       "name": "Traversing The Aphelion Bleak Lands",
       "image": "http://i66.tinypic.com/33lkw43.jpg",
-      "waypoints": [
-        18,
-        20
-      ]
+      "waypoints": {
+        "start": 18,
+        "end": 20
+      }
     },
     {
       "name": "Beyond the Abyss",
       "image": "http://i66.tinypic.com/2efqixf.jpg",
-      "waypoints": [
-        21,
-        23
-      ]
+      "waypoints": {
+        "start": 21,
+        "end": 23
+      }
+    },
+    {
+      "name": "Reunion",
+      "waypoints": {
+        "start": 24,
+        "end": 24
+      }
     }
   ],
   "waypoints": [
@@ -646,7 +653,7 @@
       },
       "baseCamp": {
         "name": "Reunion Landing",
-        "coords": [ 0, 0 ]
+        "coords": [ 0.0, 0.0]
       },
       "name": "Reunion",
       "special_events": [],

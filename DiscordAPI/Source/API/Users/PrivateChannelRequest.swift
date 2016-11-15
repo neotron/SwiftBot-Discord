@@ -17,14 +17,14 @@ private class PrivateChannelResponseModel : MappableBase {
     }
 }
 
-public class PrivateChannelRequest {
-    private var recipientId: String
+open class PrivateChannelRequest {
+    fileprivate var recipientId: String
 
     public init(recipientId: String) {
         self.recipientId = recipientId
     }
 
-    public func execute(callback: (String?)->Void) {
+    open func execute(_ callback: @escaping (String?)->Void) {
         guard let token = Registry.instance.token else {
             LOG_ERROR("No authorization token found.")
             return
@@ -33,8 +33,9 @@ public class PrivateChannelRequest {
             LOG_ERROR("No authorization token found.")
             return
         }
-        Alamofire.request(.POST, Endpoints.User(userId, endpoint: .Channel), headers: ["Authorization": token], parameters:["recipient_id": recipientId], encoding: .JSON).responseObject {
-            (response: Response<PrivateChannelResponseModel, NSError>) in
+        Alamofire.request(Endpoints.User(userId, endpoint: .Channel), method: .post, parameters:["recipient_id": recipientId],
+                          encoding: JSONEncoding.default, headers: ["Authorization": token]).responseObject {
+            (response: DataResponse<PrivateChannelResponseModel>) in
             print("Private channel is \(response.result.value)")
             if let channelId = response.result.value?.channelId {
                 callback(channelId)

@@ -7,8 +7,8 @@ import Foundation
 import AppKit
 
 class Menulet : NSObject, NSMenuDelegate {
-    private let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
-    private let preferencesController = Preferences()
+    fileprivate let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
+    fileprivate let preferencesController = Preferences()
     @IBOutlet weak var menu: NSMenu!
     
     override init() {
@@ -19,20 +19,20 @@ class Menulet : NSObject, NSMenuDelegate {
         super.awakeFromNib()
         statusItem.menu = menu
         statusItem.image = NSImage(named: "MenuIcon")
-        statusItem.image?.template = true
+        statusItem.image?.isTemplate = true
         statusItem.highlightMode = true
         statusItem.length = NSVariableStatusItemLength
-        statusItem.enabled = true
+        statusItem.isEnabled = true
         updateTitle()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updateTitle), name: Config.CONFIG_CHANGE_KEY, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTitle), name: NSNotification.Name(rawValue: Config.CONFIG_CHANGE_KEY), object: nil)
    }
 
     func updateTitle() {
         statusItem.title = Config.development ? "[Dev]   " : ""
     }
 
-    @IBAction func openPreferences(sender: AnyObject) {
-        preferencesController.openPreferences(sender)
+    @IBAction func openPreferences(_ sender: AnyObject) {
+        preferencesController.open(sender)
     }
 
 }

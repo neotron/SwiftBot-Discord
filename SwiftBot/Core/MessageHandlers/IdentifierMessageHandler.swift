@@ -13,24 +13,24 @@ class IdentifierMessageHandler: MessageHandler {
         ]
     }
 
-    override func handleCommand(command: String, args: [String], message: Message) -> Bool {
+    override func handleCommand(_ command: String, args: [String], message: Message) -> Bool {
         var identities = [String]()
         if args.count == 0 {
             // Identify the caller
-            if let id = message.author?.id, name = message.author?.username {
+            if let id = message.author?.id, let name = message.author?.username {
                 identities.append("\(name) has id \(id)")
             }
         } else {
             if let mentions = message.mentions {
                 for author in mentions {
-                    if let id = author.id, name = author.username {
+                    if let id = author.id, let name = author.username {
                         identities.append("\(name) has id \(id)")
                     }
                 }
             }
         }
         if identities.count > 0 {
-            message.replyToChannel("Identities:\n\t\(identities.joinWithSeparator("\n\t"))");
+            message.replyToChannel("Identities:\n\t\(identities.joined(separator: "\n\t"))");
         } else {
             message.replyToChannel("No one was identified")
         }

@@ -6,10 +6,10 @@
 import Foundation
 import ObjectMapper
 
-public class GatewayUrlResponseModel : MappableBase {
-    public var url: String?
+open class GatewayUrlResponseModel : MappableBase {
+    open var url: String?
 
-    public override func mapping(map: Map) {
+    open override func mapping(map: Map) {
         url <- map["url"]
     }
 }

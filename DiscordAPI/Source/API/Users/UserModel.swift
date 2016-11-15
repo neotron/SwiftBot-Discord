@@ -6,16 +6,16 @@
 import Foundation
 import ObjectMapper
 
-public class UserModel : MappableBase {
-    public var avatar: String?
-    public var discriminator: String?
-    public var id: String?
-    public var username: String?
-    public var email: String?
-    public var verified: Bool?
+open class UserModel : MappableBase {
+    open var avatar: String?
+    open var discriminator: String?
+    open var id: String?
+    open var username: String?
+    open var email: String?
+    open var verified: Bool?
 
 
-    public override func mapping(map: Map) {
+    open override func mapping(map: Map) {
         username        <- map["username"]
         avatar          <- map["avatar"]
         discriminator   <- map["discriminator"]
