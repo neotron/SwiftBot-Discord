@@ -91,7 +91,7 @@ extension CoreDataManager {
                     for admin in admins {
                         if !adminIds.contains(admin.id) {
                             LOG_DEBUG("Deleting old owner: \(admin.id)")
-                            self.deleteObject(admin)
+                            _ = self.deleteObject(admin)
                         }
                         adminIds.remove(admin.id)
                     }

@@ -62,7 +62,7 @@ class RandomAnimalsMessageHandler: MessageHandler, URLSessionTaskDelegate {
 
 
     fileprivate func handleRandomCat(_ message: Message) {
-        EVReflection.setBundleIdentifier(SwiftBotMain)
+        EVReflection.setBundleIdentifier(SwiftBotMain.self)
         Alamofire.request("http://random.cat/meow").responseObject {
             (response: DataResponse<MeowModel>) in
                      if let url = response.result.value?.file {

@@ -55,7 +55,7 @@ class DistantWorldsWaypoints: MessageHandler {
             return false
         }
         if args.count > 0 {
-            self.handlePrefix(command, command: "\(command)\(args.removeFirst())", args: args, message: message)
+            _ = self.handlePrefix(command, command: "\(command)\(args.removeFirst())", args: args, message: message)
         }
 
         return true
@@ -187,7 +187,7 @@ extension DistantWorldsWaypoints {
             LOG_ERROR("Failed to load and decode waypoints database.")
             return
         }
-        EVReflection.setBundleIdentifier(SwiftBotMain)
+        EVReflection.setBundleIdentifier(SwiftBotMain.self)
         let db = Waypoints(json: dataText as String)
         LOG_DEBUG("Loaded database (\(db.waypoints.count) waypoints)")
 //        print(db.toJsonString());

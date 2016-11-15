@@ -36,11 +36,10 @@ class SendMessageRequest {
             return
         }
         Alamofire.request(Endpoints.Channel(channelId), method: .post, parameters: createMessage(),
-                         encoding: JSONEncoding.default, headers: ["Authorization": token])
-                .responseObject {
-                    (response: DataResponse<MessageModel>) in
-                    print("message is \(response.result.value)")
-                }
+                          encoding: JSONEncoding.default, headers: ["Authorization": token])
+                 .responseObject {
+                     (response: DataResponse<MessageModel>) in
+                 }
     }
 }
 
