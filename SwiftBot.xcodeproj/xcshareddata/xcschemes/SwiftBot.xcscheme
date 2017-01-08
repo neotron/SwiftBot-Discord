@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_1009"
+               BlueprintIdentifier = "OBJ_1025"
                BuildableName = "ImageBrutalizer.framework"
                BlueprintName = "ImageBrutalizer"
                ReferencedContainer = "container:SwiftBot.xcodeproj">
@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_1017"
+               BlueprintIdentifier = "OBJ_1033"
                BuildableName = "ImageRunner"
                BlueprintName = "ImageRunner"
                ReferencedContainer = "container:SwiftBot.xcodeproj">
@@ -42,7 +42,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_1026"
+               BlueprintIdentifier = "OBJ_1042"
                BuildableName = "Starscream.framework"
                BlueprintName = "Starscream"
                ReferencedContainer = "container:SwiftBot.xcodeproj">
@@ -56,7 +56,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_1034"
+               BlueprintIdentifier = "OBJ_1050"
                BuildableName = "Core.framework"
                BlueprintName = "Core"
                ReferencedContainer = "container:SwiftBot.xcodeproj">
@@ -70,7 +70,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_1070"
+               BlueprintIdentifier = "OBJ_1086"
                BuildableName = "libc.framework"
                BlueprintName = "libc"
                ReferencedContainer = "container:SwiftBot.xcodeproj">
@@ -84,7 +84,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_1077"
+               BlueprintIdentifier = "OBJ_1093"
                BuildableName = "CLibreSSL.framework"
                BlueprintName = "CLibreSSL"
                ReferencedContainer = "container:SwiftBot.xcodeproj">
@@ -98,7 +98,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_1700"
+               BlueprintIdentifier = "OBJ_1716"
                BuildableName = "BCrypt.framework"
                BlueprintName = "BCrypt"
                ReferencedContainer = "container:SwiftBot.xcodeproj">
@@ -112,7 +112,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_1719"
+               BlueprintIdentifier = "OBJ_1735"
                BuildableName = "Cipher.framework"
                BlueprintName = "Cipher"
                ReferencedContainer = "container:SwiftBot.xcodeproj">
@@ -126,7 +126,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_1716"
+               BlueprintIdentifier = "OBJ_1732"
                BuildableName = "Essentials.framework"
                BlueprintName = "Essentials"
                ReferencedContainer = "container:SwiftBot.xcodeproj">
@@ -140,7 +140,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_1748"
+               BlueprintIdentifier = "OBJ_1764"
                BuildableName = "Hash.framework"
                BlueprintName = "Hash"
                ReferencedContainer = "container:SwiftBot.xcodeproj">
@@ -154,7 +154,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_1767"
+               BlueprintIdentifier = "OBJ_1783"
                BuildableName = "HMAC.framework"
                BlueprintName = "HMAC"
                ReferencedContainer = "container:SwiftBot.xcodeproj">
@@ -168,7 +168,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_1718"
+               BlueprintIdentifier = "OBJ_1734"
                BuildableName = "Random.framework"
                BlueprintName = "Random"
                ReferencedContainer = "container:SwiftBot.xcodeproj">
@@ -182,7 +182,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_1801"
+               BlueprintIdentifier = "OBJ_1817"
                BuildableName = "Socks.framework"
                BlueprintName = "Socks"
                ReferencedContainer = "container:SwiftBot.xcodeproj">
@@ -196,7 +196,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_1814"
+               BlueprintIdentifier = "OBJ_1830"
                BuildableName = "SocksCore.framework"
                BlueprintName = "SocksCore"
                ReferencedContainer = "container:SwiftBot.xcodeproj">
@@ -210,7 +210,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_1835"
+               BlueprintIdentifier = "OBJ_1851"
                BuildableName = "TLS.framework"
                BlueprintName = "TLS"
                ReferencedContainer = "container:SwiftBot.xcodeproj">
@@ -224,7 +224,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_1858"
+               BlueprintIdentifier = "OBJ_1874"
                BuildableName = "HTTP.framework"
                BlueprintName = "HTTP"
                ReferencedContainer = "container:SwiftBot.xcodeproj">
@@ -238,7 +238,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_1932"
+               BlueprintIdentifier = "OBJ_1948"
                BuildableName = "SMTP.framework"
                BlueprintName = "SMTP"
                ReferencedContainer = "container:SwiftBot.xcodeproj">
@@ -252,7 +252,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_1931"
+               BlueprintIdentifier = "OBJ_1947"
                BuildableName = "Transport.framework"
                BlueprintName = "Transport"
                ReferencedContainer = "container:SwiftBot.xcodeproj">
@@ -266,7 +266,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_1929"
+               BlueprintIdentifier = "OBJ_1945"
                BuildableName = "URI.framework"
                BlueprintName = "URI"
                ReferencedContainer = "container:SwiftBot.xcodeproj">
@@ -280,7 +280,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_2062"
+               BlueprintIdentifier = "OBJ_2078"
                BuildableName = "WebSockets.framework"
                BlueprintName = "WebSockets"
                ReferencedContainer = "container:SwiftBot.xcodeproj">
@@ -294,7 +294,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_2112"
+               BlueprintIdentifier = "OBJ_2128"
                BuildableName = "ExampleBot"
                BlueprintName = "ExampleBot"
                ReferencedContainer = "container:SwiftBot.xcodeproj">
@@ -308,7 +308,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_2161"
+               BlueprintIdentifier = "OBJ_2177"
                BuildableName = "Runner"
                BlueprintName = "Runner"
                ReferencedContainer = "container:SwiftBot.xcodeproj">
@@ -322,7 +322,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_2160"
+               BlueprintIdentifier = "OBJ_2176"
                BuildableName = "SwiftDiscord.framework"
                BlueprintName = "SwiftDiscord"
                ReferencedContainer = "container:SwiftBot.xcodeproj">
@@ -336,9 +336,23 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_2296"
-               BuildableName = "SwiftBot"
-               BlueprintName = "SwiftBot"
+               BlueprintIdentifier = "OBJ_2312"
+               BuildableName = "Database.framework"
+               BlueprintName = "Database"
+               ReferencedContainer = "container:SwiftBot.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "OBJ_2367"
+               BuildableName = "MessageHandlers.framework"
+               BlueprintName = "MessageHandlers"
                ReferencedContainer = "container:SwiftBot.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -367,7 +381,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "OBJ_1009"
+            BlueprintIdentifier = "OBJ_1025"
             BuildableName = "ImageBrutalizer.framework"
             BlueprintName = "ImageBrutalizer"
             ReferencedContainer = "container:SwiftBot.xcodeproj">

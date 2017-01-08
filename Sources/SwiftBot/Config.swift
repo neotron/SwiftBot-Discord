@@ -4,7 +4,7 @@
 //
 
 import Foundation
-import DiscordAPI
+import SwiftDiscord
 import EVReflection
 
 class Config: EVObject {

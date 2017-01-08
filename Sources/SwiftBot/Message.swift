@@ -4,7 +4,7 @@
 //
 
 import Foundation
-import DiscordAPI
+import SwiftDiscord
 
 class Message {
     let message: MessageModel

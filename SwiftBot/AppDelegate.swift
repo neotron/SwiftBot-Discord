@@ -9,7 +9,7 @@ import Foundation
 import AppKit
 import DiscordAPI
 import Fabric
-import Crashlytics
+
 
 
 private class CrashlyticsLogger : Logger {

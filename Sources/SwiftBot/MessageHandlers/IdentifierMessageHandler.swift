@@ -4,7 +4,7 @@
 //
 
 import Foundation
-import DiscordAPI
+import SwiftDiscord
 
 class IdentifierMessageHandler: MessageHandler {
     override var commands: [MessageCommand]? {

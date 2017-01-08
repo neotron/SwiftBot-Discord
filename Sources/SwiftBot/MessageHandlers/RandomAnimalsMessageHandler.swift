@@ -4,7 +4,7 @@
 //
 
 import Foundation
-import DiscordAPI
+import SwiftDiscord
 import Alamofire
 import AlamofireJsonToObjects
 import EVReflection

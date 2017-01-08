@@ -5,7 +5,7 @@
 
 import Foundation
 import AppKit
-import DiscordAPI
+import SwiftDiscord
 
 open class SwiftBotMain: NSObject, DiscordDelegate {
     fileprivate let discord = Discord()

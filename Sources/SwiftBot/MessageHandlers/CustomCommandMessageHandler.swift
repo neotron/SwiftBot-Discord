@@ -5,8 +5,8 @@
 // Handles aliasing of commands and such
 
 import Foundation
-import DiscordAPI
-import Crashlytics
+import SwiftDiscord
+
 
 class CustomCommandMessageHandler: MessageHandler {
     internal static let CustomCommandGroup = "Custom Command Management"

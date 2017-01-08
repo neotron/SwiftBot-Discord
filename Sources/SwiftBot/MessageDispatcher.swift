@@ -5,7 +5,7 @@
 // Handles dispatching of messages to modules that handle them.
 
 import Foundation
-import DiscordAPI
+import SwiftDiscord
 
 typealias MessageCommand = (c:String, h:String?)
 

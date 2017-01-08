@@ -7,7 +7,7 @@ import Foundation
 import EVReflection
 import Alamofire
 import AlamofireJsonToObjects
-import DiscordAPI
+import SwiftDiscord
 
 // {"msgnum":100,"msg":"OK","system":"Phipoea DD-F c26-1311","firstDiscover":false,"date":"2016-02-25 06:44:54"}
 

@@ -7,7 +7,7 @@
 
 import Foundation
 import CoreData
-import DiscordAPI
+import SwiftDiscord
 
 class CoreDataManager: NSObject {
     static let instance = CoreDataManager()

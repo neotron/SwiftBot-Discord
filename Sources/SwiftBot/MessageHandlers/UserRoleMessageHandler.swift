@@ -4,7 +4,7 @@
 //
 
 import Foundation
-import DiscordAPI
+import SwiftDiscord
 
 class UserRoleMessageHandler: AuthenticatedMessageHandler {
     override var commands: [MessageCommand]? {

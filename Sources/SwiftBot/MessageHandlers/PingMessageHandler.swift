@@ -4,7 +4,7 @@
 //
 
 import Foundation
-import DiscordAPI
+import SwiftDiscord
 
 class PingMessageHandler: MessageHandler {
     fileprivate let PING = "ping"

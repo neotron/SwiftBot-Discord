@@ -6,7 +6,7 @@
 // Limited functionality outside of E:D :-)
 
 import Foundation
-import DiscordAPI
+import SwiftDiscord
 
 class ScienceMessageHandler: MessageHandler {
 
