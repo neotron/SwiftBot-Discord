@@ -69,3 +69,4 @@ config-dev.json
 db/
 CommandRepository/yaml-ref.md
 *~
+/Packages
