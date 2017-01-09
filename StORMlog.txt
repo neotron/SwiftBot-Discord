@@ -91,3 +91,9 @@
 [INFO] [9b6fbc4b-3c04-4432-8462-82bc67e9c749] [2017-01-08 22:45:44 GMT-08:00] Running setup: userRole
 [INFO] [7b5c2692-b4c3-4695-9ddc-d2ed209ac7fd] [2017-01-08 22:45:44 GMT-08:00] Running setup: commandGroup
 [INFO] [f8b069e3-d109-4a0e-b812-6631a6153c10] [2017-01-08 22:45:44 GMT-08:00] Running setup: commandAlias
+[INFO] [481cfff6-980f-4398-bb1d-7fbc3b96bf37] [2017-01-08 22:51:11 GMT-08:00] Running setup: userRole
+[INFO] [33c44658-922e-45d4-834d-f2a1c560ca91] [2017-01-08 22:51:11 GMT-08:00] Running setup: commandGroup
+[INFO] [31305604-7982-4eab-acde-46cedff3fcf9] [2017-01-08 22:51:11 GMT-08:00] Running setup: commandAlias
+[INFO] [1d60bcec-d3c7-4842-ab03-b3feb5bc42df] [2017-01-08 22:52:23 GMT-08:00] Running setup: userRole
+[INFO] [d0621dd5-a18c-468e-b00c-bd3fb08162e4] [2017-01-08 22:52:23 GMT-08:00] Running setup: commandGroup
+[INFO] [4f1f5c6a-69e8-478f-9b74-0f89c49a799a] [2017-01-08 22:52:23 GMT-08:00] Running setup: commandAlias

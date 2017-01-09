@@ -95,10 +95,12 @@ class RandomAnimalsMessageHandler: MessageHandler, URLSessionTaskDelegate {
                                             newRequest request: URLRequest, completionHandler: @escaping (URLRequest?) -> Void) {
         if let message = self.pendingCorgieChannels[task.taskIdentifier] {
             if (response.statusCode == 302) {
+#if os(macOS)
                 if let doge = response.allHeaderFields["Location"] as? String {
                     message.replyToChannel(doge)
                     return
                 }
+#endif
             }
             self.pendingCorgieChannels[task.taskIdentifier] = nil
         }

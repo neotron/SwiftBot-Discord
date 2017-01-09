@@ -5,8 +5,10 @@ open class Logger {
 
     public init() {}
 
-    open func log(_ message: String, args: CVaListPointer = getVaList([])) {
-        NSLogv(message, args)
+    open func log(_ message: String, args:  CVarArg...) {
+        withVaList(args) {
+            NSLogv(message, $0)
+        }
     }
 
     fileprivate class func _shouldLogLevel(_ level: LoggingLevel) -> Bool {

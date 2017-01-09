@@ -1,5 +1,5 @@
 import Foundation
-
+import Dispatch
 guard CommandLine.arguments.count == 2 else {
     LOG_ERROR("Expected argument: \(CommandLine.arguments.first!) <config file>")
     exit(2)
@@ -14,4 +14,4 @@ main.runWithDoneCallback() {
 }
 
 
-CFRunLoopRun()
+dispatchMain()

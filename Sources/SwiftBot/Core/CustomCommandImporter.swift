@@ -14,7 +14,7 @@ enum CustomComandImportError: Error {
 
 }
 
-@objc open class CustomCommandImporter: NSObject {
+open class CustomCommandImporter: NSObject {
     override public init() {
         // Init without doing anything, used when executed from message handler.
         super.init()
