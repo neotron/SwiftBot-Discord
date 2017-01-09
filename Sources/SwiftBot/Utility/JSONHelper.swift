@@ -13,11 +13,13 @@ class JSON {
 
     static func from(data: Data) ->  NSDictionary? {
         do {
-            return try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary
+            if let dict = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] {
+                return NSDictionary(dictionary: dict)
+            }
         } catch {
             LOG_ERROR(error.localizedDescription)
-            return nil
         }
+        return nil
     }
 
     static func from(file: String) -> NSDictionary? {
