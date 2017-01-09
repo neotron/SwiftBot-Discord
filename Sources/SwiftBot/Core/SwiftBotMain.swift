@@ -4,7 +4,6 @@
 //
 
 import Foundation
-import AppKit
 import SwiftDiscord
 
 open class SwiftBotMain: NSObject, DiscordDelegate {
