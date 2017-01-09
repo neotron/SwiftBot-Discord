@@ -38,7 +38,7 @@ enum CustomComandImportError: Error {
         }
         LOG_DEBUG("Category help: \(categoryHelp)");
         if let commands = topLevel["commands"].dictionary {
-            let cdm = CoreDataManager.instance
+            let cdm = Database.instance
             for (command, dict) in commands {
                 guard let commandStr = command.string, let commandDict = dict.dictionary, let content = commandDict["content"]?.dictionary, let commandText = content["text"]?.string else {
                     throw CustomComandImportError.yamlError(error: "Command \(command) missing a name or required content.")
@@ -64,17 +64,18 @@ enum CustomComandImportError: Error {
                             catObj = cdm.createCommandGroup(category)
                             catImported += 1
                         }
-                        catObj?.commands.insert(cmdObject!)
+                        _ = catObj?.add(command: cmdObject!)
                         if let catHelp = categoryHelp[category] {
                             catObj?.help = catHelp
                         }
+                        _ = cdm.save(catObj!)
                     }
                     if let pm = optionsDict["detailed_pm"]?.bool {
                         cmdObject?.pmEnabled = pm
                     }
                 }
+                _ = cdm.save(cmdObject!)
             }
-            cdm.save(synchronous)
         }
         return (cmdImported, catImported, cmdUpdated)
     }

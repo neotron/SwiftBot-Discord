@@ -5,8 +5,9 @@
 
 import Foundation
 import CoreData
+import SQLiteStORM
 
-class Commandable: NSManagedObject {
-    @NSManaged var command: String
-    @NSManaged var help: String?
+protocol Commandable {
+    var command: String { get set }
+    var help: String? { get set }
 }

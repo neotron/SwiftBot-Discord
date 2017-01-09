@@ -52,7 +52,7 @@ class UserRoleMessageHandler: AuthenticatedMessageHandler {
             return
         }
         var numAdded = 0
-        let cdm = CoreDataManager.instance
+        let cdm = Database.instance
         for id in userIds {
             if cdm.addRoleForUserId(id, role: .admin) {
                 numAdded += 1
@@ -66,7 +66,7 @@ class UserRoleMessageHandler: AuthenticatedMessageHandler {
             return
         }
         var numRemoved = 0
-        let cdm = CoreDataManager.instance
+        let cdm = Database.instance
         for id in userIds {
             if cdm.removeRoleForUser(id, role: .admin) {
                 numRemoved += 1

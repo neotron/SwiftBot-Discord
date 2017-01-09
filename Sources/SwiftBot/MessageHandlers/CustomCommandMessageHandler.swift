@@ -6,7 +6,7 @@
 
 import Foundation
 import SwiftDiscord
-
+import SQLiteStORM
 
 class CustomCommandMessageHandler: MessageHandler {
     internal static let CustomCommandGroup = "Custom Command Management"
@@ -65,7 +65,7 @@ class CustomCommandMessageHandler: MessageHandler {
     }
 
     override func handleAnything(_ command: String, args: [String], message: Message) -> Bool {
-        let cdm = CoreDataManager.instance
+        let cdm = Database.instance
         if let commandObject = cdm.loadCommandAlias(command) {
             if message.flags.contains(.Help) {
                 if let help = commandObject.help {
@@ -93,7 +93,7 @@ class CustomCommandMessageHandler: MessageHandler {
             if let help = group.help {
                 output[0] += help
             }
-            let sortedCommands = group.commands.sorted {
+            let sortedCommands = group.commands().sorted {
                 $0.command > $1.command
             }
             for command in sortedCommands {
@@ -132,7 +132,7 @@ extension CustomCommandMessageHandler {
             message.replyToChannel("Invalid syntax. Expected: <command> <new text>")
             return
         }
-        let cdm = CoreDataManager.instance
+        let cdm = Database.instance
         if let existingCommand = cdm.loadCommandAlias(args[0]) {
             message.replyToChannel("Command *\(existingCommand.command)* already exist. Use *\(Config.commandPrefix)\(Command.EditCommand.rawValue)* instead.")
             return
@@ -147,8 +147,11 @@ extension CustomCommandMessageHandler {
             message.replyToChannel("Internal error. Unable to create command alias.")
             return
         }
-        cdm.save()
-        message.replyToChannel("Command alias for *\(command.command)* created successfully.")
+        if(cdm.save(command)) {
+            message.replyToChannel("Command alias for *\(command.command)* created successfully.")
+        } else {
+            message.replyToChannel("Command alias for *\(command.command)* couldn't be created (check logs).")
+        }
     }
 
     func editCommand(_ args: [String], message: Message) {
@@ -156,7 +159,7 @@ extension CustomCommandMessageHandler {
             message.replyToChannel("Invalid syntax. Expected: <command> <new text>")
             return
         }
-        let cdm = CoreDataManager.instance
+        let cdm = Database.instance
         guard let existingCommand = cdm.loadCommandAlias(args[0]) else {
             message.replyToChannel("Command *\(args[0])* doesn't exist. Use *\(Config.commandPrefix)\(Command.AddCommand.rawValue)* instead.")
             return
@@ -168,8 +171,11 @@ extension CustomCommandMessageHandler {
         }
 
         existingCommand.value = commandText
-        cdm.save()
-        message.replyToChannel("Command *\(existingCommand.command)* updated with new text.")
+        if(cdm.save(existingCommand)) {
+            message.replyToChannel("Command *\(existingCommand.command)* updated with new text.")
+        } else {
+            message.replyToChannel("Command *\(existingCommand.command)* update failed.")
+        }
     }
 
     func removeCommand(_ args: [String], message: Message) {
@@ -177,14 +183,14 @@ extension CustomCommandMessageHandler {
             message.replyToChannel("Invalid syntax. Expected: <command>")
             return
         }
-        let cdm = CoreDataManager.instance
+        let cdm = Database.instance
         guard let existingCommand = cdm.loadCommandAlias(args[0]) else {
             message.replyToChannel("Command *\(args[0])* doesn't exist.")
             return
         }
+
         if cdm.deleteObject(existingCommand) {
             message.replyToChannel("Command *\(args[0])* removed.")
-            cdm.save()
         } else {
             message.replyToChannel("Command *\(args[0])* was not removed due to internal error.")
         }
@@ -196,16 +202,19 @@ extension CustomCommandMessageHandler {
             return
         }
 
-        let cdm = CoreDataManager.instance
+        let cdm = Database.instance
         var entryToUpdate: Commandable? = cdm.loadCommandAlias(args[0])
         if entryToUpdate == nil {
             entryToUpdate = cdm.loadCommandGroup(args[0])
         }
 
-        if let entryToUpdate = entryToUpdate {
+        if var entryToUpdate = entryToUpdate {
             entryToUpdate.help = getCommandText(args[0], message: message)
-            message.replyToChannel("Command or category *\(entryToUpdate.command)* updated with help text.")
-            cdm.save()
+            if(cdm.save(entryToUpdate as! SQLiteStORM)) {
+                message.replyToChannel("Command or category *\(entryToUpdate.command)* updated with help text.")
+            } else {
+                message.replyToChannel("Command or category *\(entryToUpdate.command)* update failed.")
+            }
             return
         }
 
@@ -213,14 +222,19 @@ extension CustomCommandMessageHandler {
     }
 
     func listCommands(_ args: [String], message: Message) {
-        let cdm = CoreDataManager.instance
+        let cdm = Database.instance
+        #if false
         let sortOrder = [NSSortDescriptor(key: "command", ascending: true)]
         var output = [""]
-        if let groups = cdm.fetchObjectsOfType(.CommandGroup, withPredicate: nil, sortedBy: sortOrder) {
-            output.append("**Commands by Category**:\n\t\(groups.map {" **\($0.command):** \($0.commands.map { $0.command }.joined(separator: ", "))"}.joined(separator: "\n\t"))")
-            } else {
+        // TODO: FIXME
+        let groups = CommandGroup()
+        if try? groups.findAll() {
+            output.append("**Commands by Category**:\n\t\(groups.rows.map {" **\($0.command):** \($0.commands().map { $0.command }.joined(separator: ", "))"}.joined(separator: "\n\t"))")
+        } else {
             output.append("**Categories:** \n\tNone found")
         }
+        //let fetchedCommands = CommandAlias()
+        //if try? fetchedCommands.find("groupId": nil)
         let fetchedCommands = cdm.fetchObjectsOfType(.CommandAlias, withPredicate: nil, sortedBy: sortOrder) as? [CommandAlias]
         if let commands = fetchedCommands, !commands.isEmpty {
             output.append("\n**Uncategorised Commands:**\n\t\(commands.filter { $0.group == nil }.map { $0.command }.joined(separator: ", "))")
@@ -234,7 +248,7 @@ extension CustomCommandMessageHandler {
         } else {
             message.replyToSender(outputString)
         }
-
+        #endif
     }
 }
 
@@ -242,7 +256,7 @@ extension CustomCommandMessageHandler {
 
 extension CustomCommandMessageHandler {
     func loadOrCreateCommandGroup(_ group: String, shouldCreate: Bool = true) -> CommandGroup? {
-        let cdm = CoreDataManager.instance
+        let cdm = Database.instance
         if let group = cdm.loadCommandGroup(group) {
             return group
         }
@@ -257,7 +271,7 @@ extension CustomCommandMessageHandler {
             message.replyToChannel("Invalid syntax. Expected: <category> <command>")
             return
         }
-        let cdm = CoreDataManager.instance
+        let cdm = Database.instance
         guard let command = cdm.loadCommandAlias(args[1]) else {
             message.replyToChannel("Command *\(args[1])* doesn't exist.")
             return
@@ -271,13 +285,15 @@ extension CustomCommandMessageHandler {
             message.replyToChannel("Internal Error: Unable to load or create category *\(args[0])*.")
             return
         }
-        if group.commands.contains(command) {
+        if group.commands().contains(where: { $0.id == command.id }) {
             message.replyToChannel("Command *\(command.command)* already in category *\(group.command)*.")
             return
         }
-        group.commands.insert(command)
-        cdm.save()
-        message.replyToChannel("Command *\(command.command)* added to category *\(group.command)*.")
+        if(group.add(command: command)) {
+            message.replyToChannel("Command *\(command.command)* added to category *\(group.command)*.")
+        } else {
+            message.replyToChannel("Command *\(command.command)* failed to be added to category *\(group.command)*.")
+        }
     }
 
     func removeFromCategory(_ args: [String], message: Message) {
@@ -285,7 +301,7 @@ extension CustomCommandMessageHandler {
             message.replyToChannel("Invalid syntax. Expected: <category> <command>")
             return
         }
-        let cdm = CoreDataManager.instance
+        let cdm = Database.instance
         guard let command = cdm.loadCommandAlias(args[1]) else {
             message.replyToChannel("Command *\(args[1])* doesn't exist.")
             return
@@ -294,12 +310,12 @@ extension CustomCommandMessageHandler {
             message.replyToChannel("Category *\(args[0])* doesn't exist.")
             return
         }
-        if group.commands.contains(command) {
-            message.replyToChannel("Command *\(command.command)* removed from category *\(group.command)*.")
-            group.commands.remove(command)
-            cdm.save()
-            return
-        }
+//        if group.commands.contains(command) {
+ //           message.replyToChannel("Command *\(command.command)* removed from category *\(group.command)*.")
+  //          group.commands.remove(command)
+   //         cdm.save()
+    //        return
+     //   }
 
         message.replyToChannel("Command *\(command.command)* is not part of category *\(group.command)*.")
     }

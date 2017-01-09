@@ -38,7 +38,7 @@ class Config {
         return instance.config!.commandPrefix
     }
     static var databaseDirectory: String? {
-        return instance.config!.databaseDirectory
+        return instance.config?.databaseDirectory
     }
     static var ownerIds: Set<String> {
         return Set(instance.config!.ownerIds)

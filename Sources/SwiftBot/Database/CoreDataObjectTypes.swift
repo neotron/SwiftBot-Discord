@@ -4,7 +4,7 @@
 // 
 
 import Foundation
-
+import SQLiteStORM
 enum CoreDataObjectTypes: String {
     case CommandAlias = "CommandAlias",
          CommandGroup = "CommandGroup",

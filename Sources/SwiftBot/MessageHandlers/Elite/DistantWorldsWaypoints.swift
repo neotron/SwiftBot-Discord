@@ -63,6 +63,7 @@ class DistantWorldsWaypoints: MessageHandler {
 }
 
 // MARK: Handle stage command
+
 extension DistantWorldsWaypoints {
     fileprivate func handleStageCommand(_ stageStr: String, message: Message) {
         guard var stage = Int(stageStr) else {
@@ -99,7 +100,7 @@ extension DistantWorldsWaypoints {
         }
 
         if wpnum < 0 || wpnum >= wps.count {
-            message.replyToChannel("Waypoint \(wpnum) is not a valid waypoint (use 1-\(wps.count-1)).");
+            message.replyToChannel("Waypoint \(wpnum) is not a valid waypoint (use 1-\(wps.count - 1)).");
             return
         }
 
@@ -141,7 +142,7 @@ extension DistantWorldsWaypoints {
             for arg in args {
                 if let dbl = Double(arg) {
                     doubles.append(dbl)
-                    if (doubles.count == 2) {
+                    if(doubles.count == 2) {
                         break;
                     }
                 }
@@ -151,7 +152,7 @@ extension DistantWorldsWaypoints {
                 ignorePrivateMessage = true
                 let end = PlanetaryMath.LatLong(wp.baseCamp.coords[0], wp.baseCamp.coords[1])
                 let start = PlanetaryMath.LatLong(doubles[0], doubles[1])
-                let result = PlanetaryMath.calculateBearingAndDistance(start: start, end:end, radius: wp.planet.radius)
+                let result = PlanetaryMath.calculateBearingAndDistance(start: start, end: end, radius: wp.planet.radius)
                 let distance = PlanetaryMath.distanceFor(result.distance)
                 verboseOutput.append(String(format: "\n`To get to the base camp from \(String(latlong: start)) head in bearing %.1f°\(distance).`", result.bearing))
                 terseOutput = [terseOutput[0]]
@@ -178,23 +179,23 @@ extension DistantWorldsWaypoints {
 extension DistantWorldsWaypoints {
 
     fileprivate func loadDatabase() {
-        let bundle = Bundle(for: type(of: self))
-        guard let path = bundle.path(forResource: "DistantWorldsWaypoints", ofType: "json") else {
+        guard let path = Config.databaseDirectory else {
             LOG_ERROR("Failed to locate waypoints database.")
             return
         }
-        guard let json = JSON.from(file: path) else {
-            LOG_ERROR("Failed to load and decode waypoints database.")
+        let dwePath = "\(path)/DistantWorldsWaypoints.json"
+        guard let json = JSON.from(file: dwePath) else {
+            LOG_ERROR("Failed to load and decode waypoints database: \(dwePath)")
             return
         }
-        guard let db = Waypoints.from(json) else {
-            LOG_ERROR("Failed to json map waypoints database.")
+        do {
+            let db = try Waypoints(map: Mapper(JSON: json))
+            LOG_DEBUG("Loaded database (\(db.waypoints.count) waypoints)")
+            DistantWorldsWaypoints.database = db
+        } catch {
+            LOG_ERROR("Failed to json map waypoints database: \(error)")
             return
         }
-        LOG_DEBUG("Loaded database (\(db.waypoints.count) waypoints)")
-//        print(db.toJsonString());
-
-        DistantWorldsWaypoints.database = db
     }
 
 }
@@ -204,9 +205,9 @@ struct WaypointRange: Mappable {
     let end: Int
 
     init(map: Mapper) throws {
-          try start = map.from("start")
-          try end = map.from("end")
-      }
+        try start = map.from("start")
+        try end = map.from("end")
+    }
 }
 
 struct Stage: Mappable {
@@ -217,7 +218,7 @@ struct Stage: Mappable {
     init(map: Mapper) throws {
         try waypoints = map.from("waypoints")
         try name = map.from("name")
-        try image = map.from("image")
+        image = map.optionalFrom("image") ?? ""
     }
 }
 
@@ -244,7 +245,7 @@ struct BaseCamp: Mappable {
     }
 }
 
-struct Planet : Mappable {
+struct Planet: Mappable {
     let name: String
     let gravity: Double
     let radius: Double

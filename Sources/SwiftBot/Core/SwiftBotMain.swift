@@ -17,7 +17,8 @@ open class SwiftBotMain: NSObject, DiscordDelegate {
 
         self.discord.delegate = self
         self.messageDispatcher.discord = discord
-        let cdm = CoreDataManager.instance
+        let cdm = Database.instance
+        cdm.openDatabase()
         if !cdm.isSetupAndWorking() {
             LOG_ERROR("NOTE: The database couldn't be initialized (check configuration). Custom commands will not work.")
         } else {
