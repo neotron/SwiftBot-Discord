@@ -14,6 +14,5 @@ let package = Package(
         .Package(url: "https://github.com/PerfectlySoft/Perfect-CURL.git", majorVersion: 2),
         .Package(url: "https://github.com/nuclearace/SwiftDiscord", majorVersion: 0),
         .Package(url: "https://github.com/behrang/YamlSwift", majorVersion: 3),
-        .Package(url: "https://github.com/SwiftyJSON/SwiftyJSON", majorVersion: 3),
         ]
 )
