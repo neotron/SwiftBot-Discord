@@ -56,8 +56,14 @@ class Config {
 
     static func loadConfigFrom(file: String) {
         if let json = JSON.from(file: file) {
-            instance.config = ConfigData.from(json)
+            do {
+                instance.config = try ConfigData(map: Mapper(JSON: json))
+                LOG_DEBUG("Loaded configuration.")
+            } catch {
+                LOG_ERROR("Failed to load configuration file: \(error)")
+            }
         }
+
         guard let _ = instance.config else {
             LOG_ERROR("Failed to load configuration: \(file)")
             exit(1)
