@@ -6,15 +6,14 @@ let package = Package(
         Target(
             name: "SwiftBot",
             dependencies: [
-                .Target(name: "EVReflection"),
-                .Target(name: "AlamofireJsonToObjects")
                 ]),
         
         ],
     dependencies: [
-        .Package(url: "https://github.com/nuclearace/SwiftDiscord", majorVersion: 0, minor: 5),
-        .Package(url: "https://github.com/Alamofire/Alamofire.git", majorVersion: 4, minor: 2),
-        .Package(url: "https://github.com/behrang/YamlSwift", majorVersion: 3, minor: 3),
-        //.Package(url: "git@github.com:evermeer/AlamofireJsonToObjects.git", majorVersion: 2, minor: 4),
+        .Package(url: "https://github.com/lyft/mapper", majorVersion: 6),
+        .Package(url: "https://github.com/PerfectlySoft/Perfect-CURL.git", majorVersion: 2),
+        .Package(url: "https://github.com/nuclearace/SwiftDiscord", majorVersion: 0),
+        .Package(url: "https://github.com/behrang/YamlSwift", majorVersion: 3),
+        .Package(url: "https://github.com/SwiftyJSON/SwiftyJSON", majorVersion: 3),
         ]
 )

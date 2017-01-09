@@ -5,7 +5,7 @@
 
 import Foundation
 import SwiftDiscord
-import EVReflection
+import Mapper
 
 class DistantWorldsWaypoints: MessageHandler {
     static var database: Waypoints?
@@ -183,12 +183,14 @@ extension DistantWorldsWaypoints {
             LOG_ERROR("Failed to locate waypoints database.")
             return
         }
-        guard let data = try? Data(contentsOf: URL(fileURLWithPath: path)), let dataText = NSString(data: data, encoding: String.Encoding.utf8.rawValue) else {
+        guard let json = JSON.from(file: path) else {
             LOG_ERROR("Failed to load and decode waypoints database.")
             return
         }
-        EVReflection.setBundleIdentifier(SwiftBotMain.self)
-        let db = Waypoints(json: dataText as String)
+        guard let db = Waypoints.from(json) else {
+            LOG_ERROR("Failed to json map waypoints database.")
+            return
+        }
         LOG_DEBUG("Loaded database (\(db.waypoints.count) waypoints)")
 //        print(db.toJsonString());
 
@@ -197,47 +199,97 @@ extension DistantWorldsWaypoints {
 
 }
 
-class WaypointRange: EVObject {
-    var start = 0
-    var end = 0
+struct WaypointRange: Mappable {
+    let start: Int
+    let end: Int
+
+    init(map: Mapper) throws {
+          try start = map.from("start")
+          try end = map.from("end")
+      }
 }
 
-class Stage: EVObject {
-    var waypoints = WaypointRange()
-    var name = ""
-    var image = ""
+struct Stage: Mappable {
+    let waypoints: WaypointRange
+    let name: String
+    let image: String
+
+    init(map: Mapper) throws {
+        try waypoints = map.from("waypoints")
+        try name = map.from("name")
+        try image = map.from("image")
+    }
 }
 
-class Distance: EVObject {
-    var next = 0.0
-    var traveled = 0.0
+struct Distance: Mappable {
+    let next: Double
+    let traveled: Double
+
+    init(map: Mapper) throws {
+        try next = map.from("next")
+        try traveled = map.from("traveled")
+    }
+
 }
 
-class BaseCamp: EVObject {
-    var name = ""
-    var coords = [0.0, 0.0]
-    var guide: String?
+struct BaseCamp: Mappable {
+    let name: String
+    let coords: [Double]
+    let guide: String?
+
+    init(map: Mapper) throws {
+        try name = map.from("name")
+        coords = map.optionalFrom("coords") ?? [0.0, 0.0]
+        guide = map.optionalFrom("guide")
+    }
 }
 
-class Planet : EVObject {
-    var name = ""
-    var gravity = 0.0
-    var radius = 0.0
+struct Planet : Mappable {
+    let name: String
+    let gravity: Double
+    let radius: Double
+    init() {
+        name = ""
+        gravity = 0.0
+        radius = 0.0
+    }
+    init(map: Mapper) throws {
+        try name = map.from("name")
+        gravity = map.optionalFrom("gravity") ?? 0.0
+        radius = map.optionalFrom("radius") ?? 0.0
+    }
 }
 
-class Waypoint: EVObject {
-    var name = ""
-    var desc = ""
-    var baseCamp = BaseCamp()
-    var system = ""
-    var planet = Planet()
-    var distance = Distance()
-    var events: [String]?
-    var keyEvent: String?
-    var specialEvents: [String]?
+struct Waypoint: Mappable {
+    let name: String
+    let desc: String
+    let baseCamp: BaseCamp
+    let system: String
+    let planet: Planet
+    let distance: Distance
+    let events: [String]?
+    let keyEvent: String?
+    let specialEvents: [String]?
+
+    init(map: Mapper) throws {
+        try name = map.from("name")
+        try desc = map.from("desc")
+        try baseCamp = map.from("baseCamp")
+        system = map.optionalFrom("system") ?? ""
+        planet = map.optionalFrom("planet") ?? Planet()
+        distance = try map.from("distance")
+        events = map.optionalFrom("events")
+        keyEvent = map.optionalFrom("keyEvent")
+        specialEvents = map.optionalFrom("specialEvents")
+    }
 }
 
-class Waypoints: EVObject {
-    var stages = [Stage]()
-    var waypoints = [Waypoint]()
+struct Waypoints: Mappable {
+    let stages: [Stage]
+    let waypoints: [Waypoint]
+
+    init(map: Mapper) throws {
+        stages = try map.from("stages")
+        waypoints = try map.from("waypoints")
+    }
 }

@@ -23,9 +23,7 @@ class IdentifierMessageHandler: MessageHandler {
         } else {
             if let mentions = message.mentions {
                 for author in mentions {
-                    if let id = author.id, let name = author.username {
-                        identities.append("\(name) has id \(id)")
-                    }
+                    identities.append("\(author.username) has id \(author.id)")
                 }
             }
         }

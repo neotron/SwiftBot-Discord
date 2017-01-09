@@ -24,30 +24,17 @@ open class SwiftBotMain: NSObject, DiscordDelegate {
         } else {
             cdm.updateOwnerRolesFromConfig()
         }
-        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "DiscordAuthenticationChanged"), object: nil,
-                queue: OperationQueue.current, using: {
-            (notification: Notification) in
-            if let token = notification.userInfo?["token"] as? String {
-                self.discord.updateLoginWithToken(token)
-            }
-        });
     }
 
     open func runWithDoneCallback(_ callback: ((Void) -> Void)?) {
         self.doneCallback = callback
-        let account = DiscordAccount()
-        self.discord.login(account.token)
+        self.discord.connect()
     }
 
     open func discordLoginDidComplete(_ error: NSError?) {
-        if let _ = error {
-            let alert = NSAlert();
-            alert.addButton(withTitle: "OK")
-            alert.messageText = "Failed to login to Discord."
-            alert.informativeText = "An error occurred while attempting to connect to Discord. Please check your credentials in the preferences."
-            alert.alertStyle = .critical
-            NSApp.activate(ignoringOtherApps: true)
-            alert.runModal()
+        if let error = error {
+            LOG_ERROR("Failed to login: \(error.localizedDescription)")
+            self.doneCallback?()
         }
     }
 
@@ -56,7 +43,7 @@ open class SwiftBotMain: NSObject, DiscordDelegate {
         self.doneCallback?()
     }
 
-    open func discordMessageReceived(_ message: MessageModel, event: MessageEventType) {
+    open func discordMessageReceived(_ message: DiscordMessage, event: MessageEventType) {
         self.messageDispatcher.processMessage(message, event: event)
     }
 

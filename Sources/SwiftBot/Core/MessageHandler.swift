@@ -47,7 +47,7 @@ class AuthenticatedMessageHandler: MessageHandler {
     final fileprivate func authenticated(_ message: Message) -> Bool {
         let isAuth = {
             (Void) -> Bool in
-            let roles = CoreDataManager.instance.fetchRolesForId(message.author!.id!)
+            let roles = CoreDataManager.instance.fetchRolesForId(message.author!.id)
             for role in allowedRoles {
                 if roles.contains(role) {
                     return true;
@@ -56,7 +56,7 @@ class AuthenticatedMessageHandler: MessageHandler {
             return false
         }()
         if (!isAuth) {
-            message.replyToChannel("@\(message.author!.username!): I can't let you do that.")
+            message.replyToChannel("@\(message.author!.username): I can't let you do that.")
         }
         return isAuth
     }

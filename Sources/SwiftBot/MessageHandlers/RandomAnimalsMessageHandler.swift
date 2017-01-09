@@ -5,12 +5,14 @@
 
 import Foundation
 import SwiftDiscord
-import Alamofire
-import AlamofireJsonToObjects
-import EVReflection
+import Mapper
 
-class MeowModel: EVObject {
-    var file: String?
+struct MeowModel: Mappable {
+    let file: String?
+
+    init(map: Mapper) throws {
+        file = map.optionalFrom("file")
+    }
 }
 
 class RandomAnimalsMessageHandler: MessageHandler, URLSessionTaskDelegate {
@@ -62,7 +64,7 @@ class RandomAnimalsMessageHandler: MessageHandler, URLSessionTaskDelegate {
 
 
     fileprivate func handleRandomCat(_ message: Message) {
-        EVReflection.setBundleIdentifier(SwiftBotMain.self)
+        #if false
         Alamofire.request("http://random.cat/meow").responseObject {
             (response: DataResponse<MeowModel>) in
                      if let url = response.result.value?.file {
@@ -72,6 +74,7 @@ class RandomAnimalsMessageHandler: MessageHandler, URLSessionTaskDelegate {
                          LOG_ERROR("Failed to get meow: \(response.result.error)")
                      }
                  }
+        #endif
     }
 
     fileprivate func handleRandomCorgi(_ message: Message) {

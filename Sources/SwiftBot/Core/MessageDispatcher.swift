@@ -121,11 +121,9 @@ class MessageDispatchManager: MessageHandler {
         return flags
     }
 
-    func processMessage(_ message: MessageModel, event: MessageEventType) {
-        guard let content = message.content, let _ = message.author?.username, let _ = message.author?.id, let _ = message.channelId else {
-            LOG_DEBUG("Not handling message - missing content, author username or channel id");
-            return
-        }
+    func processMessage(_ message: DiscordMessage, event: MessageEventType) {
+        let content = message.content
+
         if !content.hasPrefix(Config.commandPrefix) {
             LOG_DEBUG("Message content missing required prefix.")
             return

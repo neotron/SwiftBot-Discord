@@ -56,7 +56,7 @@ class CustomCommandMessageHandler: MessageHandler {
             listCommands(args, message: message)
         case .Crash:
             if(Config.development) {
-                Crashlytics.sharedInstance().crash()
+                exit(123)
             } else {
                 message.replyToChannel("No, I shall not crash.", tts: true)
             }

@@ -4,36 +4,63 @@
 //
 
 import Foundation
-import EVReflection
-import Alamofire
-import AlamofireJsonToObjects
 import SwiftDiscord
+import Mapper
 
 // {"msgnum":100,"msg":"OK","system":"Phipoea DD-F c26-1311","firstDiscover":false,"date":"2016-02-25 06:44:54"}
 
-class CommanderPositionModel: EVObject {
-    var msg: String = ""
-    var msgnum: Int = 0
-    var system: String?
-    var firstDiscover: Bool = false
-    var date: String?
+struct CommanderPositionModel: Mappable {
+    let msg: String
+    let msgnum: Int
+    let system: String?
+    let firstDiscover: Bool
+    let date: String?
+
+
+    init(map: Mapper) throws {
+        try msg = map.from("msg")
+        try msgnum = map.from("msgnum")
+        system = map.optionalFrom("system")
+        firstDiscover = map.optionalFrom("firstDiscover") ?? false
+        date = map.optionalFrom("date")
+    }
 }
 
-class CoordModel: EVObject {
-    var x = 0.0
-    var y = 0.0
-    var z = 0.0
+struct CoordModel: Mappable {
+    let x: Double
+    let y: Double
+    let z: Double
+
+    init(map: Mapper) throws {
+        try x = map.from("x")
+        try y = map.from("y")
+        try z = map.from("z")
+    }
+    init(x: Double, y: Double, z: Double) {
+        self.x = x
+        self.y = y
+        self.z = z
+    }
 }
 
-class SystemModel: EVObject {
-    var name: String = ""
-    var coords: CoordModel?
+struct SystemModel: Mappable {
+    let name: String
+    let coords: CoordModel?
+
+    init(map: Mapper) throws {
+        try name = map.from("name")
+        coords = map.optionalFrom("coords")
+    }
+    init(name: String, coords: CoordModel?) {
+        self.name = name
+        self.coords = coords
+    }
 }
 
 class EDSMMessageHandler: MessageHandler {
     fileprivate let aliases = [
-            "jaques": "Eol Prou RS-T D3-94",
-            "jaques station": "Eol Prou RS-T D3-94",
+            "jaques": "Colonia",
+            "jaques station": "Colonia",
     ]
 
     override var commands: [MessageCommand]? {
@@ -84,13 +111,7 @@ class EDSMMessageHandler: MessageHandler {
             let parts = systemName.components(separatedBy: " ")
             if (parts.count == 3) {
                 if let x = Double(parts[0]), let y = Double(parts[1]), let z = Double(parts[2]) {
-                    let system = SystemModel()
-                    let coords = CoordModel()
-                    coords.x = x
-                    coords.y = y
-                    coords.z = z
-                    system.name = "(x: \(x), y: \(y), z: \(z))"
-                    system.coords = coords
+                    let system = SystemModel(name: "(x: \(x), y: \(y), z: \(z))", coords: CoordModel(x: x, y: y, z: z))
                     calcDist(system)
                     continue
                 }
@@ -117,14 +138,16 @@ class EDSMMessageHandler: MessageHandler {
 
             getSystemCoords(systemName, message: message) {
                 (system: SystemModel?) in
-                if system != nil {
+                if let system = system {
                     if let name = waypointName {
-                        system!.name = name
+                        calcDist(SystemModel(name: name, coords: system.coords))
+                    } else {
+                        calcDist(system)
                     }
-                    calcDist(system!)
                     return
                 }
-
+                // TODO: FIXME
+#if false
                 Alamofire.request("http://www.edsm.net/api-logs-v1/get-position/", parameters: ["commanderName": systemName]).responseObject {
                     (response: DataResponse<CommanderPositionModel>) in
                     guard let location = response.result.value else {
@@ -148,11 +171,14 @@ class EDSMMessageHandler: MessageHandler {
                         self.reportNotTrilaterated(systemName, message: message)
                     }
                 }
+#endif
+            message.replyToChannel("API disabled presently.")
             }
         }
     }
 
     fileprivate func getSystemCoords(_ systemName: String, message: Message, callback: @escaping (SystemModel?) -> Void) {
+        #if false
         Alamofire.request("http://www.edsm.net/api-v1/system",
                           parameters: ["systemName": systemName,
                                        "coords": "1"]).responseObject {
@@ -171,6 +197,8 @@ class EDSMMessageHandler: MessageHandler {
                 callback(nil)
             }
         }
+        #endif
+        callback(nil)
     }
 
     fileprivate func reportNotTrilaterated(_ systemName: String, message: Message) {
@@ -194,7 +222,7 @@ class EDSMMessageHandler: MessageHandler {
     }
 
     fileprivate func handleLocationLookup(_ commander: String, message: Message) {
-
+        #if false
         Alamofire.request("http://www.edsm.net/api-logs-v1/get-position/", parameters: ["commanderName": commander]).responseObject {
             (response: DataResponse<CommanderPositionModel>) in
             guard let location = response.result.value else {
@@ -219,6 +247,8 @@ class EDSMMessageHandler: MessageHandler {
                 }
             }
         }
+#endif
+        message.replyToChannel("Currently disabled.")
     }
 
 }

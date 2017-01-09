@@ -37,9 +37,7 @@ class UserRoleMessageHandler: AuthenticatedMessageHandler {
             }
             var userIds = [String]()
             for mention in mentions {
-                if let id = mention.id {
-                    userIds.append(id)
-                }
+                userIds.append(mention.id)
             }
             return userIds.count > 0 ? userIds : nil
         }() else {
