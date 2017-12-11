@@ -6,7 +6,6 @@
 import Foundation
 import EVReflection
 import Alamofire
-import AlamofireJsonToObjects
 import DiscordAPI
 
 // {"msgnum":100,"msg":"OK","system":"Phipoea DD-F c26-1311","firstDiscover":false,"date":"2016-02-25 06:44:54"}
@@ -125,7 +124,7 @@ class EDSMMessageHandler: MessageHandler {
                     return
                 }
 
-                Alamofire.request("http://www.edsm.net/api-logs-v1/get-position/", parameters: ["commanderName": systemName]).responseObject {
+                Alamofire.request("https://www.edsm.net/api-logs-v1/get-position/", parameters: ["commanderName": systemName]).responseObject {
                     (response: DataResponse<CommanderPositionModel>) in
                     guard let location = response.result.value else {
                         message.replyToChannel("Failed to complete request.")
@@ -153,7 +152,7 @@ class EDSMMessageHandler: MessageHandler {
     }
 
     fileprivate func getSystemCoords(_ systemName: String, message: Message, callback: @escaping (SystemModel?) -> Void) {
-        Alamofire.request("http://www.edsm.net/api-v1/system",
+        Alamofire.request("https://www.edsm.net/api-v1/system",
                           parameters: ["systemName": systemName,
                                        "coords": "1"]).responseObject {
             (response: DataResponse<SystemModel>) in
@@ -195,7 +194,7 @@ class EDSMMessageHandler: MessageHandler {
 
     fileprivate func handleLocationLookup(_ commander: String, message: Message) {
 
-        Alamofire.request("http://www.edsm.net/api-logs-v1/get-position/", parameters: ["commanderName": commander]).responseObject {
+        Alamofire.request("https://www.edsm.net/api-logs-v1/get-position/", parameters: ["commanderName": commander]).responseObject {
             (response: DataResponse<CommanderPositionModel>) in
             guard let location = response.result.value else {
                 message.replyToChannel("Failed to complete request.")

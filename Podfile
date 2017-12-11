@@ -7,7 +7,7 @@ target :DiscordAPI do
   pod 'ObjectMapper'
   pod 'Starscream'
   pod 'AlamofireObjectMapper'
-  pod "AlamofireJsonToObjects"
+  pod 'EVReflection/Alamofire'
   pod 'EVReflection'
 end
 
@@ -16,7 +16,7 @@ target :SwiftBot do
   pod 'Starscream'
   pod 'EVReflection'
   pod 'AlamofireObjectMapper'
-  pod "AlamofireJsonToObjects"
+  pod 'EVReflection/Alamofire'
   pod 'EVReflection'
   pod 'Locksmith'
   pod 'Yaml'

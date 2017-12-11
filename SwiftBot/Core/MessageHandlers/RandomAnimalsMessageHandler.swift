@@ -6,7 +6,6 @@
 import Foundation
 import DiscordAPI
 import Alamofire
-import AlamofireJsonToObjects
 import EVReflection
 
 class MeowModel: EVObject {
